@@ -1,92 +1,89 @@
 @charset "UTF-8";
-/* custom */
+body, button, input, select, textarea {
+  font-family: "Noto Sans TC", "Microsoft YaHei", "Georgia", "STZhongsong", "Ovo", serif;
+  font-size: 18px; }
+
+/* Custome Start -------------------------------------------- */
 body {
-  font-size: 1.1rem; }
+  background-color: #fff8f7; }
 
-.w-100 {
-  width: 100px; }
+h2, h3, h4, h5, h6 {
+  background-color: #fff8f7;
+  text-decoration: underline;
+  margin: 3rem 0 1rem 0; }
+  h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    color: #1c4ea0; }
 
-.monospace {
-  font-family: monospace; }
+code, pre {
+  font-size: 1rem;
+  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  background-color: #fff;
+  line-height: 1.5rem;
+  color: #f14570; }
 
-.mr1 {
-  margin-right: 1rem; }
+.article-entry {
+  line-height: 2rem; }
 
-.section-categories .content, .article.content {
-  margin-bottom: 0; }
+.article-more-link {
+  text-align: right;
+  margin-bottom: -10px; }
+  .article-more-link a {
+    font-size: .9rem;
+    padding: 4px 0px 4px 16px;
+    color: #333;
+    border: 1px solid #000;
+    border-radius: 4px;
+    transition: all .3s; }
+    .article-more-link a:after {
+      content: "\00bb";
+      margin-left: 4px;
+      opacity: 0; }
+    .article-more-link a:hover {
+      padding: 4px 8px;
+      color: #1c4ea0;
+      border-color: #1c4ea0; }
+      .article-more-link a:hover:after {
+        content: "\00bb";
+        margin-left: 4px;
+        opacity: 1; }
 
-/* customize icon font http://app.fontastic.me */
-@font-face {
-  font-family: "untitled-font-1";
-  src: url("fonts/untitled-font-1.eot");
-  src: url("fonts/untitled-font-1.eot?#iefix") format("embedded-opentype"), url("fonts/untitled-font-1.woff") format("woff"), url("fonts/untitled-font-1.ttf") format("truetype"), url("fonts/untitled-font-1.svg#untitled-font-1") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+h1 {
+  border-left: 4px solid #1c4ea0;
+  padding-left: 0.75rem;
+  font-weight: bold; }
+  h1 a {
+    background-image: linear-gradient(0deg, #cef1ff 50%, #fff8f7 0);
+    background-position: 0 0;
+    background-size: 100% 210%;
+    transition: all .3s; }
+    h1 a:hover {
+      background-position: 0 50%;
+      border: none !important; }
 
-[data-fa]:before {
-  font-family: "untitled-font-1" !important;
-  content: attr(data-fa);
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-[class^="fa-"]:before,
-[class*=" fa-"]:before {
-  font-family: "untitled-font-1" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  width: .875em;
-  display: inline-block;
-  vertical-align: -.125em; }
-
-.fa-facebook:before {
-  content: "\61"; }
-
-.fa-rss:before {
-  content: "\62"; }
-
-.fa-twitter:before {
-  content: "\63"; }
-
-.fa-medium:before {
-  content: "\64"; }
-
-.fa-search:before {
-  content: "\65"; }
-
-.fa-folder:before {
-  content: "\66"; }
-
-.fa-external-link-alt:before {
-  content: "\67"; }
-
-.fa-times-circle:before {
-  content: "\68"; }
-
-/* customize icon font end */
 a.tag.article-tag {
   font-size: 0.9rem;
-  text-decoration: none; }
+  background-color: #ffc7a1;
+  margin-right: 12px;
+  position: relative; }
+  a.tag.article-tag:after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-left-color: #ffc7a1; }
 
+h6.title.is-6 {
+  font-size: 18px; }
+
+/* Custome End -------------------------------------------- */
 @media screen and (min-width: 1024px) {
   .container {
     max-width: 800px;
     width: 800px; }
   .navbar.is-transparent .navbar-dropdown a.navbar-item:hover {
-    color: #3273dc; }
-  .flexbox {
-    display: flex; } }
+    color: #3273dc; } }
 
 .navbar-main {
   border-bottom: 1px solid #dbdbdb;
@@ -115,7 +112,8 @@ a.tag.article-tag {
     border-bottom-color: black; }
 
 .article .article-meta {
-  font-size: .9rem; }
+  font-size: .9rem;
+  text-transform: uppercase; }
   @media screen and (max-width: 768px) {
     .article .article-meta {
       margin-top: 0.75rem; }
@@ -133,16 +131,9 @@ a.tag.article-tag {
     .article .article-entry h1:hover:before, .article .article-entry h2:hover:before, .article .article-entry h3:hover:before, .article .article-entry h4:hover:before, .article .article-entry h5:hover:before, .article .article-entry h6:hover:before {
       content: '#';
       position: absolute;
-      right: 100%; }
+      right: 100.5%; }
   .article .article-entry a {
     word-break: break-word; }
-
-.article .article-more-link a {
-  font-size: .9rem;
-  color: darkgray;
-  border-bottom: 1px dotted transparent; }
-  .article .article-more-link a:hover {
-    border-bottom-color: darkgray; }
 
 .article .article-nav a {
   color: darkgray;
@@ -179,10 +170,13 @@ a.tag.article-tag {
   text-align: center; }
 
 .article a[target="_blank"]:after {
-  content: "\67";
+  display: none;
+  content: "\f35d";
   font-size: .8rem;
-  font-family: "untitled-font-1";
-  margin-left: .2rem;
+  font-family: "Font Awesome 5 Solid"; }
+
+.article a[target="_blank"] .fa-external-link-alt {
+  margin-left: .3rem;
   width: .8rem; }
 
 .article blockquote.colorquote {
@@ -279,14 +273,13 @@ a.tag.article-tag {
 .archive .article {
   border-top: none;
   margin-left: -1px;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-left: 3px solid transparent; }
   .archive .article:hover {
     border-left-color: black; }
   .archive .article time {
     font-size: .9rem;
-    color: #888888;
-    /* NOTE: 調暗一點 */ }
+    color: darkgray; }
   .archive .article h6 {
     margin: 0; }
     .archive .article h6 a {
@@ -368,10 +361,6 @@ a.tag.article-tag {
         width: 100%;
         height: 100%;
         background: #f7f7f7; } }
-
-code, pre {
-  font-size: 0.85rem;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei"; }
 
 figure.highlight {
   padding: 0;
