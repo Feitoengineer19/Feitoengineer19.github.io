@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>JS 新手地下城試煉攻略：B1-九九乘法表 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="為了記錄挑戰 Udemy 課程「JavaScript 題目篇－新手 JS 地下城」的過程，有了接下來一系列的 JS 新手地下城攻略文章。希望可以破台… 第一關要挑戰的是「九九乘法表」，如下圖。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 新手地下城試煉攻略：B1-九九乘法表">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/11/30/JS-Underground-B1/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="為了記錄挑戰 Udemy 課程「JavaScript 題目篇－新手 JS 地下城」的過程，有了接下來一系列的 JS 新手地下城攻略文章。希望可以破台… 第一關要挑戰的是「九九乘法表」，如下圖。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/11/30/JS-Underground-B1/F1_9-9-Multiplication-Table.JPG">
+<meta property="og:updated_time" content="2019-11-30T16:26:58.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 新手地下城試煉攻略：B1-九九乘法表">
+<meta name="twitter:description" content="為了記錄挑戰 Udemy 課程「JavaScript 題目篇－新手 JS 地下城」的過程，有了接下來一系列的 JS 新手地下城攻略文章。希望可以破台… 第一關要挑戰的是「九九乘法表」，如下圖。">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/11/30/JS-Underground-B1/F1_9-9-Multiplication-Table.JPG">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#九九乘法表">1&nbsp;&nbsp;<b>九九乘法表</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HTML">1.1&nbsp;&nbsp;HTML</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#CSS">1.2&nbsp;&nbsp;CSS</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#SCSS-map">1.2.1&nbsp;&nbsp;SCSS-map</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Flex">1.2.2&nbsp;&nbsp;Flex</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#JavaScript">1.3&nbsp;&nbsp;JavaScript</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            JS 新手地下城試煉攻略：B1-九九乘法表
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-30T14:46:48.000Z" itemprop="datePublished">Nov 30 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/JS-Underground-City/">JS-Underground-City</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>為了記錄挑戰 <a href="https://www.udemy.com/course/js-underground/" target="_blank" rel="noopener">Udemy 課程「JavaScript 題目篇－新手 JS 地下城」</a>的過程，有了接下來一系列的 JS 新手地下城攻略文章。希望可以破台…</p>
+<p>第一關要挑戰的是「九九乘法表」，如下圖。</p>
+<p><img src="/2019/11/30/JS-Underground-B1/F1_9-9-Multiplication-Table.JPG" alt="九九乘法表"></p>
+  <a id="more"></a>
+
+<hr>
+<h3 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h3><p>未來這一系列的文章，會先簡單整理開發的步驟和邏輯，再分別以技術或概念來討論。</p>
+<p>以第一關的「九九乘法表」來說，步驟為：</p>
+<ol>
+<li>撰寫 HTML 的網頁結構，包括「九九乘法表」標題和內容樣板。</li>
+<li>利用 CSS 美化「九九乘法表」標題和內容樣板。</li>
+<li>透過 JavaScript 載入頁面時自動生成「九九乘法表」內容。</li>
+</ol>
+<h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><p>網頁結構分為外層與內層，外層是包住整個九九乘法表的容器，內層則是九九乘法表的內容，也就是九個區塊， 如下方程式碼：</p>
+<p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line">  <span class="hljs-comment">&lt;!-- 標題區塊 --&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title-decor"</span>&gt;</span>x<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>x<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title-main"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>九九乘法表<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>MULTIPLICATION TABLE<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title-decor"</span>&gt;</span>x<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>x<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line">  <span class="hljs-comment">&lt;!-- </span></span><br><span class="line"><span class="hljs-comment">  內容樣板（使用 JavaScript 自動生成）</span></span><br><span class="line"><span class="hljs-comment">  &lt;div class="table"&gt; </span></span><br><span class="line"><span class="hljs-comment">    &lt;h2 class="table-title"&gt;2&lt;/h2&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 1 = 2&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 2 = 4&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 3 = 6&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 4 = 8&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 5 = 10&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 6 = 12&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 7 = 14&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 8 = 16&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">    &lt;p&gt;2 x 9 = 18&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-comment">  &lt;/div&gt; </span></span><br><span class="line"><span class="hljs-comment">  --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><p>由於慣用 SCSS 預處理器來寫 CSS ，技術紀錄會以 SCSS 為主。</p>
+<h5 id="SCSS-map"><a href="#SCSS-map" class="headerlink" title="SCSS-map"></a>SCSS-map</h5><p>這次嘗試使用 SCSS 的 <code>map</code> 來儲存變數，它類似於 <code>JSON</code> 格式，可以透過 <strong>Key/Value 匹配</strong>來儲存數值。</p>
+<p>透過 SCSS 的 <code>@function</code> 建構函式，傳入參數，來獲得 <code>map</code> 裡對應的數值，達到管理 SCSS 變數的效果，也方便我們取用。</p>
+<p><figure class="highlight scss hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 管理顏色</span></span><br><span class="line"><span class="hljs-variable">$colors</span>:(</span><br><span class="line">  mainGreen: <span class="hljs-number">#2EB738</span>,</span><br><span class="line">  secondGray: <span class="hljs-number">#D8D8D8</span>,</span><br><span class="line">  cardWhite: <span class="hljs-number">#FFFFFF</span>, </span><br><span class="line">  background: <span class="hljs-number">#F0F0F0</span></span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 使用函式獲得對應的數值</span></span><br><span class="line">@function color(<span class="hljs-variable">$color</span>)&#123;</span><br><span class="line">  @return map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-variable">$color</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 管理字體大小</span></span><br><span class="line"><span class="hljs-variable">$fonts</span>:(</span><br><span class="line">  sm: <span class="hljs-number">16px</span>,</span><br><span class="line">  md: <span class="hljs-number">24px</span>,</span><br><span class="line">  lg: <span class="hljs-number">56px</span>,</span><br><span class="line">  xl: <span class="hljs-number">128px</span></span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 使用函式獲得對應的數值</span></span><br><span class="line">@function font(<span class="hljs-variable">$font</span>)&#123;</span><br><span class="line">  @return map-get(<span class="hljs-variable">$fonts</span>, <span class="hljs-variable">$font</span>) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h5><p>排版則使用 Flex ，外層設置為內層一列三個區塊並排，三列共九個，且 <code>flex-wrap: wrap</code> 。</p>
+<p>由於設計稿已經給定每個內容區塊的寬高，所以只要算好區塊的 margin 即可，我利用 <code>margin-left: 30px</code> 來推出區塊之間的空間，必須注意的是，每三個（每一列最後一個）就必須讓 <code>margin-left: 0px</code> ，否則第三個會因為空間不足而直接掉到下一列。可以使用 <code>:nth-child(3n)</code> 來處理特定數量的狀況。</p>
+<p>為了支援響應式，在<strong>視窗小於 1280px 時</strong>版面較小，以 <code>margin: 30px</code> 來推出左右等距，平衡視覺。</p>
+<p><figure class="highlight scss hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.container</span>&#123;</span><br><span class="line">  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1280px</span> ; <span class="hljs-comment">// 最大寬度 1280px </span></span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto ; <span class="hljs-comment">// 左右置中</span></span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">45px</span> ;</span><br><span class="line">  <span class="hljs-attribute">background</span>: color(background) ; <span class="hljs-comment">// 使用函式獲得對應的數值</span></span><br><span class="line">  @<span class="hljs-keyword">include</span> flex(row) ; <span class="hljs-comment">// 額外設定 @mixin flex 來包裝 Flex 指令</span></span><br><span class="line">  <span class="hljs-attribute">flex-wrap</span>: wrap ;</span><br><span class="line"></span><br><span class="line">  &gt; <span class="hljs-selector-tag">div</span>&#123;</span><br><span class="line">    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span> ;</span><br><span class="line"></span><br><span class="line">    @<span class="hljs-keyword">media</span> (max-width: 1280px) &#123;</span><br><span class="line">      <span class="hljs-attribute">margin</span>: <span class="hljs-number">30px</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &gt; <span class="hljs-selector-tag">div</span>:nth-child(3n)&#123;</span><br><span class="line">    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0px</span> ;</span><br><span class="line"></span><br><span class="line">    @<span class="hljs-keyword">media</span> (max-width: 1280px) &#123;</span><br><span class="line">      <span class="hljs-attribute">margin</span>: <span class="hljs-number">30px</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>順帶一提， <code>&gt;</code> 在 CSS 中表示<strong>只</strong>選擇下一層 HTML 元素，而非後代選擇。</p>
+<p>至於內容樣板區塊，同樣使用 Flex 排版，<code>flex-wrap: wrap</code> ，但 <code>flex-direction: column</code> ，如此一來，設置好每一個算式的寬高與 padding ，就可以達到兩行並排的效果。</p>
+<p>內容樣板的小標題 <code>&lt;h2&gt;</code> 使用了 <code>text-shadow</code> 和 <code>text-stroke</code> ，讓它看起來更為立體。</p>
+<p>內容樣板，我給了一個 <code>table</code> 標籤，如下方程式碼：</p>
+<p><figure class="highlight scss hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.table</span>&#123;</span><br><span class="line">  @<span class="hljs-keyword">include</span> size(<span class="hljs-number">350px</span>,<span class="hljs-number">366px</span>) ;</span><br><span class="line">  <span class="hljs-attribute">background</span>: color(cardWhite) ; <span class="hljs-comment">// 使用函式獲得對應的數值</span></span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100px</span> <span class="hljs-number">30px</span> <span class="hljs-number">30px</span> <span class="hljs-number">0</span> ;</span><br><span class="line">  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> <span class="hljs-number">10px</span> color(secondGray) ;</span><br><span class="line">  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">40px</span> ;</span><br><span class="line">  <span class="hljs-attribute">display</span>: flex ;</span><br><span class="line">  <span class="hljs-attribute">flex-direction</span>: column ;</span><br><span class="line">  <span class="hljs-attribute">flex-wrap</span>: wrap ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-tag">p</span>&#123;</span><br><span class="line">    <span class="hljs-attribute">font-size</span>: font(md) ; <span class="hljs-comment">// 使用函式獲得對應的數值</span></span><br><span class="line">    <span class="hljs-attribute">color</span>: color(mainGreen) ; <span class="hljs-comment">// 使用函式獲得對應的數值</span></span><br><span class="line">    <span class="hljs-attribute">text-align</span>: left ;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">12.5px</span> <span class="hljs-number">35px</span> ;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-tag">h2</span>&#123;</span><br><span class="line">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">128px</span> ;</span><br><span class="line">    <span class="hljs-attribute">color</span>: color(mainGreen) ; <span class="hljs-comment">// 使用函式獲得對應的數值</span></span><br><span class="line">    <span class="hljs-attribute">font-weight</span>: bold ;</span><br><span class="line">    <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">4px</span> <span class="hljs-number">3px</span> <span class="hljs-number">0px</span> color(secondGray) ;</span><br><span class="line">    -webkit-text-stroke: <span class="hljs-number">2px</span> color(cardWhite) ;</span><br><span class="line">    <span class="hljs-attribute">text-align</span>: center ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><p>目的是利用 JavaScript 自動生成九九乘法表的內容，也就是除了大標題以外的八個區塊，重點在於算式的生成，從 2 x 2 = 4 到 9 x 9 = 81。</p>
+<p>開發邏輯：利用 <code>for</code> 迴圈來遍歷數字 2 到 9 ，而每一個數字還需要遍歷數字 2 到 9 來生產算式。</p>
+<p>整體而言是一個雙層巢狀迴圈，搭配 <strong>ES6 的樣板字串（template literal）</strong>來生成內容。如下方程式碼：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 外層 for 迴圈</span></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span> ; i &lt; <span class="hljs-number">10</span> ; i++)&#123;</span><br><span class="line">  <span class="hljs-comment">// 創造一個新的 div 元素</span></span><br><span class="line">  <span class="hljs-keyword">let</span> tableWrap = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>) ;</span><br><span class="line">  <span class="hljs-comment">// 將該 div 元素貼上 table 標籤</span></span><br><span class="line">  tableWrap.setAttribute(<span class="hljs-string">'class'</span>,<span class="hljs-string">'table'</span>) ;</span><br><span class="line">  <span class="hljs-comment">// 透過樣板字串生成小標</span></span><br><span class="line">  <span class="hljs-keyword">let</span> viewContent = <span class="hljs-string">`&lt;h2 class="table-title"&gt;<span class="hljs-subst">$&#123;i&#125;</span>&lt;/h2&gt;`</span> ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 內層 for 迴圈</span></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span> ; j &lt; <span class="hljs-number">10</span> ; j++)&#123;</span><br><span class="line">    <span class="hljs-comment">// 透過樣板字串生成算式</span></span><br><span class="line">    viewContent += <span class="hljs-string">`&lt;p&gt;<span class="hljs-subst">$&#123;i&#125;</span> x <span class="hljs-subst">$&#123;j&#125;</span> = <span class="hljs-subst">$&#123;i*j&#125;</span>&lt;/p&gt;`</span> ;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 將生成的內容置入 div 元素中</span></span><br><span class="line">  tableWrap.innerHTML = viewContent ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 將 div 元素加到 .container 元素最後面（不會取代原本的內容）</span></span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.container'</span>).appendChild(tableWrap) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/09/20/svg-introduction/">在 HTML 裡用 SVG 畫出簡單的向量圖形</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/11/30/JS-Underground-B1/';
+        this.page.identifier = '2019/11/30/JS-Underground-B1/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

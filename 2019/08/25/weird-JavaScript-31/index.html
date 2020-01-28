@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weird-JavaScript 31：閉包（1） - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weird-JavaScript 31：閉包（1）">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/25/weird-JavaScript-31/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/08/25/weird-JavaScript-31/closure.JPG">
+<meta property="og:updated_time" content="2019-11-22T13:38:57.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weird-JavaScript 31：閉包（1）">
+<meta name="twitter:description" content="學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/25/weird-JavaScript-31/closure.JPG">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#一級函式">1&nbsp;&nbsp;<b>一級函式</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#函式的執行環境">2&nbsp;&nbsp;<b>函式的執行環境</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#閉包（Closure）">3&nbsp;&nbsp;<b>閉包（Closure）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weird-JavaScript 31：閉包（1）
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-25T02:53:17.000Z" itemprop="datePublished">Aug 25 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。</p>
+  <a id="more"></a>
+
+<h3 id="一級函式"><a href="#一級函式" class="headerlink" title="一級函式"></a>一級函式</h3><p>JavaScript 擁有一級函式的特性，<strong>函式（Function）屬於特殊的函式物件，可以被視為一種資料型態</strong>。</p>
+<p>所以，我們透過函式 <code>return</code> 另一個函式，並連續呼叫、執行，就像這樣：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">whattosay</span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(whattosay + <span class="hljs-string">' '</span> + name) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet(<span class="hljs-string">'Hello!'</span>)(<span class="hljs-string">'John'</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>把函式想像成模板，我們可以傳入所欲的參數，並將它賦值給一個變數，再利用該變數呼叫函式。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">whattosay</span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(whattosay + <span class="hljs-string">' '</span> + name) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> sayHola = greet(<span class="hljs-string">'Hola!'</span>) ;</span><br><span class="line"><span class="hljs-keyword">var</span> sayHello = greet(<span class="hljs-string">'Hello!'</span>) ;</span><br><span class="line"></span><br><span class="line">sayHola(<span class="hljs-string">'John'</span>) ;</span><br><span class="line">sayHello(<span class="hljs-string">'John'</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>當 JS 讀到 <code>var sayHola = greet(&#39;Hola!&#39;) ;</code> 時，它會創造函式 <code>greet(whattosay)</code> 的執行環境，將 <code>&#39;Hola!&#39;</code> 作為參數傳入，並回傳匿名函式 <code>function(name)</code> 賦值給變數 <code>sayHola</code> ，最後消滅函式 <code>greet(whattosay)</code> 的執行環境。 </p>
+<p>咦？等等，有沒有覺得怪怪的？</p>
+<p>既然函式 <code>greet(whattosay)</code> 的執行環境已經消滅，為什麼 JS 讀到 <code>sayHola(&#39;John&#39;)</code> 的時候，JS 還記得 <code>function(name)</code> 裡的 <code>whattosay</code> 指的是 <code>&#39;Hola!&#39;</code> ？</p>
+<p>同理，為什麼 JS 讀到 <code>sayHello(&#39;John&#39;) ;</code> 的時候，JS 還記得 <code>function(name)</code> 裡的 <code>whattosay</code> 指的是 <code>&#39;Hello!&#39;</code> ？</p>
+<p>之前我們不是說，函式裡的<strong>區域變數（Local Variable）</strong>，會隨著函式執行環境生滅嗎？</p>
+<hr>
+
+<h3 id="函式的執行環境"><a href="#函式的執行環境" class="headerlink" title="函式的執行環境"></a>函式的執行環境</h3><p>我們不斷強調，當一個函式被呼叫後，JS 會創造屬於該函式的執行環境，並<strong>分配一小部分的記憶體空間給該函式使用</strong>。</p>
+<p>換句話說，<strong>每個函式的執行環境都有屬於自己的記憶體空間</strong>。我們所傳入的<strong>參數</strong>，或是在函式裡創造的<strong>變數（純值或物件）</strong>都會被儲存在該函式專屬的記憶體空間裡面，和其他函式無關，也和全域環境無關。</p>
+<p>當函式執行完畢，執行環境被消滅後，基本上， JavaScript 引擎會清除該函式專屬的記憶體空間，這個動作被稱為<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener">垃圾回收（Garbage Collection）</a>。</p>
+<p>然而，<strong>儲存該函式參數和區域變數的記憶體空間並仍會存在</strong>，並不會被清除，這是 JS 引擎本身設計的特色，為了範圍鍊中變數的參考與取用。</p>
+<p>在上面的例子中， JS 引擎在 <code>function(name)</code> 裡面找不到 <code>whattosay</code> ，所以它透過<strong>範圍鍊</strong>向<strong>外部（詞彙）環境</strong> <code>greet(whattosay)</code> 尋找可用的變數。在 <code>greet(whattosay)</code> 中，儘管函式 <code>greet(whattosay)</code> 的執行環境已經消滅，可是， JS 引擎<strong>仍會保留儲存該函式參數和區域變數的記憶體空間</strong>，所以，JS 會取用到 <code>whattosay</code> ，等於傳入的參數 <code>&#39;Hola!&#39;</code>。</p>
+<p>由此可見，<code>sayHola(&#39;John&#39;) ;</code> 的執行結果為 <code>Hola! John</code> 。 </p>
+<hr>
+
+<h3 id="閉包（Closure）"><a href="#閉包（Closure）" class="headerlink" title="閉包（Closure）"></a>閉包（Closure）</h3><p>閉包，指的是<strong>利用函式執行環境，創造一個封閉空間，包住可供取用的變數</strong>。</p>
+<p>閉包是我們巧用 <strong>JS 引擎會保留儲存函式參數與區域變數的記憶體空間</strong>的特性所產生的方法，可以幫助我們<strong>提升函式彈性</strong>、<strong>避免污染全域變數</strong>。</p>
+<p>如同上述的例子，我們利用函式 <code>greet(whattosay)</code> 創造執行環境，傳入參數 <code>whattosay</code> 的值（<code>&#39;Hola!&#39;</code> 或 <code>&#39;Hello!&#39;</code>），並回傳另一個函式，供我們調用內部儲存的參數或區域變數。</p>
+<p>在課程中利用這張圖來解釋閉包的範例：</p>
+<p><img src="/2019/08/25/weird-JavaScript-31/closure.JPG" alt="閉包相關概念：一級函式、執行環境、執行堆疊、詞彙環境、外部環境以及範圍鍊（圖片源自參考資料 1.）"></p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>當一個函式被呼叫後，JS 會創造屬於該函式的執行環境，並分配一小部分的記憶體空間給該函式使用。</li>
+<li>當函式執行完畢，執行環境被消滅後，儲存該函式參數和區域變數的記憶體空間並仍會存在，並不會被清除。</li>
+<li>閉包，指的是利用函式執行環境，創造一個封閉空間，包住可供取用的變數。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-47</li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/26/weird-JavaScript-32/">weird-JavaScript 32：閉包（2）</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/24/weird-JavaScript-30/">weird-JavaScript 30：IIFEs與安全程式碼</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/25/weird-JavaScript-31/';
+        this.page.identifier = '2019/08/25/weird-JavaScript-31/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

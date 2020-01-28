@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>JS 簡易捲動（Scroll）效果製作 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="今天上課的時候，老師分享了幾個捲動敘事的網頁作品。 發現自己對 scroll 不是很熟悉，就爬了文章來練習，順手記錄成這篇。">
+<meta name="keywords" content="CSS,JavaScript,Storytelling,Animation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 簡易捲動（Scroll）效果製作">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/09/10/JS-scroll-practice/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="今天上課的時候，老師分享了幾個捲動敘事的網頁作品。 發現自己對 scroll 不是很熟悉，就爬了文章來練習，順手記錄成這篇。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-12T17:13:31.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 簡易捲動（Scroll）效果製作">
+<meta name="twitter:description" content="今天上課的時候，老師分享了幾個捲動敘事的網頁作品。 發現自己對 scroll 不是很熟悉，就爬了文章來練習，順手記錄成這篇。">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#捲動（Scroll）與數位敘事">1&nbsp;&nbsp;<b>捲動（Scroll）與數位敘事</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#捲動效果製作範例">2&nbsp;&nbsp;<b>捲動效果製作範例</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HTML：元素製作">2.1&nbsp;&nbsp;HTML：元素製作</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#CSS：元素屬性、動畫設定">2.2&nbsp;&nbsp;CSS：元素屬性、動畫設定</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#JS：捲動效果的邏輯">2.3&nbsp;&nbsp;JS：捲動效果的邏輯</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">3&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            JS 簡易捲動（Scroll）效果製作
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-10T04:32:42.000Z" itemprop="datePublished">Sep 10 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>今天上課的時候，老師分享了幾個捲動敘事的網頁作品。</p>
+<p>發現自己對 <code>scroll</code> 不是很熟悉，就爬了文章來練習，順手記錄成這篇。</p>
+  <a id="more"></a>
+
+<h3 id="捲動（Scroll）與數位敘事"><a href="#捲動（Scroll）與數位敘事" class="headerlink" title="捲動（Scroll）與數位敘事"></a>捲動（Scroll）與數位敘事</h3><p>捲動（Scroll）是網頁中最常見的互動效果，在許多新聞報導的網頁敘事中，都可以看見它的蹤影，配合插圖與圖表，往往能提升讀者的興趣和閱讀體驗。</p>
+<p>這裡列舉幾個我看過相當優秀的作品，當作學習的目標：</p>
+<ul>
+<li><a href="https://pnn.pts.org.tw/yumyum/" target="_blank" rel="noopener">今晚，我們一起吃塑膠</a></li>
+<li><a href="https://www.gosquared.com/london2012/" target="_blank" rel="noopener">Analysing London 2012</a></li>
+<li><a href="http://graphicnovel-hybrid4.peugeot.com/start.html" target="_blank" rel="noopener">A Mission in 4 Mode</a></li>
+<li><a href="http://www.sbs.com.au/theboat/" target="_blank" rel="noopener">The Boat</a></li>
+</ul>
+<hr>
+<h3 id="捲動效果製作範例"><a href="#捲動效果製作範例" class="headerlink" title="捲動效果製作範例"></a>捲動效果製作範例</h3><p>大部分捲動效果的 JavaScript 邏輯是：<strong>當我們將網頁滾動至特定區域（頁面）時，會有相對應的元素移動、改變或顯示／消失</strong>。</p>
+<p>只要拆解、釐清上面這個邏輯，一定有辦法做出捲動效果，剩下畫面的美感，就得增強設計能力去補足。</p>
+<p>今天，我們就透過<a href="https://codepen.io/luffy-chen/pen/RwbyeOe?editors=0010" target="_blank" rel="noopener">這個簡單的 DEMO </a>來練習看看吧！</p>
+<h4 id="HTML：元素製作"><a href="#HTML：元素製作" class="headerlink" title="HTML：元素製作"></a>HTML：元素製作</h4><p>首先，我們在 HTML 裡面加入我們所需要的元素，包括：</p>
+<ul>
+<li>模擬區域頁面 <code>&lt;section&gt;</code></li>
+<li>模擬對應元素 <code>element1</code> 與 <code>element2</code></li>
+</ul>
+<p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: skyblue"</span>&gt;</span></span><br><span class="line">		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"element1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>				</span><br><span class="line">	<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"page2"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: yellow"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: lavender"</span>&gt;</span></span><br><span class="line">		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"element2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最後一個 <code>&lt;section&gt;</code> 加入 <code>class=&quot;page3&quot;</code> ，是為了<strong>偵測畫面是否進入該區域</strong>而特別設定的 <code>class</code>，稍後會詳細說明。</p>
+<h4 id="CSS：元素屬性、動畫設定"><a href="#CSS：元素屬性、動畫設定" class="headerlink" title="CSS：元素屬性、動畫設定"></a>CSS：元素屬性、動畫設定</h4><p>這裡分別設定兩元素 <code>element1</code> 與 <code>element2</code> 的屬性，主要是透過<strong>新增／移除 <code>class</code></strong> 的方式去改變元素的屬性或狀態，搭配 <code>transition</code> 達到過渡的效果。</p>
+<p>當然，除了手動設計，我們也可以利用<a href="https://daneden.github.io/animate.css/" target="_blank" rel="noopener">Animate.CSS</a>等套件，來快速產製各式各樣的轉場動畫。</p>
+<p><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.move</span>&#123;</span><br><span class="line">	<span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-100%, 80vh);</span><br><span class="line">	<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span> ;</span><br><span class="line">	<span class="hljs-attribute">background-color</span>: tomato ;　</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.show</span>&#123;</span><br><span class="line">	<span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-50%, -100%); </span><br><span class="line">	<span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="JS：捲動效果的邏輯"><a href="#JS：捲動效果的邏輯" class="headerlink" title="JS：捲動效果的邏輯"></a>JS：捲動效果的邏輯</h4><p>這個範例中有兩個捲動效果：</p>
+<ol>
+<li>當畫面捲動<strong>超過元素 <code>element1</code> 以後</strong>，移動 <code>element1</code> 的位置（Move）。</li>
+<li>當畫面捲動<strong>超過頁面 <code>page2</code> 後</strong>，顯示 <code>element2</code> （Show）。</li>
+</ol>
+<p>歸納捲動效果的邏輯：<strong>偵測捲動畫面 → 改變元素狀態</strong>。</p>
+<p>首先，我們利用 DOM 抓出會用到的元素：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> el1 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.element1'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> el2 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.element2'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> pg2 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.page2'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>當然，使用<a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a>來選擇 DOM 也行，程式碼撰寫更為簡潔，但載入的資源容量也比較大。</p>
+<p><font style="font-size: 18px ; color: navy">A. 偵測捲動畫面</font></p>
+<p>接著，「偵測捲動畫面」，轉換成 JS 的邏輯是：<strong>對整個瀏覽器頁面 <code>window</code> 進行監聽</strong>，註冊一個 <code>scroll</code> 事件，當我們捲動畫面時，隨即執行函式 <code>scrollAni</code>。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'scroll'</span>, scrollAni);</span><br></pre></td></tr></table></figure></p>
+<p>函式 <code>scrollAni</code> 裡面，我們透過 <code>window.scrollY</code> 偵測瀏覽器頁面的 <strong>已經捲動的 <code>Y</code> 軸座標（視窗最頂部）</strong>，若 <code>Y</code> 軸座標<strong>超過特定的值</strong>，就改變相對應的元素狀態。</p>
+<p>而特定的值，對應到範例中的兩個效果：</p>
+<ol>
+<li><strong>元素 <code>element1</code> 底部的 <code>Y</code> 軸座標</strong>，等於元素 <code>element1</code> 距離上層（上方）的 <code>Y</code> 軸座標，加上元素 <code>element1</code> 自身寬度的一半。</li>
+<li><strong>頁面 <code>page2</code> 頂部的 <code>Y</code> 軸座標</strong>，等於頁面 <code>page2</code> 距離距離上層（上方）的 <code>Y</code> 軸座標。</li>
+</ol>
+<p>透過 <code>offsetTop</code> 讀取元素距離上層（上方）的 <code>Y</code> 軸座標， <code>clientHeight</code> 用來取得元素本身的可視寬度。詳細的指令用法可以參考這篇文章：<a href="https://andyyou.github.io/2015/04/07/get-an-element-s-position-by-js/" target="_blank" rel="noopener">使用 Javascript 取得元素的座標</a>。</p>
+<p>將特定值計算出來後賦予給新的變數，方便使用。對應到程式碼：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1.</span></span><br><span class="line">	<span class="hljs-keyword">let</span> triggerMove = (el1.offsetTop) + (el1.clientHeight / <span class="hljs-number">2</span>); </span><br><span class="line"><span class="hljs-comment">// 2.</span></span><br><span class="line">	<span class="hljs-keyword">let</span> triggerShow = pg2.offsetTop;</span><br></pre></td></tr></table></figure></p>
+<p><font style="font-size: 18px ; color: navy">B. 改變元素狀態</font></p>
+<p>最後，「改變元素狀態」：利用 <code>if</code> 判斷 <code>Y</code> 軸座標是否有超過特定值？若有，選取 <code>classList</code> 新增動畫標籤，反之則移除。</p>
+<p>以捲動效果 1. <code>triggerMove</code> 為例：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.scrollY &gt; triggerMove) &#123;</span><br><span class="line">		el1.classList.add(<span class="hljs-string">'move'</span>);</span><br><span class="line">	&#125;	<span class="hljs-keyword">else</span> &#123;</span><br><span class="line">		el1.classList.remove(<span class="hljs-string">'move'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>捲動效果 2. <code>triggerShow</code> 也是同樣的道理。這種簡單的判斷，也可透過三元運算子簡化成一行（看起來很厲害xD）：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.scrollY &gt; triggerShow ? el2.classList.add(<span class="hljs-string">'show'</span>) : el2.classList.remove(<span class="hljs-string">'show'</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>如此一來，就大功告成囉！剩下的就是設計感的問題了。</p>
+<p>我自己在實作上碰到的瓶頸是，搞不清楚 <code>scrollTop</code> 的用法，因為<strong>它的值與元素本身的定位方式有關</strong>，尤其是在捲動效果 1.，建議大家可以釐清盲點，有機會我會寫一篇文章整理相關語法。</p>
+<hr>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li><a href="https://ithelp.ithome.com.tw/articles/10207679?sc=iThelpR" target="_blank" rel="noopener">JS Scroll 實作學習</a></li>
+<li><a href="https://andyyou.github.io/2015/04/07/get-an-element-s-position-by-js/" target="_blank" rel="noopener">使用 Javascript 取得元素的座標</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/CSS/">#CSS</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Storytelling/">#Storytelling</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Animation/">#Animation</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/09/16/HTML5-semantic-tag/">HTML5 語意標籤筆記</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/09/09/weird-JavaScript-40/">weird-JavaScript 40：所有東西都是物件（或純值）</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/09/10/JS-scroll-practice/';
+        this.page.identifier = '2019/09/10/JS-scroll-practice/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

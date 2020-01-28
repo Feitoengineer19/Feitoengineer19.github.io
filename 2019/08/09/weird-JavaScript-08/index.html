@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weirdJavaScript 08：作用域、let 與區塊作用域 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="小飛：「既然範圍鍊能讓函式向外部環境取用變數，那是不是把所有變數都存進全域就好了？超方便DER！」 恰恰相反！實務上，我們會避免污染全域，減少全域變數的產生。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weirdJavaScript 08：作用域、let 與區塊作用域">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/09/weird-JavaScript-08/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="小飛：「既然範圍鍊能讓函式向外部環境取用變數，那是不是把所有變數都存進全域就好了？超方便DER！」 恰恰相反！實務上，我們會避免污染全域，減少全域變數的產生。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-22T13:37:13.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weirdJavaScript 08：作用域、let 與區塊作用域">
+<meta name="twitter:description" content="小飛：「既然範圍鍊能讓函式向外部環境取用變數，那是不是把所有變數都存進全域就好了？超方便DER！」 恰恰相反！實務上，我們會避免污染全域，減少全域變數的產生。">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#為什麼要避免污染全域？">1&nbsp;&nbsp;<b>為什麼要避免污染全域？</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#作用域（Scope）">2&nbsp;&nbsp;<b>作用域（Scope）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#let-與區塊作用域（Block-Scope）">3&nbsp;&nbsp;<b>let 與區塊作用域（Block Scope）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weirdJavaScript 08：作用域、let 與區塊作用域
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-09T03:34:15.000Z" itemprop="datePublished">Aug 9 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>小飛：「既然範圍鍊能讓函式向外部環境取用變數，那是不是把所有變數都存進全域就好了？超方便DER！」</p>
+<p>恰恰相反！實務上，我們會<strong>避免污染全域</strong>，減少全域變數的產生。</p>
+  <a id="more"></a>
+
+<h3 id="為什麼要避免污染全域？"><a href="#為什麼要避免污染全域？" class="headerlink" title="為什麼要避免污染全域？"></a>為什麼要避免污染全域？</h3><p>因為實務上，一支 JavaScript 腳本，也就是 <code>.js</code> 檔案，往往會由多位工程師協作撰寫，除此之外，一支 <code>.html</code> 檔案也有可能會載入多支 JS 腳本，在這些多人開發的情況下，如果不同開發者不小心在全域環境中使用了相同的變數名稱，那麼後撰寫或後載入的變數，就會覆寫既有變數的值，導致衝突，不易於管理。</p>
+<p>所以，實務上我們會避免污染全域環境，減少全域變數的宣告。</p>
+<p>小飛：「意思是盡量要把變數宣告進函式裡，成為區域變數囉？」</p>
+<p>可以這麼說，我們利用作用域的特性，將變數存進函式區塊中，等到要用的時候再存取。<strong>閉包（Closure）</strong>的原理就是從這個概念出發的。我們之後會談到。</p>
+<h3 id="作用域（Scope）"><a href="#作用域（Scope）" class="headerlink" title="作用域（Scope）"></a>作用域（Scope）</h3><blockquote>
+<p>Where a variable is <strong>available</strong> in your code.</p>
+</blockquote>
+<p>在 07 篇中我們就已經提過作用域：在函式內宣告的區域變數，只在該函式的執行環境內有效。</p>
+<p>換個方式說，詮釋作用域可以詮釋為：<strong>一個變數可以被取用的有效範圍</strong>。</p>
+<p>全域變數因為存在全域環境裡，所以能夠被任何函式取用，也就是範圍鍊的最外層。</p>
+<p>區域變數因為被宣告在某一函式裡，所以只能夠在<strong>該函式的執行環境內</strong>被取用，當然，也能被該函式內的其他函式取用。</p>
+<p>這裡要特別闡述「該函式的執行環境內」，指的是<strong>大括號 <code>{ ... }</code> 所框出的範圍</strong>。</p>
+<p>所以，我們可以說，<strong>函式是切分變數有效範圍（變數環境、作用域）的最小單位</strong>。</p>
+<p>在 <strong>ECMAScript 第六版（俗稱 ES6）</strong>發布以前，我們只能用 <code>var</code> 來宣告變數，於是會出現一些弔詭的現象，其中以下面這個範例最為經典：</p>
+<blockquote>
+<p>我希望在五秒內，每一秒就印出一個數字，分別是 0、1、2、3、4 。</p>
+</blockquote>
+<p>新手小飛可能會這樣寫：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">5</span> ; i++)&#123;</span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i) ;</span><br><span class="line">  &#125;, <span class="hljs-number">1000</span>) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是他會發現結果不如預期，這段程式碼執行的結果是：<strong>「1 秒後印出五個 5」</strong>。</p>
+<p><font style="font-size: 36px">OMG !! WHY ??</font></p>
+<p>這是因為，當我們在 <code>for</code> 迴圈中使用 <code>var</code> 來宣告 <code>i</code> 時，此時的 <strong><code>i</code> 會被存進全域環境</strong>，成為全域變數。</p>
+<p>真的？請接續上面程式碼，執行 <code>console.log(window.i)</code> ， JS 會回你 <code>5</code>。</p>
+<p>這個例子還要結合<strong>非同步回呼</strong>的概念來解釋。還記得嗎？ JS 遇到需要時間處理的非同步事件（函式）時，他會先把它丟進事件佇列，等到執行堆疊為空後才處理。</p>
+<p><code>for</code> 跑第一次時， <code>var</code> 宣告 <code>i = 0</code> ，接著遇到 <code>setTimeout</code> ，JS 把 <code>setTimeout</code> 丟進事件佇列（因為等待 1 秒需要時間），接著迭代 <code>i++</code> 。然後，開始跑第二次 <code>for</code> ，由於經過 <code>var</code> 宣告的 <code>i</code> 是全域變數，此時 <code>i = 1</code> 會覆寫既有的 <code>0</code> ， 接著遇到 <code>setTimeout</code> ，JS 又會把 <code>setTimeout</code> 丟進事件佇列…</p>
+<p>所以，跑到最後一次，也就是第五次 <code>for</code> 結束時， <code>i = 5</code> ，全域執行環境也沒東西了，JS 就會回呼執行事件佇列裡面的五個 <code>setTimeout</code> ，而此時 <code>console.log(i)</code> 裡的 <code>i</code> 自然而然等於 <code>5</code>，執行的結果就會印出「五個 5」了。</p>
+<p>至於為什麼是「1 秒後」？而不是每 1 秒印出一個 5 ？那是因為 JS 執行很快，五個 <code>setTimeout</code> <strong>在我們看來</strong>幾乎同時執行。</p>
+<p>所以整體執行結果就會是「1 秒後印出五個 5」。</p>
+<p>對非同步回呼的概念應該比較熟悉了吧？</p>
+<p>回到本篇重點，在這個經典範例中，用 <code>var</code> 宣告變數的弔詭現象就是：當我們在 <code>for</code> 迴圈中使用 <code>var</code> 來宣告 <code>i</code> 時，此時的 <code>i</code> 會被存進全域環境，成為全域變數。</p>
+<p>仔細觀察會發現，<code>var i = 0</code> 並不在函式大括號 <code>{ ... }</code> 裡面，而是在 <code>for( ... )</code> 中，所以 <code>i</code> 自然會存進全域環境。</p>
+<p>2015 年 ES6 新增的 <code>let</code> 宣告，將變數綁定在 <code>{ ... }</code> 區塊，更清楚、有效切分作用域和變數環境。</p>
+<hr>
+
+<h3 id="let-與區塊作用域（Block-Scope）"><a href="#let-與區塊作用域（Block-Scope）" class="headerlink" title="let 與區塊作用域（Block Scope）"></a>let 與區塊作用域（Block Scope）</h3><p>簡單來說， <code>let</code> 宣告有下列幾個特點：</p>
+<ol>
+<li>經過 <code>let</code> 宣告的變數，會將該變數環境綁定在其後的 <code>{ ... }</code> <strong>區塊作用域</strong>中，包括：<ul>
+<li>function(){ … }</li>
+<li>for(){ … }</li>
+<li>if(){ … }</li>
+</ul>
+</li>
+</ol>
+<p>既然如此，我們就可以利用 <code>let</code> 改寫上面那一段程式碼，在 <code>for</code> 中利用 <code>let</code> 宣告 <code>i</code> ，將其作用域綁定在後方 <code>{ ... }</code> 中，達到我們預期的目的：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">5</span> ; i++)&#123;</span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i) ;</span><br><span class="line">  &#125;, <span class="hljs-number">1000</span> * i) ;　<span class="hljs-comment">// 乘上 i 是為了延遲函式執行，得到「每 1 秒後」印出一個數字的效果。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>經過 <code>let</code> 宣告的 <code>i</code> 作用域會被綁在 <code>{ ... }</code> 區塊中，當 JS 要把 <code>setTimeout</code> 丟進事件佇列時， <code>console.log(i)</code> 裡的 <code>i</code> 已經能夠取用區塊作用域裡的 <code>i</code> ，所以會連同 <code>i</code> 的值一起打包丟進事件佇列。等到 JS 最後執行時，就能夠印出  <strong>「0、1、2、3、4」</strong>。</p>
+<p>必須特別強調的是，在 <code>for</code> 迴圈中，每次跑的區塊都是<strong>獨立的</strong>，也就是說，<code>for</code> 第一次跑的 <code>{ ... }</code> 和第二次跑的 <code>{ ... }</code> 並不一樣，每次經過 <code>let</code> 宣告的 <code>i</code> ，在電腦的記憶體位置也不一樣，所以才能被 <code>setTimeout</code> 取用並打包丟進事件佇列。</p>
+<p>其實上面這段範例可以利用<strong>立即執行函式運算式（IIFE）</strong>解構成下面這段程式碼：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// for 跑第一次所建立的 block （執行環境）</span></span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ;</span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i) ;</span><br><span class="line">  &#125;, <span class="hljs-number">1000</span> * i) ;　</span><br><span class="line">&#125;)() ;</span><br><span class="line"><span class="hljs-comment">// for 跑第二次所建立的 block （執行環境）</span></span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ;</span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i) ;</span><br><span class="line">  &#125;, <span class="hljs-number">1000</span> * i) ;　</span><br><span class="line">&#125;)() ;</span><br><span class="line"><span class="hljs-comment">//...</span></span><br><span class="line"><span class="hljs-comment">// for 跑第五次所建立的 block （執行環境）</span></span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> i = <span class="hljs-number">4</span> ;</span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i) ;</span><br><span class="line">  &#125;, <span class="hljs-number">1000</span> * i) ;　</span><br><span class="line">&#125;)() ;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>經過 <code>let</code> 宣告的變數，無論在哪宣告，都不會被存進全域環境，即便宣告在全域中。 </li>
+</ol>
+<p>直接用程式碼印證：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> animal = <span class="hljs-string">'giraffe'</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// giraffe</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.animal) ; <span class="hljs-comment">// undefined（window.animal 找不到任何值）</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>雖然不會被存進全域，但可以被參考取用：</strong></p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> animal = <span class="hljs-string">'giraffe'</span> ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> perosn = <span class="hljs-string">'Fei'</span> ;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// giraffe</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// giraffe</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(perosn) ; <span class="hljs-comment">// Fei</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  inner() ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">outer() ;</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>在同個區塊作用域中，只能用 <code>let</code> 宣告一次，且宣告後在區塊中可以被覆寫。</li>
+</ol>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> animal = <span class="hljs-string">'griaffe'</span> ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> animal = <span class="hljs-string">'tiger'</span> ;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// tiger </span></span><br><span class="line">  animal = <span class="hljs-string">'lion'</span> ;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// lion </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test() ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// giraffe  </span></span><br><span class="line"><span class="hljs-keyword">let</span> animal = <span class="hljs-string">'panda'</span> ; <span class="hljs-comment">// Uncaught SyntaxError: Identifier 'animal' has already been declared</span></span><br><span class="line">animal = <span class="hljs-string">'panda'</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// panda</span></span><br></pre></td></tr></table></figure></p>
+<p>不同區塊作用域中，當然可以用相同名稱 <code>let</code> 宣告變數，因為<strong>區塊不同， <code>let</code> 宣告的變數所佔據的記憶體位置就不同</strong>。</p>
+<ol start="4">
+<li>經過 <code>let</code> 宣告的變數沒有 Hoisting 的特性。</li>
+</ol>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(animal) ; <span class="hljs-comment">// Uncaught ReferenceError: Cannot access 'animal' before initialization</span></span><br><span class="line"><span class="hljs-keyword">let</span> animal = <span class="hljs-string">'griaffe'</span> ;</span><br></pre></td></tr></table></figure></p>
+<p>實務上，現在我們多以 <code>let</code> 宣告來取代 <code>var</code> ，避免對全域環境的污染。</p>
+<p>此外， ES6 還有新增另一種語法 <strong><code>const</code> 常數宣告</strong>，它的特點幾乎與 <code>let</code> 相同，唯一不同的是，<strong>經過 <code>const</code> 宣告的變數無法被覆寫（具有唯讀性）</strong>，最常被用在賦值 DOM 元素。</p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>實務上，我們會避免污染全域，減少全域變數的衝突發生。</li>
+<li>當今我們多用 <code>let</code> 宣告取代 <code>var</code> 來避免污染全域。<ul>
+<li>經過 <code>let</code> 宣告的變數，會將該變數環境綁定在 <code>{ ... }</code> 區塊作用域中。</li>
+<li>經過 <code>let</code> 宣告的變數，無論你在哪裡宣告，都不會被存進全域環境。</li>
+<li>經過 <code>let</code> 宣告的變數沒有 Hoisting 的特性。</li>
+<li>在同個區塊作用域中，只能用 <code>let</code> 宣告一次，且宣告後在區塊中可以被覆寫。</li>
+</ul>
+</li>
+<li>總而言之，函式區塊是切分變數環境（也就是變數作用域）的最小單位。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 2-17、2-18</li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="noopener">MDN：let</a></li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/const" target="_blank" rel="noopener">MDN：const</a></li>
+<li><a href="https://kuro.tw/posts/2019/02/23/%E8%AB%87%E8%AB%87-JavaScript-%E7%9A%84-setTimeout-%E8%88%87-setInterval/" target="_blank" rel="noopener">談談 JavaScript 的 setTimeout 與 setInterval</a></li>
+<li><a href="https://cythilya.github.io/2018/10/19/function-vs-block-scope/" target="_blank" rel="noopener">你懂 JavaScript 嗎？#12 函式範疇與區塊範疇（Function vs Block Scope）</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/10/weird-JavaScript-09/">weirdJavaScript 09：動態型別</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/08/weird-JavaScript-07/">weirdJavaScript 07：變數環境與範圍鍊</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/09/weird-JavaScript-08/';
+        this.page.identifier = '2019/08/09/weird-JavaScript-08/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

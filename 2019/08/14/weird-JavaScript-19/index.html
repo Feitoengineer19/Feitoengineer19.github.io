@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weirdJavaScript 19：一級函式 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="函式就是物件，物件就是函式，就是所謂一級函式。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weirdJavaScript 19：一級函式">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="函式就是物件，物件就是函式，就是所謂一級函式。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/functionObject.JPG">
+<meta property="og:updated_time" content="2019-11-22T13:38:06.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weirdJavaScript 19：一級函式">
+<meta name="twitter:description" content="函式就是物件，物件就是函式，就是所謂一級函式。">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/functionObject.JPG">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#函式就是物件">1&nbsp;&nbsp;<b>函式就是物件</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#一級函式（First-Class-Functions）">2&nbsp;&nbsp;<b>一級函式（First Class Functions）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#函式物件">3&nbsp;&nbsp;<b>函式物件</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weirdJavaScript 19：一級函式
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-14T06:22:00.000Z" itemprop="datePublished">Aug 14 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>函式就是物件，物件就是函式，就是所謂一級函式。</p>
+  <a id="more"></a>
+
+<h3 id="函式就是物件"><a href="#函式就是物件" class="headerlink" title="函式就是物件"></a>函式就是物件</h3><p>我們之前談到資料型別時，就已經提過：在 JavaScript 中，<strong>函式是一種特殊的物件</strong>。</p>
+<p>也就是說，我們也可以賦予函式屬性以及方法：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">personSay</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The function is an object in JavaScript!'</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">personSay.who = <span class="hljs-string">'John'</span> ;</span><br><span class="line">personSay.age  = <span class="hljs-number">28</span> ;</span><br><span class="line">personSay.yell = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'JS is Soooooo HARD!!'</span>)&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(personSay.who) ; <span class="hljs-comment">// John</span></span><br><span class="line">personSay.yell() ; <span class="hljs-comment">// JS is Soooooo HARD!!</span></span><br></pre></td></tr></table></figure></p>
+<p>而這樣的函式特色，在程式語言中被稱為<strong>一級函式（First Class Functions）</strong>。</p>
+<hr>
+
+<h3 id="一級函式（First-Class-Functions）"><a href="#一級函式（First-Class-Functions）" class="headerlink" title="一級函式（First Class Functions）"></a>一級函式（First Class Functions）</h3><blockquote>
+<p>Everything you can do with other types you can do with functions.<br>Assign them to variables, pass them around, create them on the fly.</p>
+</blockquote>
+<p>上面這段對於一級函式的簡介意思是：任何你對其它型別做的事情，你都可以用一級函式做到。</p>
+<p>蛤？好拗口？這是什麼意思？</p>
+<p>意思就是，基本上，<strong>你可以利用一級函式做任何事情！</strong>包括將函式賦予給變數、將函式當作參數傳入另一個函式、利用實字語法建立函式、賦予函式屬性或方法等等。</p>
+<p>現在聽起來很抽象，往後介紹<strong>閉包（Closure）</strong>時，就能夠深入理解一級函式的威力。</p>
+<p>雖然一級函式並非 JavaScript 獨有的特色，但因為具備這樣的特性，使得 JavaScript 成為一種<strong>以函式為核心（Functional Programming）</strong>的程式設計語言。</p>
+<hr>
+
+<h3 id="函式物件"><a href="#函式物件" class="headerlink" title="函式物件"></a>函式物件</h3><p>在 JS 中，函式屬於一種特殊的物件，又稱為<strong>函式物件</strong>。</p>
+<p>而物件本身是 Name/Value Pairs 的集合，因此函式物件可以擁有<strong>屬性</strong>或<strong>方法</strong>。</p>
+<p>除了屬性或方法以外，函式物件還包括兩個我們不知道的特殊屬性：<strong>名稱屬性（Name）</strong>以及<strong>程式屬性（Code）</strong>。</p>
+<p>函式物件的名稱屬性指的就是<strong>函式名稱</strong>。函式可以有名字，也可以沒有名字，沒有名字的函式又稱<strong>匿名函式（Anonymous Function）</strong>。</p>
+<p>函式物件的程式屬性指的就是<strong>函式程式區塊</strong>，也就是 <code>{}</code> 內我們所寫的程式碼部分，而且，這個程式屬性是<strong>能夠被呼叫的（Invocable）</strong>，也就是在函式名稱後方加上 <code>()</code>。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yell</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'JS is Soooooo WEIRD!!'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// yell 就是函式物件的名稱屬性</span></span><br><span class="line"><span class="hljs-comment">// &#123;console.log('JS is Soooooo WEIRD!!')&#125; 就是函式物件的程式屬性</span></span><br><span class="line"><span class="hljs-comment">// 利用 名稱屬性() 來呼叫執行程式屬性</span></span><br><span class="line">yell() ;</span><br></pre></td></tr></table></figure></p>
+<p>順便回顧一下，當我們呼叫函式後，會建立新的執行環境，以執行函式的程式區塊，也就是 <code>{}</code> 內的程式碼，而 <code>{}</code> 內的環境同時也是該函式中區域變數作用域的範圍。</p>
+<p>課程以這張圖歸納了函式物件的組成：</p>
+<p><img src="/2019/08/14/weird-JavaScript-19/functionObject.JPG" alt="函式物件的構成：名稱屬性、程式屬性、屬性、方法（圖片源自參考資料 1.）"></p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>在 JavaScript 中，函式是一種特殊的物件，而這樣的特色被稱為一級函式。</li>
+<li>在 JavaScript 中，函式屬於函式物件，可以擁有屬性與方法。</li>
+<li>函式物件的組成包括：名稱屬性（可以是匿名的）、程式屬性（能夠被呼叫的）、屬性、方法。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-34</li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/15/weird-JavaScript-20/">weirdJavaScript 20：函式陳述式與函式表達式</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/14/weird-JavaScript-18/">weirdJavaScript 18：JSON v.s. 物件</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/';
+        this.page.identifier = '2019/08/14/weird-JavaScript-19/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

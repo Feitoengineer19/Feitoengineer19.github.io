@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Markdown 初學筆記 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="第一篇當然要寫 Markdown 啊！不然怎麼寫部落格？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown 初學筆記">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/06/28/Markdown-Introduction/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="第一篇當然要寫 Markdown 啊！不然怎麼寫部落格？">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://d33wubrfki0l68.cloudfront.net/59f29676ef5e4d74685e14f801bbc10c2dbd3cef/c0688/lesson-images/markdown-1-markup.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/96px-Markdown-mark.svg.png">
+<meta property="og:image" content="http://img.youtube.com/vi/6A5EpqqDOdk/0.jpg">
+<meta property="og:updated_time" content="2019-10-12T17:18:27.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown 初學筆記">
+<meta name="twitter:description" content="第一篇當然要寫 Markdown 啊！不然怎麼寫部落格？">
+<meta name="twitter:image" content="https://d33wubrfki0l68.cloudfront.net/59f29676ef5e4d74685e14f801bbc10c2dbd3cef/c0688/lesson-images/markdown-1-markup.png">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#什麼是-Markdown-？">1.1.1&nbsp;&nbsp;什麼是 Markdown ？</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#基本格式簡介">1.1.2&nbsp;&nbsp;基本格式簡介</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#This-is-heading-1">2&nbsp;&nbsp;<b>This is heading 1</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#This-is-heading-2">2.1&nbsp;&nbsp;This is heading 2</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">2.1.1&nbsp;&nbsp;參考資料</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Markdown 初學筆記
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-06-28T08:00:43.000Z" itemprop="datePublished">Jun 28 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>第一篇當然要寫 Markdown 啊！不然怎麼寫部落格？  </p>
+  <a id="more"></a>
+
+<h3 id="什麼是-Markdown-？"><a href="#什麼是-Markdown-？" class="headerlink" title="什麼是 Markdown ？"></a>什麼是 Markdown ？</h3><p>Markdown 是一種<strong>輕量化的標記語言（lightweight markup language）</strong>，檔案格式為 <code>.md</code>，它撰寫容易，易讀性也高，能幫助作者更專注於寫作，被泛用在 Blog 或 text format，甚至被拿來撰寫電子書。常見的網站如  GitHub 或 Wordpress 都能夠用 Markdown 來撰寫文件。</p>
+<p>更多基本介紹請見 <a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">Wikipedia</a></p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/59f29676ef5e4d74685e14f801bbc10c2dbd3cef/c0688/lesson-images/markdown-1-markup.png" alt="Markdown" title="Markdown 格式"></p>
+<hr>
+<h3 id="基本格式簡介"><a href="#基本格式簡介" class="headerlink" title="基本格式簡介"></a>基本格式簡介</h3><h5 id="標題"><a href="#標題" class="headerlink" title="標題"></a>標題</h5><p><figure class="highlight markdown hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">用 # 加在標題文字前，例如 ###### 表示 H6 </span><br><span class="line"></span><br><span class="line"><span class="hljs-section"># This is heading1 </span></span><br><span class="line"><span class="hljs-section">## This is heading 2</span></span><br><span class="line">...</span><br><span class="line"><span class="hljs-section">###### This is  heading 6</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="This-is-heading-1"><a href="#This-is-heading-1" class="headerlink" title="This is heading 1"></a>This is heading 1</h1><h2 id="This-is-heading-2"><a href="#This-is-heading-2" class="headerlink" title="This is heading 2"></a>This is heading 2</h2><p>…</p>
+<h6 id="This-is-heading-6"><a href="#This-is-heading-6" class="headerlink" title="This is  heading 6"></a>This is  heading 6</h6><hr>
+<h4 id="文體"><a href="#文體" class="headerlink" title="文體"></a>文體</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">斜體；用 * 或 _ 將文字包起來，例如：*斜體* 或 _J個也是斜體_</span><br><span class="line"></span><br><span class="line">粗體；用 ** 把文字包起來，例如：**粗粗的粗體**</span><br><span class="line"></span><br><span class="line">刪除：用 ~~ ~~ 把不是重點的文字刪掉！ 例如： ~~ 那幹嘛寫啊？ ~~</span><br><span class="line"></span><br><span class="line">斜體＋粗體？　***當然沒有問題！***</span><br></pre></td></tr></table></figure></p>
+<p>斜體：<em>斜體</em> 或 <em>J個也是斜體</em></p>
+<p>粗體：<strong>粗粗的粗體</strong></p>
+<p>刪除：<del>那幹嘛寫啊？</del></p>
+<p>斜體＋粗體？　<strong><em>當然沒有問題！</em></strong></p>
+<hr>
+<h4 id="列點"><a href="#列點" class="headerlink" title="列點"></a>列點</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 這是有序列點第 1 點</span><br><span class="line">2. 這是有序列點第 2 點</span><br><span class="line">  1. 列點下再縮排一個 TAB 就會變成巢狀列點囉！</span><br><span class="line">  2. 其實前面用什麼數字都沒關係，只要是數字就好。</span><br><span class="line"></span><br><span class="line">無序列點可以用 * 或 + 或 - 來點示：</span><br><span class="line">* 無序列點第 1 點</span><br><span class="line">+ 無序列點第 2 點</span><br><span class="line">  - 當然 TAB 縮排成巢狀也沒問題！</span><br><span class="line">  - 如果要斷行的話要在後面加上兩個空白喔    </span><br><span class="line">    這行其實已經斷行了，但還是在同一個列點段落中。</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>這是有序列點第 1 點</li>
+<li>這是有序列點第 2 點<ol>
+<li>列點下再<strong>縮排一個 TAB</strong>就會變成巢狀列點囉！（看起來很有條理？）</li>
+<li>其實前面用什麼數字都沒關係，只要是<strong>數字</strong>就好。</li>
+</ol>
+</li>
+</ol>
+<p>無序列點可以用 * 或 + 或 - 來表示：</p>
+<ul>
+<li>無序列點第 1 點</li>
+<li>無序列點第 2 點<ul>
+<li>當然 <strong>TAB</strong> 縮排成巢狀也沒問題！</li>
+<li>如果要斷行的話要在後面加上兩個空白喔<br>這行其實已經斷行了，但還是在同一個列點段落中。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="引述"><a href="#引述" class="headerlink" title="引述"></a>引述</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 開頭加上 &gt; 就是引述囉！</span><br><span class="line">&gt; 只要開頭加上 &gt; 的地方都是引述</span><br><span class="line"></span><br><span class="line">&gt; 如果這一整段很長的話，只要開頭有一個 &gt; ，都會是引述範圍哦！對了，引述裡面**當然可以**運用其他 *文體* 語法的。</span><br><span class="line">&gt;&gt; 這樣就變成巢狀引述了！</span><br><span class="line">&gt;&gt;&gt; 不知道可以有幾層？</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>開頭加上 <strong>&gt;</strong> 就是引述囉！<br>只要開頭加上 &gt; 的地方都是引述</p>
+</blockquote>
+<blockquote>
+<p>如果這一整段很長的話，只要開頭有一個 <em>&gt;</em>，都會是引述範圍哦！對了，引述裡面<strong>當然可以</strong>運用其他 <em>文體</em> 語法的。</p>
+<blockquote>
+<p>這樣就變成巢狀引述了！</p>
+<blockquote>
+<p>不知道可以有幾層？</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<hr>
+<h4 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[連結文字](連結網址 &quot;標題文字&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>如果你想貼上一個超連結，就用下面這個 ↓<br><a href="https://www.w3schools.com/" title="W3CSchool首頁" target="_blank" rel="noopener">W3School</a></p>
+<p>如果你想貼上一個假連結，那 ( ) 裡面就不要放連結。<br><a href>你點看看阿</a>　→ 會停留在原本的頁面</p>
+<hr>
+<h4 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a>圖片</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt 文字](圖片連結 &quot;標題文字&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/96px-Markdown-mark.svg.png" alt="Alt Markdown　LOGO" title="Markdown　LOGO"></p>
+<p><strong>滑鼠移到圖片上會顯示標題文字！</strong></p>
+<hr>
+<h4 id="YouTube-影片"><a href="#YouTube-影片" class="headerlink" title="YouTube 影片"></a>YouTube 影片</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用連結圖片的方式連結影片 ↓</span><br><span class="line">[![Alt 文字](http://img.youtube.com/vi/YOUTUBE影片ID放在這裡/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE影片ID放在這裡)</span><br><span class="line"></span><br><span class="line">但上述方式無法設定圖片邊框與大小</span><br><span class="line"></span><br><span class="line">用行內 HTML 來連結影片，並設定圖片大小 ↓</span><br><span class="line">&lt;a href=&quot;http://www.youtube.com/watch?feature=player_embedded&amp;v=YOUTUBE影片ID放在這裡</span><br><span class="line">&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/YOUTUBE影片ID放在這裡/0.jpg&quot; </span><br><span class="line">alt=&quot;圖片 ALT 文字放在這裡&quot; width=&quot;240&quot; height=&quot;180&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.youtube.com/watch?v=6A5EpqqDOdk" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/6A5EpqqDOdk/0.jpg" alt="alt 文字"></a></p>
+<p><strong>點一下圖片就能夠連到影片網頁（Hexo 似乎不支援隨點隨放？）</strong></p>
+<hr>
+<h4 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h4><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">行內程式碼 ` &lt;div&gt;歡迎來到Fei的技術部落&lt;/div&gt; ` ，就用反引號包起來。</span><br><span class="line">程式碼區塊可以用 3 個反引號來圍住，在反引號後面接上語言名稱，可使語法高亮！</span><br></pre></td></tr></table></figure></p>
+<p>行內程式碼 <code>&lt;div&gt;歡迎來到Fei的技術部落&lt;/div&gt;</code> ，就用反引號包起來。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 以 JavaScript 為例：</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">say</span>)</span>&#123;</span><br><span class="line">  greeting = say || <span class="hljs-string">'Hello!!'</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(greeting + <span class="hljs-string">' '</span> + name + <span class="hljs-string">'.'</span>) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">greet()(<span class="hljs-string">'Fei'</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p><strong>不是所有程式語言都支援語法高量哦！</strong></p>
+<hr>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
+<li><a href="https://markdown.tw/#link" target="_blank" rel="noopener">Markdown文件</a></li>
+<li><a href="https://gist.github.com/billy3321/1001749662c370887c63bb30f26c9e6e" target="_blank" rel="noopener">林雨蒼 - Markdown Cheatsheet 中文版</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10203758?sc=iThel" target="_blank" rel="noopener">六角學院 - Markdown 易編易讀，優雅的寫文吧！</a></li>
+</ul>
+
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/04/weird-JavaScript-01/">weirdJavaScript 01：語法解析、詞彙環境、執行脈絡</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-next">
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/06/28/Markdown-Introduction/';
+        this.page.identifier = '2019/06/28/Markdown-Introduction/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

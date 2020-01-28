@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>在 HTML 裡用 SVG 畫出簡單的向量圖形 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="HTML 支援繪製 SVG 向量圖形的功能，究竟要怎麼使用呢？">
+<meta name="keywords" content="HTML,SVG,Visual Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 HTML 裡用 SVG 畫出簡單的向量圖形">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/09/20/svg-introduction/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="HTML 支援繪製 SVG 向量圖形的功能，究竟要怎麼使用呢？">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-12T17:12:08.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 HTML 裡用 SVG 畫出簡單的向量圖形">
+<meta name="twitter:description" content="HTML 支援繪製 SVG 向量圖形的功能，究竟要怎麼使用呢？">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#SVG-向量圖形">1&nbsp;&nbsp;<b>SVG 向量圖形</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#SVG-標籤與座標系統">1.1&nbsp;&nbsp;SVG 標籤與座標系統</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#直線（Line）">1.2&nbsp;&nbsp;直線（Line）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#圓形（Circle）">1.3&nbsp;&nbsp;圓形（Circle）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#矩形（Rectangle）">1.4&nbsp;&nbsp;矩形（Rectangle）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#橢圓（Ellipse）">1.5&nbsp;&nbsp;橢圓（Ellipse）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#折線（Polyline）">1.6&nbsp;&nbsp;折線（Polyline）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#文字（Text）">1.7&nbsp;&nbsp;文字（Text）</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">2&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            在 HTML 裡用 SVG 畫出簡單的向量圖形
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-20T11:36:34.000Z" itemprop="datePublished">Sep 20 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>HTML 支援繪製 SVG 向量圖形的功能，究竟要怎麼使用呢？</p>
+  <a id="more"></a>
+
+<h3 id="SVG-向量圖形"><a href="#SVG-向量圖形" class="headerlink" title="SVG 向量圖形"></a>SVG 向量圖形</h3><p><strong>SVG（Scalable Vector Graphics）</strong>指的是<strong>可縮放向量圖形</strong>，與 JPG 、 PNG 等<strong>點陣圖</strong>最主要的差異在於。<strong>縮放時不會因為圖形解析度而產生模糊</strong>，導致邊界出現鋸齒的窘境，因此常用於品牌 LOGO、圖示 Icon 等等。</p>
+<p>通常，我們會透過 Adobe Illustrator 繪製 SVG 圖形，但其實，我們也可以直接在 HTML 中繪製 SVG 元素，再搭配上 CSS 屬性，就可以創作出各式各樣的<strong>互動式圖案</strong>、<strong>視覺化圖表</strong>，甚至有趣的動畫效果。</p>
+<p>這篇文章主要介紹繪製 SVG 基本圖案的語法與屬性，包括 <strong>SVG 標籤</strong>、<strong>直線</strong>、<strong>文字</strong>、<strong>圓形</strong>、<strong>橢圓</strong>、<strong>矩形</strong>以及<strong>多邊形</strong>，請配合 <a href="https://codepen.io/luffy-chen/pen/zYOMXXE?editors=0100" target="_blank" rel="noopener">CodePen DEMO</a> 服用本文。</p>
+<h4 id="SVG-標籤與座標系統"><a href="#SVG-標籤與座標系統" class="headerlink" title="SVG 標籤與座標系統"></a>SVG 標籤與座標系統</h4><p>在 HTML 中， <code>&lt;svg&gt;</code> 表示 SVG 元素，我們可以把 <code>&lt;svg&gt;</code> 的範圍想像成是繪製向量圖案的畫布大小，而每一張 <code>&lt;svg&gt;</code> 畫布都擁有自己的<strong>座標系統</strong>，用來定位裡面各種圖形的位置。</p>
+<p><code>&lt;svg&gt;</code> 元素的<strong>座標原點 (0, 0) 座落元素的左上角，向左方正射出 X 軸，向下方正射出 Y 軸</strong>，與 CSS 的 <code>position</code> 屬性定位邏輯相同。</p>
+<p>實務上，我們會在 <code>&lt;svg&gt;</code> 原入中設定 <code>viewbox</code> 屬性，來改變 SVG 元素的可視範圍。可以把 <code>viewbox</code> 想像成一個<strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/viewBox" target="_blank" rel="noopener">觀景窗（視盒）</a></strong>，設定觀景窗的中心點以及大小，就會決定我們觀察 SVG 元素的位置以及大小。</p>
+<p>語法：<code>&lt;svg&gt;</code><br>屬性：</p>
+<ul>
+<li><code>viewbox=&quot;min-x min-y width height&quot;</code><ul>
+<li><code>min-x</code>：視盒原點 X 座標（第一個值）</li>
+<li><code>min-y</code>：視盒原點 Y 座標（第二個值）</li>
+<li><code>width</code>：視盒寬度（第三個值）</li>
+<li><code>height</code>：視盒高度（第四個值）</li>
+</ul>
+</li>
+</ul>
+<p>這部分範例可以參考 <a href="https://codepen.io/luffy-chen/pen/zYOMXXE?editors=0100" target="_blank" rel="noopener">CodePen DEMO</a> 會比較清楚。</p>
+<hr>
+<h4 id="直線（Line）"><a href="#直線（Line）" class="headerlink" title="直線（Line）"></a>直線（Line）</h4><p>語法：<code>&lt;line&gt;</code><br>屬性：</p>
+<ul>
+<li><code>x1</code>：起點 X 座標</li>
+<li><code>y1</code>：起點 Y 座標</li>
+<li><code>x2</code>：終點 X 座標</li>
+<li><code>y2</code>：終點 Y 座標</li>
+</ul>
+<p>範例：<br><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pic2"</span> <span class="hljs-attr">viewbox</span>=<span class="hljs-string">"-100 -100 200 200"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">line</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">"-45"</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">"-45"</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">"45"</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">"45"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">line</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">line</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">"-45"</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">"45"</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">"45"</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">"-45"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">line</span>&gt;</span>  </span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>搭配 CSS 的 <code>stroke</code> 、 <code>stroke-width</code> 屬性調整 <code>&lt;line&gt;</code> 的顏色與寬度。當然，也可以加上動畫：</p>
+<p><figure class="highlight scss hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-id">#pic2</span>&#123;</span><br><span class="line">	stroke: tomato;</span><br><span class="line">	stroke-<span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">	<span class="hljs-attribute">transition</span>: all <span class="hljs-number">1s</span>;</span><br><span class="line">	</span><br><span class="line">	&amp;:hover&#123;</span><br><span class="line">		stroke: purple;</span><br><span class="line">		stroke-<span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="圓形（Circle）"><a href="#圓形（Circle）" class="headerlink" title="圓形（Circle）"></a>圓形（Circle）</h4><p>語法：<code>&lt;circle&gt;</code><br>屬性：</p>
+<ul>
+<li><code>cx</code>：圓心 X 座標</li>
+<li><code>cy</code>：圓心 Y 座標</li>
+<li><code>r</code>：半徑長度</li>
+</ul>
+<p>範例：<br><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pic3"</span> <span class="hljs-attr">viewbox</span>=<span class="hljs-string">"-100 -100 200 200"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">circle</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">r</span>=<span class="hljs-string">"10"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">circle</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>搭配 CSS 做成動畫（屬性 <code>r</code> 可以寫在 CSS 裡面）：</p>
+<p><figure class="highlight scss hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-id">#pic3</span> circle&#123;</span><br><span class="line">	fill: black;</span><br><span class="line">	stroke: transparent;</span><br><span class="line">	<span class="hljs-attribute">transition</span>: all <span class="hljs-number">1s</span>;</span><br><span class="line">	</span><br><span class="line">	&amp;:hover&#123;</span><br><span class="line">		fill: transparent;</span><br><span class="line">		stroke: black;</span><br><span class="line">		stroke-<span class="hljs-attribute">width</span>: <span class="hljs-number">7px</span>;</span><br><span class="line">		r: <span class="hljs-number">50</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="矩形（Rectangle）"><a href="#矩形（Rectangle）" class="headerlink" title="矩形（Rectangle）"></a>矩形（Rectangle）</h4><p>語法：<code>&lt;rect&gt;</code><br>屬性：</p>
+<ul>
+<li><code>x</code>：原點 X 座標</li>
+<li><code>y</code>：原點 Y 座標</li>
+<li><code>width</code>：矩形寬度</li>
+<li><code>height</code>：矩形高度</li>
+</ul>
+<p>補充：其實， <strong><code>fill</code> 、 <code>stroke</code> 、 <code>stroke-width</code> 這些屬性也可以加在 HTML 上</strong>。<br>範例：<br><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewbox</span>=<span class="hljs-string">"-100 -100 200 200"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">"-50"</span> <span class="hljs-attr">y</span>=<span class="hljs-string">"-50"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"maroon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">rect</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="橢圓（Ellipse）"><a href="#橢圓（Ellipse）" class="headerlink" title="橢圓（Ellipse）"></a>橢圓（Ellipse）</h4><p>語法：<code>&lt;ellipse&gt;</code><br>屬性：</p>
+<ul>
+<li><code>cx</code>：橢圓圓心 X 座標</li>
+<li><code>cy</code>：橢圓圓心 Y 座標</li>
+<li><code>rx</code>：橢圓 X 軸半徑</li>
+<li><code>ry</code>：橢圓 Y 軸半徑</li>
+</ul>
+<p>範例：<br><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewbox</span>=<span class="hljs-string">"-100 -100 200 200"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ellipse</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">rx</span>=<span class="hljs-string">"60"</span> <span class="hljs-attr">ry</span>=<span class="hljs-string">"30"</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"chocolate"</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">"steelblue"</span> <span class="hljs-attr">stroke-width</span>=<span class="hljs-string">"1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ellipse</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="折線（Polyline）"><a href="#折線（Polyline）" class="headerlink" title="折線（Polyline）"></a>折線（Polyline）</h4><p>語法：<code>&lt;polyline&gt;</code><br>屬性：</p>
+<ul>
+<li><code>points=&quot;x1,y1 x2,y2 x3,y3 ...&quot;</code>：節點座標的集合（<strong>節點座標不需要用 <code>;</code> 隔開</strong>）</li>
+</ul>
+<p>補充： <code>&lt;polyline&gt;</code> 通常會加上 <code>fill=&quot;none&quot;</code> 。<br>範例：<br><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewbox</span>=<span class="hljs-string">"-100 -100 200 200"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">polyline</span> <span class="hljs-attr">points</span>=<span class="hljs-string">"-60,47 -30,55 0,-2 30,-21 60,17 90,29"</span>  <span class="hljs-attr">fill</span>=<span class="hljs-string">"none"</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">"hotpink"</span> <span class="hljs-attr">stroke-width</span>=<span class="hljs-string">"3px"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">polyline</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="文字（Text）"><a href="#文字（Text）" class="headerlink" title="文字（Text）"></a>文字（Text）</h4><p>語法：<code>&lt;text&gt;</code><br>屬性：</p>
+<ul>
+<li><code>x</code>： X 軸起點</li>
+<li><code>y</code>： Y 軸起點</li>
+</ul>
+<p>範例：<br><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewbox</span>=<span class="hljs-string">"-100 -100 200 200"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">x</span>=<span class="hljs-string">"-100"</span> <span class="hljs-attr">y</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"darkred"</span>&gt;</span>Use SVG to make an icon!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li><a href="https://www.w3schools.com/graphics/svg_intro.asp" target="_blank" rel="noopener">W3C：SVG Tutorial</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial" target="_blank" rel="noopener">MDN：SVG Tutorial</a></li>
+<li><a href="https://www.oxxostudio.tw/articles/201406/svg-01-intro.html" target="_blank" rel="noopener">SVG 研究之路 (1) - 初探 SVG</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/HTML/">#HTML</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/SVG/">#SVG</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Visual-Design/">#Visual Design</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/11/30/JS-Underground-B1/">JS 新手地下城試煉攻略：B1-九九乘法表</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/09/20/20-shadows-of-arrayJS/">JavaScipt 陣列方法的20道陰影</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/09/20/svg-introduction/';
+        this.page.identifier = '2019/09/20/svg-introduction/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

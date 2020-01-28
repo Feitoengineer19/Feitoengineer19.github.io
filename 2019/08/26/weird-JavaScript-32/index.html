@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weird-JavaScript 32：閉包（2） - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="這題沒答對，你敢說你懂閉包？">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weird-JavaScript 32：閉包（2）">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="這題沒答對，你敢說你懂閉包？">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/black.jpg">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/closure2.JPG">
+<meta property="og:updated_time" content="2019-11-22T13:38:59.955Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weird-JavaScript 32：閉包（2）">
+<meta name="twitter:description" content="這題沒答對，你敢說你懂閉包？">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/black.jpg">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#閉包概念的程式碼範例">1&nbsp;&nbsp;<b>閉包概念的程式碼範例</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#範例解析">2&nbsp;&nbsp;<b>範例解析</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#創造函式-v-s-執行函式">3&nbsp;&nbsp;<b>創造函式 v.s. 執行函式</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weird-JavaScript 32：閉包（2）
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-26T04:25:11.000Z" itemprop="datePublished">Aug 26 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>這題沒答對，你敢說你懂閉包？</p>
+  <a id="more"></a>
+
+<h3 id="閉包概念的程式碼範例"><a href="#閉包概念的程式碼範例" class="headerlink" title="閉包概念的程式碼範例"></a>閉包概念的程式碼範例</h3><p>請看下面這段程式碼，想一想這段程式碼在做什麼？</p>
+<p>你認為 <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 執行後，分別會印出什麼數字？</p>
+<p>請將答案紀錄在一張白紙上，再複製貼上這段程式碼至瀏覽器中，檢驗是否正確。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = buildFunctions() ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fs[<span class="hljs-number">0</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">1</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">2</span>]() ;</span><br></pre></td></tr></table></figure></p>
+<p>檢驗後答案如你所預期的一樣嗎？如果你答對的話，恭喜你（應該）已經掌握閉包的概念了！</p>
+<p>解釋這個例子的原理之前，有必要畫個防雷分隔線：</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>沒錯，在這個例子中， <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 執行後，印出的結果都是 <code>3</code> 。</p>
+<p>許多人預期 <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 會分別印出 <code>0</code> 、 <code>1</code> 、 <code>2</code> ，怎麼會是 <code>3</code> ？這數字哪來的？</p>
+<p>簡單來說，這是因為：當你在<strong>執行</strong> <code>fs[0]()</code> 這三個函式的時候，它們所參考的外部（詞彙）環境 <code>buildFunctions()</code> 所儲存的區域變數 <code>i</code> ，已經是 <code>3</code> ，和你<strong>創造</strong> <code>fs[0]()</code> 這三個函式的時候的 <code>i</code> 是不一樣的。 </p>
+<p><img src="/2019/08/26/weird-JavaScript-32/black.jpg" alt="黑人問號"></p>
+<p>還是不懂？沒關係，不用害怕，繼續跟我往下走。</p>
+<hr>
+
+<h3 id="範例解析"><a href="#範例解析" class="headerlink" title="範例解析"></a>範例解析</h3><p>綜合過去的觀念，我們一步一步拆解這段程式碼在幹嘛。</p>
+<p>首先，在 JS 執行程式碼之前，它會做兩件事，你還記得嗎？</p>
+<p><strong>Creation</strong>： JS 引擎會創造全域執行環境、 <code>window</code> 物件，以及 <code>this</code> 變數（代指 <code>window</code> 物件）。</p>
+<p><strong>Hoisting</strong>： JS 引擎會將變數宣告與函式宣告儲存進記憶體空間，即創造全域變數與全域函式。在這個例子中，變數 <code>fs</code> 會先被創造並賦值為 <code>undefined</code> ，而函式 <code>buildFunctions()</code> 會被宣告完成。</p>
+<p>接著， JS 引擎才會真正開始執行程式碼。而第一行程式碼是：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = buildFunctions() ;</span><br></pre></td></tr></table></figure></p>
+<p>這行程式碼的意思是：</p>
+<blockquote>
+<p>呼叫函式 buildFunctions ，並將執行後 return 的值賦予給變數 fs 。</p>
+</blockquote>
+<p>所以，我們接著要理解函式 <code>buildFunctions</code> 到底執行了什麼？</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>函式 <code>buildFunctions</code> 被呼叫後，<strong>JS 引擎會創造屬於它的執行環境</strong>，並開始執行 <code>{}</code> 內部的程式碼（也就是函式物件的程式屬性）。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr = [] ;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>宣告一個區域變數 <code>arr</code> 為一個空陣列 <code>[]</code>。</p>
+</blockquote>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">  arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>跑一個 <code>for</code> 迴圈，若符合條件就執行迴圈內容，反之則結束迴圈。 </p>
+</blockquote>
+<p>在 <code>for</code> 迴圈這部分，我們宣告一個區域變數 <code>i = 0</code> 當作計數器，若 <code>i &lt; 3</code>，就執行 <code>for {}</code> 內的程式碼，反之則跳出迴圈。</p>
+<p>每次在 <code>for {}</code> 裡面，我們要<strong>創造</strong>一個新的函式 <code>function(){console.log(i)})</code> ，並將它 <code>push</code> 到變數 <code>arr</code> 陣列裡面。</p>
+<p>什麼？你說陣列裡面放函式很怪？忘記我們之前說過：陣列是任何東西的集合，可以存放任何純值或（函式）物件。</p>
+<p>我們將每一次迴圈的步驟拆開看：</p>
+<p>第一次迴圈時， <code>i = 0</code> ， <code>0 &lt; 3</code> ，符合條件，執行迴圈內容：<strong>創造</strong>函式 <code>function(){console.log(i)})</code> 並 <code>push</code> 到 <code>arr</code> 陣列中，接著 <code>i ++</code> 。 </p>
+<p>第二次迴圈時， <code>i = 1</code> ， <code>1 &lt; 3</code> ，符合條件，執行迴圈內容：<strong>創造</strong>函式 <code>function(){console.log(i)})</code> 並 <code>push</code> 到 <code>arr</code> 陣列中，接著 <code>i ++</code> 。 </p>
+<p>第三次迴圈時， <code>i = 2</code> ， <code>2 &lt; 3</code> ，符合條件，執行迴圈內容：<strong>創造</strong>函式 <code>function(){console.log(i)})</code> 並 <code>push</code> 到 <code>arr</code> 陣列中，接著 <code>i ++</code> 。 </p>
+<p>第四次迴圈時， <code>i = 3</code> ， <code>3 &lt; 3</code> ，不符合條件，跳出迴圈， <code>for</code> 迴圈結束。</p>
+<p>此時，區域變數 <code>arr</code> 為一個陣列，裡面包括三個函式（物件），而區域變數 <code>i = 3</code> 。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">return</span> arr ;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>回傳變數 <code>arr</code> 陣列。</p>
+</blockquote>
+<p>至此，函式 <code>buildFunctions</code> 執行完畢，<strong>JS 引擎會消滅屬於它執行環境</strong>。</p>
+<p>但是！上篇我們有說，<strong>JS 引擎會保留儲存函式參數與區域變數的記憶體空間</strong>，也就是說，<strong>區域變數 <code>arr</code> 和 <code>i</code> 仍會存於該函式專屬的記憶體空間，並不會消滅</strong>。</p>
+<p>回到全域執行環境，函式 <code>buildFunctions</code> 執行後回傳變數 <code>arr</code> 陣列，並賦值給變數 <code>fs</code> 。</p>
+<p>因此 <code>fs = arr</code> 。（想一想，是傳值？還是<strong>傳參考？</strong>） </p>
+<p>終於來到最後一步：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs[<span class="hljs-number">0</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">1</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">2</span>]() ;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>依序呼叫變數 <code>fs</code> 裡的三個函式並<strong>執行</strong>。 </p>
+</blockquote>
+<p> <code>fs[0]</code> 、 <code>fs[1]</code> 、 <code>fs[2]</code> 三個函式都指向函式 <code>function(){console.log(i)})</code> ，以 <code>fs[0]()</code> 為例，JS 執行後，會創造其專屬的執行環境，並開始執行程式：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>JS 引擎知道要執行 <code>console.log(i)</code> ，於是開始在函式 <code>function(){console.log(i)})</code> 裡面找 <code>i</code>，但很顯然，它找不到（因為沒有定義），所以它只好依照<strong>範圍鍊</strong>的規則，向<strong>外部（詞彙）環境</strong>尋找可以取用的 <code>i</code> 。</p>
+<p>外部詞彙環境是誰？想一想，我們在哪裡<strong>創造</strong>函式 <code>function(){console.log(i)})</code> ？</p>
+<p>沒錯！就是在函式 <code>buildFunctions</code> 裡面！</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以，JS 引擎會參考外部（詞彙）環境函式 <code>buildFunctions</code> 裡的區域變數 <code>i</code> 。</p>
+<p>此時 <code>i</code> 是多少？ <code>i = 3</code> 。</p>
+<p>按此邏輯， <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 印出的結果當然都會是 <code>3</code> 了。</p>
+<hr>
+
+<h3 id="創造函式-v-s-執行函式"><a href="#創造函式-v-s-執行函式" class="headerlink" title="創造函式 v.s. 執行函式"></a>創造函式 v.s. 執行函式</h3><p>有些人之所以預期執行結果為 <code>0</code> 、 <code>1</code> 、 <code>2</code> ，那是因為混淆<strong>創造函式</strong>和<strong>執行函式</strong>的時機與差異。</p>
+<p>其實，我認為只要釐清<strong>創造函式</strong>和<strong>執行函式</strong>的時機與差異，閉包的原理就很清晰了。</p>
+<p>在這個例子中，<strong>創造函式</strong> <code>function(){console.log(i)})</code> 的時候，就只是<strong>單純創造該函式</strong>而已，並不會將外部環境的變數 <code>i</code> 一起存進記憶體。</p>
+<p>等到<strong>執行函式</strong>時， JS 引擎在函式執行環境 <code>function(){console.log(i)})</code> 中找不到可用的 <code>i</code>（因為它函式內部本身並沒有宣告 <code>i</code> 值），所以它會依照範圍鍊，向外部詞彙環境參考可用的值。</p>
+<p><strong>外部詞彙環境</strong>，指的就是，我們在哪裡<strong>創造</strong>函式？或說，函式被我們寫在哪裡？</p>
+<p>綜合 JS 種種的特性，形成了閉包的原理：<strong>利用函式執行環境，創造一個封閉空間，包住可供取用的變數</strong>。而那些在範圍鍊中可供取用的變數，又稱為<strong>自由變數（Free Variable）</strong></p>
+<p>總而言之，分清楚<strong>創造（宣告）函式</strong>與<strong>執行（呼叫）函式</strong>的時機以及差異，有助於理解閉包的原理，因為閉包就是綜合這些概念而來。</p>
+<p>課程中用這張圖來解釋本篇範例的運作原理：</p>
+<p><img src="/2019/08/26/weird-JavaScript-32/closure2.JPG" alt="函式範例的解釋（圖片源自參考資料 1.）"></p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>分清楚創造函式與執行函式的時機以及差異，有助於理解閉包的原理。</li>
+<li>創造函式時， JS 引擎會創造該函式的記憶體空間，並儲存函式內宣告的變數，並不會將外部環境的自由變數一起存進記憶體（除非以參數傳入）。</li>
+<li>執行函式時， JS 引擎如果在函式執行環境中找不到可取用的值，它會依照範圍鍊向外部詞彙環境參考可用的值，直到找到為止。</li>
+<li>閉包的原理就是：利用函式執行環境，創造一個專屬的封閉空間（記憶體空間），包住可供取用的變數。</li>
+<li>自由變數指的是：函式在範圍鍊中可供取用的變數。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-47</li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/27/weird-JavaScript-33/">weird-JavaScript 33：函式工廠</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/25/weird-JavaScript-31/">weird-JavaScript 31：閉包（1）</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/';
+        this.page.identifier = '2019/08/26/weird-JavaScript-32/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

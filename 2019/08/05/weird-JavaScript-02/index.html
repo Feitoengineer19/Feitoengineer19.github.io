@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weirdJavaScript 02：Name/Value Pair與物件 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="Name/Value Pair？ Key/Value Pair？沒差啦！反正就得成雙成對。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weirdJavaScript 02：Name&#x2F;Value Pair與物件">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="Name/Value Pair？ Key/Value Pair？沒差啦！反正就得成雙成對。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/nameValuePairs.JPG">
+<meta property="og:updated_time" content="2019-11-22T13:36:50.235Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weirdJavaScript 02：Name&#x2F;Value Pair與物件">
+<meta name="twitter:description" content="Name/Value Pair？ Key/Value Pair？沒差啦！反正就得成雙成對。">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/nameValuePairs.JPG">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#名稱／數值配對（Name-Value-Pair）">1&nbsp;&nbsp;<b>名稱／數值配對（Name/Value Pair）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#物件（Object）">2&nbsp;&nbsp;<b>物件（Object）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">3&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">4&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weirdJavaScript 02：Name/Value Pair與物件
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-05T07:29:05.000Z" itemprop="datePublished">Aug 5 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>Name/Value Pair？ Key/Value Pair？沒差啦！反正就得成雙成對。</p>
+  <a id="more"></a>
+
+<h3 id="名稱／數值配對（Name-Value-Pair）"><a href="#名稱／數值配對（Name-Value-Pair）" class="headerlink" title="名稱／數值配對（Name/Value Pair）"></a>名稱／數值配對（Name/Value Pair）</h3><blockquote>
+<p><strong>A Name which maps to a unique value</strong>.<br>The name may be fedined more than one, but <strong>only can have one value in any given context</strong>.</p>
+</blockquote>
+<p><strong>在執行環境中，只能存在一個名稱（Name），且該名稱只會對應到一個定義的數值（Value）</strong>，即所謂的 Name/Value Pair，也有人稱為「鍵值配對」Key/Value Pair，類似 <code>Python</code> 中的「字典」（Dictionary）結構。</p>
+<p>基本的 Name/Value Pair 就像這樣：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">personName = <span class="hljs-string">'Marisa'</span> ;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>That value may be more name/value pair.</p>
+</blockquote>
+<p>但實際上， value 可以是更多 Name/Value Pairs 的集合：<br> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">peopleName = &#123;</span><br><span class="line">  DavidFamily: <span class="hljs-string">'David'</span>,</span><br><span class="line">  LisaFamily: &#123;</span><br><span class="line">    father: <span class="hljs-string">'Ryan'</span>.</span><br><span class="line">    mother: <span class="hljs-string">'Ann'</span>,</span><br><span class="line">    dog: <span class="hljs-string">'Murffy'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125; ;</span><br></pre></td></tr></table></figure></p>
+<hr>
+
+<h3 id="物件（Object）"><a href="#物件（Object）" class="headerlink" title="物件（Object）"></a>物件（Object）</h3><blockquote>
+<p>A collection of name/value pairs.</p>
+</blockquote>
+<p>在 JavaScript 中，物件最簡單的定義就是，<strong>物件（Object）是一群 ame/value pairs 的集合</strong>。</p>
+<p>我們用左右大括號 <code>{}</code> 來表示物件，一個基本的物件長這樣：<br> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Taipei = &#123;</span><br><span class="line">  Districts: <span class="hljs-number">12</span>,</span><br><span class="line">  MetroLines: <span class="hljs-number">5</span>,</span><br><span class="line">  touristSpot: <span class="hljs-string">'Taipei 101'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因為 Name/Value Pair 中的 Value 也可以是另一組  Name/Value Pairs ，所以物件也可以是：<br> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Taipei = &#123;</span><br><span class="line">  Districts: <span class="hljs-number">12</span>,</span><br><span class="line">  MetroLines: <span class="hljs-number">5</span>,</span><br><span class="line">  touristSpot: &#123;</span><br><span class="line">    mustGo : <span class="hljs-string">'Taipei 101'</span>,　</span><br><span class="line">    mustEat : [<span class="hljs-string">'Ding-Tai-Fung'</span>, <span class="hljs-string">'bubble tea'</span>] <span class="hljs-comment">// Value 也可以是陣列（Array），因為陣列也屬於物件的一種。</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上面這個範例中，最外層的 <code>Taipei</code> 是一個物件，內層的 <code>touristSpot</code> 也是一個物件。因為<strong>物件就是鍵值配對（Name/Value Pair）的集合</strong>。</p>
+<p><img src="/2019/08/05/weird-JavaScript-02/nameValuePairs.JPG" alt="物件就是 Name/Value Pairs 的集合（圖片源自參考資料 1.）"></p>
+<p>更精確地說，在 JavaScript 中，資料型別分為兩類：</p>
+<ol>
+<li>基本型別／原始型別（Primitive）<ul>
+<li>字串（String）</li>
+<li>數字（Number）</li>
+<li>布林值（Boolean）</li>
+<li>空值（Null）</li>
+<li>未定義（Undefined）</li>
+<li>Symbol（ES6 新增的型別）</li>
+</ul>
+</li>
+<li>物件型別（Object）<ul>
+<li>物件（Object）<ul>
+<li>陣列物件（Array）</li>
+<li>函式物件（Function）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>關於資料型別的詳細解釋，我們之後會提到。</p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>名稱／數值配對（鍵值配對）指的是，在一執行環境中，一個名稱只能對應到一個值，且值可能是另一個物件（鍵值配對的集合）。</li>
+<li>物件指的是<strong>鍵值配對的集合</strong>。</li>
+<li><strong>在 JavaScript 中，任何一筆資料，如果不是基本型別（值），就是物件型別。</strong></li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 2-7</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures" target="_blank" rel="noopener">MDN：JavaScript data types and data structures</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/05/weird-JavaScript-03/">weirdJavaScript 03：全域環境與全域物件</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/04/weird-JavaScript-01/">weirdJavaScript 01：語法解析、詞彙環境、執行脈絡</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/';
+        this.page.identifier = '2019/08/05/weird-JavaScript-02/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

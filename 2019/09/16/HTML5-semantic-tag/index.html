@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>HTML5 語意標籤筆記 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="寫了一陣子 HTML ，還是用 &amp;lt;div&amp;gt; 作為切分元素的單位？ 我想，是時候瞭解 HTML5 的語意元素（Semantic Elements）了！">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 語意標籤筆記">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/09/16/HTML5-semantic-tag/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="寫了一陣子 HTML ，還是用 &amp;lt;div&amp;gt; 作為切分元素的單位？ 我想，是時候瞭解 HTML5 的語意元素（Semantic Elements）了！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/09/16/HTML5-semantic-tag/h4vsh5.jpg">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/09/16/HTML5-semantic-tag/semantic.jpg">
+<meta property="og:updated_time" content="2019-11-30T16:17:29.084Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 語意標籤筆記">
+<meta name="twitter:description" content="寫了一陣子 HTML ，還是用 &amp;lt;div&amp;gt; 作為切分元素的單位？ 我想，是時候瞭解 HTML5 的語意元素（Semantic Elements）了！">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/09/16/HTML5-semantic-tag/h4vsh5.jpg">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HTML5-語意標籤（Semantic-Elements）">1&nbsp;&nbsp;<b>HTML5 語意標籤（Semantic Elements）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#header">2&nbsp;&nbsp;<b>header</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#nav">3&nbsp;&nbsp;<b>nav</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#main">4&nbsp;&nbsp;<b>main</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#aside">5&nbsp;&nbsp;<b>aside</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#section">6&nbsp;&nbsp;<b>section</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#article">7&nbsp;&nbsp;<b>article</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#footer">8&nbsp;&nbsp;<b>footer</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#HTML5語意元素建構的網頁輪廓">9&nbsp;&nbsp;<b>HTML5語意元素建構的網頁輪廓</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">10&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            HTML5 語意標籤筆記
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-15T16:40:25.000Z" itemprop="datePublished">Sep 16 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>寫了一陣子 HTML ，還是用 <code>&lt;div&gt;</code> 作為切分元素的單位？</p>
+<p>我想，是時候瞭解 HTML5 的<strong>語意元素（Semantic Elements）</strong>了！</p>
+  <a id="more"></a>
+
+<h3 id="HTML5-語意標籤（Semantic-Elements）"><a href="#HTML5-語意標籤（Semantic-Elements）" class="headerlink" title="HTML5 語意標籤（Semantic Elements）"></a>HTML5 語意標籤（Semantic Elements）</h3><p>在 HTML5 以前，開發者常常用<strong>區塊元素 <code>&lt;div&gt;</code></strong> 和<strong>行內元素 <code>&lt;span&gt;</code></strong> 作為網頁元素的最小單位，搭配合適的 <code>class</code> 或 <code>id</code> 刻出整個網頁，這也是許多初學者一開始認識 HTML 的過程。</p>
+<p>你我可能都寫過這樣的網頁架構：</p>
+<p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>頁首標題<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>導覽項目 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>導覽項目 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>導覽項目 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sidebar"</span>&gt;</span>側欄內容<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"article"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>文章標題<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid temporibus quae voluptatem dignissimos hic nulla laudantium at! Assumenda, ducimus amet?<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"footer"</span>&gt;</span>頁尾<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>這樣的寫法並沒有什麼不對，但是， <code>&lt;div&gt;</code> 與 <code>&lt;span&gt;</code> 不像 <code>&lt;a&gt;</code> 等元素，可以對瀏覽器表達該元素的內容屬性，好比 <code>&lt;a&gt;</code> 定義了連結， <code>&lt;img&gt;</code> 定義了圖片，而 <code>&lt;h1&gt;</code> 定義了大標題（通常一個網頁頁面只會有一個 <code>&lt;h1&gt;</code>）。</p>
+<p>換句話說，就表示網頁架構的功能來看， <code>&lt;div&gt;</code> 與 <code>&lt;span&gt;</code> 並沒有任何意義，也不具備<strong>搜尋引擎最佳化（Search Engine Optimization，SEO）</strong>的優勢。對開發者來說，我們還要借助 <code>class</code> 或 <code>id</code> 來為元素命名語意，實際上多此一舉。</p>
+<p>因此，HTML5 新增許多<strong>語意標籤（Semantic Elements）</strong>，只要掌握這些自帶意義的元素，我們不僅能快速建構一個完整的 HTML 頁面、檢閱程式碼，也有<strong>利於搜尋引擎辨識網頁的內容架構</strong>，提升 SEO 的效果。</p>
+<p>我們可以將上面的範例程式碼轉化成語意標籤，大概會是這個樣子：</p>
+<p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>頁首標題<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>導覽項目 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>導覽項目 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>導覽項目 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>側欄內容<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>文章標題<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid temporibus quae voluptatem dignissimos hic nulla laudantium at! Assumenda, ducimus amet?<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"footer"</span>&gt;</span>頁尾<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>是不是看起來簡潔多了？</p>
+<p>下面這張圖比較 HTML4 與 HTML5 針對一個部落格頁面所建立的網頁元素結構：</p>
+<p><img src="/2019/09/16/HTML5-semantic-tag/h4vsh5.jpg" alt="HTML4與HTML5元素結構比較"></p>
+<center>（圖片源自參考資料 1.）</center>
+
+<h3 id="header"><a href="#header" class="headerlink" title="header"></a>header</h3><blockquote>
+<p>The <code>&lt;header&gt;</code> element specifies a header for a document or section.（W3C）</p>
+</blockquote>
+<p>顧名思義， <code>&lt;header&gt;</code> 可以是整個網頁的頁首，也可以是一個 <code>&lt;section&gt;</code> 裡面的頭部區塊。</p>
+<p>通常頭部區塊會包含網站標題、副標題、 LOGO 以及導覽列 <code>&lt;nav&gt;</code>。</p>
+<h3 id="nav"><a href="#nav" class="headerlink" title="nav"></a>nav</h3><blockquote>
+<p>The <code>&lt;nav&gt;</code> element defines a set of navigation links.（W3C）</p>
+</blockquote>
+<p><code>&lt;nav&gt;</code> 指的是網站的主要導覽列，通常一個網頁只會有一個 <code>&lt;nav&gt;</code> ，若網頁中包含其他導覽列（如側欄導覽列），會以 <code>class</code> 另外命名。</p>
+<h3 id="main"><a href="#main" class="headerlink" title="main"></a>main</h3><blockquote>
+<p><code>&lt;main&gt;</code> defines the page’s main content. It shouldn’t be enclosed in any of the sectioning tags…<br>There should only be one <code>&lt;main&gt;</code> tag on each page.（Viking Code School）</p>
+</blockquote>
+<p><code>&lt;main&gt;</code> 指的是網頁頁面的主要內容，和 <code>&lt;h1&gt;</code> 類似，<strong>通常一個網頁只會有一個 <code>&lt;main&gt;</code> 元素</strong>，自然不可能被包覆在 <code>&lt;section&gt;</code> 中。</p>
+<h3 id="aside"><a href="#aside" class="headerlink" title="aside"></a>aside</h3><blockquote>
+<p>The <code>&lt;aside&gt;</code> element defines some content aside from the content it is placed in (like a sidebar).（W3C）</p>
+</blockquote>
+<p><code>&lt;aside&gt;</code> 指的是與主要內容 <code>&lt;main&gt;</code> 不太相關的區塊，通常是用來放其他內容（如簡介、廣告、次導覽列或相關連結等）的側邊欄位。</p>
+<h3 id="section"><a href="#section" class="headerlink" title="section"></a>section</h3><blockquote>
+<p>The <code>&lt;section&gt;</code> element defines a section in a document.（W3C）</p>
+</blockquote>
+<p><code>&lt;section&gt;</code> 指的是<strong>自訂的區塊</strong>，可以搭配 <code>class</code> 作更細緻的命名，譬如一個形象網頁的 Introduction 到最後的 Contact Information：</p>
+<p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"intro"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"product"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"service"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"user-sharing"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"contact"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>&lt;section&gt;</code> 通常會包覆一個 <code>&lt;header&gt;</code> 說明該區塊的資訊。我認為 <code>&lt;section&gt;</code> 是有結構意義的 <code>&lt;div&gt;</code> ，一個網頁中可以有許多 <code>&lt;section&gt;</code> ，而 <code>&lt;section&gt;</code> 也可以包覆另外一個 <code>&lt;section&gt;</code>。</p>
+<h3 id="article"><a href="#article" class="headerlink" title="article"></a>article</h3><blockquote>
+<p>The <code>&lt;article&gt;</code> element specifies independent, self-contained content.（W3C）</p>
+</blockquote>
+<p><code>&lt;article&gt;</code> 顧名思義是一篇<strong>文章</strong>，但事實上它也可以指<strong>自成一格、獨立的內容</strong>，譬如一段留言或一段主題討論。</p>
+<p>與 <code>&lt;section&gt;</code> 相仿，<code>&lt;article&gt;</code> 通常會包覆一個 <code>&lt;header&gt;</code> 說明該區塊的資訊，一個網頁中也可以有許多個 <code>&lt;article&gt;</code> 。</p>
+<p>由於我們無法根據 <code>&lt;section&gt;</code> 與 <code>&lt;article&gt;</code> 的定義去規範明確的巢狀規則，因此，在實務上，我們可能會看到 <code>&lt;section&gt;</code> 裡面有 <code>&lt;article&gt;</code> ，或 <code>&lt;article&gt;</code> 裡面有 <code>&lt;section&gt;</code> 的狀況。</p>
+<h3 id="footer"><a href="#footer" class="headerlink" title="footer"></a>footer</h3><blockquote>
+<p>The <code>&lt;footer&gt;</code> element specifies a footer for a document or section.（W3C）</p>
+</blockquote>
+<p>同樣的， <code>&lt;footer&gt;</code> 可以是整個網頁的頁尾，也可以是一個 <code>&lt;section&gt;</code> 裡面的尾部區塊。</p>
+<p>通常尾部會包含作者、版權、使用條款、聯絡方式等資訊。</p>
+<h3 id="HTML5語意元素建構的網頁輪廓"><a href="#HTML5語意元素建構的網頁輪廓" class="headerlink" title="HTML5語意元素建構的網頁輪廓"></a>HTML5語意元素建構的網頁輪廓</h3><p>最後，引用這張圖片來總結：</p>
+<p><img src="/2019/09/16/HTML5-semantic-tag/semantic.jpg" alt="HTML5語意標籤結構"></p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li><a href="https://www.vikingcodeschool.com/html5-and-css3/html5-semantic-tags" target="_blank" rel="noopener">Viking Code School：HTML5 Semantic</a></li>
+<li><a href="https://www.w3schools.com/html/html5_semantic_elements.asp" target="_blank" rel="noopener">W3C：HTML5 Semantic Elements</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/HTML/">#HTML</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/09/20/20-shadows-of-arrayJS/">JavaScipt 陣列方法的20道陰影</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/09/10/JS-scroll-practice/">JS 簡易捲動（Scroll）效果製作</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/09/16/HTML5-semantic-tag/';
+        this.page.identifier = '2019/09/16/HTML5-semantic-tag/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

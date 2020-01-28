@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weirdJavaScript 10：基本型別（純值）與物件型別 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weirdJavaScript 10：基本型別（純值）與物件型別">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/10/weird-JavaScript-10/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-22T13:37:21.924Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weirdJavaScript 10：基本型別（純值）與物件型別">
+<meta name="twitter:description" content="JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#資料型別（Data-Type）">1&nbsp;&nbsp;<b>資料型別（Data Type）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#基本型別（Primitive）">2&nbsp;&nbsp;<b>基本型別（Primitive）</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#字串（String）">2.1&nbsp;&nbsp;字串（String）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#數字（Number）">2.2&nbsp;&nbsp;數字（Number）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#布林值（Boolean）">2.3&nbsp;&nbsp;布林值（Boolean）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#空值（Null）">2.4&nbsp;&nbsp;空值（Null）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#未定義（Undefined）">2.5&nbsp;&nbsp;未定義（Undefined）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Symbol（ES6-新增的型別）">2.6&nbsp;&nbsp;Symbol（ES6 新增的型別）</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#物件型別（Object）">3&nbsp;&nbsp;<b>物件型別（Object）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weirdJavaScript 10：基本型別（純值）與物件型別
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-10T06:14:00.000Z" itemprop="datePublished">Aug 10 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？</p>
+  <a id="more"></a>
+
+<hr>
+
+<h3 id="資料型別（Data-Type）"><a href="#資料型別（Data-Type）" class="headerlink" title="資料型別（Data Type）"></a>資料型別（Data Type）</h3><p>其實在 02 篇就已經大概介紹過，在 JavaScript 中，資料型別分為兩類：</p>
+<ol>
+<li>基本型別／原始型別（純值）</li>
+<li>物件型別（物件）</li>
+</ol>
+<p>也就是說，在 JS 中，所有的<strong>值（Value）</strong>都是<strong>純值</strong>或<strong>物件</strong>。</p>
+<p>更精闢一點地說，<strong>所有的值，都是物件</strong>。（這個概念比較進階，等到我們更深入瞭解物件後，就能理解。）</p>
+<p>這篇主要介紹這兩大資料型別。</p>
+<hr>
+
+<h3 id="基本型別（Primitive）"><a href="#基本型別（Primitive）" class="headerlink" title="基本型別（Primitive）"></a>基本型別（Primitive）</h3><blockquote>
+<p>A type of data that represent <strong>a single value</strong>.(Not an object)</p>
+</blockquote>
+<p>基本型別，又稱<strong>原始型別</strong>，又細分為六種，每一種都是<strong>值（Value）</strong>，因此基本型別指的就是：<strong>「純值」</strong>。</p>
+<p>什麼意思？相較於<strong>物件</strong>作為 <strong>Name/Value 的集合體</strong>，基本型別就只有它這個<strong>值（Value）</strong>。</p>
+<p>而這六種值分別是：</p>
+<h4 id="字串（String）"><a href="#字串（String）" class="headerlink" title="字串（String）"></a>字串（String）</h4><blockquote>
+<p>a sequence of characters</p>
+</blockquote>
+<p>用<strong>單引號（’Fei’）</strong>或<strong>雙引號（”Fei”）</strong>包覆的內容就屬於字串，如 <code>&#39;Fei&#39;</code> 、 <code>&#39;5566&#39;</code> 、 <code>&quot;True&quot;</code> 、 <code>&#39;undefined&#39;</code> 等等。</p>
+<p>注意！單引號與雙引號混用是不被接受的： <del><code>&quot;Fei&#39;</code></del> 。</p>
+<p>我會推薦使用<strong>單引號（’’）</strong>來表達字串，因為使用雙引號的話，如果字串內容遇到雙引號或其他特殊字元，就必須作<strong>跳脫字元（Escape Character）</strong>處理，單引號少有這樣的衝突。如下範例：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> noteA = <span class="hljs-string">'"JavaScript" is not equal to "Java"!!'</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> noteB = <span class="hljs-string">""</span>JavaScript<span class="hljs-string">" is not equal to "</span>Java<span class="hljs-string">"!!"</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(noteA) ;　<span class="hljs-comment">// "JavaScript" is not equal to "Java"!!</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(noteB) ;　<span class="hljs-comment">// SyntaxError: Unexpected identifier</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 利用反斜線（\）跳脫字元後，noteB 即可執行：</span></span><br><span class="line"><span class="hljs-keyword">var</span> noteB = <span class="hljs-string">"\"JavaScript\" is not equal to \"Java\"!!"</span> ;</span><br></pre></td></tr></table></figure></p>
+<h4 id="數字（Number）"><a href="#數字（Number）" class="headerlink" title="數字（Number）"></a>數字（Number）</h4><blockquote>
+<p>floating point number.<br>Unlike other programming languages, there’s only one ‘number’ type.</p>
+</blockquote>
+<p>和其他語言不同， JavaScript 的數字型別都屬於<strong>浮點數（Float）</strong>。</p>
+<p>除了常見的整數或小數，JS 還包含一些特別的數字：</p>
+<ul>
+<li><code>Infinity</code>（無限大）</li>
+<li><code>-Infinity</code>（無限小）</li>
+<li><code>NaN</code>（不是數字，Not a Number）</li>
+</ul>
+<p>任何正數除以 <code>0</code> 都會得到 <code>Infinity</code> ；反之，任何負數除以 <code>0</code> 都會得到 <code>-Infinity</code>。</p>
+<p><code>Infinity</code> 除以 <code>Infinity</code> 會得到 <code>NaN</code>。</p>
+<p><code>0</code> 除以 <code>0</code> 也會得到 <code>NaN</code>。</p>
+<p>其實，只要任何運算中出現 <code>NaN</code> ，結果都會是 <code>NaN</code>。</p>
+<p> <code>NaN</code> 甚至不等於自己，更別說等於任何數字。但是， <code>NaN</code> 還是屬於<strong>數字型別（Number）</strong>。</p>
+<p>如果你想判斷一個變數或值是不是 <code>NaN</code> ，可以用 <code>isNaN()</code> 來判斷。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> === <span class="hljs-literal">NaN</span>) ; <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> === <span class="hljs-number">100</span>) ; <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">isNaN</span>(<span class="hljs-string">'NaN'</span>) ; <span class="hljs-comment">// true ；因為 'NaN' 無法轉成其他數字。</span></span><br><span class="line"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">NaN</span> ; <span class="hljs-comment">// Number ；NaN 屬於數字型別（Number）。</span></span><br></pre></td></tr></table></figure></p>
+<p>回到數字型別本身，由於 JS 對 Number 的處理採用的是「<a href="https://zh.wikipedia.org/wiki/IEEE_754" target="_blank" rel="noopener">IEEE 754</a>」二進位浮點數算術標準，在運算上會出現極其微小的誤差，導致某些運算式的判斷會令人不解，經典案例如下：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span> === <span class="hljs-number">0.3</span>) ; <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="布林值（Boolean）"><a href="#布林值（Boolean）" class="headerlink" title="布林值（Boolean）"></a>布林值（Boolean）</h4><blockquote>
+<p>true or false</p>
+</blockquote>
+<p><del>斯斯有三種，但</del> Boolean 只有兩種值： <code>true</code>（是） 和 <code>false</code>（否）。</p>
+<p>Boolean 多被用來判斷運算式，藉此控制流程，決定要不要做某一件事，譬如 <code>if</code> ：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">55</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = <span class="hljs-number">66</span> ;</span><br><span class="line"><span class="hljs-keyword">if</span>(a &gt; b)&#123;　<span class="hljs-comment">// 55 &gt; 66 不成立， a &gt; b 會被轉成 false 代入 if，因此 if(false)</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a is LARGER than b.'</span>) ;  <span class="hljs-comment">// 這段不會執行。</span></span><br><span class="line">&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a is SMALLER than b.'</span>) ; <span class="hljs-comment">// 執行這段，印出 a is SMALLER than b.  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 JavaScript 中，判斷或比較的運算式能夠被隱性轉型成 Boolean ，好比上面這段程式碼中的 `` ，詳細我們不久後就會提到。</p>
+<h4 id="空值（Null）"><a href="#空值（Null）" class="headerlink" title="空值（Null）"></a>空值（Null）</h4><blockquote>
+<p>null represents lack of exitence.</p>
+</blockquote>
+<p>Null 只有 <code>null</code> 這個值，指的是，該變數存在於 JS（記憶體） 中，<strong>已經被宣告，可能曾經有值，但現在沒有值</strong>。</p>
+<p>如果你不想讓一個變數有前述三種值，那麼將它設定為 <code>null</code> 是<strong>可以被接受的</strong>，因為在必要時，它會被 JS <strong>強制轉型</strong>成 <code>0</code> 進行運算。請看下方程式碼：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> num = <span class="hljs-number">5566</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> nul = <span class="hljs-literal">null</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> und = <span class="hljs-literal">undefined</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(num + nul) ; <span class="hljs-comment">// 5566</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(num + und) ; <span class="hljs-comment">// NaN　ˊ&lt;_ˋ...??????</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="未定義（Undefined）"><a href="#未定義（Undefined）" class="headerlink" title="未定義（Undefined）"></a>未定義（Undefined）</h4><blockquote>
+<p>undefined represents lack of existence.</p>
+</blockquote>
+<p>Undefined 只有 <code>undefined</code> 這個值，指的是，該變數存在於 JS（記憶體） 中，<strong>已經被宣告，但尚未被賦值</strong>。</p>
+<p>一個變數如果是 <code>undefined</code> ，代表變數沒有其他值（字串、數字、null等等），才會被賦值為 <code>undefined</code>。</p>
+<p>還記得 Hoisting 嗎？ JS 在 Hoisting 階段時，會先幫我們宣告變數並賦予 <code>undefined</code> ，等到它真正執行後，才真正賦值。</p>
+<p>我們可以說， <code>undefined</code> 是 JS 用來告訴我們<strong>變數未被賦值</strong>的狀況。</p>
+<p>注意！請不要將變數賦值為 <code>undefined</code>，因為它需要運算時，會被 JS <strong>強制轉型</strong> 為 <code>NaN</code> ，如上方範例。</p>
+<p>所以， <code>undefined</code> 真正的意涵，表示<strong>變數佔據記憶體位置</strong>，但是變數還沒有被賦予其它值。</p>
+<p>總結來說，對 JS 而言， <code>null</code> 與 <code>undefined</code> 具有<strong>值不存在</strong>的意思，但實際上兩者在功能與運算仍有差異，不然何必無緣無故設計兩種型別呢？</p>
+<h4 id="Symbol（ES6-新增的型別）"><a href="#Symbol（ES6-新增的型別）" class="headerlink" title="Symbol（ES6 新增的型別）"></a>Symbol（ES6 新增的型別）</h4><blockquote>
+<p>Used in ES6. We won’t talk about this here…</p>
+</blockquote>
+<p>ES6 後才新增的型別，因為不常見<del>（我也還不會用）</del>，這裡先不談。</p>
+<p>最後，在介紹物件型別之前，我要先簡單介紹一個很重要的觀念：</p>
+<p>在 JavaScript 中，<strong>基本型別（上述六種值）</strong>的變數賦值或拷貝（Copy）大部分是以<strong>傳值（by Value）</strong>的方式實現。</p>
+<p>聽不懂？沒關係，我們會再細談的。</p>
+<hr>
+
+<h3 id="物件型別（Object）"><a href="#物件型別（Object）" class="headerlink" title="物件型別（Object）"></a>物件型別（Object）</h3><p>相較於基本型別有六種（純值），物件型別只有一種，就是<strong>物件（Object）</strong>。</p>
+<p>什麼是物件？我們說過，物件是<strong>Name/Value（鍵值配對） 的集合體</strong>，每一對 Name/Value 都是物件的<strong>屬性（Property）</strong>，其中， Value 可以是其他純值或物件。</p>
+<p>創造物件有很多種方式，最常見的是<strong>物件實字（Object Literal）</strong>，我們用程式碼來看會比較清楚：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = &#123;</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是'Fei'（純值）</span></span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個物件。</span></span><br><span class="line">  family: &#123;</span><br><span class="line">    dad: <span class="hljs-string">'Jason'</span>,</span><br><span class="line">    mom: <span class="hljs-string">'Teresa'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure></p>
+<p>好，重點來了！物件型別只有一種，就是物件（Object），但它擁有<strong>次型別（subtype）</strong>，常見的有這兩個：</p>
+<ul>
+<li><strong>陣列（Array）</strong>，又稱為陣列物件。</li>
+<li><strong>函式（Function）</strong>，又稱為函式物件。</li>
+</ul>
+<p>當然還包括其他次型別物件，等我們有遇到再介紹。</p>
+<p>所以，物件內容其實可以很複雜：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = &#123;</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是'Fei'（純值）</span></span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個物件。</span></span><br><span class="line">  family: &#123;</span><br><span class="line">    dad: <span class="hljs-string">'Jason'</span>,</span><br><span class="line">    mom: <span class="hljs-string">'Teresa'</span>,</span><br><span class="line">    bro: <span class="hljs-string">'Bai'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個陣列，因為陣列也屬於物件的一種。</span></span><br><span class="line">  friends: [<span class="hljs-string">'Shiba'</span>,<span class="hljs-string">'giraffe'</span>,<span class="hljs-string">'Fish'</span>],</span><br><span class="line">  <span class="hljs-comment">// Method: 一組 Name/Value ，其中 Value 是一個函式，因為函式也屬於物件的一種。</span></span><br><span class="line">  say: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Welcome to my blog!!'</span>) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure></p>
+<p>物件中的函式 ，我們稱之為物件的<strong>方法（Method）</strong>，既然是 function ，當然可以呼叫。</p>
+<p>使用<strong>點運算子（.）</strong>取用物件內的屬性或方法：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(person.name) ; <span class="hljs-comment">// Fei</span></span><br><span class="line">person.say() ; <span class="hljs-comment">// 'Welcome to my blog!!'</span></span><br></pre></td></tr></table></figure></p>
+<p>之後我們會更深入探討陣列、函式與物件的關係。</p>
+<p>簡言之，物件擁有一組以上的<strong>屬性（Property）</strong>或<strong>方法（Method）</strong>，而屬性和方法也必然符合「鍵值配對」法則。</p>
+<p>最後，在進到結論之前，我要先簡單介紹一個很重要的觀念：</p>
+<p>在 JavaScript 中，<strong>物件型別（也就是物件這一種值）</strong>的變數賦值或拷貝（Copy）大部分是以<strong>傳參考（by Reference）</strong>的方式實現。</p>
+<p><strong>傳值（By Value）</strong>和<strong>傳參考（By Reference）</strong>是 JavaScript 處理資料的運作邏輯，也是它偷偷不告訴你的事情之一。</p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>在 JS 中，所有的值（Value）都是純值或物件。</li>
+<li>JS 內建的資料型別分兩大類，分別是基本型別與物件型別。</li>
+<li>基本型別（Primitive）有六種：<ul>
+<li>字串（String）</li>
+<li>數字（Number）</li>
+<li>布林值（Boolean）</li>
+<li>空值（Null）</li>
+<li>未定義（Undefined）</li>
+<li>符號（Symbol，ES6 新增的型別）</li>
+</ul>
+</li>
+<li>物件型別（Object）只有一種，就是物件（Object）。</li>
+<li>物件型別包含陣列、函式等次型別，它們都屬於特殊的物件。</li>
+<li>所以，JS 內建的資料型別總共有 7 種：6 種純值 + 1 種物件。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 3-20</li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10190873" target="_blank" rel="noopener">重新認識 JavaScript: Day 03 變數與資料型別</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10190962" target="_blank" rel="noopener">重新認識 JavaScript: Day 04 物件、陣列以及型別判斷</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/11/weird-JavaScript-11/">weirdJavaScript 11：運算子</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/10/weird-JavaScript-09/">weirdJavaScript 09：動態型別</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/10/weird-JavaScript-10/';
+        this.page.identifier = '2019/08/10/weird-JavaScript-10/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

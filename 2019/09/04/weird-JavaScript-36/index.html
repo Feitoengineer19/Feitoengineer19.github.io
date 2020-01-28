@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weird-JavaScript 36：函式程式設計（一） - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="邁向進階 JavaScript ：函式程式設計（Functional Programming）">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weird-JavaScript 36：函式程式設計（一）">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/09/04/weird-JavaScript-36/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="邁向進階 JavaScript ：函式程式設計（Functional Programming）">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-22T13:39:11.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weird-JavaScript 36：函式程式設計（一）">
+<meta name="twitter:description" content="邁向進階 JavaScript ：函式程式設計（Functional Programming）">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#函式程式設計（Functional-Programming）">1&nbsp;&nbsp;<b>函式程式設計（Functional Programming）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">2&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">3&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weird-JavaScript 36：函式程式設計（一）
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-09-04T15:40:04.000Z" itemprop="datePublished">Sep 4 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>邁向進階 JavaScript ：函式程式設計（Functional Programming）</p>
+  <a id="more"></a>
+
+<h3 id="函式程式設計（Functional-Programming）"><a href="#函式程式設計（Functional-Programming）" class="headerlink" title="函式程式設計（Functional Programming）"></a>函式程式設計（Functional Programming）</h3><p>我們知道，一級函式是 JavaScript 的重點特色，讓我們能夠將函式當作參數傳入另一個函式，而這樣的特色，讓 JavaScript 得以函式為核心，去設計各式各樣的程式語法，達到不同的效果與目的，而這個思考與實作的過程就是所謂的<strong>函式程式設計（Functional Programming）</strong>。</p>
+<p>在課程中，講師以範例來說明：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] ;</span><br><span class="line"><span class="hljs-keyword">var</span> arr2 = [] ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; arr1.length ; i++)&#123;</span><br><span class="line">  arr2.push(arr1[i] * <span class="hljs-number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr2) ;</span><br></pre></td></tr></table></figure></p>
+<p>上面這個範例中，我們想將陣列 <code>arr1</code> 中的每一個數值乘以 <code>2</code> 以後傳入 <code>arr2</code> 中。</p>
+<p>身為工程師，我們可以思考如何優化這段程式碼？如何讓程式碼更為簡潔？更為彈性？</p>
+<p>其實，我們可以善用<strong>函式</strong>讓程式碼更為<strong>彈性</strong>，只要改動函式的參數或程式屬性，就可以<strong>減少許多重複的工作</strong>，這就是函式程式設計的基本思維。</p>
+<p>我們試著改寫上面這段程式碼，如下：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapForEach</span>(<span class="hljs-params">array, func</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> newArr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; array.length ; i++)&#123;</span><br><span class="line">    newArr.push(func(array[i]));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> newArr ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> arr2 = mapForEach(arr1, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> item * <span class="hljs-number">2</span> ;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr2);</span><br></pre></td></tr></table></figure></p>
+<p>我們可以宣告一個函式 <code>mapForEach</code> ，並規定傳入兩個參數，第一個 <code>array</code> 是<strong>我們想要處理的陣列</strong>，第二個 <code>func</code> 是<strong>我們想要針對陣列中每一個值進行的運算方式</strong>。 </p>
+<p>現在，我們只要將 <code>arr1</code> 與 <code>function(item){return item * 2　;}</code> 分別當作參數 <code>array</code> 與 <code>func</code> 傳入函式 <code>mapForEach</code> 中，執行回傳的結果再賦值給 <code>arr2</code> ，這樣的方式與改寫前的範例程式碼，執行的結果是相同的。</p>
+<p>不同的地方在哪？</p>
+<p>不同的地方在於，我們把原本程式碼的執行任務：「將陣列 <code>arr1</code> 中的每一個數值乘以 <code>2</code> 以後傳入 <code>arr2</code> 中」這一整件事情<strong>包裝</strong>成函式 <code>mapForEach</code> ，它的功能變成：「將陣列 <code>array</code> 中的每一個數值經過 <code>func</code> 運算以後 <code>return</code>」。</p>
+<p>如此一來，我們<strong>可以自定義</strong>傳入的參數 <code>array</code> 和 <code>func</code> ，讓函式 <code>mapForEach</code> 的彈性與複用性變高了！</p>
+<p>譬如，我想要判斷陣列中的數值是否大於 <code>1</code> ，我只要改變傳入 <code>func</code> 的參數：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapForEach</span>(<span class="hljs-params">array, func</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> newArr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; array.length ; i++)&#123;</span><br><span class="line">    newArr.push(func(array[i]));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> newArr ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> arr2 = mapForEach(arr1, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> item &gt; <span class="hljs-number">1</span> ;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr2);</span><br></pre></td></tr></table></figure></p>
+<p>當然，我們也可以把函式存進一個變數後，將該變數當作參數傳入另一個函式，甚至先做一點處理。</p>
+<p>課程中，講師利用 <code>bind()</code> 方法，改寫上面這段程式碼：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapForEach</span>(<span class="hljs-params">array, func</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> newArr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; array.length ; i++)&#123;</span><br><span class="line">    newArr.push(func(array[i]));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> newArr ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> checkPastLimit = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">limiter, item</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> itme &gt; limiter ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> arr2 = mapForEach(arr1, checkPastLimit.bind(<span class="hljs-keyword">this</span>, <span class="hljs-number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr2);</span><br></pre></td></tr></table></figure></p>
+<p>透過 <code>bind()</code> ，我們可以自由綁定參數 <code>limiter</code> 的值。</p>
+<p>如果不使用 <code>bind()</code> 呢？有沒有辦法改寫 <code>checkPastLimit.bind(this, 2)</code> ，設計一個函式，只要傳入 <code>limiter</code> 的值，還能達到同樣的結果？</p>
+<p>先別急著往下看，請試著動手寫寫看！</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapForEach</span>(<span class="hljs-params">array, func</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> newArr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; array.length ; i++)&#123;</span><br><span class="line">    newArr.push(func(array[i]));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> newArr ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 我自己寫的錯誤答案： </span></span><br><span class="line"><span class="hljs-comment">// var setLimiter = function(limiter) &#123;</span></span><br><span class="line"><span class="hljs-comment">// 我以為 limiter 會被當作參數傳入（但並不會，因為這裡不是執行函式）</span></span><br><span class="line"><span class="hljs-comment">//   return function(limiter, item)&#123;</span></span><br><span class="line"><span class="hljs-comment">//     return item &gt; limiter ;</span></span><br><span class="line"><span class="hljs-comment">//   &#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 正確解答：</span></span><br><span class="line"><span class="hljs-keyword">var</span> setLimiter = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">limiter</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 創造函式物件</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">limiter, item</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item &gt; limiter ;</span><br><span class="line">  &#125;.bind(<span class="hljs-keyword">this</span>, limiter);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> arr2 = mapForEach(arr1, setLimiter(<span class="hljs-number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr2);</span><br></pre></td></tr></table></figure></p>
+<p>要特別注意的是，函式 <code>setLimiter</code> 中的 <code>return function(limiter, item)</code> ，其意義為<strong>表示式</strong>，意思是<strong>創造函式物件</strong> <code>function(limiter, item)</code> 後並回傳，並非執行函式 <code>function(limiter, item)</code> 。</p>
+<p>所以，函式 <code>setLimiter</code> 傳入的參數 <code>limiter</code> 並不會作為參數傳入函式 <code>function(limiter, item)</code> ，還是要利用 <code>bind()</code> 綁定 <code>limiter</code> 的值，此時， <code>limiter</code> 會根據作用域找到函式 <code>setLimiter</code> 傳進來的參數 <code>limiter</code> 並取用。</p>
+<p>這個概念在我自己嘗試解答的時候也混淆了，分清楚<strong>創造函式</strong>與<strong>執行函式</strong>，真的很重要！</p>
+<p>最後，講師也提醒我們，在設計函式程式時，<strong>盡量不要改變（Mutate）原始的資料（Data）</strong>，也就是說，<strong>注意傳值與物件傳參考的特性</strong>，在複製資料時，以<strong>深拷貝</strong>或<strong>創造新的值（物件）</strong>來傳遞資料，如 <code>[].push()</code> 、 <code>Object.assign({}, obj)</code> 等方法。</p>
+<p>動手寫吧！將你的任務包裝成一個一個的函式，設計屬於你的 JavaScript ！</p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>函式程式設計的思維是將任務拆分、打包成一個一個的函式（與變數），透過傳入參數的方式，減少重複撰寫程式碼，提升函式的彈性與複用性。</li>
+<li>釐清創造函式與執行函式的時機，有利於函式程式設計，瞭解函式作用域、範圍鍊與閉包的原理。</li>
+<li>設計函式程式時，盡量不要改變（Mutate）原始的資料（Data），注意物件傳參考的特性，以深拷貝（請見參考資料文章）或創造新物件的方式來傳遞資料。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-51</li>
+<li><a href="https://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/" target="_blank" rel="noopener">[Javascript] 關於 JS 中的淺拷貝和深拷貝</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/09/05/weird-JavaScript-37/">weird-JavaScript 37：函式程式設計（二）</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/31/weird-JavaScript-35/">weird-JavaScript 35：call()、apply()、bind()</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/09/04/weird-JavaScript-36/';
+        this.page.identifier = '2019/09/04/weird-JavaScript-36/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

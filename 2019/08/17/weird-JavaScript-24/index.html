@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weirdJavaScript 24： 參數（parameter v.s. arguments） - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="函式的參數（Parameter）和參數 arguments 有什麼關係？">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weirdJavaScript 24： 參數（parameter v.s. arguments）">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/17/weird-JavaScript-24/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="函式的參數（Parameter）和參數 arguments 有什麼關係？">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/08/17/weird-JavaScript-24/argument.JPG">
+<meta property="og:updated_time" content="2019-11-22T13:38:28.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weirdJavaScript 24： 參數（parameter v.s. arguments）">
+<meta name="twitter:description" content="函式的參數（Parameter）和參數 arguments 有什麼關係？">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/17/weird-JavaScript-24/argument.JPG">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#參數（Parameter）">1&nbsp;&nbsp;<b>參數（Parameter）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參數（Arguments）">2&nbsp;&nbsp;<b>參數（Arguments）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">3&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">4&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weirdJavaScript 24： 參數（parameter v.s. arguments）
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-17T06:34:46.000Z" itemprop="datePublished">Aug 17 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>函式的參數（Parameter）和參數 <code>arguments</code> 有什麼關係？</p>
+  <a id="more"></a>
+
+<h3 id="參數（Parameter）"><a href="#參數（Parameter）" class="headerlink" title="參數（Parameter）"></a>參數（Parameter）</h3><p>當我們在宣告函式時，會定義所需帶入的數值，也就是 <code>()</code> 裡面的變數，這個被丟進函數裡的數就是所謂的<strong>參數（Parameter）</strong>。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// a 和　b 就是函式的參數</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a * b) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calc(<span class="hljs-number">55</span>, <span class="hljs-number">66</span>) ; <span class="hljs-comment">// 55 和 66 就是函式 calc 的參數</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="參數（Arguments）"><a href="#參數（Arguments）" class="headerlink" title="參數（Arguments）"></a>參數（Arguments）</h3><p>而在 JavaScript 中有一個關鍵字也叫作<strong>參數： <code>arguments</code></strong>，它跟變數 <code>this</code> 一樣，在函式執行後被創造，指的是<strong>函式執行環境裡，那些被丟進來的參數們</strong>。</p>
+<p><img src="/2019/08/17/weird-JavaScript-24/argument.JPG" alt="函式呼叫後的創造階段：創造執行環境、this、arguments以及參考外部環境（圖片源自參考資料 1.）"></p>
+<br>
+
+<blockquote>
+<p>The parameters you pass to a function<br>JavaScript gives you a keyword of the same name which contains them all</p>
+</blockquote>
+<p>簡單來說，<code>arguments</code> 就是<strong>函式參數的集合</strong>，它會以<strong>類陣列（Array-like）</strong>的形式存在於函式執行環境中，供我們取用。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>) ; <span class="hljs-comment">// Arguments(2):[55, 66]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calc(<span class="hljs-number">55</span>, <span class="hljs-number">66</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>必須謹記！ <code>arguments</code> 是<strong>類陣列</strong>，而不是陣列。雖然它擁有部分陣列的特性，但<strong>大多數陣列可以使用的方法， <code>argument</code> 都不能使用</strong>。</p>
+<p>不過，我們可以透過<strong>取用運算子 <code>[]</code></strong> 來取用 arguments 裡的某一個參數。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]) ; <span class="hljs-number">66</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calc(<span class="hljs-number">55</span>, <span class="hljs-number">66</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>在 JavaScript 中，我們可以設定函式所欲代入的參數，但真正執行時卻不一定要代入參數，這不會導致 JS 報錯。</p>
+<p>當我們執行函式並代入參數時，必須<strong>由左至右</strong>逐一代入定義的參數，任意跳過都是不被 JS 接受的。</p>
+<p>如果沒有參數被丟進函式，JS 引擎仍會執行函式，由於變數 Hoisting 的特性，沒有代入的參數會自動被定義成 <code>undefined</code> 。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b, c</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a) ; </span><br><span class="line">  <span class="hljs-built_in">console</span>.log(b) ; </span><br><span class="line">  <span class="hljs-built_in">console</span>.log(c) ; <span class="hljs-comment">// undefined</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>) ; <span class="hljs-comment">// Arguments(2):[55, 66]</span></span><br><span class="line">&#125;</span><br><span class="line">calc(<span class="hljs-number">55</span>, ,<span class="hljs-number">66</span>) ; <span class="hljs-comment">//  SyntaxError: Unexpected token</span></span><br><span class="line">calc(<span class="hljs-number">55</span>, <span class="hljs-number">66</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>在 ES6 之後，我們可以在宣告函式時<strong>設定參數的預設值</strong>，或直接在函式區塊內透過邏輯運算子 <code>||</code> 設定預設值，避免 <code>undefined</code> 。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b, c=<span class="hljs-number">100</span></span>)</span>&#123;</span><br><span class="line">  b = b || <span class="hljs-number">66</span> ;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a) ; </span><br><span class="line">  <span class="hljs-built_in">console</span>.log(b) ; </span><br><span class="line">  <span class="hljs-built_in">console</span>.log(c) ; <span class="hljs-comment">// 100</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a * b * c) ; </span><br><span class="line">&#125;</span><br><span class="line">calc(<span class="hljs-number">55</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>我們可以利用 <code>arguments.length</code> 的方法來<strong>判斷傳入參數的數量</strong>或參數是否為 <code>undefined</code>：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b, c=<span class="hljs-number">100</span></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">arguments</span>.length === <span class="hljs-number">0</span>)&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> ; <span class="hljs-comment">// 結束函式(不做任何事)</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a * b * c) ; </span><br><span class="line">&#125;</span><br><span class="line">calc() ;</span><br></pre></td></tr></table></figure></p>
+<p>在 ES6 以後，我們可以透過<strong>展開運算子（Spread Operator） <code>...</code></strong> 將陣列中的值逐一展開後丟進函式中處理：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> nums = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] ;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b, c</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a * b * c) ; <span class="hljs-comment">// 6</span></span><br><span class="line">&#125;</span><br><span class="line">calc(...nums) ;</span><br></pre></td></tr></table></figure></p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>函式被呼叫後，JS 引擎會自動幫我們宣告一個變數 <code>arguments</code> 。</li>
+<li><code>arguments</code> 是函式參數的集合，會以類陣列的形式存在於函式執行環境中供我們取用。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 3-39</li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/20/weird-JavaScript-25/">weird-JavaScript 25： 重載函式</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/17/weird-JavaScript-23/">weirdJavaScript 23：陣列</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/17/weird-JavaScript-24/';
+        this.page.identifier = '2019/08/17/weird-JavaScript-24/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

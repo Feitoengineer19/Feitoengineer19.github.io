@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>weirdJavaScript 05：單執行緒、同步執行、非同步回呼 - Fei&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="JavaScript 本身是一門單執行緒且同步執行的高階程式語言。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="weirdJavaScript 05：單執行緒、同步執行、非同步回呼">
+<meta property="og:url" content="https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/index.html">
+<meta property="og:site_name" content="Fei&#39;s Blog">
+<meta property="og:description" content="JavaScript 本身是一門單執行緒且同步執行的高階程式語言。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/eventQueue.JPG">
+<meta property="og:updated_time" content="2019-11-22T13:36:56.155Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="weirdJavaScript 05：單執行緒、同步執行、非同步回呼">
+<meta name="twitter:description" content="JavaScript 本身是一門單執行緒且同步執行的高階程式語言。">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/eventQueue.JPG">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Fei
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#單執行緒（Single-Threaded）">1&nbsp;&nbsp;<b>單執行緒（Single Threaded）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#同步執行（Synchronous-Execution）">2&nbsp;&nbsp;<b>同步執行（Synchronous Execution）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#非同步（Asynchronous）">3&nbsp;&nbsp;<b>非同步（Asynchronous）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            weirdJavaScript 05：單執行緒、同步執行、非同步回呼
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-08-06T10:54:48.000Z" itemprop="datePublished">Aug 6 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>JavaScript <strong>本身</strong>是一門<strong>單執行緒</strong>且<strong>同步執行</strong>的高階程式語言。</p>
+  <a id="more"></a>
+
+<h3 id="單執行緒（Single-Threaded）"><a href="#單執行緒（Single-Threaded）" class="headerlink" title="單執行緒（Single Threaded）"></a>單執行緒（Single Threaded）</h3><blockquote>
+<p><strong>One command at a time.</strong></p>
+</blockquote>
+<p>單執行緒的意思是， JavaScript 一次<strong>只能做一件事情</strong>（一行指令）。</p>
+<hr>
+
+<h3 id="同步執行（Synchronous-Execution）"><a href="#同步執行（Synchronous-Execution）" class="headerlink" title="同步執行（Synchronous Execution）"></a>同步執行（Synchronous Execution）</h3><blockquote>
+<p><strong>One at a time and in order.</strong></p>
+</blockquote>
+<p>同步執行的意思是， JavaScript 一次只能做一件事情，這件做完，才能做下一件，<strong>按照順序一件接著一件</strong>（逐行執行命令）。</p>
+<p>小飛：「可是我聽過 JavaScript 有一個特色叫做 <strong>非同步（Asynchronous）</strong>耶？」</p>
+<p>好，既然你誠心誠意發問了，我就…</p>
+<hr>
+
+<h3 id="非同步（Asynchronous）"><a href="#非同步（Asynchronous）" class="headerlink" title="非同步（Asynchronous）"></a>非同步（Asynchronous）</h3><blockquote>
+<p><strong>More than one at a time.</strong></p>
+</blockquote>
+<p>非同步的意思是，「同時間可以做不只一件事」。</p>
+<p>注意！我說的<strong>不是</strong> JavaScript。再次強調，<strong>JS 引擎是同步執行的</strong>，一次只能做一件事且按照指令順序。</p>
+<p>那為什麼非同步會是 JavaScript 的特色呢？那是因為<strong>JavaScript 引擎可以和瀏覽器內其他引擎溝通，互相合作</strong>。</p>
+<p>事實上，瀏覽器裡不只包含 JS 引擎，也包含負責畫面呈現的<strong>渲染引擎（Rendering Engine）</strong>、獲取伺服器資料的 <strong>請求方法（HTTP Request Methods）</strong> 等等。</p>
+<p>而 JavaScript 引擎內有個東西叫作<strong>事件佇列（Event Queue）</strong>，<strong>JS 會把需要和其他引擎合作的事件，暫時放在事件佇列裡等待處理</strong>。</p>
+<p>這裡可以用兩個例子來說明。</p>
+<p><font style="color: navy ; font-weight: bold">※ 例1. JS 與 Rendering Engine 合作的非同步事件</font></p>
+<p>當我們在 JavaScript 中監聽一則 <code>click</code> 事件，因為它需要使用者點擊滑鼠來觸發事件，所以 JS 會把這個事件暫時放進事件佇列中，<strong>等到 JS 逐行跑完（全域執行環境的）指令，也就是執行堆疊（Execution Stack）為空以後</strong>，再來執行這則 <code>click</code> 事件（事件觸發後由 Rendering Engine 渲染畫面）。譬如下面這段程式碼：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 全域執行開始</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'start execution (time countdown starts)'</span>) </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waitFiveSeconds</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> endTime = <span class="hljs-number">5000</span> + <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() ;</span><br><span class="line">  <span class="hljs-keyword">while</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() &lt; endTime)&#123;&#125;　<span class="hljs-comment">// 5 秒內不會做任何事，此時點擊網頁，click 事件不會立刻被執行，而是被放進事件佇列等待。</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished function (5 seconds passed)'</span>) ;　</span><br><span class="line">  <span class="hljs-comment">// 函式 waitFiveSeconds 結束（結束 waitFiveSeconds 執行堆疊）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clickHandler</span>(<span class="hljs-params"></span>)</span>&#123;　<span class="hljs-comment">// 宣告　click 事件（函式）</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click event !'</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'click'</span>,clickHandler) ; <span class="hljs-comment">// 註冊 click 事件</span></span><br><span class="line"></span><br><span class="line">waitFiveSeconds() ; <span class="hljs-comment">// 執行函式 waitFiveSeconds （建立 waitFiveSeconds 執行堆疊）</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished execution'</span>) ;　</span><br><span class="line"><span class="hljs-comment">// 全域執行結束，開始執行事件佇列的事件（執行 clickHandler -&gt; 印出 'click event !' -&gt; 結束 clickHandler）。</span></span><br><span class="line"><span class="hljs-comment">// 持續檢查事件佇列，若有新的事件觸發（被丟進佇列），便立即執行。</span></span><br></pre></td></tr></table></figure></p>
+<p>執行結果如下：</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start execution (time countdown starts)</span><br><span class="line">finished function (5 seconds passed)</span><br><span class="line">finished execution</span><br><span class="line">click event !　// 你點擊網頁（觸發 click）多少次，這裡就會有多少個 click event !</span><br></pre></td></tr></table></figure></p>
+<p><font style="color: navy ; font-weight: bold">※ 例2. JS 與 HTTP Request 合作的非同步事件</font></p>
+<p>當我們在 JavaScript 中利用 HTTP Request 向伺服器發出一則資料請求，由於等待回覆（Response）必然耗時，所以 JS 會把這個請求（Request）暫時放進事件佇列中<strong>等待回覆</strong>（請求已經發出，並由 HTTP Request Methods 執行），<strong>等到 JS 逐行跑完（全域執行環境的）指令，也就是執行堆疊（Execution Stack）為空以後</strong>，再來處理伺服器 Response 的資料。</p>
+<p><img src="/2019/08/06/weird-JavaScript-05/eventQueue.JPG" alt="JS 會優先處理腳本中的執行堆疊，最後才執行事件佇列。（圖片源自參考資料 1.）"></p>
+<center>JS 會優先處理腳本中的執行堆疊，最後才執行事件佇列。</center>
+
+<p>我們可以把事件佇列想像成 JS 引擎的對外窗口，每當 JS 遇到需要和其他引擎合作的事件，會將這些事件依序放進事件佇列，先專心跑完全域執行環境的程式碼後，再回頭逐一執行事件佇列裡的任務。</p>
+<p>你也可以把事件佇列想像成一個大函式，把需要<strong>非同步執行</strong>的事件都先放進去，爾後再拿出來執行。這樣的方式，就是所謂的<strong>非同步回呼（Asynchronous Callback）</strong>。而那些<strong>JS 需要和其他引擎合作的事件（函式）</strong>，或說，這些<strong>被 JS 放進事件佇列裡的事件（函式）</strong>，正是一種<strong>回呼函式（Callback Function）</strong>。</p>
+<p>用生活化的方式解釋回呼，大概就像這個情境：白白（JS）一次只能做一件事，他現在正在和客戶A講電話，突然客戶B來電，白白就寫了張MEMO（事件佇列）：「客戶A談完要打給客戶B」。下一秒客戶C又來電，於是白白又寫下：「B客戶談完後要打給C」。<del>然後就得加班了？</del></p>
+<p>關於回呼的概念我們之後有機會再細談，回到事件佇列上。</p>
+<p>當事件佇列裡排定的事件都處理完後，JS 也不會閒著，它會<strong>持續檢查（Continuous Check）</strong>事件佇列有沒有新的事件進來，如果有的話，就會立即處理，如 ※例1. 的程式碼。</p>
+<p>發現了嗎？ JavaScript 這樣的執行流程，依然是<strong>同步</strong>的：一次只做一件事，這個做完再做下一個，按順序執行。</p>
+<p>總而言之，JavaScript 本身雖然是<strong>同步</strong>的，但因為它能夠利用事件佇列與瀏覽器中的其他引擎互相溝通、分工合作，達到<strong>非同步</strong>的效果，非同步也就成為了 JS 的特色。</p>
+<p>最後，需要特別注意的是，<strong>JS 非同步的部分，發生在 JS 引擎之外</strong>，也就是其他協作引擎所執行的。</p>
+<hr>
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
+<li>JavaScript 本身是一門單執行緒且同步執行的高階程式語言，意思是，它一次只能做一件事情，而且必須按順序執行，執行完一件才能繼續做下一件。</li>
+<li>JavaScript 能夠利用事件佇列與瀏覽器中的其他引擎互相溝通、分工合作，利用同步達到非同步的效果，使得非同步成為 JS 的特色。</li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
+<li>JavaScript 全攻略：克服 JS 奇怪的部分 2-13、2-18</li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191427" target="_blank" rel="noopener">先來看看瀏覽器內核長怎樣吧！</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Callback_function" target="_blank" rel="noopener">MDN：Callback function</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/08/07/weird-JavaScript-06/">weirdJavaScript 06：呼叫函式、執行堆疊</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/08/06/weird-JavaScript-04/">weirdJavaScript 04：創造、提升與undefined</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/';
+        this.page.identifier = '2019/08/06/weird-JavaScript-05/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiblogtw' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Fei&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
