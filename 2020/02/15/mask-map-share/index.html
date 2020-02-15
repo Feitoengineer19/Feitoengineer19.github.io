@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>2020 口罩存貨實時地圖開發筆記 - Fei&#39;s Blog</title>
+<title>2020 口罩存貨實時地圖開發紀錄 - Fei&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -19,7 +19,7 @@
     <meta name="description" content="這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多資訊可查詢口罩供需資訊平台。  本">
 <meta name="keywords" content="JavaScript,ES6,Map,Data-visualization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020 口罩存貨實時地圖開發筆記">
+<meta property="og:title" content="2020 口罩存貨實時地圖開發紀錄">
 <meta property="og:url" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/index.html">
 <meta property="og:site_name" content="Fei&#39;s Blog">
 <meta property="og:description" content="這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多資訊可查詢口罩供需資訊平台。  本">
@@ -29,9 +29,9 @@
 <meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/promise.png">
 <meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/data.png">
 <meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/geo.png">
-<meta property="og:updated_time" content="2020-02-15T12:26:47.569Z">
+<meta property="og:updated_time" content="2020-02-15T16:43:13.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2020 口罩存貨實時地圖開發筆記">
+<meta name="twitter:title" content="2020 口罩存貨實時地圖開發紀錄">
 <meta name="twitter:description" content="這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多資訊可查詢口罩供需資訊平台。  本">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/cover.jpg">
 
@@ -96,6 +96,8 @@
             <a class="navbar-item " href="/archives">文章</a>
             
             <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="/tags">標籤</a>
             
             <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
             
@@ -209,7 +211,7 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            2020 口罩存貨實時地圖開發筆記
+            2020 口罩存貨實時地圖開發紀錄
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -219,7 +221,7 @@
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a><span>></span><a class="article-category-link" href="/categories/JavaScript/Side-project/">Side-project</a>
+            <a class="article-category-link" href="/categories/Side-project/">Side-project</a>
         </span>
         
         

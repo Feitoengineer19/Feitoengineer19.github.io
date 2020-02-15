@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>分類: JavaScript - Fei&#39;s Blog</title>
+<title>分類: Side-project - Fei&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -19,7 +19,7 @@
     <meta name="description" content="Emotional x Rational">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fei&#39;s Blog">
-<meta property="og:url" content="https://feitoengineer19.github.io/categories/JavaScript/index.html">
+<meta property="og:url" content="https://feitoengineer19.github.io/categories/Side-project/index.html">
 <meta property="og:site_name" content="Fei&#39;s Blog">
 <meta property="og:description" content="Emotional x Rational">
 <meta property="og:locale" content="zh-tw">
@@ -117,7 +117,7 @@
     <section class="section section-heading">
     <div class="container">
         <div class="content">
-            <h5><i class="far fa-folder"></i>JavaScript</h5>
+            <h5><i class="far fa-folder"></i>Side-project</h5>
         </div>
     </div>
 </section>
@@ -127,26 +127,38 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/09/20/20-shadows-of-array/" itemprop="url">JavaScipt 陣列方法的 20 道陰影</a>
+            <a href="/2020/02/15/mask-map-share/" itemprop="url">2020 口罩存貨實時地圖開發紀錄</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-20T04:38:29.000Z" itemprop="datePublished">2019年9月20日</time>
+            <time datetime="2020-02-15T11:48:56.000Z" itemprop="datePublished">2020年2月15日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+            <a class="article-category-link" href="/categories/Side-project/">Side-project</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>本文為普遍級，適合闔家觀賞。</p>
+        <p>這篇文章主要是想記錄這次<strong>「2020 口罩存貨實時地圖」</strong>的開發過程。從 2/6 衛服部健保署釋出 <a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE" target="_blank" rel="noopener">API</a> ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 <code>Promise</code> 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。</p>
+<p>目前開發成果如下圖，作品請參考<a href="https://feitoengineer19.github.io/mask-map/">連結</a>，開源程式碼請詳見 <a href="https://github.com/Feitoengineer19/mask-map" target="_blank" rel="noopener">GitHub</a> ，更多資訊可查詢<a href="https://g0v.hackmd.io/gGrOI4_aTsmpoMfLP1OU4A?fbclid=IwAR0y8WgDOr_romMEgpGJxc6q-rpGFohySn5nebBnVYm21m8hrMdvHcDUL5k#%E9%96%8B%E7%99%BC%E8%B3%87%E6%BA%90%EF%BC%9A" target="_blank" rel="noopener">口罩供需資訊平台</a>。</p>
+<p><img src="/2020/02/15/mask-map-share/cover.jpg" alt="2020 口罩存貨實時地圖"></p>
+<p>本文主要紀錄以下幾個技術面向：</p>
+<ol>
+<li>使用 <strong>leaflet.js</strong> 與 <strong>OpenStreetMap</strong> 搭建地圖資料</li>
+<li>透過 JavaScript ES6 <strong>Promise</strong> 語法串接 API</li>
+<li>使用 <strong>Leaflet.markercluster</strong> 群集化資料</li>
+<li>縣市／鄉鎮市區／關鍵字<strong>篩選功能</strong>實作</li>
+<li>透過 <strong>Geolocation</strong> 取得使用者的位置資訊</li>
+<li><strong>收藏功能</strong>實作</li>
+</ol>
+<p>好，我們開始吧！</p>
         <p class="article-more-link">
-            <a href="/2019/09/20/20-shadows-of-array/#more">閱讀更多</a>
+            <a href="/2020/02/15/mask-map-share/#more">閱讀更多</a>
         </p>
     
     </div>
