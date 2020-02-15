@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Tag: JavaScript - Fei&#39;s Blog</title>
+<title>標籤: JavaScript - Fei&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -22,7 +22,7 @@
 <meta property="og:url" content="https://feitoengineer19.github.io/tags/JavaScript/index.html">
 <meta property="og:site_name" content="Fei&#39;s Blog">
 <meta property="og:description" content="Emotional x Rational">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-tw">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fei&#39;s Blog">
 <meta name="twitter:description" content="Emotional x Rational">
@@ -46,7 +46,7 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
 
 
     
@@ -95,13 +95,13 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Search" href="javascript:;">
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
             
             
-            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+            <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Feitoengineer19">
                 
                 <i class="fab fa-github"></i>
                 
@@ -125,17 +125,64 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2020/02/15/mask-map-share/" itemprop="url">mask-map-share</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-02-15T11:48:56.000Z" itemprop="datePublished">2020年2月15日</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/zh-tw/categories/JavaScript/">JavaScript</a><span>></span><a class="article-category-link" href="/zh-tw/categories/JavaScript/Side-project/">Side-project</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="2020-口罩存貨實時地圖開發筆記"><a href="#2020-口罩存貨實時地圖開發筆記" class="headerlink" title="2020 口罩存貨實時地圖開發筆記"></a>2020 口罩存貨實時地圖開發筆記</h1><p>這篇文章主要是想記錄這次<strong>「2020 口罩存貨實時地圖」</strong>的開發過程。從 2/6 衛服部健保署釋出 <a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE" target="_blank" rel="noopener">API</a> ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 <code>Promise</code> 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。</p>
+<p>目前開發成果如下圖，作品請參考<a href="https://feitoengineer19.github.io/mask-map/">連結</a>，開源程式碼請詳見 <a href="https://github.com/Feitoengineer19/mask-map" target="_blank" rel="noopener">GitHub</a> ，更多資訊可查詢<a href="https://g0v.hackmd.io/gGrOI4_aTsmpoMfLP1OU4A?fbclid=IwAR0y8WgDOr_romMEgpGJxc6q-rpGFohySn5nebBnVYm21m8hrMdvHcDUL5k#%E9%96%8B%E7%99%BC%E8%B3%87%E6%BA%90%EF%BC%9A" target="_blank" rel="noopener">口罩供需資訊平台</a>。</p>
+<p><img src="/2020/02/15/mask-map-share/cover.jpg" alt="2020/cover.jpg"></p>
+<p>2020 口罩存貨實時地圖</p>
+<p>本文主要紀錄以下幾個技術面向：</p>
+<ol>
+<li>使用 <strong>leaflet.js</strong> 與 <strong>OpenStreetMap</strong> 搭建地圖資料</li>
+<li>透過 JavaScript ES6 <strong>Promise</strong> 語法串接 API</li>
+<li>使用 <strong>Leaflet.markercluster</strong> 群集化資料</li>
+<li>縣市／鄉鎮市區／關鍵字<strong>篩選功能</strong>實作</li>
+<li>透過 <strong>Geolocation</strong> 取得使用者的位置資訊</li>
+<li><strong>收藏功能</strong>實作</li>
+</ol>
+<p>好，我們開始吧！</p>
+        <p class="article-more-link">
+            <a href="/2020/02/15/mask-map-share/#more">閱讀更多</a>
+        </p>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/11/30/JS-Underground-B1/" itemprop="url">JS 新手地下城試煉攻略：B1-九九乘法表</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-11-30T14:46:48.000Z" itemprop="datePublished">Nov 30 2019</time>
+            <time datetime="2019-11-30T14:46:48.000Z" itemprop="datePublished">2019年11月30日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/JS-Underground-City/">JS-Underground-City</a>
+            <a class="article-category-link" href="/zh-tw/categories/JS-Underground-City/">JS-Underground-City</a>
         </span>
         
         
@@ -146,7 +193,7 @@
 <p>第一關要挑戰的是「九九乘法表」，如下圖。</p>
 <p><img src="/2019/11/30/JS-Underground-B1/F1_9-9-Multiplication-Table.JPG" alt="九九乘法表"></p>
         <p class="article-more-link">
-            <a href="/2019/11/30/JS-Underground-B1/#more">Read More</a>
+            <a href="/2019/11/30/JS-Underground-B1/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -166,12 +213,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-20T04:38:29.000Z" itemprop="datePublished">Sep 20 2019</time>
+            <time datetime="2019-09-20T04:38:29.000Z" itemprop="datePublished">2019年9月20日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/JavaScript/">JavaScript</a>
         </span>
         
         
@@ -180,7 +227,7 @@
     
         <p>本文為普遍級，適合闔家觀賞。</p>
         <p class="article-more-link">
-            <a href="/2019/09/20/20-shadows-of-arrayJS/#more">Read More</a>
+            <a href="/2019/09/20/20-shadows-of-arrayJS/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -200,12 +247,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-10T04:32:42.000Z" itemprop="datePublished">Sep 10 2019</time>
+            <time datetime="2019-09-10T04:32:42.000Z" itemprop="datePublished">2019年9月10日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/JavaScript/">JavaScript</a>
         </span>
         
         
@@ -215,7 +262,7 @@
         <p>今天上課的時候，老師分享了幾個捲動敘事的網頁作品。</p>
 <p>發現自己對 <code>scroll</code> 不是很熟悉，就爬了文章來練習，順手記錄成這篇。</p>
         <p class="article-more-link">
-            <a href="/2019/09/10/JS-scroll-practice/#more">Read More</a>
+            <a href="/2019/09/10/JS-scroll-practice/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -235,12 +282,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-09T15:00:42.000Z" itemprop="datePublished">Sep 9 2019</time>
+            <time datetime="2019-09-09T15:00:42.000Z" itemprop="datePublished">2019年9月9日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/weird-JavaScript/">weird-JavaScript</a>
         </span>
         
         
@@ -249,7 +296,7 @@
     
         <p>欸！ JavaScript 裡面的所有東西都是物件！</p>
         <p class="article-more-link">
-            <a href="/2019/09/09/weird-JavaScript-40/#more">Read More</a>
+            <a href="/2019/09/09/weird-JavaScript-40/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -269,12 +316,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-08T04:43:42.000Z" itemprop="datePublished">Sep 8 2019</time>
+            <time datetime="2019-09-08T04:43:42.000Z" itemprop="datePublished">2019年9月8日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/weird-JavaScript/">weird-JavaScript</a>
         </span>
         
         
@@ -283,7 +330,7 @@
     
         <p>來瞭解原型吧！　　</p>
         <p class="article-more-link">
-            <a href="/2019/09/08/weird-JavaScript-39/#more">Read More</a>
+            <a href="/2019/09/08/weird-JavaScript-39/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -303,12 +350,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-07T10:33:03.000Z" itemprop="datePublished">Sep 7 2019</time>
+            <time datetime="2019-09-07T10:33:03.000Z" itemprop="datePublished">2019年9月7日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/weird-JavaScript/">weird-JavaScript</a>
         </span>
         
         
@@ -317,7 +364,7 @@
     
         <p>與其他程式語言不同，JavaScript 採用原型繼承的方式，將所有物件串聯起來！</p>
         <p class="article-more-link">
-            <a href="/2019/09/07/weird-JavaScript-38/#more">Read More</a>
+            <a href="/2019/09/07/weird-JavaScript-38/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -337,12 +384,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-05T08:44:45.000Z" itemprop="datePublished">Sep 5 2019</time>
+            <time datetime="2019-09-05T08:44:45.000Z" itemprop="datePublished">2019年9月5日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/weird-JavaScript/">weird-JavaScript</a>
         </span>
         
         
@@ -351,7 +398,7 @@
     
         <p>透過資源庫培養函式程式設計的思維！</p>
         <p class="article-more-link">
-            <a href="/2019/09/05/weird-JavaScript-37/#more">Read More</a>
+            <a href="/2019/09/05/weird-JavaScript-37/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -371,12 +418,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-09-04T15:40:04.000Z" itemprop="datePublished">Sep 4 2019</time>
+            <time datetime="2019-09-04T15:40:04.000Z" itemprop="datePublished">2019年9月4日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/weird-JavaScript/">weird-JavaScript</a>
         </span>
         
         
@@ -385,7 +432,7 @@
     
         <p>邁向進階 JavaScript ：函式程式設計（Functional Programming）</p>
         <p class="article-more-link">
-            <a href="/2019/09/04/weird-JavaScript-36/#more">Read More</a>
+            <a href="/2019/09/04/weird-JavaScript-36/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -405,12 +452,12 @@
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-08-31T05:38:45.000Z" itemprop="datePublished">Aug 31 2019</time>
+            <time datetime="2019-08-31T05:38:45.000Z" itemprop="datePublished">2019年8月31日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+            <a class="article-category-link" href="/zh-tw/categories/weird-JavaScript/">weird-JavaScript</a>
         </span>
         
         
@@ -419,41 +466,7 @@
     
         <p><code>call()</code> 、 <code>apply()</code> 、 <code>bind()</code> 都屬於函式的方法，可以用來改變函式中 <code>this</code> 代指的對象。</p>
         <p class="article-more-link">
-            <a href="/2019/08/31/weird-JavaScript-35/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/08/29/weird-JavaScript-34/" itemprop="url">weird-JavaScript 34：閉包與回呼</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-08-29T02:03:03.000Z" itemprop="datePublished">Aug 29 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>如果你曾經使用過 jQuery 、 <code>setTimeout</code> 等 Callback Function，其實你已經使用過閉包的概念了。</p>
-        <p class="article-more-link">
-            <a href="/2019/08/29/weird-JavaScript-34/#more">Read More</a>
+            <a href="/2019/08/31/weird-JavaScript-35/#more">閱讀更多</a>
         </p>
     
     </div>
@@ -469,10 +482,10 @@
         
 <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
     <div class="pagination-previous is-invisible is-hidden-mobile">
-        <a href="/tags/JavaScript/page/0/">Prev</a>
+        <a href="/tags/JavaScript/page/0/">上一頁</a>
     </div>
     <div class="pagination-next">
-        <a href="/tags/JavaScript/page/2/">Next</a>
+        <a href="/tags/JavaScript/page/2/">下一頁</a>
     </div>
     <ul class="pagination-list is-hidden-mobile">
         
@@ -541,7 +554,7 @@
     window.FontAwesomeConfig = {
         searchPseudoElements: true
     }
-    moment.locale("en-AU");
+    moment.locale("zh-tw");
 </script>
 
 
@@ -665,7 +678,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -677,11 +690,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
             },
             CONTENT_URL: '/content.json',
         };
