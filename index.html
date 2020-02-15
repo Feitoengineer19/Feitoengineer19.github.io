@@ -118,7 +118,7 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2020/02/15/mask-map-share/" itemprop="url">mask-map-share</a>
+            <a href="/2020/02/15/mask-map-share/" itemprop="url">2020 口罩存貨實時地圖開發筆記</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -128,17 +128,16 @@
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/zh-tw/categories/JavaScript/">JavaScript</a><span>></span><a class="article-category-link" href="/zh-tw/categories/JavaScript/Side-project/">Side-project</a>
+            <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a><span>></span><a class="article-category-link" href="/categories/JavaScript/Side-project/">Side-project</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h1 id="2020-口罩存貨實時地圖開發筆記"><a href="#2020-口罩存貨實時地圖開發筆記" class="headerlink" title="2020 口罩存貨實時地圖開發筆記"></a>2020 口罩存貨實時地圖開發筆記</h1><p>這篇文章主要是想記錄這次<strong>「2020 口罩存貨實時地圖」</strong>的開發過程。從 2/6 衛服部健保署釋出 <a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE" target="_blank" rel="noopener">API</a> ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 <code>Promise</code> 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。</p>
+        <p>這篇文章主要是想記錄這次<strong>「2020 口罩存貨實時地圖」</strong>的開發過程。從 2/6 衛服部健保署釋出 <a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE" target="_blank" rel="noopener">API</a> ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 <code>Promise</code> 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。</p>
 <p>目前開發成果如下圖，作品請參考<a href="https://feitoengineer19.github.io/mask-map/">連結</a>，開源程式碼請詳見 <a href="https://github.com/Feitoengineer19/mask-map" target="_blank" rel="noopener">GitHub</a> ，更多資訊可查詢<a href="https://g0v.hackmd.io/gGrOI4_aTsmpoMfLP1OU4A?fbclid=IwAR0y8WgDOr_romMEgpGJxc6q-rpGFohySn5nebBnVYm21m8hrMdvHcDUL5k#%E9%96%8B%E7%99%BC%E8%B3%87%E6%BA%90%EF%BC%9A" target="_blank" rel="noopener">口罩供需資訊平台</a>。</p>
-<p><img src="/2020/02/15/mask-map-share/cover.jpg" alt="2020/cover.jpg"></p>
-<p>2020 口罩存貨實時地圖</p>
+<p><img src="/2020/02/15/mask-map-share/cover.jpg" alt="2020 口罩存貨實時地圖"></p>
 <p>本文主要紀錄以下幾個技術面向：</p>
 <ol>
 <li>使用 <strong>leaflet.js</strong> 與 <strong>OpenStreetMap</strong> 搭建地圖資料</li>

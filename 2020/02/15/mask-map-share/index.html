@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>mask-map-share - Fei&#39;s Blog</title>
+<title>2020 口罩存貨實時地圖開發筆記 - Fei&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -16,23 +16,23 @@
 
 
 
-    <meta name="description" content="2020 口罩存貨實時地圖開發筆記這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多">
+    <meta name="description" content="這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多資訊可查詢口罩供需資訊平台。  本">
 <meta name="keywords" content="JavaScript,ES6,Map,Data-visualization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mask-map-share">
+<meta property="og:title" content="2020 口罩存貨實時地圖開發筆記">
 <meta property="og:url" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/index.html">
 <meta property="og:site_name" content="Fei&#39;s Blog">
-<meta property="og:description" content="2020 口罩存貨實時地圖開發筆記這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多">
+<meta property="og:description" content="這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多資訊可查詢口罩供需資訊平台。  本">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/cover.jpg">
-<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/Untitled.png">
-<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/Untitled%201.png">
-<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/Untitled%202.png">
-<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/Untitled%203.png">
-<meta property="og:updated_time" content="2020-02-15T11:58:10.326Z">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/tile.png">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/promise.png">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/data.png">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/geo.png">
+<meta property="og:updated_time" content="2020-02-15T12:26:47.569Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mask-map-share">
-<meta name="twitter:description" content="2020 口罩存貨實時地圖開發筆記這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多">
+<meta name="twitter:title" content="2020 口罩存貨實時地圖開發筆記">
+<meta name="twitter:description" content="這篇文章主要是想記錄這次「2020 口罩存貨實時地圖」的開發過程。從 2/6 衛服部健保署釋出 API ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 Promise 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。 目前開發成果如下圖，作品請參考連結，開源程式碼請詳見 GitHub ，更多資訊可查詢口罩供需資訊平台。  本">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/cover.jpg">
 
 
@@ -117,67 +117,77 @@
                     
                     
                     
-                    <a class="navbar-item" href="#2020-口罩存貨實時地圖開發筆記">1&nbsp;&nbsp;<b>2020 口罩存貨實時地圖開發筆記</b></a>
+                    <a class="navbar-item" href="#使用-leaflet-js-與-OpenStreetMap-搭建地圖資料">1&nbsp;&nbsp;<b>使用 leaflet.js 與 OpenStreetMap 搭建地圖資料</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#透過-JavaScript-ES6-Promise-語法串接-API">2&nbsp;&nbsp;<b>透過 JavaScript ES6 Promise 語法串接 API</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#使用-Leaflet-markercluster-群集化資料">3&nbsp;&nbsp;<b>使用 Leaflet.markercluster 群集化資料</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#縣市／鄉鎮市區／關鍵字篩選功能實作">4&nbsp;&nbsp;<b>縣市／鄉鎮市區／關鍵字篩選功能實作</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#使用-leaflet-js-與-OpenStreetMap-搭建地圖資料">1.1&nbsp;&nbsp;使用 leaflet.js 與 OpenStreetMap 搭建地圖資料</a>
+                    <a class="navbar-item" href="#replace-和-Regex-整理字串">4.1&nbsp;&nbsp;replace() 和 Regex 整理字串</a>
                     
                     
                     
-                    <a class="navbar-item" href="#透過-JavaScript-ES6-Promise-語法串接-API">1.2&nbsp;&nbsp;透過 JavaScript ES6 Promise 語法串接 API</a>
+                    <a class="navbar-item" href="#刪除陣列中特定值的方法">4.2&nbsp;&nbsp;刪除陣列中特定值的方法</a>
                     
                     
                     
-                    <a class="navbar-item" href="#使用-Leaflet-markercluster-群集化資料">1.3&nbsp;&nbsp;使用 Leaflet.markercluster 群集化資料</a>
+                    <a class="navbar-item" href="#刪除陣列中重複值的方法">4.3&nbsp;&nbsp;刪除陣列中重複值的方法</a>
                     
                     
                     
-                    <a class="navbar-item" href="#縣市／鄉鎮市區／關鍵字篩選功能實作">1.4&nbsp;&nbsp;縣市／鄉鎮市區／關鍵字篩選功能實作</a>
+                    <a class="navbar-item" href="#用-include-匹配選項和關鍵字">4.4&nbsp;&nbsp;用 include() 匹配選項和關鍵字</a>
                     
                     
                     
-                    <a class="navbar-item" href="#replace-和-Regex-整理字串">1.4.1&nbsp;&nbsp;replace() 和 Regex 整理字串</a>
+                    <a class="navbar-item" href="#將資訊樣板封裝成函式以便彈性呼叫">4.5&nbsp;&nbsp;將資訊樣板封裝成函式以便彈性呼叫</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#透過-Geolocation-取得使用者的位置資訊">5&nbsp;&nbsp;<b>透過 Geolocation 取得使用者的位置資訊</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#收藏功能實作">6&nbsp;&nbsp;<b>收藏功能實作</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#刪除陣列中特定值的方法">1.4.2&nbsp;&nbsp;刪除陣列中特定值的方法</a>
+                    <a class="navbar-item" href="#Local-Storage-暫存收藏藥局">6.1&nbsp;&nbsp;Local Storage 暫存收藏藥局</a>
                     
                     
                     
-                    <a class="navbar-item" href="#刪除陣列中重複值的方法">1.4.3&nbsp;&nbsp;刪除陣列中重複值的方法</a>
+                    <a class="navbar-item" href="#原生-JS-新增／移除-HTML-中的-class">6.2&nbsp;&nbsp;原生 JS 新增／移除 HTML 中的 class</a>
                     
                     
-                    
-                    <a class="navbar-item" href="#用-include-匹配選項和關鍵字">1.4.4&nbsp;&nbsp;用 include() 匹配選項和關鍵字</a>
-                    
+                    <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#將資訊樣板封裝成函式以便彈性呼叫">1.4.5&nbsp;&nbsp;將資訊樣板封裝成函式以便彈性呼叫</a>
+                    <a class="navbar-item" href="#後記">7&nbsp;&nbsp;<b>後記</b></a>
                     
                     
-                    
-                    <a class="navbar-item" href="#透過-Geolocation-取得使用者的位置資訊">1.5&nbsp;&nbsp;透過 Geolocation 取得使用者的位置資訊</a>
-                    
+                    <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#收藏功能實作">1.6&nbsp;&nbsp;收藏功能實作</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Local-Storage-暫存收藏藥局">1.6.1&nbsp;&nbsp;Local Storage 暫存收藏藥局</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#原生-JS-新增／移除-HTML-中的-class">1.6.2&nbsp;&nbsp;原生 JS 新增／移除 HTML 中的 class</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#後記">1.7&nbsp;&nbsp;後記</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#參考資料">1.8&nbsp;&nbsp;參考資料</a>
+                    <a class="navbar-item" href="#參考資料">8&nbsp;&nbsp;<b>參考資料</b></a>
                     
                 </div>
             </div>
@@ -199,7 +209,7 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            mask-map-share
+            2020 口罩存貨實時地圖開發筆記
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -209,17 +219,16 @@
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/zh-tw/categories/JavaScript/">JavaScript</a><span>></span><a class="article-category-link" href="/zh-tw/categories/JavaScript/Side-project/">Side-project</a>
+            <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a><span>></span><a class="article-category-link" href="/categories/JavaScript/Side-project/">Side-project</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h1 id="2020-口罩存貨實時地圖開發筆記"><a href="#2020-口罩存貨實時地圖開發筆記" class="headerlink" title="2020 口罩存貨實時地圖開發筆記"></a>2020 口罩存貨實時地圖開發筆記</h1><p>這篇文章主要是想記錄這次<strong>「2020 口罩存貨實時地圖」</strong>的開發過程。從 2/6 衛服部健保署釋出 <a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE" target="_blank" rel="noopener">API</a> ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 <code>Promise</code> 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。</p>
+        <p>這篇文章主要是想記錄這次<strong>「2020 口罩存貨實時地圖」</strong>的開發過程。從 2/6 衛服部健保署釋出 <a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE" target="_blank" rel="noopener">API</a> ，趕緊串接資料釋出簡易的存貨熱點，到今天開發告一段落，這中間從摸索地圖資料、理解 JavaScript ES6 的 <code>Promise</code> 等等，著實學到蠻多東西，也順便複習原生的 JS 語法。</p>
 <p>目前開發成果如下圖，作品請參考<a href="https://feitoengineer19.github.io/mask-map/">連結</a>，開源程式碼請詳見 <a href="https://github.com/Feitoengineer19/mask-map" target="_blank" rel="noopener">GitHub</a> ，更多資訊可查詢<a href="https://g0v.hackmd.io/gGrOI4_aTsmpoMfLP1OU4A?fbclid=IwAR0y8WgDOr_romMEgpGJxc6q-rpGFohySn5nebBnVYm21m8hrMdvHcDUL5k#%E9%96%8B%E7%99%BC%E8%B3%87%E6%BA%90%EF%BC%9A" target="_blank" rel="noopener">口罩供需資訊平台</a>。</p>
-<p><img src="/2020/02/15/mask-map-share/cover.jpg" alt="2020/cover.jpg"></p>
-<p>2020 口罩存貨實時地圖</p>
+<p><img src="/2020/02/15/mask-map-share/cover.jpg" alt="2020 口罩存貨實時地圖"></p>
 <p>本文主要紀錄以下幾個技術面向：</p>
 <ol>
 <li>使用 <strong>leaflet.js</strong> 與 <strong>OpenStreetMap</strong> 搭建地圖資料</li>
@@ -241,8 +250,7 @@
 <p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"map"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p><figure class="highlight scss hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-id">#map</span> &#123; <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>; &#125;</span><br></pre></td></tr></table></figure></p>
 <p>接著，我們就能在 JS 中初始化地圖，並加入圖磚圖層（Tile Layer），所謂圖磚圖層，指的是地圖本身的圖層，而為何特地以「圖磚」形容，那是因為地圖資料都是由一張張正方型圖片所拼貼起來的，就像磚塊一樣，如下面這張圖，仔細觀察有縱橫交錯的線，那就是圖磚之間的間隙。</p>
-<p><img src="/2020/02/15/mask-map-share/Untitled.png" alt="2020/Untitled.png"></p>
-<p>地圖資料是由一張張圖磚所拼貼而成。</p>
+<p><img src="/2020/02/15/mask-map-share/tile.png" alt="地圖資料是由一張張圖磚所拼貼而成。"></p>
 <p>回到正題。由於 leaflet.js 本身沒有地圖資料，所以必須透過第三方圖資來渲染圖層。官方建議的圖資有 <strong><a href="https://www.openstreetmap.org/#map=7/23.611/120.768" target="_blank" rel="noopener">OpenStreetMap</a>（OSM）</strong> 和 <strong><a href="https://www.mapbox.com/" target="_blank" rel="noopener">Mapbox</a></strong> ，其中，後者和 <a href="https://developers.google.com/maps/documentation?hl=zh-tw" target="_blank" rel="noopener"><strong>Google Map API</strong></a> 相同，需要串接個人註冊申請的 Access Token ，倘若流量超過，就必須綁定信用卡加以計費（<a href="https://futurecity.cw.com.tw/article/1239" target="_blank" rel="noopener">台南好想工作室 Howard 的 60 萬帳單就是這麼來的</a>）。因此，這裡選擇使用 OSM 的圖資 API 。</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 初始化</span></span><br><span class="line"><span class="hljs-keyword">const</span> map = L.map(<span class="hljs-string">'map'</span>, &#123;</span><br><span class="line">  center: [<span class="hljs-number">25.040065</span>, <span class="hljs-number">121.523235</span>], <span class="hljs-comment">// 台北市區的經緯度（地圖中心）</span></span><br><span class="line">  zoom: <span class="hljs-number">10</span>, <span class="hljs-comment">// 地圖預設尺度</span></span><br><span class="line">  zoomControl: <span class="hljs-literal">false</span> <span class="hljs-comment">// 是否顯示預設的縮放按鈕（左上角）</span></span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 新增圖資圖層（OSM 圖資）</span></span><br><span class="line"><span class="hljs-keyword">const</span> osmUrl = <span class="hljs-string">'https://&#123;s&#125;.tile.openstreetmap.org/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;.png'</span>;</span><br><span class="line">L.tileLayer(osmUrl, &#123;</span><br><span class="line">  attribution: <span class="hljs-string">'Map data &amp;copy; &lt;a href="https://www.openstreetmap.org/"&gt;OpenStreetMap&lt;/a&gt; | 資料來源：&lt;a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&amp;fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE"&gt;衛生福利部中央健康保險署&lt;/a&gt; | Created by &lt;a href="https://www.facebook.com/luffychen0715?ref=bookmarks" target="_blank"&gt;Fei&lt;/a&gt;'</span>,</span><br><span class="line">  minZoom: <span class="hljs-number">8</span>, <span class="hljs-comment">// 最小縮法尺度</span></span><br><span class="line">  maxZoom: <span class="hljs-number">18</span> <span class="hljs-comment">// 最大縮放尺度</span></span><br><span class="line">&#125;).addTo(map);</span><br></pre></td></tr></table></figure></p>
 <p>如此一來，我們便完成地圖的初步搭建。當初用 OSM 搭建完地圖後，總覺得 OSM 的圖資塞滿太多圖例（Legend），很干擾主要資料的視覺化。所以我 Google 好一陣子<a href="https://help.openstreetmap.org/questions/46642/change-street-and-highway-color" target="_blank" rel="noopener">有沒有客製化 OSM 圖例的方法</a>，但解方似乎太過複雜而最後作罷。如果是以 Mapbox 作為圖資，其實是可以客製化圖例的，但我不想負擔 Mapbox API 的流量。</p>
@@ -266,13 +274,13 @@
 <p>從開發的邏輯來思考，<strong>一定是先有資料，才能進行資料視覺化</strong>。為了避免 JS 進行資料視覺化時找不到資料的窘境（JS 尚未獲得資料，因為獲取資料需要時間），所以我們需要 <code>Promise</code> 來<strong>「保證」</strong>獲得資料這個異步行為執行完畢。</p>
 <p>簡單來說， <code>Promise</code> 物件有三種狀態，分別是<strong>等待（Pending）</strong>、<strong>實現（Fulfilled）</strong>以及<strong>拒絕（Rejected）</strong>，串起來就是 <code>Promise</code> 的生命週期。</p>
 <p>在 <strong>*<em><code>Promise</code> 中，我們可以自定義異步行為。當 *</em></strong><code>Promise</code> 初始化（實體化）後，首先處於 Pending 狀態，並根據執行結果，將所獲取的資料傳入<strong>解決（resolve）</strong>或<strong>拒絕（reject）</strong>兩個回呼函式（Callback Function），改變 <code>Promise</code> 物件的狀態，作為判斷異步行為的執行狀況。接著，再以　<code>Promise.then()</code> 來定義後續的行動。</p>
-<p><img src="/2020/02/15/mask-map-share/Untitled%201.png" alt="2020/Untitled%201.png"></p>
+<p><img src="/2020/02/15/mask-map-share/promise.png" alt="promise 語法與其生命週期"></p>
 <p>由於我們要取得兩份資料，代表有兩個 AJAX 異步事件需要執行。因此，我們可以使用 <code>Promise.all()</code> 來保證兩則異步事件<strong>都</strong>執行完畢後， JS 再繼續往下執行：</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 將 Promise 初始化封裝成一個函式</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getXML</span>(<span class="hljs-params">path</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> xhrReq = <span class="hljs-keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">    xhrReq.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">if</span>(xhrReq.status == <span class="hljs-number">200</span>) &#123;        </span><br><span class="line">        <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(xhrReq.response);</span><br><span class="line">        resolve(data); <span class="hljs-comment">// 獲取資料後，將資料傳入 resolve() 。</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'抱歉，現在無法取的即時資訊！'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    xhrReq.open(<span class="hljs-string">'GET'</span>, path);</span><br><span class="line">    xhrReq.send();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> getCityDatas = getXML(<span class="hljs-string">'./CityCountyData.json'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> getStoreDatas = getXML(<span class="hljs-string">'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json?fbclid=IwAR0RC0E5_D-1vZVHJX_wvm7VUvdHYYcGw2Q0sSk4ppxu1zvqh7hAWN0oHdU'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Promise</span>.all([getCityDatas, getStoreDatas]).then(<span class="hljs-function"><span class="hljs-params">resultDatas</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> cityDatas = resultDatas[<span class="hljs-number">0</span>];</span><br><span class="line">  <span class="hljs-keyword">const</span> storeDatas = resultDatas[<span class="hljs-number">1</span>].features;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>關於 <code>Promise</code> 語法的詳細解說，可以參考從<a href="https://legacy.gitbook.com/book/eyesofkids/javascript-start-es6-promise/details" target="_blank" rel="noopener">Promise開始的JavaScript異步生活</a>（點擊 Download PDF 即可下載），我覺得是一份很仔細的說明文件。</p>
 <hr>
 <h2 id="使用-Leaflet-markercluster-群集化資料"><a href="#使用-Leaflet-markercluster-群集化資料" class="headerlink" title="使用 Leaflet.markercluster 群集化資料"></a>使用 <strong>Leaflet.markercluster</strong> 群集化資料</h2><p>檢視從遠端取得的資料，可以知道這是由 6864 個物件所組成的<strong>陣列</strong>，一個物件儲存一家口罩販售據點的資訊，包括藥局名稱、電話、地址、口罩即時存量等等。</p>
-<p><img src="/2020/02/15/mask-map-share/Untitled%202.png" alt="2020/Untitled%202.png"></p>
+<p><img src="/2020/02/15/mask-map-share/data.png" alt="JSON 資料格式"></p>
 <p>試想，如果我們一次渲染 6864 個座標（包含 Popup 和 Icon ）在地圖上，想必網頁載入時間會非常久（我用 Chrome 實測至少超過 30 秒）。所以，我們可以使用 <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank" rel="noopener">Leaflet.markercluster</a> 這個插件將資料群集化，在小比例尺時顯示較少資料，等到我們放大地圖時才顯示詳細的資料，避免一次渲染過多資料而拖慢網頁載入時間，也提升使用者體驗。</p>
 <p>使用之前要先載入資源包：</p>
 <p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">...</span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -295,7 +303,7 @@
 <p>另外一個重點也告訴我，還是趕快把框架學會吧（哭）。還有，陣列方法也要熟悉！（推薦閱讀：<a href="https://www.oxxostudio.tw/articles/201908/js-array.html" target="_blank" rel="noopener">JavaScript Array 陣列操作方法大全 ( 含 ES6 )</a>）</p>
 <hr>
 <h2 id="透過-Geolocation-取得使用者的位置資訊"><a href="#透過-Geolocation-取得使用者的位置資訊" class="headerlink" title="透過 Geolocation 取得使用者的位置資訊"></a>透過 Geolocation 取得使用者的位置資訊</h2><p>取得使用者地理位置資訊的方法也有很多種，這次嘗試的是<a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Geolocation/Using_geolocation" target="_blank" rel="noopener">地理位置定位 (Geolocation)</a> 物件。透過 Geolocation API 取得使用者地理位置需要經過同意，當使用者進入網站時，瀏覽器就會跳出一個對話框詢問，如下圖。其他方法應該可以有客製化的 Modal ，未來有機會再研究。</p>
-<p><img src="/2020/02/15/mask-map-share/Untitled%203.png" alt="2020/Untitled%203.png"></p>
+<p><img src="/2020/02/15/mask-map-share/geo.png" alt="Geolocation 取得地理位置須徵詢用戶同意"></p>
 <p>MDN 仔細介紹了 Geolocation 的用法，這裡就稍微紀錄一下程式碼，一樣，模組化成函式：</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserPosition</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 檢查瀏覽器是否支援 Geolocation API</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(navigator.geolocation) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 定義成功的回呼函式</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showPosition</span>(<span class="hljs-params">position</span>) </span>&#123;</span><br><span class="line">      L.marker([position.coords.latitude, position.coords.longitude], &#123;<span class="hljs-attr">icon</span>: userPosIcon&#125;).addTo(map);</span><br><span class="line">      map.setView([position.coords.latitude, position.coords.longitude], <span class="hljs-number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 定義失敗的回呼函式</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showError</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'抱歉，現在無法取的您的地理位置。'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    navigator.geolocation.getCurrentPosition(showPosition, showError);</span><br><span class="line"></span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'抱歉，您的裝置不支援定位功能。'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
@@ -320,13 +328,13 @@
     
     <div class="columns is-variable is-1 is-multiline is-mobile">
     
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/zh-tw/tags/JavaScript/">#JavaScript</a></span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
     
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/zh-tw/tags/ES6/">#ES6</a></span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/ES6/">#ES6</a></span>
     
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/zh-tw/tags/Map/">#Map</a></span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Map/">#Map</a></span>
     
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/zh-tw/tags/Data-visualization/">#Data-visualization</a></span>
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Data-visualization/">#Data-visualization</a></span>
     
     </div>
     
