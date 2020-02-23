@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="請用物件實字法創造物件。">
+    <meta name="description" content="&amp;#x8ACB;&amp;#x7528;&amp;#x7269;&amp;#x4EF6;&amp;#x5BE6;&amp;#x5B57;&amp;#x6CD5;&amp;#x5275;&amp;#x9020;&amp;#x7269;&amp;#x4EF6;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 15：創造物件、物件實字">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/12/weird-JavaScript-15/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="請用物件實字法創造物件。">
+<meta property="og:description" content="&amp;#x8ACB;&amp;#x7528;&amp;#x7269;&amp;#x4EF6;&amp;#x5BE6;&amp;#x5B57;&amp;#x6CD5;&amp;#x5275;&amp;#x9020;&amp;#x7269;&amp;#x4EF6;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2020-02-23T09:32:35.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 15：創造物件、物件實字">
-<meta name="twitter:description" content="請用物件實字法創造物件。">
+<meta name="twitter:description" content="&amp;#x8ACB;&amp;#x7528;&amp;#x7269;&amp;#x4EF6;&amp;#x5BE6;&amp;#x5B57;&amp;#x6CD5;&amp;#x5275;&amp;#x9020;&amp;#x7269;&amp;#x4EF6;&amp;#x3002;">
 
 
 
@@ -111,7 +111,7 @@
                     
                     
                     
-                    <a class="navbar-item" href="#物件實字（Object-Literals）">1&nbsp;&nbsp;<b>物件實字（Object Literals）</b></a>
+                    <a class="navbar-item" href="#&amp;#x7269;&amp;#x4EF6;&amp;#x5BE6;&amp;#x5B57;&amp;#xFF08;Object-Literals&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x5BE6;&amp;amp;#x5B57;&amp;amp;#xFF08;Object Literals&amp;amp;#xFF09;</b></a>
                     
                     
                     
@@ -121,13 +121,13 @@
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">2&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">2&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">3&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">3&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -166,23 +166,23 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>請用物件實字法創造物件。</p>
+        <p>&#x8ACB;&#x7528;&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#x6CD5;&#x5275;&#x9020;&#x7269;&#x4EF6;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="物件實字（Object-Literals）"><a href="#物件實字（Object-Literals）" class="headerlink" title="物件實字（Object Literals）"></a>物件實字（Object Literals）</h3><p>物件實字，就是用 <code>{}</code> 來創造一個新的物件，並直接在裡面定義我們所欲的 Name/Value Pairs。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> favoriteFood = &#123;</span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>,</span><br><span class="line">  delicacy: &#123;</span><br><span class="line">    taiwanese: [<span class="hljs-string">'oyster omelet'</span>, <span class="hljs-string">'egg roll'</span>],</span><br><span class="line">    westerm: [<span class="hljs-string">'spaghetti'</span>,<span class="hljs-string">'fried chicken'</span>],</span><br><span class="line">    japan: [<span class="hljs-string">'sashimi'</span>, <span class="hljs-string">'ramen'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  drink: [<span class="hljs-string">'bubble tea'</span>, <span class="hljs-string">'latte'</span>],</span><br><span class="line">  moneyLeft: <span class="hljs-number">877</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>物件實字本身簡潔明瞭，是最常被用來創造物件的方法，其本身也可以<strong>被當作參數傳入函式</strong>：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callName</span>(<span class="hljs-params">person</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello! I\'m '</span> + person.name + <span class="hljs-string">'. I am '</span> + person.age + <span class="hljs-string">' years old.'</span>) ;</span><br><span class="line">&#125;</span><br><span class="line">callName(&#123;</span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>,</span><br><span class="line">  age: <span class="hljs-number">23</span> </span><br><span class="line">&#125;) ;</span><br></pre></td></tr></table></figure></p>
-<h4 id="new-Object"><a href="#new-Object" class="headerlink" title="new Object()"></a>new Object()</h4><p>另一種方式是，用 <code>new Object()</code> 創造物件後，利用 <code>.</code> 或 <code>[]</code> 運算子一一新增所欲的屬性和方法，使用上不比實字表示法來得方便直覺。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> John = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>() ;</span><br><span class="line"></span><br><span class="line">John.age = <span class="hljs-number">30</span> ;</span><br><span class="line">John.hobby = [<span class="hljs-string">'eat'</span>, <span class="hljs-string">'sleep'</span>, <span class="hljs-string">'working'</span>] ;</span><br><span class="line">John[<span class="hljs-string">'residence'</span>] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>() ;</span><br><span class="line">John[<span class="hljs-string">'residence'</span>][<span class="hljs-string">'city'</span>] = <span class="hljs-string">'Taipei'</span> ;</span><br><span class="line">John[<span class="hljs-string">'residence'</span>][<span class="hljs-string">'district'</span>] = <span class="hljs-string">'Daan'</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(John) ;</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#xFF08;Object-Literals&#xFF09;"><a href="#&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#xFF08;Object-Literals&#xFF09;" class="headerlink" title="&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#xFF08;Object Literals&#xFF09;"></a>&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#xFF08;Object Literals&#xFF09;</h3><p>&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#xFF0C;&#x5C31;&#x662F;&#x7528; <code>{}</code> &#x4F86;&#x5275;&#x9020;&#x4E00;&#x500B;&#x65B0;&#x7684;&#x7269;&#x4EF6;&#xFF0C;&#x4E26;&#x76F4;&#x63A5;&#x5728;&#x88E1;&#x9762;&#x5B9A;&#x7FA9;&#x6211;&#x5011;&#x6240;&#x6B32;&#x7684; Name/Value Pairs&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> favoriteFood = {</span><br><span class="line">  name: <span class="hljs-string">&apos;Fei&apos;</span>,</span><br><span class="line">  delicacy: {</span><br><span class="line">    taiwanese: [<span class="hljs-string">&apos;oyster omelet&apos;</span>, <span class="hljs-string">&apos;egg roll&apos;</span>],</span><br><span class="line">    westerm: [<span class="hljs-string">&apos;spaghetti&apos;</span>,<span class="hljs-string">&apos;fried chicken&apos;</span>],</span><br><span class="line">    japan: [<span class="hljs-string">&apos;sashimi&apos;</span>, <span class="hljs-string">&apos;ramen&apos;</span>]</span><br><span class="line">  },</span><br><span class="line">  drink: [<span class="hljs-string">&apos;bubble tea&apos;</span>, <span class="hljs-string">&apos;latte&apos;</span>],</span><br><span class="line">  moneyLeft: <span class="hljs-number">877</span> </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#x672C;&#x8EAB;&#x7C21;&#x6F54;&#x660E;&#x77AD;&#xFF0C;&#x662F;&#x6700;&#x5E38;&#x88AB;&#x7528;&#x4F86;&#x5275;&#x9020;&#x7269;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x672C;&#x8EAB;&#x4E5F;&#x53EF;&#x4EE5;<strong>&#x88AB;&#x7576;&#x4F5C;&#x53C3;&#x6578;&#x50B3;&#x5165;&#x51FD;&#x5F0F;</strong>&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callName</span>(<span class="hljs-params">person</span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Hello! I\&apos;m &apos;</span> + person.name + <span class="hljs-string">&apos;. I am &apos;</span> + person.age + <span class="hljs-string">&apos; years old.&apos;</span>) ;</span><br><span class="line">}</span><br><span class="line">callName({</span><br><span class="line">  name: <span class="hljs-string">&apos;Fei&apos;</span>,</span><br><span class="line">  age: <span class="hljs-number">23</span> </span><br><span class="line">}) ;</span><br></pre></td></tr></table></figure></p>
+<h4 id="new-Object"><a href="#new-Object" class="headerlink" title="new Object()"></a>new Object()</h4><p>&#x53E6;&#x4E00;&#x7A2E;&#x65B9;&#x5F0F;&#x662F;&#xFF0C;&#x7528; <code>new Object()</code> &#x5275;&#x9020;&#x7269;&#x4EF6;&#x5F8C;&#xFF0C;&#x5229;&#x7528; <code>.</code> &#x6216; <code>[]</code> &#x904B;&#x7B97;&#x5B50;&#x4E00;&#x4E00;&#x65B0;&#x589E;&#x6240;&#x6B32;&#x7684;&#x5C6C;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x4E0D;&#x6BD4;&#x5BE6;&#x5B57;&#x8868;&#x793A;&#x6CD5;&#x4F86;&#x5F97;&#x65B9;&#x4FBF;&#x76F4;&#x89BA;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> John = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>() ;</span><br><span class="line"></span><br><span class="line">John.age = <span class="hljs-number">30</span> ;</span><br><span class="line">John.hobby = [<span class="hljs-string">&apos;eat&apos;</span>, <span class="hljs-string">&apos;sleep&apos;</span>, <span class="hljs-string">&apos;working&apos;</span>] ;</span><br><span class="line">John[<span class="hljs-string">&apos;residence&apos;</span>] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>() ;</span><br><span class="line">John[<span class="hljs-string">&apos;residence&apos;</span>][<span class="hljs-string">&apos;city&apos;</span>] = <span class="hljs-string">&apos;Taipei&apos;</span> ;</span><br><span class="line">John[<span class="hljs-string">&apos;residence&apos;</span>][<span class="hljs-string">&apos;district&apos;</span>] = <span class="hljs-string">&apos;Daan&apos;</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(John) ;</span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>創造物件有兩種方式：利用物件實字 <code>{}</code> 或 <code>new Object()</code> 。</li>
-<li>實務上多以物件實字法創造物件，但部分時候還是會用到 new 建構式來創造物件。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x5275;&#x9020;&#x7269;&#x4EF6;&#x6709;&#x5169;&#x7A2E;&#x65B9;&#x5F0F;&#xFF1A;&#x5229;&#x7528;&#x7269;&#x4EF6;&#x5BE6;&#x5B57; <code>{}</code> &#x6216; <code>new Object()</code> &#x3002;</li>
+<li>&#x5BE6;&#x52D9;&#x4E0A;&#x591A;&#x4EE5;&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#x6CD5;&#x5275;&#x9020;&#x7269;&#x4EF6;&#xFF0C;&#x4F46;&#x90E8;&#x5206;&#x6642;&#x5019;&#x9084;&#x662F;&#x6703;&#x7528;&#x5230; new &#x5EFA;&#x69CB;&#x5F0F;&#x4F86;&#x5275;&#x9020;&#x7269;&#x4EF6;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 3-31</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 3-31</li>
 </ol>
 
     

@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="與其他程式語言不同，JavaScript 採用原型繼承的方式，將所有物件串聯起來！">
+    <meta name="description" content="&amp;#x8207;&amp;#x5176;&amp;#x4ED6;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E0D;&amp;#x540C;&amp;#xFF0C;JavaScript &amp;#x63A1;&amp;#x7528;&amp;#x539F;&amp;#x578B;&amp;#x7E7C;&amp;#x627F;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C07;&amp;#x6240;&amp;#x6709;&amp;#x72">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 38：古典繼承 v.s. 原型繼承">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/09/07/weird-JavaScript-38/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="與其他程式語言不同，JavaScript 採用原型繼承的方式，將所有物件串聯起來！">
+<meta property="og:description" content="&amp;#x8207;&amp;#x5176;&amp;#x4ED6;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E0D;&amp;#x540C;&amp;#xFF0C;JavaScript &amp;#x63A1;&amp;#x7528;&amp;#x539F;&amp;#x578B;&amp;#x7E7C;&amp;#x627F;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C07;&amp;#x6240;&amp;#x6709;&amp;#x72">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-02-18T10:33:14.020Z">
+<meta property="og:updated_time" content="2020-02-23T09:34:46.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 38：古典繼承 v.s. 原型繼承">
-<meta name="twitter:description" content="與其他程式語言不同，JavaScript 採用原型繼承的方式，將所有物件串聯起來！">
+<meta name="twitter:description" content="&amp;#x8207;&amp;#x5176;&amp;#x4ED6;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E0D;&amp;#x540C;&amp;#xFF0C;JavaScript &amp;#x63A1;&amp;#x7528;&amp;#x539F;&amp;#x578B;&amp;#x7E7C;&amp;#x627F;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C07;&amp;#x6240;&amp;#x6709;&amp;#x72">
 
 
 
@@ -111,37 +111,37 @@
                     
                     
                     
-                    <a class="navbar-item" href="#物件導向（Object-Oriented）">1&nbsp;&nbsp;<b>物件導向（Object Oriented）</b></a>
+                    <a class="navbar-item" href="#&amp;#x7269;&amp;#x4EF6;&amp;#x5C0E;&amp;#x5411;&amp;#xFF08;Object-Oriented&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x5C0E;&amp;amp;#x5411;&amp;amp;#xFF08;Object Oriented&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#繼承（Inheritance）">2&nbsp;&nbsp;<b>繼承（Inheritance）</b></a>
+                    <a class="navbar-item" href="#&amp;#x7E7C;&amp;#x627F;&amp;#xFF08;Inheritance&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x7E7C;&amp;amp;#x627F;&amp;amp;#xFF08;Inheritance&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#古典繼承（Classical-Inheritance）">3&nbsp;&nbsp;<b>古典繼承（Classical Inheritance）</b></a>
+                    <a class="navbar-item" href="#&amp;#x53E4;&amp;#x5178;&amp;#x7E7C;&amp;#x627F;&amp;#xFF08;Classical-Inheritance&amp;#xFF09;">3&nbsp;&nbsp;<b>&amp;amp;#x53E4;&amp;amp;#x5178;&amp;amp;#x7E7C;&amp;amp;#x627F;&amp;amp;#xFF08;Classical Inheritance&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#原型繼承（Prototypal-Inheritance）">4&nbsp;&nbsp;<b>原型繼承（Prototypal Inheritance）</b></a>
+                    <a class="navbar-item" href="#&amp;#x539F;&amp;#x578B;&amp;#x7E7C;&amp;#x627F;&amp;#xFF08;Prototypal-Inheritance&amp;#xFF09;">4&nbsp;&nbsp;<b>&amp;amp;#x539F;&amp;amp;#x578B;&amp;amp;#x7E7C;&amp;amp;#x627F;&amp;amp;#xFF08;Prototypal Inheritance&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">5&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">5&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">6&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">6&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -180,46 +180,46 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>與其他程式語言不同，JavaScript 採用原型繼承的方式，將所有物件串聯起來！</p>
+        <p>&#x8207;&#x5176;&#x4ED6;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x4E0D;&#x540C;&#xFF0C;JavaScript &#x63A1;&#x7528;&#x539F;&#x578B;&#x7E7C;&#x627F;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5C07;&#x6240;&#x6709;&#x7269;&#x4EF6;&#x4E32;&#x806F;&#x8D77;&#x4F86;&#xFF01;</p>
   <a id="more"></a>
 
-<h3 id="物件導向（Object-Oriented）"><a href="#物件導向（Object-Oriented）" class="headerlink" title="物件導向（Object Oriented）"></a>物件導向（Object Oriented）</h3><p>JavaScript 是屬於<strong>物件導向</strong>的程式語言。</p>
-<p>物件導向，指的是，在 JavaScript 中，<strong>物件</strong>被視為程式組成的基本單元，而且物件之間彼此都會透過<strong>繼承</strong>的方式互相連結，產生關係，以便資料互相傳遞、取用。</p>
+<h3 id="&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#xFF08;Object-Oriented&#xFF09;"><a href="#&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#xFF08;Object-Oriented&#xFF09;" class="headerlink" title="&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#xFF08;Object Oriented&#xFF09;"></a>&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#xFF08;Object Oriented&#xFF09;</h3><p>JavaScript &#x662F;&#x5C6C;&#x65BC;<strong>&#x7269;&#x4EF6;&#x5C0E;&#x5411;</strong>&#x7684;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x3002;</p>
+<p>&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#xFF0C;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x5728; JavaScript &#x4E2D;&#xFF0C;<strong>&#x7269;&#x4EF6;</strong>&#x88AB;&#x8996;&#x70BA;&#x7A0B;&#x5F0F;&#x7D44;&#x6210;&#x7684;&#x57FA;&#x672C;&#x55AE;&#x5143;&#xFF0C;&#x800C;&#x4E14;&#x7269;&#x4EF6;&#x4E4B;&#x9593;&#x5F7C;&#x6B64;&#x90FD;&#x6703;&#x900F;&#x904E;<strong>&#x7E7C;&#x627F;</strong>&#x7684;&#x65B9;&#x5F0F;&#x4E92;&#x76F8;&#x9023;&#x7D50;&#xFF0C;&#x7522;&#x751F;&#x95DC;&#x4FC2;&#xFF0C;&#x4EE5;&#x4FBF;&#x8CC7;&#x6599;&#x4E92;&#x76F8;&#x50B3;&#x905E;&#x3001;&#x53D6;&#x7528;&#x3002;</p>
 <hr>
 
-<h3 id="繼承（Inheritance）"><a href="#繼承（Inheritance）" class="headerlink" title="繼承（Inheritance）"></a>繼承（Inheritance）</h3><blockquote>
+<h3 id="&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;"><a href="#&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;" class="headerlink" title="&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;"></a>&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;</h3><blockquote>
 <p>One object gets access to the properties and methods of another object.</p>
 </blockquote>
-<p>繼承，指的是<strong>一個物件取用另外一個物件的屬性或方法</strong>。</p>
-<p>假設我有兩個物件 <code>ObjA</code> 與 <code>ObjB</code> ， <code>ObjA</code> 繼承了 <code>ObjB</code> ，那麼，我就能在 <code>ObjA</code> 中取用 <code>ObjB</code> 的屬性與方法。</p>
-<p>也就是說，當我們創造一個物件時，JS 引擎其實已經將它與另外一個物件<strong>連起來</strong>，而這個連起來的機制，就是所謂的繼承。</p>
-<p>而繼承的方式，主要分為<strong>古典繼承</strong>與<strong>原型繼承</strong>兩類。</p>
+<p>&#x7E7C;&#x627F;&#xFF0C;&#x6307;&#x7684;&#x662F;<strong>&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x53D6;&#x7528;&#x53E6;&#x5916;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;</strong>&#x3002;</p>
+<p>&#x5047;&#x8A2D;&#x6211;&#x6709;&#x5169;&#x500B;&#x7269;&#x4EF6; <code>ObjA</code> &#x8207; <code>ObjB</code> &#xFF0C; <code>ObjA</code> &#x7E7C;&#x627F;&#x4E86; <code>ObjB</code> &#xFF0C;&#x90A3;&#x9EBC;&#xFF0C;&#x6211;&#x5C31;&#x80FD;&#x5728; <code>ObjA</code> &#x4E2D;&#x53D6;&#x7528; <code>ObjB</code> &#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x5275;&#x9020;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x5176;&#x5BE6;&#x5DF2;&#x7D93;&#x5C07;&#x5B83;&#x8207;&#x53E6;&#x5916;&#x4E00;&#x500B;&#x7269;&#x4EF6;<strong>&#x9023;&#x8D77;&#x4F86;</strong>&#xFF0C;&#x800C;&#x9019;&#x500B;&#x9023;&#x8D77;&#x4F86;&#x7684;&#x6A5F;&#x5236;&#xFF0C;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;&#x7E7C;&#x627F;&#x3002;</p>
+<p>&#x800C;&#x7E7C;&#x627F;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E3B;&#x8981;&#x5206;&#x70BA;<strong>&#x53E4;&#x5178;&#x7E7C;&#x627F;</strong>&#x8207;<strong>&#x539F;&#x578B;&#x7E7C;&#x627F;</strong>&#x5169;&#x985E;&#x3002;</p>
 <hr>
 
-<h3 id="古典繼承（Classical-Inheritance）"><a href="#古典繼承（Classical-Inheritance）" class="headerlink" title="古典繼承（Classical Inheritance）"></a>古典繼承（Classical Inheritance）</h3><p>古典繼承是當代非常主流而熱門的繼承方式， <strong>Java</strong> 、 <strong>C#</strong> 等程式語言都是採用古典繼承的設計機制。</p>
-<p>古典繼承的特點在於相當口語化（Verbose），而且有非常多的方法可以使用，譬如：</p>
+<h3 id="&#x53E4;&#x5178;&#x7E7C;&#x627F;&#xFF08;Classical-Inheritance&#xFF09;"><a href="#&#x53E4;&#x5178;&#x7E7C;&#x627F;&#xFF08;Classical-Inheritance&#xFF09;" class="headerlink" title="&#x53E4;&#x5178;&#x7E7C;&#x627F;&#xFF08;Classical Inheritance&#xFF09;"></a>&#x53E4;&#x5178;&#x7E7C;&#x627F;&#xFF08;Classical Inheritance&#xFF09;</h3><p>&#x53E4;&#x5178;&#x7E7C;&#x627F;&#x662F;&#x7576;&#x4EE3;&#x975E;&#x5E38;&#x4E3B;&#x6D41;&#x800C;&#x71B1;&#x9580;&#x7684;&#x7E7C;&#x627F;&#x65B9;&#x5F0F;&#xFF0C; <strong>Java</strong> &#x3001; <strong>C#</strong> &#x7B49;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x90FD;&#x662F;&#x63A1;&#x7528;&#x53E4;&#x5178;&#x7E7C;&#x627F;&#x7684;&#x8A2D;&#x8A08;&#x6A5F;&#x5236;&#x3002;</p>
+<p>&#x53E4;&#x5178;&#x7E7C;&#x627F;&#x7684;&#x7279;&#x9EDE;&#x5728;&#x65BC;&#x76F8;&#x7576;&#x53E3;&#x8A9E;&#x5316;&#xFF08;Verbose&#xFF09;&#xFF0C;&#x800C;&#x4E14;&#x6709;&#x975E;&#x5E38;&#x591A;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF0C;&#x8B6C;&#x5982;&#xFF1A;</p>
 <ul>
-<li>Friend（夥伴）</li>
-<li>Protected（保護）</li>
-<li>Private（私用）</li>
-<li>Interface（介面）</li>
+<li>Friend&#xFF08;&#x5925;&#x4F34;&#xFF09;</li>
+<li>Protected&#xFF08;&#x4FDD;&#x8B77;&#xFF09;</li>
+<li>Private&#xFF08;&#x79C1;&#x7528;&#xFF09;</li>
+<li>Interface&#xFF08;&#x4ECB;&#x9762;&#xFF09;</li>
 </ul>
-<p>但古典繼承的弱勢在於，必須瞭解上述規範的方法，才能輕易使用它。</p>
-<p>除此之外，古典繼承採用樹狀結構的設計模式，當繼承物件數量增加時，很容易將物件集合成一個大熔爐，讓人搞不清楚內部物件詳細的連結方式。古典繼承好比一棟設計複雜的房子，當你想要換燈泡的時候，卻發現馬桶開始沖水，就好像，修改了 A 物件，卻非預期地影響了 B 物件。</p>
+<p>&#x4F46;&#x53E4;&#x5178;&#x7E7C;&#x627F;&#x7684;&#x5F31;&#x52E2;&#x5728;&#x65BC;&#xFF0C;&#x5FC5;&#x9808;&#x77AD;&#x89E3;&#x4E0A;&#x8FF0;&#x898F;&#x7BC4;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x624D;&#x80FD;&#x8F15;&#x6613;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x53E4;&#x5178;&#x7E7C;&#x627F;&#x63A1;&#x7528;&#x6A39;&#x72C0;&#x7D50;&#x69CB;&#x7684;&#x8A2D;&#x8A08;&#x6A21;&#x5F0F;&#xFF0C;&#x7576;&#x7E7C;&#x627F;&#x7269;&#x4EF6;&#x6578;&#x91CF;&#x589E;&#x52A0;&#x6642;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x5C07;&#x7269;&#x4EF6;&#x96C6;&#x5408;&#x6210;&#x4E00;&#x500B;&#x5927;&#x7194;&#x7210;&#xFF0C;&#x8B93;&#x4EBA;&#x641E;&#x4E0D;&#x6E05;&#x695A;&#x5167;&#x90E8;&#x7269;&#x4EF6;&#x8A73;&#x7D30;&#x7684;&#x9023;&#x7D50;&#x65B9;&#x5F0F;&#x3002;&#x53E4;&#x5178;&#x7E7C;&#x627F;&#x597D;&#x6BD4;&#x4E00;&#x68DF;&#x8A2D;&#x8A08;&#x8907;&#x96DC;&#x7684;&#x623F;&#x5B50;&#xFF0C;&#x7576;&#x4F60;&#x60F3;&#x8981;&#x63DB;&#x71C8;&#x6CE1;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x537B;&#x767C;&#x73FE;&#x99AC;&#x6876;&#x958B;&#x59CB;&#x6C96;&#x6C34;&#xFF0C;&#x5C31;&#x597D;&#x50CF;&#xFF0C;&#x4FEE;&#x6539;&#x4E86; A &#x7269;&#x4EF6;&#xFF0C;&#x537B;&#x975E;&#x9810;&#x671F;&#x5730;&#x5F71;&#x97FF;&#x4E86; B &#x7269;&#x4EF6;&#x3002;</p>
 <hr>
 
-<h3 id="原型繼承（Prototypal-Inheritance）"><a href="#原型繼承（Prototypal-Inheritance）" class="headerlink" title="原型繼承（Prototypal Inheritance）"></a>原型繼承（Prototypal Inheritance）</h3><p>相較於古典繼承，原型繼承較簡單易懂（Easy to understand），且具備彈性（Flexible）、可延展（Extensible）等優勢。</p>
-<p>而 <strong>JavaScript</strong> 正是透過<strong>原型繼承</strong>的方式，將所有物件都串聯起來。</p>
-<p>往後幾篇會介紹 JS 的原型以及繼承機制。</p>
+<h3 id="&#x539F;&#x578B;&#x7E7C;&#x627F;&#xFF08;Prototypal-Inheritance&#xFF09;"><a href="#&#x539F;&#x578B;&#x7E7C;&#x627F;&#xFF08;Prototypal-Inheritance&#xFF09;" class="headerlink" title="&#x539F;&#x578B;&#x7E7C;&#x627F;&#xFF08;Prototypal Inheritance&#xFF09;"></a>&#x539F;&#x578B;&#x7E7C;&#x627F;&#xFF08;Prototypal Inheritance&#xFF09;</h3><p>&#x76F8;&#x8F03;&#x65BC;&#x53E4;&#x5178;&#x7E7C;&#x627F;&#xFF0C;&#x539F;&#x578B;&#x7E7C;&#x627F;&#x8F03;&#x7C21;&#x55AE;&#x6613;&#x61C2;&#xFF08;Easy to understand&#xFF09;&#xFF0C;&#x4E14;&#x5177;&#x5099;&#x5F48;&#x6027;&#xFF08;Flexible&#xFF09;&#x3001;&#x53EF;&#x5EF6;&#x5C55;&#xFF08;Extensible&#xFF09;&#x7B49;&#x512A;&#x52E2;&#x3002;</p>
+<p>&#x800C; <strong>JavaScript</strong> &#x6B63;&#x662F;&#x900F;&#x904E;<strong>&#x539F;&#x578B;&#x7E7C;&#x627F;</strong>&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5C07;&#x6240;&#x6709;&#x7269;&#x4EF6;&#x90FD;&#x4E32;&#x806F;&#x8D77;&#x4F86;&#x3002;</p>
+<p>&#x5F80;&#x5F8C;&#x5E7E;&#x7BC7;&#x6703;&#x4ECB;&#x7D39; JS &#x7684;&#x539F;&#x578B;&#x4EE5;&#x53CA;&#x7E7C;&#x627F;&#x6A5F;&#x5236;&#x3002;</p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>繼承，指的是一個物件取用另外一個物件的屬性或方法。</li>
-<li>JavaScript 屬於物件導向的程式語言，它透過原型繼承的方式，將所有物件都串聯起來。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x7E7C;&#x627F;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x53D6;&#x7528;&#x53E6;&#x5916;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>JavaScript &#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#x7684;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#xFF0C;&#x5B83;&#x900F;&#x904E;&#x539F;&#x578B;&#x7E7C;&#x627F;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5C07;&#x6240;&#x6709;&#x7269;&#x4EF6;&#x90FD;&#x4E32;&#x806F;&#x8D77;&#x4F86;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 5-53</li>
-<li><a href="https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">Wiki：物件導向程式設計</a></li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 5-53</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">Wiki&#xFF1A;&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;</a></li>
 </ol>
 
     

@@ -16,19 +16,19 @@
 
 
 
-    <meta name="description" content="學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。">
+    <meta name="description" content="&amp;#x5B78;&amp;#x4E86;&amp;#x9019;&amp;#x9EBC;&amp;#x591A;&amp;#xFF0C;&amp;#x73FE;&amp;#x5728;&amp;#x6211;&amp;#x5011;&amp;#x4F86;&amp;#x5617;&amp;#x8A66;&amp;#x7406;&amp;#x89E3; JS &amp;#x5C0F;&amp;#x9B54;&amp;#x738B;&amp;#xFF1A;&amp;#x9589;&amp;#x5305;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 31：閉包（1）">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/25/weird-JavaScript-31/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。">
+<meta property="og:description" content="&amp;#x5B78;&amp;#x4E86;&amp;#x9019;&amp;#x9EBC;&amp;#x591A;&amp;#xFF0C;&amp;#x73FE;&amp;#x5728;&amp;#x6211;&amp;#x5011;&amp;#x4F86;&amp;#x5617;&amp;#x8A66;&amp;#x7406;&amp;#x89E3; JS &amp;#x5C0F;&amp;#x9B54;&amp;#x738B;&amp;#xFF1A;&amp;#x9589;&amp;#x5305;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/25/weird-JavaScript-31/closure.JPG">
 <meta property="og:updated_time" content="2019-11-22T13:38:57.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 31：閉包（1）">
-<meta name="twitter:description" content="學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。">
+<meta name="twitter:description" content="&amp;#x5B78;&amp;#x4E86;&amp;#x9019;&amp;#x9EBC;&amp;#x591A;&amp;#xFF0C;&amp;#x73FE;&amp;#x5728;&amp;#x6211;&amp;#x5011;&amp;#x4F86;&amp;#x5617;&amp;#x8A66;&amp;#x7406;&amp;#x89E3; JS &amp;#x5C0F;&amp;#x9B54;&amp;#x738B;&amp;#xFF1A;&amp;#x9589;&amp;#x5305;&amp;#x3002;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/25/weird-JavaScript-31/closure.JPG">
 
 
@@ -113,31 +113,31 @@
                     
                     
                     
-                    <a class="navbar-item" href="#一級函式">1&nbsp;&nbsp;<b>一級函式</b></a>
+                    <a class="navbar-item" href="#&amp;#x4E00;&amp;#x7D1A;&amp;#x51FD;&amp;#x5F0F;">1&nbsp;&nbsp;<b>&amp;amp;#x4E00;&amp;amp;#x7D1A;&amp;amp;#x51FD;&amp;amp;#x5F0F;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#函式的執行環境">2&nbsp;&nbsp;<b>函式的執行環境</b></a>
+                    <a class="navbar-item" href="#&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x57F7;&amp;#x884C;&amp;#x74B0;&amp;#x5883;">2&nbsp;&nbsp;<b>&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x7684;&amp;amp;#x57F7;&amp;amp;#x884C;&amp;amp;#x74B0;&amp;amp;#x5883;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#閉包（Closure）">3&nbsp;&nbsp;<b>閉包（Closure）</b></a>
+                    <a class="navbar-item" href="#&amp;#x9589;&amp;#x5305;&amp;#xFF08;Closure&amp;#xFF09;">3&nbsp;&nbsp;<b>&amp;amp;#x9589;&amp;amp;#x5305;&amp;amp;#xFF08;Closure&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">4&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">5&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -176,43 +176,43 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>學了這麼多，現在我們來嘗試理解 JS 小魔王：閉包。</p>
+        <p>&#x5B78;&#x4E86;&#x9019;&#x9EBC;&#x591A;&#xFF0C;&#x73FE;&#x5728;&#x6211;&#x5011;&#x4F86;&#x5617;&#x8A66;&#x7406;&#x89E3; JS &#x5C0F;&#x9B54;&#x738B;&#xFF1A;&#x9589;&#x5305;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="一級函式"><a href="#一級函式" class="headerlink" title="一級函式"></a>一級函式</h3><p>JavaScript 擁有一級函式的特性，<strong>函式（Function）屬於特殊的函式物件，可以被視為一種資料型態</strong>。</p>
-<p>所以，我們透過函式 <code>return</code> 另一個函式，並連續呼叫、執行，就像這樣：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">whattosay</span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(whattosay + <span class="hljs-string">' '</span> + name) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet(<span class="hljs-string">'Hello!'</span>)(<span class="hljs-string">'John'</span>) ;</span><br></pre></td></tr></table></figure></p>
-<p>把函式想像成模板，我們可以傳入所欲的參數，並將它賦值給一個變數，再利用該變數呼叫函式。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">whattosay</span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(whattosay + <span class="hljs-string">' '</span> + name) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> sayHola = greet(<span class="hljs-string">'Hola!'</span>) ;</span><br><span class="line"><span class="hljs-keyword">var</span> sayHello = greet(<span class="hljs-string">'Hello!'</span>) ;</span><br><span class="line"></span><br><span class="line">sayHola(<span class="hljs-string">'John'</span>) ;</span><br><span class="line">sayHello(<span class="hljs-string">'John'</span>) ;</span><br></pre></td></tr></table></figure></p>
-<p>當 JS 讀到 <code>var sayHola = greet(&#39;Hola!&#39;) ;</code> 時，它會創造函式 <code>greet(whattosay)</code> 的執行環境，將 <code>&#39;Hola!&#39;</code> 作為參數傳入，並回傳匿名函式 <code>function(name)</code> 賦值給變數 <code>sayHola</code> ，最後消滅函式 <code>greet(whattosay)</code> 的執行環境。 </p>
-<p>咦？等等，有沒有覺得怪怪的？</p>
-<p>既然函式 <code>greet(whattosay)</code> 的執行環境已經消滅，為什麼 JS 讀到 <code>sayHola(&#39;John&#39;)</code> 的時候，JS 還記得 <code>function(name)</code> 裡的 <code>whattosay</code> 指的是 <code>&#39;Hola!&#39;</code> ？</p>
-<p>同理，為什麼 JS 讀到 <code>sayHello(&#39;John&#39;) ;</code> 的時候，JS 還記得 <code>function(name)</code> 裡的 <code>whattosay</code> 指的是 <code>&#39;Hello!&#39;</code> ？</p>
-<p>之前我們不是說，函式裡的<strong>區域變數（Local Variable）</strong>，會隨著函式執行環境生滅嗎？</p>
+<h3 id="&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;"><a href="#&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;" class="headerlink" title="&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;"></a>&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;</h3><p>JavaScript &#x64C1;&#x6709;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x7684;&#x7279;&#x6027;&#xFF0C;<strong>&#x51FD;&#x5F0F;&#xFF08;Function&#xFF09;&#x5C6C;&#x65BC;&#x7279;&#x6B8A;&#x7684;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x8996;&#x70BA;&#x4E00;&#x7A2E;&#x8CC7;&#x6599;&#x578B;&#x614B;</strong>&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x5011;&#x900F;&#x904E;&#x51FD;&#x5F0F; <code>return</code> &#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;&#x4E26;&#x9023;&#x7E8C;&#x547C;&#x53EB;&#x3001;&#x57F7;&#x884C;&#xFF0C;&#x5C31;&#x50CF;&#x9019;&#x6A23;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">whattosay</span>)</span>{</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(whattosay + <span class="hljs-string">&apos; &apos;</span> + name) ;</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">greet(<span class="hljs-string">&apos;Hello!&apos;</span>)(<span class="hljs-string">&apos;John&apos;</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x628A;&#x51FD;&#x5F0F;&#x60F3;&#x50CF;&#x6210;&#x6A21;&#x677F;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x50B3;&#x5165;&#x6240;&#x6B32;&#x7684;&#x53C3;&#x6578;&#xFF0C;&#x4E26;&#x5C07;&#x5B83;&#x8CE6;&#x503C;&#x7D66;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#xFF0C;&#x518D;&#x5229;&#x7528;&#x8A72;&#x8B8A;&#x6578;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">whattosay</span>)</span>{</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(whattosay + <span class="hljs-string">&apos; &apos;</span> + name) ;</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> sayHola = greet(<span class="hljs-string">&apos;Hola!&apos;</span>) ;</span><br><span class="line"><span class="hljs-keyword">var</span> sayHello = greet(<span class="hljs-string">&apos;Hello!&apos;</span>) ;</span><br><span class="line"></span><br><span class="line">sayHola(<span class="hljs-string">&apos;John&apos;</span>) ;</span><br><span class="line">sayHello(<span class="hljs-string">&apos;John&apos;</span>) ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x7576; JS &#x8B80;&#x5230; <code>var sayHola = greet(&apos;Hola!&apos;) ;</code> &#x6642;&#xFF0C;&#x5B83;&#x6703;&#x5275;&#x9020;&#x51FD;&#x5F0F; <code>greet(whattosay)</code> &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x5C07; <code>&apos;Hola!&apos;</code> &#x4F5C;&#x70BA;&#x53C3;&#x6578;&#x50B3;&#x5165;&#xFF0C;&#x4E26;&#x56DE;&#x50B3;&#x533F;&#x540D;&#x51FD;&#x5F0F; <code>function(name)</code> &#x8CE6;&#x503C;&#x7D66;&#x8B8A;&#x6578; <code>sayHola</code> &#xFF0C;&#x6700;&#x5F8C;&#x6D88;&#x6EC5;&#x51FD;&#x5F0F; <code>greet(whattosay)</code> &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x3002; </p>
+<p>&#x54A6;&#xFF1F;&#x7B49;&#x7B49;&#xFF0C;&#x6709;&#x6C92;&#x6709;&#x89BA;&#x5F97;&#x602A;&#x602A;&#x7684;&#xFF1F;</p>
+<p>&#x65E2;&#x7136;&#x51FD;&#x5F0F; <code>greet(whattosay)</code> &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x5DF2;&#x7D93;&#x6D88;&#x6EC5;&#xFF0C;&#x70BA;&#x4EC0;&#x9EBC; JS &#x8B80;&#x5230; <code>sayHola(&apos;John&apos;)</code> &#x7684;&#x6642;&#x5019;&#xFF0C;JS &#x9084;&#x8A18;&#x5F97; <code>function(name)</code> &#x88E1;&#x7684; <code>whattosay</code> &#x6307;&#x7684;&#x662F; <code>&apos;Hola!&apos;</code> &#xFF1F;</p>
+<p>&#x540C;&#x7406;&#xFF0C;&#x70BA;&#x4EC0;&#x9EBC; JS &#x8B80;&#x5230; <code>sayHello(&apos;John&apos;) ;</code> &#x7684;&#x6642;&#x5019;&#xFF0C;JS &#x9084;&#x8A18;&#x5F97; <code>function(name)</code> &#x88E1;&#x7684; <code>whattosay</code> &#x6307;&#x7684;&#x662F; <code>&apos;Hello!&apos;</code> &#xFF1F;</p>
+<p>&#x4E4B;&#x524D;&#x6211;&#x5011;&#x4E0D;&#x662F;&#x8AAA;&#xFF0C;&#x51FD;&#x5F0F;&#x88E1;&#x7684;<strong>&#x5340;&#x57DF;&#x8B8A;&#x6578;&#xFF08;Local Variable&#xFF09;</strong>&#xFF0C;&#x6703;&#x96A8;&#x8457;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x751F;&#x6EC5;&#x55CE;&#xFF1F;</p>
 <hr>
 
-<h3 id="函式的執行環境"><a href="#函式的執行環境" class="headerlink" title="函式的執行環境"></a>函式的執行環境</h3><p>我們不斷強調，當一個函式被呼叫後，JS 會創造屬於該函式的執行環境，並<strong>分配一小部分的記憶體空間給該函式使用</strong>。</p>
-<p>換句話說，<strong>每個函式的執行環境都有屬於自己的記憶體空間</strong>。我們所傳入的<strong>參數</strong>，或是在函式裡創造的<strong>變數（純值或物件）</strong>都會被儲存在該函式專屬的記憶體空間裡面，和其他函式無關，也和全域環境無關。</p>
-<p>當函式執行完畢，執行環境被消滅後，基本上， JavaScript 引擎會清除該函式專屬的記憶體空間，這個動作被稱為<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener">垃圾回收（Garbage Collection）</a>。</p>
-<p>然而，<strong>儲存該函式參數和區域變數的記憶體空間並仍會存在</strong>，並不會被清除，這是 JS 引擎本身設計的特色，為了範圍鍊中變數的參考與取用。</p>
-<p>在上面的例子中， JS 引擎在 <code>function(name)</code> 裡面找不到 <code>whattosay</code> ，所以它透過<strong>範圍鍊</strong>向<strong>外部（詞彙）環境</strong> <code>greet(whattosay)</code> 尋找可用的變數。在 <code>greet(whattosay)</code> 中，儘管函式 <code>greet(whattosay)</code> 的執行環境已經消滅，可是， JS 引擎<strong>仍會保留儲存該函式參數和區域變數的記憶體空間</strong>，所以，JS 會取用到 <code>whattosay</code> ，等於傳入的參數 <code>&#39;Hola!&#39;</code>。</p>
-<p>由此可見，<code>sayHola(&#39;John&#39;) ;</code> 的執行結果為 <code>Hola! John</code> 。 </p>
+<h3 id="&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;"><a href="#&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;" class="headerlink" title="&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;"></a>&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;</h3><p>&#x6211;&#x5011;&#x4E0D;&#x65B7;&#x5F37;&#x8ABF;&#xFF0C;&#x7576;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x88AB;&#x547C;&#x53EB;&#x5F8C;&#xFF0C;JS &#x6703;&#x5275;&#x9020;&#x5C6C;&#x65BC;&#x8A72;&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E26;<strong>&#x5206;&#x914D;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x7D66;&#x8A72;&#x51FD;&#x5F0F;&#x4F7F;&#x7528;</strong>&#x3002;</p>
+<p>&#x63DB;&#x53E5;&#x8A71;&#x8AAA;&#xFF0C;<strong>&#x6BCF;&#x500B;&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x90FD;&#x6709;&#x5C6C;&#x65BC;&#x81EA;&#x5DF1;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;</strong>&#x3002;&#x6211;&#x5011;&#x6240;&#x50B3;&#x5165;&#x7684;<strong>&#x53C3;&#x6578;</strong>&#xFF0C;&#x6216;&#x662F;&#x5728;&#x51FD;&#x5F0F;&#x88E1;&#x5275;&#x9020;&#x7684;<strong>&#x8B8A;&#x6578;&#xFF08;&#x7D14;&#x503C;&#x6216;&#x7269;&#x4EF6;&#xFF09;</strong>&#x90FD;&#x6703;&#x88AB;&#x5132;&#x5B58;&#x5728;&#x8A72;&#x51FD;&#x5F0F;&#x5C08;&#x5C6C;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x88E1;&#x9762;&#xFF0C;&#x548C;&#x5176;&#x4ED6;&#x51FD;&#x5F0F;&#x7121;&#x95DC;&#xFF0C;&#x4E5F;&#x548C;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x7121;&#x95DC;&#x3002;</p>
+<p>&#x7576;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x5B8C;&#x7562;&#xFF0C;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x88AB;&#x6D88;&#x6EC5;&#x5F8C;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#xFF0C; JavaScript &#x5F15;&#x64CE;&#x6703;&#x6E05;&#x9664;&#x8A72;&#x51FD;&#x5F0F;&#x5C08;&#x5C6C;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF0C;&#x9019;&#x500B;&#x52D5;&#x4F5C;&#x88AB;&#x7A31;&#x70BA;<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener">&#x5783;&#x573E;&#x56DE;&#x6536;&#xFF08;Garbage Collection&#xFF09;</a>&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;<strong>&#x5132;&#x5B58;&#x8A72;&#x51FD;&#x5F0F;&#x53C3;&#x6578;&#x548C;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x4E26;&#x4ECD;&#x6703;&#x5B58;&#x5728;</strong>&#xFF0C;&#x4E26;&#x4E0D;&#x6703;&#x88AB;&#x6E05;&#x9664;&#xFF0C;&#x9019;&#x662F; JS &#x5F15;&#x64CE;&#x672C;&#x8EAB;&#x8A2D;&#x8A08;&#x7684;&#x7279;&#x8272;&#xFF0C;&#x70BA;&#x4E86;&#x7BC4;&#x570D;&#x934A;&#x4E2D;&#x8B8A;&#x6578;&#x7684;&#x53C3;&#x8003;&#x8207;&#x53D6;&#x7528;&#x3002;</p>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C; JS &#x5F15;&#x64CE;&#x5728; <code>function(name)</code> &#x88E1;&#x9762;&#x627E;&#x4E0D;&#x5230; <code>whattosay</code> &#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x900F;&#x904E;<strong>&#x7BC4;&#x570D;&#x934A;</strong>&#x5411;<strong>&#x5916;&#x90E8;&#xFF08;&#x8A5E;&#x5F59;&#xFF09;&#x74B0;&#x5883;</strong> <code>greet(whattosay)</code> &#x5C0B;&#x627E;&#x53EF;&#x7528;&#x7684;&#x8B8A;&#x6578;&#x3002;&#x5728; <code>greet(whattosay)</code> &#x4E2D;&#xFF0C;&#x5118;&#x7BA1;&#x51FD;&#x5F0F; <code>greet(whattosay)</code> &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x5DF2;&#x7D93;&#x6D88;&#x6EC5;&#xFF0C;&#x53EF;&#x662F;&#xFF0C; JS &#x5F15;&#x64CE;<strong>&#x4ECD;&#x6703;&#x4FDD;&#x7559;&#x5132;&#x5B58;&#x8A72;&#x51FD;&#x5F0F;&#x53C3;&#x6578;&#x548C;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;</strong>&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;JS &#x6703;&#x53D6;&#x7528;&#x5230; <code>whattosay</code> &#xFF0C;&#x7B49;&#x65BC;&#x50B3;&#x5165;&#x7684;&#x53C3;&#x6578; <code>&apos;Hola!&apos;</code>&#x3002;</p>
+<p>&#x7531;&#x6B64;&#x53EF;&#x898B;&#xFF0C;<code>sayHola(&apos;John&apos;) ;</code> &#x7684;&#x57F7;&#x884C;&#x7D50;&#x679C;&#x70BA; <code>Hola! John</code> &#x3002; </p>
 <hr>
 
-<h3 id="閉包（Closure）"><a href="#閉包（Closure）" class="headerlink" title="閉包（Closure）"></a>閉包（Closure）</h3><p>閉包，指的是<strong>利用函式執行環境，創造一個封閉空間，包住可供取用的變數</strong>。</p>
-<p>閉包是我們巧用 <strong>JS 引擎會保留儲存函式參數與區域變數的記憶體空間</strong>的特性所產生的方法，可以幫助我們<strong>提升函式彈性</strong>、<strong>避免污染全域變數</strong>。</p>
-<p>如同上述的例子，我們利用函式 <code>greet(whattosay)</code> 創造執行環境，傳入參數 <code>whattosay</code> 的值（<code>&#39;Hola!&#39;</code> 或 <code>&#39;Hello!&#39;</code>），並回傳另一個函式，供我們調用內部儲存的參數或區域變數。</p>
-<p>在課程中利用這張圖來解釋閉包的範例：</p>
-<p><img src="/2019/08/25/weird-JavaScript-31/closure.JPG" alt="閉包相關概念：一級函式、執行環境、執行堆疊、詞彙環境、外部環境以及範圍鍊（圖片源自參考資料 1.）"></p>
+<h3 id="&#x9589;&#x5305;&#xFF08;Closure&#xFF09;"><a href="#&#x9589;&#x5305;&#xFF08;Closure&#xFF09;" class="headerlink" title="&#x9589;&#x5305;&#xFF08;Closure&#xFF09;"></a>&#x9589;&#x5305;&#xFF08;Closure&#xFF09;</h3><p>&#x9589;&#x5305;&#xFF0C;&#x6307;&#x7684;&#x662F;<strong>&#x5229;&#x7528;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x5275;&#x9020;&#x4E00;&#x500B;&#x5C01;&#x9589;&#x7A7A;&#x9593;&#xFF0C;&#x5305;&#x4F4F;&#x53EF;&#x4F9B;&#x53D6;&#x7528;&#x7684;&#x8B8A;&#x6578;</strong>&#x3002;</p>
+<p>&#x9589;&#x5305;&#x662F;&#x6211;&#x5011;&#x5DE7;&#x7528; <strong>JS &#x5F15;&#x64CE;&#x6703;&#x4FDD;&#x7559;&#x5132;&#x5B58;&#x51FD;&#x5F0F;&#x53C3;&#x6578;&#x8207;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;</strong>&#x7684;&#x7279;&#x6027;&#x6240;&#x7522;&#x751F;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5E6B;&#x52A9;&#x6211;&#x5011;<strong>&#x63D0;&#x5347;&#x51FD;&#x5F0F;&#x5F48;&#x6027;</strong>&#x3001;<strong>&#x907F;&#x514D;&#x6C61;&#x67D3;&#x5168;&#x57DF;&#x8B8A;&#x6578;</strong>&#x3002;</p>
+<p>&#x5982;&#x540C;&#x4E0A;&#x8FF0;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x5011;&#x5229;&#x7528;&#x51FD;&#x5F0F; <code>greet(whattosay)</code> &#x5275;&#x9020;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x50B3;&#x5165;&#x53C3;&#x6578; <code>whattosay</code> &#x7684;&#x503C;&#xFF08;<code>&apos;Hola!&apos;</code> &#x6216; <code>&apos;Hello!&apos;</code>&#xFF09;&#xFF0C;&#x4E26;&#x56DE;&#x50B3;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;&#x4F9B;&#x6211;&#x5011;&#x8ABF;&#x7528;&#x5167;&#x90E8;&#x5132;&#x5B58;&#x7684;&#x53C3;&#x6578;&#x6216;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x3002;</p>
+<p>&#x5728;&#x8AB2;&#x7A0B;&#x4E2D;&#x5229;&#x7528;&#x9019;&#x5F35;&#x5716;&#x4F86;&#x89E3;&#x91CB;&#x9589;&#x5305;&#x7684;&#x7BC4;&#x4F8B;&#xFF1A;</p>
+<p><img src="/2019/08/25/weird-JavaScript-31/closure.JPG" alt="&#x9589;&#x5305;&#x76F8;&#x95DC;&#x6982;&#x5FF5;&#xFF1A;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x3001;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x3001;&#x57F7;&#x884C;&#x5806;&#x758A;&#x3001;&#x8A5E;&#x5F59;&#x74B0;&#x5883;&#x3001;&#x5916;&#x90E8;&#x74B0;&#x5883;&#x4EE5;&#x53CA;&#x7BC4;&#x570D;&#x934A;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>當一個函式被呼叫後，JS 會創造屬於該函式的執行環境，並分配一小部分的記憶體空間給該函式使用。</li>
-<li>當函式執行完畢，執行環境被消滅後，儲存該函式參數和區域變數的記憶體空間並仍會存在，並不會被清除。</li>
-<li>閉包，指的是利用函式執行環境，創造一個封閉空間，包住可供取用的變數。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x7576;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x88AB;&#x547C;&#x53EB;&#x5F8C;&#xFF0C;JS &#x6703;&#x5275;&#x9020;&#x5C6C;&#x65BC;&#x8A72;&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E26;&#x5206;&#x914D;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x7D66;&#x8A72;&#x51FD;&#x5F0F;&#x4F7F;&#x7528;&#x3002;</li>
+<li>&#x7576;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x5B8C;&#x7562;&#xFF0C;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x88AB;&#x6D88;&#x6EC5;&#x5F8C;&#xFF0C;&#x5132;&#x5B58;&#x8A72;&#x51FD;&#x5F0F;&#x53C3;&#x6578;&#x548C;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x4E26;&#x4ECD;&#x6703;&#x5B58;&#x5728;&#xFF0C;&#x4E26;&#x4E0D;&#x6703;&#x88AB;&#x6E05;&#x9664;&#x3002;</li>
+<li>&#x9589;&#x5305;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x5229;&#x7528;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x5275;&#x9020;&#x4E00;&#x500B;&#x5C01;&#x9589;&#x7A7A;&#x9593;&#xFF0C;&#x5305;&#x4F4F;&#x53EF;&#x4F9B;&#x53D6;&#x7528;&#x7684;&#x8B8A;&#x6578;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-47</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-47</li>
 </ol>
 
     

@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="什麼？你說 JSON 就是物件？大錯特錯！">
+    <meta name="description" content="&amp;#x4EC0;&amp;#x9EBC;&amp;#xFF1F;&amp;#x4F60;&amp;#x8AAA; JSON &amp;#x5C31;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF1F;&amp;#x5927;&amp;#x932F;&amp;#x7279;&amp;#x932F;&amp;#xFF01;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 18：JSON v.s. 物件">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-18/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="什麼？你說 JSON 就是物件？大錯特錯！">
+<meta property="og:description" content="&amp;#x4EC0;&amp;#x9EBC;&amp;#xFF1F;&amp;#x4F60;&amp;#x8AAA; JSON &amp;#x5C31;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF1F;&amp;#x5927;&amp;#x932F;&amp;#x7279;&amp;#x932F;&amp;#xFF01;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2020-02-23T09:32:28.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 18：JSON v.s. 物件">
-<meta name="twitter:description" content="什麼？你說 JSON 就是物件？大錯特錯！">
+<meta name="twitter:description" content="&amp;#x4EC0;&amp;#x9EBC;&amp;#xFF1F;&amp;#x4F60;&amp;#x8AAA; JSON &amp;#x5C31;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF1F;&amp;#x5927;&amp;#x932F;&amp;#x7279;&amp;#x932F;&amp;#xFF01;">
 
 
 
@@ -117,31 +117,31 @@
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#JSON與Object的比較">2&nbsp;&nbsp;<b>JSON與Object的比較</b></a>
+                    <a class="navbar-item" href="#JSON&amp;#x8207;Object&amp;#x7684;&amp;#x6BD4;&amp;#x8F03;">2&nbsp;&nbsp;<b>JSON&amp;amp;#x8207;Object&amp;amp;#x7684;&amp;amp;#x6BD4;&amp;amp;#x8F03;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#JSON轉Object">3&nbsp;&nbsp;<b>JSON轉Object</b></a>
+                    <a class="navbar-item" href="#JSON&amp;#x8F49;Object">3&nbsp;&nbsp;<b>JSON&amp;amp;#x8F49;Object</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#Object轉JSON">4&nbsp;&nbsp;<b>Object轉JSON</b></a>
+                    <a class="navbar-item" href="#Object&amp;#x8F49;JSON">4&nbsp;&nbsp;<b>Object&amp;amp;#x8F49;JSON</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">5&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">5&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">6&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">6&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -180,42 +180,42 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>什麼？你說 JSON 就是物件？大錯特錯！</p>
+        <p>&#x4EC0;&#x9EBC;&#xFF1F;&#x4F60;&#x8AAA; JSON &#x5C31;&#x662F;&#x7269;&#x4EF6;&#xFF1F;&#x5927;&#x932F;&#x7279;&#x932F;&#xFF01;</p>
   <a id="more"></a>
 
-<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>JavaScript 物件表示法（JSON， JavaScript Object Notation），是一種輕量的資料交換語言，用來傳輸 Name/Value Pairs 所組成的資料物件。JSON 雖然屬於 JavaScript 中的子集，但是獨立於 JS 環境，可以被許多程式語言支援、解析，副檔名為 <code>.json</code>。</p>
-<p>相較於 XML（Extensible Markup Language），由於 JSON 更加<strong>輕便、簡潔明瞭（在傳輸上不會浪費過多的頻寬，效率更高）</strong>，當今開放資料多半以 JSON 格式開源，然而由於格式特性，兩者使用上還是有慣用的語言環境。JSON 常見於 JavaScript、Java、Node.js ，而 XML 常見於 PHP、C# 等網頁應用。</p>
-<p>JSON 格式：</p>
-<p><figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"John"</span>,</span><br><span class="line">  <span class="hljs-attr">"age"</span>: <span class="hljs-number">28</span>,</span><br><span class="line">  <span class="hljs-attr">"sex"</span>: <span class="hljs-string">"male"</span>,</span><br><span class="line">  <span class="hljs-attr">"isStudent"</span>: <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>XML 格式：</p>
-<p><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">object</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>John<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">age</span>&gt;</span>28<span class="hljs-tag">&lt;/<span class="hljs-name">age</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">sex</span>&gt;</span>male<span class="hljs-tag">&lt;/<span class="hljs-name">sex</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">isStudent</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">isStudent</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>JavaScript &#x7269;&#x4EF6;&#x8868;&#x793A;&#x6CD5;&#xFF08;JSON&#xFF0C; JavaScript Object Notation&#xFF09;&#xFF0C;&#x662F;&#x4E00;&#x7A2E;&#x8F15;&#x91CF;&#x7684;&#x8CC7;&#x6599;&#x4EA4;&#x63DB;&#x8A9E;&#x8A00;&#xFF0C;&#x7528;&#x4F86;&#x50B3;&#x8F38; Name/Value Pairs &#x6240;&#x7D44;&#x6210;&#x7684;&#x8CC7;&#x6599;&#x7269;&#x4EF6;&#x3002;JSON &#x96D6;&#x7136;&#x5C6C;&#x65BC; JavaScript &#x4E2D;&#x7684;&#x5B50;&#x96C6;&#xFF0C;&#x4F46;&#x662F;&#x7368;&#x7ACB;&#x65BC; JS &#x74B0;&#x5883;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x8A31;&#x591A;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x652F;&#x63F4;&#x3001;&#x89E3;&#x6790;&#xFF0C;&#x526F;&#x6A94;&#x540D;&#x70BA; <code>.json</code>&#x3002;</p>
+<p>&#x76F8;&#x8F03;&#x65BC; XML&#xFF08;Extensible Markup Language&#xFF09;&#xFF0C;&#x7531;&#x65BC; JSON &#x66F4;&#x52A0;<strong>&#x8F15;&#x4FBF;&#x3001;&#x7C21;&#x6F54;&#x660E;&#x77AD;&#xFF08;&#x5728;&#x50B3;&#x8F38;&#x4E0A;&#x4E0D;&#x6703;&#x6D6A;&#x8CBB;&#x904E;&#x591A;&#x7684;&#x983B;&#x5BEC;&#xFF0C;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#xFF09;</strong>&#xFF0C;&#x7576;&#x4ECA;&#x958B;&#x653E;&#x8CC7;&#x6599;&#x591A;&#x534A;&#x4EE5; JSON &#x683C;&#x5F0F;&#x958B;&#x6E90;&#xFF0C;&#x7136;&#x800C;&#x7531;&#x65BC;&#x683C;&#x5F0F;&#x7279;&#x6027;&#xFF0C;&#x5169;&#x8005;&#x4F7F;&#x7528;&#x4E0A;&#x9084;&#x662F;&#x6709;&#x6163;&#x7528;&#x7684;&#x8A9E;&#x8A00;&#x74B0;&#x5883;&#x3002;JSON &#x5E38;&#x898B;&#x65BC; JavaScript&#x3001;Java&#x3001;Node.js &#xFF0C;&#x800C; XML &#x5E38;&#x898B;&#x65BC; PHP&#x3001;C# &#x7B49;&#x7DB2;&#x9801;&#x61C9;&#x7528;&#x3002;</p>
+<p>JSON &#x683C;&#x5F0F;&#xFF1A;</p>
+<p><figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="hljs-attr">&quot;age&quot;</span>: <span class="hljs-number">28</span>,</span><br><span class="line">  <span class="hljs-attr">&quot;sex&quot;</span>: <span class="hljs-string">&quot;male&quot;</span>,</span><br><span class="line">  <span class="hljs-attr">&quot;isStudent&quot;</span>: <span class="hljs-literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>XML &#x683C;&#x5F0F;&#xFF1A;</p>
+<p><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">object</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>John<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">age</span>&gt;</span>28<span class="hljs-tag">&lt;/<span class="hljs-name">age</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">sex</span>&gt;</span>male<span class="hljs-tag">&lt;/<span class="hljs-name">sex</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">isStudent</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">isStudent</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="JSON與Object的比較"><a href="#JSON與Object的比較" class="headerlink" title="JSON與Object的比較"></a>JSON與Object的比較</h3><p>JSON 和 JS 物件的格式差異在於，<strong>JSON 中的 Name/Value 一定要用雙引號 <code>&quot;&quot;</code> 包覆</strong>，JS Object 則沒有規定。 </p>
-<p>JSON 格式：</p>
-<p><figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"John"</span>,</span><br><span class="line">  <span class="hljs-attr">"age"</span>: <span class="hljs-number">28</span>,</span><br><span class="line">  <span class="hljs-attr">"sex"</span>: <span class="hljs-string">"male"</span>,</span><br><span class="line">  <span class="hljs-attr">"isStudent"</span>: <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>JS 物件格式：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="hljs-string">'John'</span>,</span><br><span class="line">  age: <span class="hljs-number">28</span>,</span><br><span class="line">  sex: <span class="hljs-string">'male'</span>,</span><br><span class="line">  isStudent: <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="JSON&#x8207;Object&#x7684;&#x6BD4;&#x8F03;"><a href="#JSON&#x8207;Object&#x7684;&#x6BD4;&#x8F03;" class="headerlink" title="JSON&#x8207;Object&#x7684;&#x6BD4;&#x8F03;"></a>JSON&#x8207;Object&#x7684;&#x6BD4;&#x8F03;</h3><p>JSON &#x548C; JS &#x7269;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#x5DEE;&#x7570;&#x5728;&#x65BC;&#xFF0C;<strong>JSON &#x4E2D;&#x7684; Name/Value &#x4E00;&#x5B9A;&#x8981;&#x7528;&#x96D9;&#x5F15;&#x865F; <code>&quot;&quot;</code> &#x5305;&#x8986;</strong>&#xFF0C;JS Object &#x5247;&#x6C92;&#x6709;&#x898F;&#x5B9A;&#x3002; </p>
+<p>JSON &#x683C;&#x5F0F;&#xFF1A;</p>
+<p><figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="hljs-attr">&quot;age&quot;</span>: <span class="hljs-number">28</span>,</span><br><span class="line">  <span class="hljs-attr">&quot;sex&quot;</span>: <span class="hljs-string">&quot;male&quot;</span>,</span><br><span class="line">  <span class="hljs-attr">&quot;isStudent&quot;</span>: <span class="hljs-literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>JS &#x7269;&#x4EF6;&#x683C;&#x5F0F;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = {</span><br><span class="line">  name: <span class="hljs-string">&apos;John&apos;</span>,</span><br><span class="line">  age: <span class="hljs-number">28</span>,</span><br><span class="line">  sex: <span class="hljs-string">&apos;male&apos;</span>,</span><br><span class="line">  isStudent: <span class="hljs-literal">false</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="JSON轉Object"><a href="#JSON轉Object" class="headerlink" title="JSON轉Object"></a>JSON轉Object</h3><p>JavaScript 內建 <code>JSON.parse()</code> 指令，能將 <strong>JSON 格式的字串（String）轉換成 JS 物件</strong>。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-string">'&#123;"name":"John","age": 28,"sex": "male","isStudent": false&#125;'</span>) ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(obj) ; <span class="hljs-comment">// Object: &#123;name: "John", age: 28, sex: "male", isStudent: false&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="JSON&#x8F49;Object"><a href="#JSON&#x8F49;Object" class="headerlink" title="JSON&#x8F49;Object"></a>JSON&#x8F49;Object</h3><p>JavaScript &#x5167;&#x5EFA; <code>JSON.parse()</code> &#x6307;&#x4EE4;&#xFF0C;&#x80FD;&#x5C07; <strong>JSON &#x683C;&#x5F0F;&#x7684;&#x5B57;&#x4E32;&#xFF08;String&#xFF09;&#x8F49;&#x63DB;&#x6210; JS &#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-string">&apos;{&quot;name&quot;:&quot;John&quot;,&quot;age&quot;: 28,&quot;sex&quot;: &quot;male&quot;,&quot;isStudent&quot;: false}&apos;</span>) ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(obj) ; <span class="hljs-comment">// Object: {name: &quot;John&quot;, age: 28, sex: &quot;male&quot;, isStudent: false}</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="Object轉JSON"><a href="#Object轉JSON" class="headerlink" title="Object轉JSON"></a>Object轉JSON</h3><p>JavaScript 內建 <code>JSON.stringify()</code> 指令，能將 <strong>JS 物件換成 JSON格式的字串（String）</strong>。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> json = <span class="hljs-built_in">JSON</span>.stringify(&#123;</span><br><span class="line">  name: <span class="hljs-string">'John'</span>,</span><br><span class="line">  age: <span class="hljs-number">28</span>,</span><br><span class="line">  sex: <span class="hljs-string">'male'</span>,</span><br><span class="line">  isStudent: <span class="hljs-literal">false</span></span><br><span class="line">&#125;) ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(json) ; <span class="hljs-comment">// JSON String: &#123;"name":"John","age":28,"sex":"male","isStudent":false&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Object&#x8F49;JSON"><a href="#Object&#x8F49;JSON" class="headerlink" title="Object&#x8F49;JSON"></a>Object&#x8F49;JSON</h3><p>JavaScript &#x5167;&#x5EFA; <code>JSON.stringify()</code> &#x6307;&#x4EE4;&#xFF0C;&#x80FD;&#x5C07; <strong>JS &#x7269;&#x4EF6;&#x63DB;&#x6210; JSON&#x683C;&#x5F0F;&#x7684;&#x5B57;&#x4E32;&#xFF08;String&#xFF09;</strong>&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> json = <span class="hljs-built_in">JSON</span>.stringify({</span><br><span class="line">  name: <span class="hljs-string">&apos;John&apos;</span>,</span><br><span class="line">  age: <span class="hljs-number">28</span>,</span><br><span class="line">  sex: <span class="hljs-string">&apos;male&apos;</span>,</span><br><span class="line">  isStudent: <span class="hljs-literal">false</span></span><br><span class="line">}) ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(json) ; <span class="hljs-comment">// JSON String: {&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:28,&quot;sex&quot;:&quot;male&quot;,&quot;isStudent&quot;:false}</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>JSON 是一種發想於物件實字的輕量化資料交換格式，常見於開放資料。</li>
-<li>和物件格式不同的是，JSON 中的 Name/Value <strong>一定要</strong>用雙引號 <code>&quot;&quot;</code> 包覆。</li>
-<li><code>JSON.parse()</code> 能將 JSON 字串轉換成 JS 物件。</li>
-<li><code>JSON.stringify()</code> 能將 JS 物件轉換成 JSON 字串。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>JSON &#x662F;&#x4E00;&#x7A2E;&#x767C;&#x60F3;&#x65BC;&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#x7684;&#x8F15;&#x91CF;&#x5316;&#x8CC7;&#x6599;&#x4EA4;&#x63DB;&#x683C;&#x5F0F;&#xFF0C;&#x5E38;&#x898B;&#x65BC;&#x958B;&#x653E;&#x8CC7;&#x6599;&#x3002;</li>
+<li>&#x548C;&#x7269;&#x4EF6;&#x683C;&#x5F0F;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;JSON &#x4E2D;&#x7684; Name/Value <strong>&#x4E00;&#x5B9A;&#x8981;</strong>&#x7528;&#x96D9;&#x5F15;&#x865F; <code>&quot;&quot;</code> &#x5305;&#x8986;&#x3002;</li>
+<li><code>JSON.parse()</code> &#x80FD;&#x5C07; JSON &#x5B57;&#x4E32;&#x8F49;&#x63DB;&#x6210; JS &#x7269;&#x4EF6;&#x3002;</li>
+<li><code>JSON.stringify()</code> &#x80FD;&#x5C07; JS &#x7269;&#x4EF6;&#x8F49;&#x63DB;&#x6210; JSON &#x5B57;&#x4E32;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-33</li>
-<li><a href="https://zh.wikipedia.org/wiki/JSON#举例" target="_blank" rel="noopener">維基百科：JSON</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/XML#%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">維基百科：XML</a></li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-33</li>
+<li><a href="https://zh.wikipedia.org/wiki/JSON#&#x4E3E;&#x4F8B;" target="_blank" rel="noopener">&#x7DAD;&#x57FA;&#x767E;&#x79D1;&#xFF1A;JSON</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/XML#%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">&#x7DAD;&#x57FA;&#x767E;&#x79D1;&#xFF1A;XML</a></li>
 </ol>
 
     

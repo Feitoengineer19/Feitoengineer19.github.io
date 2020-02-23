@@ -16,19 +16,19 @@
 
 
 
-    <meta name="description" content="每當我們呼叫一個函式，JS 會立即建立屬於該函式的執行環境，然後堆起來（？）">
+    <meta name="description" content="&amp;#x6BCF;&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x547C;&amp;#x53EB;&amp;#x4E00;&amp;#x500B;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF0C;JS &amp;#x6703;&amp;#x7ACB;&amp;#x5373;&amp;#x5EFA;&amp;#x7ACB;&amp;#x5C6C;&amp;#x65BC;&amp;#x8A72;&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x57F7;&amp;#x884C;&amp;#x74">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 06：呼叫函式、執行堆疊">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/07/weird-JavaScript-06/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="每當我們呼叫一個函式，JS 會立即建立屬於該函式的執行環境，然後堆起來（？）">
+<meta property="og:description" content="&amp;#x6BCF;&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x547C;&amp;#x53EB;&amp;#x4E00;&amp;#x500B;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF0C;JS &amp;#x6703;&amp;#x7ACB;&amp;#x5373;&amp;#x5EFA;&amp;#x7ACB;&amp;#x5C6C;&amp;#x65BC;&amp;#x8A72;&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x57F7;&amp;#x884C;&amp;#x74">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/07/weird-JavaScript-06/executionStacks.JPG">
 <meta property="og:updated_time" content="2020-02-23T09:35:23.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 06：呼叫函式、執行堆疊">
-<meta name="twitter:description" content="每當我們呼叫一個函式，JS 會立即建立屬於該函式的執行環境，然後堆起來（？）">
+<meta name="twitter:description" content="&amp;#x6BCF;&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x547C;&amp;#x53EB;&amp;#x4E00;&amp;#x500B;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF0C;JS &amp;#x6703;&amp;#x7ACB;&amp;#x5373;&amp;#x5EFA;&amp;#x7ACB;&amp;#x5C6C;&amp;#x65BC;&amp;#x8A72;&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x57F7;&amp;#x884C;&amp;#x74">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/07/weird-JavaScript-06/executionStacks.JPG">
 
 
@@ -113,25 +113,25 @@
                     
                     
                     
-                    <a class="navbar-item" href="#呼叫（Invocation）">1&nbsp;&nbsp;<b>呼叫（Invocation）</b></a>
+                    <a class="navbar-item" href="#&amp;#x547C;&amp;#x53EB;&amp;#xFF08;Invocation&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x547C;&amp;amp;#x53EB;&amp;amp;#xFF08;Invocation&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#執行堆疊（Execution-Stacks）">2&nbsp;&nbsp;<b>執行堆疊（Execution Stacks）</b></a>
+                    <a class="navbar-item" href="#&amp;#x57F7;&amp;#x884C;&amp;#x5806;&amp;#x758A;&amp;#xFF08;Execution-Stacks&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x57F7;&amp;amp;#x884C;&amp;amp;#x5806;&amp;amp;#x758A;&amp;amp;#xFF08;Execution Stacks&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">3&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">3&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">4&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">4&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -170,48 +170,48 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>每當我們呼叫一個函式，JS 會立即建立屬於該函式的執行環境，然後堆起來（？）</p>
+        <p>&#x6BCF;&#x7576;&#x6211;&#x5011;&#x547C;&#x53EB;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;JS &#x6703;&#x7ACB;&#x5373;&#x5EFA;&#x7ACB;&#x5C6C;&#x65BC;&#x8A72;&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x7136;&#x5F8C;&#x5806;&#x8D77;&#x4F86;&#xFF08;&#xFF1F;&#xFF09;</p>
   <a id="more"></a>
 
-<h3 id="呼叫（Invocation）"><a href="#呼叫（Invocation）" class="headerlink" title="呼叫（Invocation）"></a>呼叫（Invocation）</h3><blockquote>
+<h3 id="&#x547C;&#x53EB;&#xFF08;Invocation&#xFF09;"><a href="#&#x547C;&#x53EB;&#xFF08;Invocation&#xFF09;" class="headerlink" title="&#x547C;&#x53EB;&#xFF08;Invocation&#xFF09;"></a>&#x547C;&#x53EB;&#xFF08;Invocation&#xFF09;</h3><blockquote>
 <p>Running a function</p>
 </blockquote>
-<p>在 JS 中，我們以 <code>函式名稱</code> 加上一對 <code>()</code> ，來呼叫（Invoke）函式，也就是<strong>執行</strong>該函式的意思。</p>
-<p>每當我們呼叫一個函式時，JS 會立即<strong>建立屬於該函式的執行環境（Execution Context），並執行該函式</strong>。</p>
-<p>所以，我們可以得出一個小口訣：<strong>有事件（函式），就有執行脈絡（執行環境）。</strong></p>
-<p>以下面這段程式碼為例，駐記說明 JavaScript 引擎做了哪些事情。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 建立 Global Execution Context</span></span><br><span class="line"><span class="hljs-comment">// Creation &amp; Hoisting : 宣告 function b</span></span><br><span class="line"><span class="hljs-comment">// Creation &amp; Hoisting : 宣告 function a</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Run function b.'</span>) ;　<span class="hljs-comment">// 印出 Run function b.</span></span><br><span class="line">  <span class="hljs-comment">// function b 結束，消滅 function a 的執行環境，並回到 function a。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  b() ; <span class="hljs-comment">// 建立 function b 的執行環境，執行 function b。</span></span><br><span class="line">  <span class="hljs-comment">// function a 結束，消滅 function a 的執行環境，並回到 Global Execution Context。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a() ; <span class="hljs-comment">// 建立 function a 的執行環境，執行 function a 。</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 消滅 Global Execution Context</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x5728; JS &#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x4EE5; <code>&#x51FD;&#x5F0F;&#x540D;&#x7A31;</code> &#x52A0;&#x4E0A;&#x4E00;&#x5C0D; <code>()</code> &#xFF0C;&#x4F86;&#x547C;&#x53EB;&#xFF08;Invoke&#xFF09;&#x51FD;&#x5F0F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<strong>&#x57F7;&#x884C;</strong>&#x8A72;&#x51FD;&#x5F0F;&#x7684;&#x610F;&#x601D;&#x3002;</p>
+<p>&#x6BCF;&#x7576;&#x6211;&#x5011;&#x547C;&#x53EB;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x6642;&#xFF0C;JS &#x6703;&#x7ACB;&#x5373;<strong>&#x5EFA;&#x7ACB;&#x5C6C;&#x65BC;&#x8A72;&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF08;Execution Context&#xFF09;&#xFF0C;&#x4E26;&#x57F7;&#x884C;&#x8A72;&#x51FD;&#x5F0F;</strong>&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4E00;&#x500B;&#x5C0F;&#x53E3;&#x8A23;&#xFF1A;<strong>&#x6709;&#x4E8B;&#x4EF6;&#xFF08;&#x51FD;&#x5F0F;&#xFF09;&#xFF0C;&#x5C31;&#x6709;&#x57F7;&#x884C;&#x8108;&#x7D61;&#xFF08;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF09;&#x3002;</strong></p>
+<p>&#x4EE5;&#x4E0B;&#x9762;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x70BA;&#x4F8B;&#xFF0C;&#x99D0;&#x8A18;&#x8AAA;&#x660E; JavaScript &#x5F15;&#x64CE;&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x4E8B;&#x60C5;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// &#x5EFA;&#x7ACB; Global Execution Context</span></span><br><span class="line"><span class="hljs-comment">// Creation &amp; Hoisting : &#x5BA3;&#x544A; function b</span></span><br><span class="line"><span class="hljs-comment">// Creation &amp; Hoisting : &#x5BA3;&#x544A; function a</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Run function b.&apos;</span>) ;&#x3000;<span class="hljs-comment">// &#x5370;&#x51FA; Run function b.</span></span><br><span class="line">  <span class="hljs-comment">// function b &#x7D50;&#x675F;&#xFF0C;&#x6D88;&#x6EC5; function a &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E26;&#x56DE;&#x5230; function a&#x3002;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  b() ; <span class="hljs-comment">// &#x5EFA;&#x7ACB; function b &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x57F7;&#x884C; function b&#x3002;</span></span><br><span class="line">  <span class="hljs-comment">// function a &#x7D50;&#x675F;&#xFF0C;&#x6D88;&#x6EC5; function a &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E26;&#x56DE;&#x5230; Global Execution Context&#x3002;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">a() ; <span class="hljs-comment">// &#x5EFA;&#x7ACB; function a &#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x57F7;&#x884C; function a &#x3002;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// &#x6D88;&#x6EC5; Global Execution Context</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="執行堆疊（Execution-Stacks）"><a href="#執行堆疊（Execution-Stacks）" class="headerlink" title="執行堆疊（Execution Stacks）"></a>執行堆疊（Execution Stacks）</h3><p>從上面的程式碼範例，我們可以歸納出 JS 建立執行環境的流程（順序）大致如下：</p>
+<h3 id="&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF08;Execution-Stacks&#xFF09;"><a href="#&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF08;Execution-Stacks&#xFF09;" class="headerlink" title="&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF08;Execution Stacks&#xFF09;"></a>&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF08;Execution Stacks&#xFF09;</h3><p>&#x5F9E;&#x4E0A;&#x9762;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x7BC4;&#x4F8B;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x6B78;&#x7D0D;&#x51FA; JS &#x5EFA;&#x7ACB;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7684;&#x6D41;&#x7A0B;&#xFF08;&#x9806;&#x5E8F;&#xFF09;&#x5927;&#x81F4;&#x5982;&#x4E0B;&#xFF1A;</p>
 <blockquote>
-<p><strong>Global</strong> Execution Context → <strong>function a</strong> Execution Context → <strong>function b</strong> Execution Context</p>
+<p><strong>Global</strong> Execution Context &#x2192; <strong>function a</strong> Execution Context &#x2192; <strong>function b</strong> Execution Context</p>
 </blockquote>
-<p>建立執行環境的順序，我們可以用下面這張圖來想像：</p>
-<p><img src="/2019/08/07/weird-JavaScript-06/executionStacks.JPG" alt="執行堆疊"></p>
-<p>如同圖，所謂執行堆疊，意思是 JS 所建立的執行環境，會一層一層往上疊加，堆在最上方的執行環境，即<strong>正在執行的事件（函式）</strong>。</p>
-<p>反過來看，從上面的程式碼範例，我們同樣可以歸納出 JS 消滅執行環境的流程（順序）：</p>
+<p>&#x5EFA;&#x7ACB;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7684;&#x9806;&#x5E8F;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x9019;&#x5F35;&#x5716;&#x4F86;&#x60F3;&#x50CF;&#xFF1A;</p>
+<p><img src="/2019/08/07/weird-JavaScript-06/executionStacks.JPG" alt="&#x57F7;&#x884C;&#x5806;&#x758A;"></p>
+<p>&#x5982;&#x540C;&#x5716;&#xFF0C;&#x6240;&#x8B02;&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF0C;&#x610F;&#x601D;&#x662F; JS &#x6240;&#x5EFA;&#x7ACB;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x6703;&#x4E00;&#x5C64;&#x4E00;&#x5C64;&#x5F80;&#x4E0A;&#x758A;&#x52A0;&#xFF0C;&#x5806;&#x5728;&#x6700;&#x4E0A;&#x65B9;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x5373;<strong>&#x6B63;&#x5728;&#x57F7;&#x884C;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x51FD;&#x5F0F;&#xFF09;</strong>&#x3002;</p>
+<p>&#x53CD;&#x904E;&#x4F86;&#x770B;&#xFF0C;&#x5F9E;&#x4E0A;&#x9762;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x7BC4;&#x4F8B;&#xFF0C;&#x6211;&#x5011;&#x540C;&#x6A23;&#x53EF;&#x4EE5;&#x6B78;&#x7D0D;&#x51FA; JS &#x6D88;&#x6EC5;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7684;&#x6D41;&#x7A0B;&#xFF08;&#x9806;&#x5E8F;&#xFF09;&#xFF1A;</p>
 <blockquote>
-<p><strong>function b</strong> Execution Context → <strong>function a</strong> Execution Context → <strong>Global</strong> Execution Context  </p>
+<p><strong>function b</strong> Execution Context &#x2192; <strong>function a</strong> Execution Context &#x2192; <strong>Global</strong> Execution Context  </p>
 </blockquote>
-<p>當一個個事件（函式）完成後，JS 消滅執行環境的順序，也會一層一層往下移除，直到執行堆疊為空。</p>
-<p>啊！順帶一提，還記得我上回說過：當執行堆疊為空， JS 會做什麼呢？</p>
+<p>&#x7576;&#x4E00;&#x500B;&#x500B;&#x4E8B;&#x4EF6;&#xFF08;&#x51FD;&#x5F0F;&#xFF09;&#x5B8C;&#x6210;&#x5F8C;&#xFF0C;JS &#x6D88;&#x6EC5;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7684;&#x9806;&#x5E8F;&#xFF0C;&#x4E5F;&#x6703;&#x4E00;&#x5C64;&#x4E00;&#x5C64;&#x5F80;&#x4E0B;&#x79FB;&#x9664;&#xFF0C;&#x76F4;&#x5230;&#x57F7;&#x884C;&#x5806;&#x758A;&#x70BA;&#x7A7A;&#x3002;</p>
+<p>&#x554A;&#xFF01;&#x9806;&#x5E36;&#x4E00;&#x63D0;&#xFF0C;&#x9084;&#x8A18;&#x5F97;&#x6211;&#x4E0A;&#x56DE;&#x8AAA;&#x904E;&#xFF1A;&#x7576;&#x57F7;&#x884C;&#x5806;&#x758A;&#x70BA;&#x7A7A;&#xFF0C; JS &#x6703;&#x505A;&#x4EC0;&#x9EBC;&#x5462;&#xFF1F;</p>
 <blockquote>
-<p>對，檢視事件佇列是否有待回呼事件，若有就依序執行。</p>
+<p>&#x5C0D;&#xFF0C;&#x6AA2;&#x8996;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x662F;&#x5426;&#x6709;&#x5F85;&#x56DE;&#x547C;&#x4E8B;&#x4EF6;&#xFF0C;&#x82E5;&#x6709;&#x5C31;&#x4F9D;&#x5E8F;&#x57F7;&#x884C;&#x3002;</p>
 </blockquote>
-<p>回到執行堆疊本身，我認為它是用來幫助我們理解 <strong>JS 引擎執行函式順序</strong>的概念，也就是說，它並不是真的存在於 JS 裡的一個系統，也不是一個範圍，只是我們想像出來的概念而已。</p>
-<p>此外，我也覺得，用「堆疊」這個詞來描繪並不精確，如果用「深度」來形容似乎貼切多了，因為我們在全域中呼叫函式，在函式中呼叫另一個函式，相互呼叫，呼叫得愈多，執行深度也愈深。</p>
-<p>這段只是我的小MurMur，往後還是會以執行堆疊來描述 JS 執行函式順序的概念。</p>
+<p>&#x56DE;&#x5230;&#x57F7;&#x884C;&#x5806;&#x758A;&#x672C;&#x8EAB;&#xFF0C;&#x6211;&#x8A8D;&#x70BA;&#x5B83;&#x662F;&#x7528;&#x4F86;&#x5E6B;&#x52A9;&#x6211;&#x5011;&#x7406;&#x89E3; <strong>JS &#x5F15;&#x64CE;&#x57F7;&#x884C;&#x51FD;&#x5F0F;&#x9806;&#x5E8F;</strong>&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x5B83;&#x4E26;&#x4E0D;&#x662F;&#x771F;&#x7684;&#x5B58;&#x5728;&#x65BC; JS &#x88E1;&#x7684;&#x4E00;&#x500B;&#x7CFB;&#x7D71;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x4E00;&#x500B;&#x7BC4;&#x570D;&#xFF0C;&#x53EA;&#x662F;&#x6211;&#x5011;&#x60F3;&#x50CF;&#x51FA;&#x4F86;&#x7684;&#x6982;&#x5FF5;&#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4E5F;&#x89BA;&#x5F97;&#xFF0C;&#x7528;&#x300C;&#x5806;&#x758A;&#x300D;&#x9019;&#x500B;&#x8A5E;&#x4F86;&#x63CF;&#x7E6A;&#x4E26;&#x4E0D;&#x7CBE;&#x78BA;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x300C;&#x6DF1;&#x5EA6;&#x300D;&#x4F86;&#x5F62;&#x5BB9;&#x4F3C;&#x4E4E;&#x8CBC;&#x5207;&#x591A;&#x4E86;&#xFF0C;&#x56E0;&#x70BA;&#x6211;&#x5011;&#x5728;&#x5168;&#x57DF;&#x4E2D;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#xFF0C;&#x5728;&#x51FD;&#x5F0F;&#x4E2D;&#x547C;&#x53EB;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;&#x76F8;&#x4E92;&#x547C;&#x53EB;&#xFF0C;&#x547C;&#x53EB;&#x5F97;&#x6108;&#x591A;&#xFF0C;&#x57F7;&#x884C;&#x6DF1;&#x5EA6;&#x4E5F;&#x6108;&#x6DF1;&#x3002;</p>
+<p>&#x9019;&#x6BB5;&#x53EA;&#x662F;&#x6211;&#x7684;&#x5C0F;MurMur&#xFF0C;&#x5F80;&#x5F8C;&#x9084;&#x662F;&#x6703;&#x4EE5;&#x57F7;&#x884C;&#x5806;&#x758A;&#x4F86;&#x63CF;&#x8FF0; JS &#x57F7;&#x884C;&#x51FD;&#x5F0F;&#x9806;&#x5E8F;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>在 JavaScript 中，呼叫函式等於執行函式。</li>
-<li>每呼叫一個函式，JS 會即刻建立屬於該函式的執行環境，並執行該函式。</li>
-<li>執行堆疊的意思是， JS 所建立的執行環境會一層一層往上堆疊，堆在最上方的執行環境，就是正在執行的函式。</li>
-<li>執行堆疊的概念用來幫助我們瞭解 JS 引擎執行函式的順序。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#x7B49;&#x65BC;&#x57F7;&#x884C;&#x51FD;&#x5F0F;&#x3002;</li>
+<li>&#x6BCF;&#x547C;&#x53EB;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;JS &#x6703;&#x5373;&#x523B;&#x5EFA;&#x7ACB;&#x5C6C;&#x65BC;&#x8A72;&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E26;&#x57F7;&#x884C;&#x8A72;&#x51FD;&#x5F0F;&#x3002;</li>
+<li>&#x57F7;&#x884C;&#x5806;&#x758A;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C; JS &#x6240;&#x5EFA;&#x7ACB;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x6703;&#x4E00;&#x5C64;&#x4E00;&#x5C64;&#x5F80;&#x4E0A;&#x5806;&#x758A;&#xFF0C;&#x5806;&#x5728;&#x6700;&#x4E0A;&#x65B9;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x5C31;&#x662F;&#x6B63;&#x5728;&#x57F7;&#x884C;&#x7684;&#x51FD;&#x5F0F;&#x3002;</li>
+<li>&#x57F7;&#x884C;&#x5806;&#x758A;&#x7684;&#x6982;&#x5FF5;&#x7528;&#x4F86;&#x5E6B;&#x52A9;&#x6211;&#x5011;&#x77AD;&#x89E3; JS &#x5F15;&#x64CE;&#x57F7;&#x884C;&#x51FD;&#x5F0F;&#x7684;&#x9806;&#x5E8F;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 2-14</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 2-14</li>
 </ol>
 
     

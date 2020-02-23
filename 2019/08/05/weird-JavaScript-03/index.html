@@ -16,20 +16,20 @@
 
 
 
-    <meta name="description" content="還記得之前提到的執行脈絡／環境（Execution Context）嗎？">
+    <meta name="description" content="&amp;#x9084;&amp;#x8A18;&amp;#x5F97;&amp;#x4E4B;&amp;#x524D;&amp;#x63D0;&amp;#x5230;&amp;#x7684;&amp;#x57F7;&amp;#x884C;&amp;#x8108;&amp;#x7D61;&amp;#xFF0F;&amp;#x74B0;&amp;#x5883;&amp;#xFF08;Execution Context&amp;#xFF09;&amp;#x55CE;&amp;#xFF1F;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 03：全域環境與全域物件">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-03/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="還記得之前提到的執行脈絡／環境（Execution Context）嗎？">
+<meta property="og:description" content="&amp;#x9084;&amp;#x8A18;&amp;#x5F97;&amp;#x4E4B;&amp;#x524D;&amp;#x63D0;&amp;#x5230;&amp;#x7684;&amp;#x57F7;&amp;#x884C;&amp;#x8108;&amp;#x7D61;&amp;#xFF0F;&amp;#x74B0;&amp;#x5883;&amp;#xFF08;Execution Context&amp;#xFF09;&amp;#x55CE;&amp;#xFF1F;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-03/window.JPG">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-03/global.JPG">
 <meta property="og:updated_time" content="2020-02-23T09:35:29.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 03：全域環境與全域物件">
-<meta name="twitter:description" content="還記得之前提到的執行脈絡／環境（Execution Context）嗎？">
+<meta name="twitter:description" content="&amp;#x9084;&amp;#x8A18;&amp;#x5F97;&amp;#x4E4B;&amp;#x524D;&amp;#x63D0;&amp;#x5230;&amp;#x7684;&amp;#x57F7;&amp;#x884C;&amp;#x8108;&amp;#x7D61;&amp;#xFF0F;&amp;#x74B0;&amp;#x5883;&amp;#xFF08;Execution Context&amp;#xFF09;&amp;#x55CE;&amp;#xFF1F;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-03/window.JPG">
 
 
@@ -114,19 +114,19 @@
                     
                     
                     
-                    <a class="navbar-item" href="#全域環境">1&nbsp;&nbsp;<b>全域環境</b></a>
+                    <a class="navbar-item" href="#&amp;#x5168;&amp;#x57DF;&amp;#x74B0;&amp;#x5883;">1&nbsp;&nbsp;<b>&amp;amp;#x5168;&amp;amp;#x57DF;&amp;amp;#x74B0;&amp;amp;#x5883;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">2&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">2&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">3&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">3&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -165,35 +165,35 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>還記得之前提到的<strong>執行脈絡／環境（Execution Context）</strong>嗎？ </p>
+        <p>&#x9084;&#x8A18;&#x5F97;&#x4E4B;&#x524D;&#x63D0;&#x5230;&#x7684;<strong>&#x57F7;&#x884C;&#x8108;&#x7D61;&#xFF0F;&#x74B0;&#x5883;&#xFF08;Execution Context&#xFF09;</strong>&#x55CE;&#xFF1F; </p>
   <a id="more"></a>
 
-<h3 id="全域環境"><a href="#全域環境" class="headerlink" title="全域環境"></a>全域環境</h3><p>JavaScript 的全域（Global）環境，指的就是 <strong>（最）外部執行環境（Outer Environment）</strong>，也是語法解析器解析 JavaScript 程式碼的地方，換句話說，你所寫的程式碼如果不在函式裡，那必然在<strong>函式外（Not in a function），即全域環境</strong>。</p>
-<p>而全域的意思是，<strong>在全域環境所儲存的變數或函式，在其下任一（子）執行環境，都能夠直接取用那些全域變數或函式</strong>。譬如下面這段程式碼，在 function <code>show</code> 中，能夠抓到全域環境中宣告的變數 <code>a</code> 。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-string">'Hello JavaScript!!'</span> ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a) ; <span class="hljs-comment">// 'Hello JavaScript!!'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">show() ;</span><br></pre></td></tr></table></figure></p>
-<p>在全域環境下，JavaScript 引擎會自動幫我們產生兩樣東西：</p>
+<h3 id="&#x5168;&#x57DF;&#x74B0;&#x5883;"><a href="#&#x5168;&#x57DF;&#x74B0;&#x5883;" class="headerlink" title="&#x5168;&#x57DF;&#x74B0;&#x5883;"></a>&#x5168;&#x57DF;&#x74B0;&#x5883;</h3><p>JavaScript &#x7684;&#x5168;&#x57DF;&#xFF08;Global&#xFF09;&#x74B0;&#x5883;&#xFF0C;&#x6307;&#x7684;&#x5C31;&#x662F; <strong>&#xFF08;&#x6700;&#xFF09;&#x5916;&#x90E8;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF08;Outer Environment&#xFF09;</strong>&#xFF0C;&#x4E5F;&#x662F;&#x8A9E;&#x6CD5;&#x89E3;&#x6790;&#x5668;&#x89E3;&#x6790; JavaScript &#x7A0B;&#x5F0F;&#x78BC;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x63DB;&#x53E5;&#x8A71;&#x8AAA;&#xFF0C;&#x4F60;&#x6240;&#x5BEB;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x5982;&#x679C;&#x4E0D;&#x5728;&#x51FD;&#x5F0F;&#x88E1;&#xFF0C;&#x90A3;&#x5FC5;&#x7136;&#x5728;<strong>&#x51FD;&#x5F0F;&#x5916;&#xFF08;Not in a function&#xFF09;&#xFF0C;&#x5373;&#x5168;&#x57DF;&#x74B0;&#x5883;</strong>&#x3002;</p>
+<p>&#x800C;&#x5168;&#x57DF;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C;<strong>&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x6240;&#x5132;&#x5B58;&#x7684;&#x8B8A;&#x6578;&#x6216;&#x51FD;&#x5F0F;&#xFF0C;&#x5728;&#x5176;&#x4E0B;&#x4EFB;&#x4E00;&#xFF08;&#x5B50;&#xFF09;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x90FD;&#x80FD;&#x5920;&#x76F4;&#x63A5;&#x53D6;&#x7528;&#x90A3;&#x4E9B;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x6216;&#x51FD;&#x5F0F;</strong>&#x3002;&#x8B6C;&#x5982;&#x4E0B;&#x9762;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x5728; function <code>show</code> &#x4E2D;&#xFF0C;&#x80FD;&#x5920;&#x6293;&#x5230;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x4E2D;&#x5BA3;&#x544A;&#x7684;&#x8B8A;&#x6578; <code>a</code> &#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&apos;Hello JavaScript!!&apos;</span> ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a) ; <span class="hljs-comment">// &apos;Hello JavaScript!!&apos;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">show() ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x4E0B;&#xFF0C;JavaScript &#x5F15;&#x64CE;&#x6703;&#x81EA;&#x52D5;&#x5E6B;&#x6211;&#x5011;&#x7522;&#x751F;&#x5169;&#x6A23;&#x6771;&#x897F;&#xFF1A;</p>
 <ol>
-<li>全域物件（Global Object）</li>
-<li>變數 <code>this</code></li>
+<li>&#x5168;&#x57DF;&#x7269;&#x4EF6;&#xFF08;Global Object&#xFF09;</li>
+<li>&#x8B8A;&#x6578; <code>this</code></li>
 </ol>
-<p><img src="/2019/08/05/weird-JavaScript-03/window.JPG" alt="Window 與 this"> </p>
-<p>如上圖，我們在 Google Chrome Dev Tool 中分別輸入 <code>window</code> 和 <code>this</code> ，會發現在全域環境下，<strong><code>this</code> 同樣指向 <code>window</code> 這個全域物件</strong>。</p>
-<p>全域物件在不同的程式語言中有不同名稱，在瀏覽器（JavaScript 檔案）裡即是 <code>window</code> ，它已經儲存一些基本的函式（Function）和方法（Method）供我們使用，當然，我們也可以儲存變數在 <code>window</code> 這個<strong>全域物件</strong>裡面，這些被存在全域環境中的變數，就是俗稱的<strong>全域變數（Global Variable）</strong>。</p>
-<p>譬如下面這段程式碼：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-string">'Hello JavaScript!!'</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>)</span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-number">100</span>&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a, b) ; <span class="hljs-comment">// 'Hello JavaScript!!' ƒ foo()&#123;return 100&#125;;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a, <span class="hljs-built_in">window</span>.b) ; <span class="hljs-comment">// 'Hello JavaScript!!' ƒ foo()&#123;return 100&#125;;</span></span><br></pre></td></tr></table></figure></p>
-<p>既然全域物件命名為 <code>window</code> （視窗），就表示：每一個網頁（視窗）都是一個（全域）執行環境，互相獨立，互不干擾。</p>
+<p><img src="/2019/08/05/weird-JavaScript-03/window.JPG" alt="Window &#x8207; this"> </p>
+<p>&#x5982;&#x4E0A;&#x5716;&#xFF0C;&#x6211;&#x5011;&#x5728; Google Chrome Dev Tool &#x4E2D;&#x5206;&#x5225;&#x8F38;&#x5165; <code>window</code> &#x548C; <code>this</code> &#xFF0C;&#x6703;&#x767C;&#x73FE;&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x4E0B;&#xFF0C;<strong><code>this</code> &#x540C;&#x6A23;&#x6307;&#x5411; <code>window</code> &#x9019;&#x500B;&#x5168;&#x57DF;&#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p>&#x5168;&#x57DF;&#x7269;&#x4EF6;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x4E2D;&#x6709;&#x4E0D;&#x540C;&#x540D;&#x7A31;&#xFF0C;&#x5728;&#x700F;&#x89BD;&#x5668;&#xFF08;JavaScript &#x6A94;&#x6848;&#xFF09;&#x88E1;&#x5373;&#x662F; <code>window</code> &#xFF0C;&#x5B83;&#x5DF2;&#x7D93;&#x5132;&#x5B58;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x7684;&#x51FD;&#x5F0F;&#xFF08;Function&#xFF09;&#x548C;&#x65B9;&#x6CD5;&#xFF08;Method&#xFF09;&#x4F9B;&#x6211;&#x5011;&#x4F7F;&#x7528;&#xFF0C;&#x7576;&#x7136;&#xFF0C;&#x6211;&#x5011;&#x4E5F;&#x53EF;&#x4EE5;&#x5132;&#x5B58;&#x8B8A;&#x6578;&#x5728; <code>window</code> &#x9019;&#x500B;<strong>&#x5168;&#x57DF;&#x7269;&#x4EF6;</strong>&#x88E1;&#x9762;&#xFF0C;&#x9019;&#x4E9B;&#x88AB;&#x5B58;&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x4E2D;&#x7684;&#x8B8A;&#x6578;&#xFF0C;&#x5C31;&#x662F;&#x4FD7;&#x7A31;&#x7684;<strong>&#x5168;&#x57DF;&#x8B8A;&#x6578;&#xFF08;Global Variable&#xFF09;</strong>&#x3002;</p>
+<p>&#x8B6C;&#x5982;&#x4E0B;&#x9762;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&apos;Hello JavaScript!!&apos;</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-number">100</span>} ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a, b) ; <span class="hljs-comment">// &apos;Hello JavaScript!!&apos; &#x192; foo(){return 100};</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a, <span class="hljs-built_in">window</span>.b) ; <span class="hljs-comment">// &apos;Hello JavaScript!!&apos; &#x192; foo(){return 100};</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x65E2;&#x7136;&#x5168;&#x57DF;&#x7269;&#x4EF6;&#x547D;&#x540D;&#x70BA; <code>window</code> &#xFF08;&#x8996;&#x7A97;&#xFF09;&#xFF0C;&#x5C31;&#x8868;&#x793A;&#xFF1A;&#x6BCF;&#x4E00;&#x500B;&#x7DB2;&#x9801;&#xFF08;&#x8996;&#x7A97;&#xFF09;&#x90FD;&#x662F;&#x4E00;&#x500B;&#xFF08;&#x5168;&#x57DF;&#xFF09;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E92;&#x76F8;&#x7368;&#x7ACB;&#xFF0C;&#x4E92;&#x4E0D;&#x5E72;&#x64FE;&#x3002;</p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>最後，可以用課程內這張圖來總結：</p>
-<p><img src="/2019/08/05/weird-JavaScript-03/global.JPG" alt="在全域環境中：Global = window = this（圖片源自參考資料 1.）"> </p>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><p>&#x6700;&#x5F8C;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x8AB2;&#x7A0B;&#x5167;&#x9019;&#x5F35;&#x5716;&#x4F86;&#x7E3D;&#x7D50;&#xFF1A;</p>
+<p><img src="/2019/08/05/weird-JavaScript-03/global.JPG" alt="&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x4E2D;&#xFF1A;Global = window = this&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"> </p>
 <ul>
-<li>全域環境是 JS 最外層的執行環境（Outer Environment），它等於全域物件 <code>window</code> 。</li>
-<li>全域環境，或說全域物件 <code>window</code> ，即：不在函式裡（Not in a function）。</li>
-<li>在全域環境中，變數 <code>this</code> 等於全域物件 <code>window</code> 。</li>
-<li>每一個網頁（視窗）都是一個 <code>window</code> ，互相獨立。</li>
+<li>&#x5168;&#x57DF;&#x74B0;&#x5883;&#x662F; JS &#x6700;&#x5916;&#x5C64;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF08;Outer Environment&#xFF09;&#xFF0C;&#x5B83;&#x7B49;&#x65BC;&#x5168;&#x57DF;&#x7269;&#x4EF6; <code>window</code> &#x3002;</li>
+<li>&#x5168;&#x57DF;&#x74B0;&#x5883;&#xFF0C;&#x6216;&#x8AAA;&#x5168;&#x57DF;&#x7269;&#x4EF6; <code>window</code> &#xFF0C;&#x5373;&#xFF1A;&#x4E0D;&#x5728;&#x51FD;&#x5F0F;&#x88E1;&#xFF08;Not in a function&#xFF09;&#x3002;</li>
+<li>&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x4E2D;&#xFF0C;&#x8B8A;&#x6578; <code>this</code> &#x7B49;&#x65BC;&#x5168;&#x57DF;&#x7269;&#x4EF6; <code>window</code> &#x3002;</li>
+<li>&#x6BCF;&#x4E00;&#x500B;&#x7DB2;&#x9801;&#xFF08;&#x8996;&#x7A97;&#xFF09;&#x90FD;&#x662F;&#x4E00;&#x500B; <code>window</code> &#xFF0C;&#x4E92;&#x76F8;&#x7368;&#x7ACB;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 2-9</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 2-9</li>
 </ol>
 
     

@@ -16,19 +16,19 @@
 
 
 
-    <meta name="description" content="JavaScript 本身是一門單執行緒且同步執行的高階程式語言。">
+    <meta name="description" content="JavaScript &amp;#x672C;&amp;#x8EAB;&amp;#x662F;&amp;#x4E00;&amp;#x9580;&amp;#x55AE;&amp;#x57F7;&amp;#x884C;&amp;#x7DD2;&amp;#x4E14;&amp;#x540C;&amp;#x6B65;&amp;#x57F7;&amp;#x884C;&amp;#x7684;&amp;#x9AD8;&amp;#x968E;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 05：單執行緒、同步執行、非同步回呼">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="JavaScript 本身是一門單執行緒且同步執行的高階程式語言。">
+<meta property="og:description" content="JavaScript &amp;#x672C;&amp;#x8EAB;&amp;#x662F;&amp;#x4E00;&amp;#x9580;&amp;#x55AE;&amp;#x57F7;&amp;#x884C;&amp;#x7DD2;&amp;#x4E14;&amp;#x540C;&amp;#x6B65;&amp;#x57F7;&amp;#x884C;&amp;#x7684;&amp;#x9AD8;&amp;#x968E;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/eventQueue.JPG">
 <meta property="og:updated_time" content="2020-02-23T09:35:25.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 05：單執行緒、同步執行、非同步回呼">
-<meta name="twitter:description" content="JavaScript 本身是一門單執行緒且同步執行的高階程式語言。">
+<meta name="twitter:description" content="JavaScript &amp;#x672C;&amp;#x8EAB;&amp;#x662F;&amp;#x4E00;&amp;#x9580;&amp;#x55AE;&amp;#x57F7;&amp;#x884C;&amp;#x7DD2;&amp;#x4E14;&amp;#x540C;&amp;#x6B65;&amp;#x57F7;&amp;#x884C;&amp;#x7684;&amp;#x9AD8;&amp;#x968E;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x3002;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/eventQueue.JPG">
 
 
@@ -113,31 +113,31 @@
                     
                     
                     
-                    <a class="navbar-item" href="#單執行緒（Single-Threaded）">1&nbsp;&nbsp;<b>單執行緒（Single Threaded）</b></a>
+                    <a class="navbar-item" href="#&amp;#x55AE;&amp;#x57F7;&amp;#x884C;&amp;#x7DD2;&amp;#xFF08;Single-Threaded&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x55AE;&amp;amp;#x57F7;&amp;amp;#x884C;&amp;amp;#x7DD2;&amp;amp;#xFF08;Single Threaded&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#同步執行（Synchronous-Execution）">2&nbsp;&nbsp;<b>同步執行（Synchronous Execution）</b></a>
+                    <a class="navbar-item" href="#&amp;#x540C;&amp;#x6B65;&amp;#x57F7;&amp;#x884C;&amp;#xFF08;Synchronous-Execution&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x540C;&amp;amp;#x6B65;&amp;amp;#x57F7;&amp;amp;#x884C;&amp;amp;#xFF08;Synchronous Execution&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#非同步（Asynchronous）">3&nbsp;&nbsp;<b>非同步（Asynchronous）</b></a>
+                    <a class="navbar-item" href="#&amp;#x975E;&amp;#x540C;&amp;#x6B65;&amp;#xFF08;Asynchronous&amp;#xFF09;">3&nbsp;&nbsp;<b>&amp;amp;#x975E;&amp;amp;#x540C;&amp;amp;#x6B65;&amp;amp;#xFF08;Asynchronous&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">4&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">5&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -176,60 +176,60 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>JavaScript <strong>本身</strong>是一門<strong>單執行緒</strong>且<strong>同步執行</strong>的高階程式語言。</p>
+        <p>JavaScript <strong>&#x672C;&#x8EAB;</strong>&#x662F;&#x4E00;&#x9580;<strong>&#x55AE;&#x57F7;&#x884C;&#x7DD2;</strong>&#x4E14;<strong>&#x540C;&#x6B65;&#x57F7;&#x884C;</strong>&#x7684;&#x9AD8;&#x968E;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="單執行緒（Single-Threaded）"><a href="#單執行緒（Single-Threaded）" class="headerlink" title="單執行緒（Single Threaded）"></a>單執行緒（Single Threaded）</h3><blockquote>
+<h3 id="&#x55AE;&#x57F7;&#x884C;&#x7DD2;&#xFF08;Single-Threaded&#xFF09;"><a href="#&#x55AE;&#x57F7;&#x884C;&#x7DD2;&#xFF08;Single-Threaded&#xFF09;" class="headerlink" title="&#x55AE;&#x57F7;&#x884C;&#x7DD2;&#xFF08;Single Threaded&#xFF09;"></a>&#x55AE;&#x57F7;&#x884C;&#x7DD2;&#xFF08;Single Threaded&#xFF09;</h3><blockquote>
 <p><strong>One command at a time.</strong></p>
 </blockquote>
-<p>單執行緒的意思是， JavaScript 一次<strong>只能做一件事情</strong>（一行指令）。</p>
+<p>&#x55AE;&#x57F7;&#x884C;&#x7DD2;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C; JavaScript &#x4E00;&#x6B21;<strong>&#x53EA;&#x80FD;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;</strong>&#xFF08;&#x4E00;&#x884C;&#x6307;&#x4EE4;&#xFF09;&#x3002;</p>
 <hr>
 
-<h3 id="同步執行（Synchronous-Execution）"><a href="#同步執行（Synchronous-Execution）" class="headerlink" title="同步執行（Synchronous Execution）"></a>同步執行（Synchronous Execution）</h3><blockquote>
+<h3 id="&#x540C;&#x6B65;&#x57F7;&#x884C;&#xFF08;Synchronous-Execution&#xFF09;"><a href="#&#x540C;&#x6B65;&#x57F7;&#x884C;&#xFF08;Synchronous-Execution&#xFF09;" class="headerlink" title="&#x540C;&#x6B65;&#x57F7;&#x884C;&#xFF08;Synchronous Execution&#xFF09;"></a>&#x540C;&#x6B65;&#x57F7;&#x884C;&#xFF08;Synchronous Execution&#xFF09;</h3><blockquote>
 <p><strong>One at a time and in order.</strong></p>
 </blockquote>
-<p>同步執行的意思是， JavaScript 一次只能做一件事情，這件做完，才能做下一件，<strong>按照順序一件接著一件</strong>（逐行執行命令）。</p>
-<p>小飛：「可是我聽過 JavaScript 有一個特色叫做 <strong>非同步（Asynchronous）</strong>耶？」</p>
-<p>好，既然你誠心誠意發問了，我就…</p>
+<p>&#x540C;&#x6B65;&#x57F7;&#x884C;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C; JavaScript &#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#xFF0C;&#x9019;&#x4EF6;&#x505A;&#x5B8C;&#xFF0C;&#x624D;&#x80FD;&#x505A;&#x4E0B;&#x4E00;&#x4EF6;&#xFF0C;<strong>&#x6309;&#x7167;&#x9806;&#x5E8F;&#x4E00;&#x4EF6;&#x63A5;&#x8457;&#x4E00;&#x4EF6;</strong>&#xFF08;&#x9010;&#x884C;&#x57F7;&#x884C;&#x547D;&#x4EE4;&#xFF09;&#x3002;</p>
+<p>&#x5C0F;&#x98DB;&#xFF1A;&#x300C;&#x53EF;&#x662F;&#x6211;&#x807D;&#x904E; JavaScript &#x6709;&#x4E00;&#x500B;&#x7279;&#x8272;&#x53EB;&#x505A; <strong>&#x975E;&#x540C;&#x6B65;&#xFF08;Asynchronous&#xFF09;</strong>&#x8036;&#xFF1F;&#x300D;</p>
+<p>&#x597D;&#xFF0C;&#x65E2;&#x7136;&#x4F60;&#x8AA0;&#x5FC3;&#x8AA0;&#x610F;&#x767C;&#x554F;&#x4E86;&#xFF0C;&#x6211;&#x5C31;&#x2026;</p>
 <hr>
 
-<h3 id="非同步（Asynchronous）"><a href="#非同步（Asynchronous）" class="headerlink" title="非同步（Asynchronous）"></a>非同步（Asynchronous）</h3><blockquote>
+<h3 id="&#x975E;&#x540C;&#x6B65;&#xFF08;Asynchronous&#xFF09;"><a href="#&#x975E;&#x540C;&#x6B65;&#xFF08;Asynchronous&#xFF09;" class="headerlink" title="&#x975E;&#x540C;&#x6B65;&#xFF08;Asynchronous&#xFF09;"></a>&#x975E;&#x540C;&#x6B65;&#xFF08;Asynchronous&#xFF09;</h3><blockquote>
 <p><strong>More than one at a time.</strong></p>
 </blockquote>
-<p>非同步的意思是，「同時間可以做不只一件事」。</p>
-<p>注意！我說的<strong>不是</strong> JavaScript。再次強調，<strong>JS 引擎是同步執行的</strong>，一次只能做一件事且按照指令順序。</p>
-<p>那為什麼非同步會是 JavaScript 的特色呢？那是因為<strong>JavaScript 引擎可以和瀏覽器內其他引擎溝通，互相合作</strong>。</p>
-<p>事實上，瀏覽器裡不只包含 JS 引擎，也包含負責畫面呈現的<strong>渲染引擎（Rendering Engine）</strong>、獲取伺服器資料的 <strong>請求方法（HTTP Request Methods）</strong> 等等。</p>
-<p>而 JavaScript 引擎內有個東西叫作<strong>事件佇列（Event Queue）</strong>，<strong>JS 會把需要和其他引擎合作的事件，暫時放在事件佇列裡等待處理</strong>。</p>
-<p>這裡可以用兩個例子來說明。</p>
-<p><font style="color: navy ; font-weight: bold">※ 例1. JS 與 Rendering Engine 合作的非同步事件</font></p>
-<p>當我們在 JavaScript 中監聽一則 <code>click</code> 事件，因為它需要使用者點擊滑鼠來觸發事件，所以 JS 會把這個事件暫時放進事件佇列中，<strong>等到 JS 逐行跑完（全域執行環境的）指令，也就是執行堆疊（Execution Stack）為空以後</strong>，再來執行這則 <code>click</code> 事件（事件觸發後由 Rendering Engine 渲染畫面）。譬如下面這段程式碼：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 全域執行開始</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'start execution (time countdown starts)'</span>) </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waitFiveSeconds</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> endTime = <span class="hljs-number">5000</span> + <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() ;</span><br><span class="line">  <span class="hljs-keyword">while</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() &lt; endTime)&#123;&#125;　<span class="hljs-comment">// 5 秒內不會做任何事，此時點擊網頁，click 事件不會立刻被執行，而是被放進事件佇列等待。</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished function (5 seconds passed)'</span>) ;　</span><br><span class="line">  <span class="hljs-comment">// 函式 waitFiveSeconds 結束（結束 waitFiveSeconds 執行堆疊）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clickHandler</span>(<span class="hljs-params"></span>)</span>&#123;　<span class="hljs-comment">// 宣告　click 事件（函式）</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click event !'</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'click'</span>,clickHandler) ; <span class="hljs-comment">// 註冊 click 事件</span></span><br><span class="line"></span><br><span class="line">waitFiveSeconds() ; <span class="hljs-comment">// 執行函式 waitFiveSeconds （建立 waitFiveSeconds 執行堆疊）</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished execution'</span>) ;　</span><br><span class="line"><span class="hljs-comment">// 全域執行結束，開始執行事件佇列的事件（執行 clickHandler -&gt; 印出 'click event !' -&gt; 結束 clickHandler）。</span></span><br><span class="line"><span class="hljs-comment">// 持續檢查事件佇列，若有新的事件觸發（被丟進佇列），便立即執行。</span></span><br></pre></td></tr></table></figure></p>
-<p>執行結果如下：</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start execution (time countdown starts)</span><br><span class="line">finished function (5 seconds passed)</span><br><span class="line">finished execution</span><br><span class="line">click event !　// 你點擊網頁（觸發 click）多少次，這裡就會有多少個 click event !</span><br></pre></td></tr></table></figure></p>
-<p><font style="color: navy ; font-weight: bold">※ 例2. JS 與 HTTP Request 合作的非同步事件</font></p>
-<p>當我們在 JavaScript 中利用 HTTP Request 向伺服器發出一則資料請求，由於等待回覆（Response）必然耗時，所以 JS 會把這個請求（Request）暫時放進事件佇列中<strong>等待回覆</strong>（請求已經發出，並由 HTTP Request Methods 執行），<strong>等到 JS 逐行跑完（全域執行環境的）指令，也就是執行堆疊（Execution Stack）為空以後</strong>，再來處理伺服器 Response 的資料。</p>
-<p><img src="/2019/08/06/weird-JavaScript-05/eventQueue.JPG" alt="JS 會優先處理腳本中的執行堆疊，最後才執行事件佇列。（圖片源自參考資料 1.）"></p>
-<center>JS 會優先處理腳本中的執行堆疊，最後才執行事件佇列。</center>
+<p>&#x975E;&#x540C;&#x6B65;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C;&#x300C;&#x540C;&#x6642;&#x9593;&#x53EF;&#x4EE5;&#x505A;&#x4E0D;&#x53EA;&#x4E00;&#x4EF6;&#x4E8B;&#x300D;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF01;&#x6211;&#x8AAA;&#x7684;<strong>&#x4E0D;&#x662F;</strong> JavaScript&#x3002;&#x518D;&#x6B21;&#x5F37;&#x8ABF;&#xFF0C;<strong>JS &#x5F15;&#x64CE;&#x662F;&#x540C;&#x6B65;&#x57F7;&#x884C;&#x7684;</strong>&#xFF0C;&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#x4E14;&#x6309;&#x7167;&#x6307;&#x4EE4;&#x9806;&#x5E8F;&#x3002;</p>
+<p>&#x90A3;&#x70BA;&#x4EC0;&#x9EBC;&#x975E;&#x540C;&#x6B65;&#x6703;&#x662F; JavaScript &#x7684;&#x7279;&#x8272;&#x5462;&#xFF1F;&#x90A3;&#x662F;&#x56E0;&#x70BA;<strong>JavaScript &#x5F15;&#x64CE;&#x53EF;&#x4EE5;&#x548C;&#x700F;&#x89BD;&#x5668;&#x5167;&#x5176;&#x4ED6;&#x5F15;&#x64CE;&#x6E9D;&#x901A;&#xFF0C;&#x4E92;&#x76F8;&#x5408;&#x4F5C;</strong>&#x3002;</p>
+<p>&#x4E8B;&#x5BE6;&#x4E0A;&#xFF0C;&#x700F;&#x89BD;&#x5668;&#x88E1;&#x4E0D;&#x53EA;&#x5305;&#x542B; JS &#x5F15;&#x64CE;&#xFF0C;&#x4E5F;&#x5305;&#x542B;&#x8CA0;&#x8CAC;&#x756B;&#x9762;&#x5448;&#x73FE;&#x7684;<strong>&#x6E32;&#x67D3;&#x5F15;&#x64CE;&#xFF08;Rendering Engine&#xFF09;</strong>&#x3001;&#x7372;&#x53D6;&#x4F3A;&#x670D;&#x5668;&#x8CC7;&#x6599;&#x7684; <strong>&#x8ACB;&#x6C42;&#x65B9;&#x6CD5;&#xFF08;HTTP Request Methods&#xFF09;</strong> &#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x800C; JavaScript &#x5F15;&#x64CE;&#x5167;&#x6709;&#x500B;&#x6771;&#x897F;&#x53EB;&#x4F5C;<strong>&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#xFF08;Event Queue&#xFF09;</strong>&#xFF0C;<strong>JS &#x6703;&#x628A;&#x9700;&#x8981;&#x548C;&#x5176;&#x4ED6;&#x5F15;&#x64CE;&#x5408;&#x4F5C;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x66AB;&#x6642;&#x653E;&#x5728;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x88E1;&#x7B49;&#x5F85;&#x8655;&#x7406;</strong>&#x3002;</p>
+<p>&#x9019;&#x88E1;&#x53EF;&#x4EE5;&#x7528;&#x5169;&#x500B;&#x4F8B;&#x5B50;&#x4F86;&#x8AAA;&#x660E;&#x3002;</p>
+<p><font style="color: navy ; font-weight: bold">&#x203B; &#x4F8B;1. JS &#x8207; Rendering Engine &#x5408;&#x4F5C;&#x7684;&#x975E;&#x540C;&#x6B65;&#x4E8B;&#x4EF6;</font></p>
+<p>&#x7576;&#x6211;&#x5011;&#x5728; JavaScript &#x4E2D;&#x76E3;&#x807D;&#x4E00;&#x5247; <code>click</code> &#x4E8B;&#x4EF6;&#xFF0C;&#x56E0;&#x70BA;&#x5B83;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x8005;&#x9EDE;&#x64CA;&#x6ED1;&#x9F20;&#x4F86;&#x89F8;&#x767C;&#x4E8B;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5; JS &#x6703;&#x628A;&#x9019;&#x500B;&#x4E8B;&#x4EF6;&#x66AB;&#x6642;&#x653E;&#x9032;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x4E2D;&#xFF0C;<strong>&#x7B49;&#x5230; JS &#x9010;&#x884C;&#x8DD1;&#x5B8C;&#xFF08;&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7684;&#xFF09;&#x6307;&#x4EE4;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF08;Execution Stack&#xFF09;&#x70BA;&#x7A7A;&#x4EE5;&#x5F8C;</strong>&#xFF0C;&#x518D;&#x4F86;&#x57F7;&#x884C;&#x9019;&#x5247; <code>click</code> &#x4E8B;&#x4EF6;&#xFF08;&#x4E8B;&#x4EF6;&#x89F8;&#x767C;&#x5F8C;&#x7531; Rendering Engine &#x6E32;&#x67D3;&#x756B;&#x9762;&#xFF09;&#x3002;&#x8B6C;&#x5982;&#x4E0B;&#x9762;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// &#x5168;&#x57DF;&#x57F7;&#x884C;&#x958B;&#x59CB;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;start execution (time countdown starts)&apos;</span>) </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waitFiveSeconds</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> endTime = <span class="hljs-number">5000</span> + <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() ;</span><br><span class="line">  <span class="hljs-keyword">while</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() &lt; endTime){}&#x3000;<span class="hljs-comment">// 5 &#x79D2;&#x5167;&#x4E0D;&#x6703;&#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#xFF0C;&#x6B64;&#x6642;&#x9EDE;&#x64CA;&#x7DB2;&#x9801;&#xFF0C;click &#x4E8B;&#x4EF6;&#x4E0D;&#x6703;&#x7ACB;&#x523B;&#x88AB;&#x57F7;&#x884C;&#xFF0C;&#x800C;&#x662F;&#x88AB;&#x653E;&#x9032;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x7B49;&#x5F85;&#x3002;</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;finished function (5 seconds passed)&apos;</span>) ;&#x3000;</span><br><span class="line">  <span class="hljs-comment">// &#x51FD;&#x5F0F; waitFiveSeconds &#x7D50;&#x675F;&#xFF08;&#x7D50;&#x675F; waitFiveSeconds &#x57F7;&#x884C;&#x5806;&#x758A;&#xFF09;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clickHandler</span>(<span class="hljs-params"></span>)</span>{&#x3000;<span class="hljs-comment">// &#x5BA3;&#x544A;&#x3000;click &#x4E8B;&#x4EF6;&#xFF08;&#x51FD;&#x5F0F;&#xFF09;</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;click event !&apos;</span>) ;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&apos;click&apos;</span>,clickHandler) ; <span class="hljs-comment">// &#x8A3B;&#x518A; click &#x4E8B;&#x4EF6;</span></span><br><span class="line"></span><br><span class="line">waitFiveSeconds() ; <span class="hljs-comment">// &#x57F7;&#x884C;&#x51FD;&#x5F0F; waitFiveSeconds &#xFF08;&#x5EFA;&#x7ACB; waitFiveSeconds &#x57F7;&#x884C;&#x5806;&#x758A;&#xFF09;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;finished execution&apos;</span>) ;&#x3000;</span><br><span class="line"><span class="hljs-comment">// &#x5168;&#x57DF;&#x57F7;&#x884C;&#x7D50;&#x675F;&#xFF0C;&#x958B;&#x59CB;&#x57F7;&#x884C;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x57F7;&#x884C; clickHandler -&gt; &#x5370;&#x51FA; &apos;click event !&apos; -&gt; &#x7D50;&#x675F; clickHandler&#xFF09;&#x3002;</span></span><br><span class="line"><span class="hljs-comment">// &#x6301;&#x7E8C;&#x6AA2;&#x67E5;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#xFF0C;&#x82E5;&#x6709;&#x65B0;&#x7684;&#x4E8B;&#x4EF6;&#x89F8;&#x767C;&#xFF08;&#x88AB;&#x4E1F;&#x9032;&#x4F47;&#x5217;&#xFF09;&#xFF0C;&#x4FBF;&#x7ACB;&#x5373;&#x57F7;&#x884C;&#x3002;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x57F7;&#x884C;&#x7D50;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start execution (time countdown starts)</span><br><span class="line">finished function (5 seconds passed)</span><br><span class="line">finished execution</span><br><span class="line">click event !&#x3000;// &#x4F60;&#x9EDE;&#x64CA;&#x7DB2;&#x9801;&#xFF08;&#x89F8;&#x767C; click&#xFF09;&#x591A;&#x5C11;&#x6B21;&#xFF0C;&#x9019;&#x88E1;&#x5C31;&#x6703;&#x6709;&#x591A;&#x5C11;&#x500B; click event !</span><br></pre></td></tr></table></figure></p>
+<p><font style="color: navy ; font-weight: bold">&#x203B; &#x4F8B;2. JS &#x8207; HTTP Request &#x5408;&#x4F5C;&#x7684;&#x975E;&#x540C;&#x6B65;&#x4E8B;&#x4EF6;</font></p>
+<p>&#x7576;&#x6211;&#x5011;&#x5728; JavaScript &#x4E2D;&#x5229;&#x7528; HTTP Request &#x5411;&#x4F3A;&#x670D;&#x5668;&#x767C;&#x51FA;&#x4E00;&#x5247;&#x8CC7;&#x6599;&#x8ACB;&#x6C42;&#xFF0C;&#x7531;&#x65BC;&#x7B49;&#x5F85;&#x56DE;&#x8986;&#xFF08;Response&#xFF09;&#x5FC5;&#x7136;&#x8017;&#x6642;&#xFF0C;&#x6240;&#x4EE5; JS &#x6703;&#x628A;&#x9019;&#x500B;&#x8ACB;&#x6C42;&#xFF08;Request&#xFF09;&#x66AB;&#x6642;&#x653E;&#x9032;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x4E2D;<strong>&#x7B49;&#x5F85;&#x56DE;&#x8986;</strong>&#xFF08;&#x8ACB;&#x6C42;&#x5DF2;&#x7D93;&#x767C;&#x51FA;&#xFF0C;&#x4E26;&#x7531; HTTP Request Methods &#x57F7;&#x884C;&#xFF09;&#xFF0C;<strong>&#x7B49;&#x5230; JS &#x9010;&#x884C;&#x8DD1;&#x5B8C;&#xFF08;&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7684;&#xFF09;&#x6307;&#x4EE4;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF08;Execution Stack&#xFF09;&#x70BA;&#x7A7A;&#x4EE5;&#x5F8C;</strong>&#xFF0C;&#x518D;&#x4F86;&#x8655;&#x7406;&#x4F3A;&#x670D;&#x5668; Response &#x7684;&#x8CC7;&#x6599;&#x3002;</p>
+<p><img src="/2019/08/06/weird-JavaScript-05/eventQueue.JPG" alt="JS &#x6703;&#x512A;&#x5148;&#x8655;&#x7406;&#x8173;&#x672C;&#x4E2D;&#x7684;&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF0C;&#x6700;&#x5F8C;&#x624D;&#x57F7;&#x884C;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x3002;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
+<center>JS &#x6703;&#x512A;&#x5148;&#x8655;&#x7406;&#x8173;&#x672C;&#x4E2D;&#x7684;&#x57F7;&#x884C;&#x5806;&#x758A;&#xFF0C;&#x6700;&#x5F8C;&#x624D;&#x57F7;&#x884C;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x3002;</center>
 
-<p>我們可以把事件佇列想像成 JS 引擎的對外窗口，每當 JS 遇到需要和其他引擎合作的事件，會將這些事件依序放進事件佇列，先專心跑完全域執行環境的程式碼後，再回頭逐一執行事件佇列裡的任務。</p>
-<p>你也可以把事件佇列想像成一個大函式，把需要<strong>非同步執行</strong>的事件都先放進去，爾後再拿出來執行。這樣的方式，就是所謂的<strong>非同步回呼（Asynchronous Callback）</strong>。而那些<strong>JS 需要和其他引擎合作的事件（函式）</strong>，或說，這些<strong>被 JS 放進事件佇列裡的事件（函式）</strong>，正是一種<strong>回呼函式（Callback Function）</strong>。</p>
-<p>用生活化的方式解釋回呼，大概就像這個情境：白白（JS）一次只能做一件事，他現在正在和客戶A講電話，突然客戶B來電，白白就寫了張MEMO（事件佇列）：「客戶A談完要打給客戶B」。下一秒客戶C又來電，於是白白又寫下：「B客戶談完後要打給C」。<del>然後就得加班了？</del></p>
-<p>關於回呼的概念我們之後有機會再細談，回到事件佇列上。</p>
-<p>當事件佇列裡排定的事件都處理完後，JS 也不會閒著，它會<strong>持續檢查（Continuous Check）</strong>事件佇列有沒有新的事件進來，如果有的話，就會立即處理，如 ※例1. 的程式碼。</p>
-<p>發現了嗎？ JavaScript 這樣的執行流程，依然是<strong>同步</strong>的：一次只做一件事，這個做完再做下一個，按順序執行。</p>
-<p>總而言之，JavaScript 本身雖然是<strong>同步</strong>的，但因為它能夠利用事件佇列與瀏覽器中的其他引擎互相溝通、分工合作，達到<strong>非同步</strong>的效果，非同步也就成為了 JS 的特色。</p>
-<p>最後，需要特別注意的是，<strong>JS 非同步的部分，發生在 JS 引擎之外</strong>，也就是其他協作引擎所執行的。</p>
+<p>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x628A;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x60F3;&#x50CF;&#x6210; JS &#x5F15;&#x64CE;&#x7684;&#x5C0D;&#x5916;&#x7A97;&#x53E3;&#xFF0C;&#x6BCF;&#x7576; JS &#x9047;&#x5230;&#x9700;&#x8981;&#x548C;&#x5176;&#x4ED6;&#x5F15;&#x64CE;&#x5408;&#x4F5C;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x6703;&#x5C07;&#x9019;&#x4E9B;&#x4E8B;&#x4EF6;&#x4F9D;&#x5E8F;&#x653E;&#x9032;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#xFF0C;&#x5148;&#x5C08;&#x5FC3;&#x8DD1;&#x5B8C;&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x5F8C;&#xFF0C;&#x518D;&#x56DE;&#x982D;&#x9010;&#x4E00;&#x57F7;&#x884C;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x88E1;&#x7684;&#x4EFB;&#x52D9;&#x3002;</p>
+<p>&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x60F3;&#x50CF;&#x6210;&#x4E00;&#x500B;&#x5927;&#x51FD;&#x5F0F;&#xFF0C;&#x628A;&#x9700;&#x8981;<strong>&#x975E;&#x540C;&#x6B65;&#x57F7;&#x884C;</strong>&#x7684;&#x4E8B;&#x4EF6;&#x90FD;&#x5148;&#x653E;&#x9032;&#x53BB;&#xFF0C;&#x723E;&#x5F8C;&#x518D;&#x62FF;&#x51FA;&#x4F86;&#x57F7;&#x884C;&#x3002;&#x9019;&#x6A23;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;<strong>&#x975E;&#x540C;&#x6B65;&#x56DE;&#x547C;&#xFF08;Asynchronous Callback&#xFF09;</strong>&#x3002;&#x800C;&#x90A3;&#x4E9B;<strong>JS &#x9700;&#x8981;&#x548C;&#x5176;&#x4ED6;&#x5F15;&#x64CE;&#x5408;&#x4F5C;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x51FD;&#x5F0F;&#xFF09;</strong>&#xFF0C;&#x6216;&#x8AAA;&#xFF0C;&#x9019;&#x4E9B;<strong>&#x88AB; JS &#x653E;&#x9032;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x88E1;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x51FD;&#x5F0F;&#xFF09;</strong>&#xFF0C;&#x6B63;&#x662F;&#x4E00;&#x7A2E;<strong>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback Function&#xFF09;</strong>&#x3002;</p>
+<p>&#x7528;&#x751F;&#x6D3B;&#x5316;&#x7684;&#x65B9;&#x5F0F;&#x89E3;&#x91CB;&#x56DE;&#x547C;&#xFF0C;&#x5927;&#x6982;&#x5C31;&#x50CF;&#x9019;&#x500B;&#x60C5;&#x5883;&#xFF1A;&#x767D;&#x767D;&#xFF08;JS&#xFF09;&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x4ED6;&#x73FE;&#x5728;&#x6B63;&#x5728;&#x548C;&#x5BA2;&#x6236;A&#x8B1B;&#x96FB;&#x8A71;&#xFF0C;&#x7A81;&#x7136;&#x5BA2;&#x6236;B&#x4F86;&#x96FB;&#xFF0C;&#x767D;&#x767D;&#x5C31;&#x5BEB;&#x4E86;&#x5F35;MEMO&#xFF08;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#xFF09;&#xFF1A;&#x300C;&#x5BA2;&#x6236;A&#x8AC7;&#x5B8C;&#x8981;&#x6253;&#x7D66;&#x5BA2;&#x6236;B&#x300D;&#x3002;&#x4E0B;&#x4E00;&#x79D2;&#x5BA2;&#x6236;C&#x53C8;&#x4F86;&#x96FB;&#xFF0C;&#x65BC;&#x662F;&#x767D;&#x767D;&#x53C8;&#x5BEB;&#x4E0B;&#xFF1A;&#x300C;B&#x5BA2;&#x6236;&#x8AC7;&#x5B8C;&#x5F8C;&#x8981;&#x6253;&#x7D66;C&#x300D;&#x3002;<del>&#x7136;&#x5F8C;&#x5C31;&#x5F97;&#x52A0;&#x73ED;&#x4E86;&#xFF1F;</del></p>
+<p>&#x95DC;&#x65BC;&#x56DE;&#x547C;&#x7684;&#x6982;&#x5FF5;&#x6211;&#x5011;&#x4E4B;&#x5F8C;&#x6709;&#x6A5F;&#x6703;&#x518D;&#x7D30;&#x8AC7;&#xFF0C;&#x56DE;&#x5230;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x4E0A;&#x3002;</p>
+<p>&#x7576;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x88E1;&#x6392;&#x5B9A;&#x7684;&#x4E8B;&#x4EF6;&#x90FD;&#x8655;&#x7406;&#x5B8C;&#x5F8C;&#xFF0C;JS &#x4E5F;&#x4E0D;&#x6703;&#x9592;&#x8457;&#xFF0C;&#x5B83;&#x6703;<strong>&#x6301;&#x7E8C;&#x6AA2;&#x67E5;&#xFF08;Continuous Check&#xFF09;</strong>&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x6709;&#x6C92;&#x6709;&#x65B0;&#x7684;&#x4E8B;&#x4EF6;&#x9032;&#x4F86;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x7684;&#x8A71;&#xFF0C;&#x5C31;&#x6703;&#x7ACB;&#x5373;&#x8655;&#x7406;&#xFF0C;&#x5982; &#x203B;&#x4F8B;1. &#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x3002;</p>
+<p>&#x767C;&#x73FE;&#x4E86;&#x55CE;&#xFF1F; JavaScript &#x9019;&#x6A23;&#x7684;&#x57F7;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x4F9D;&#x7136;&#x662F;<strong>&#x540C;&#x6B65;</strong>&#x7684;&#xFF1A;&#x4E00;&#x6B21;&#x53EA;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x9019;&#x500B;&#x505A;&#x5B8C;&#x518D;&#x505A;&#x4E0B;&#x4E00;&#x500B;&#xFF0C;&#x6309;&#x9806;&#x5E8F;&#x57F7;&#x884C;&#x3002;</p>
+<p>&#x7E3D;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;JavaScript &#x672C;&#x8EAB;&#x96D6;&#x7136;&#x662F;<strong>&#x540C;&#x6B65;</strong>&#x7684;&#xFF0C;&#x4F46;&#x56E0;&#x70BA;&#x5B83;&#x80FD;&#x5920;&#x5229;&#x7528;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x8207;&#x700F;&#x89BD;&#x5668;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x5F15;&#x64CE;&#x4E92;&#x76F8;&#x6E9D;&#x901A;&#x3001;&#x5206;&#x5DE5;&#x5408;&#x4F5C;&#xFF0C;&#x9054;&#x5230;<strong>&#x975E;&#x540C;&#x6B65;</strong>&#x7684;&#x6548;&#x679C;&#xFF0C;&#x975E;&#x540C;&#x6B65;&#x4E5F;&#x5C31;&#x6210;&#x70BA;&#x4E86; JS &#x7684;&#x7279;&#x8272;&#x3002;</p>
+<p>&#x6700;&#x5F8C;&#xFF0C;&#x9700;&#x8981;&#x7279;&#x5225;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;<strong>JS &#x975E;&#x540C;&#x6B65;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x767C;&#x751F;&#x5728; JS &#x5F15;&#x64CE;&#x4E4B;&#x5916;</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5176;&#x4ED6;&#x5354;&#x4F5C;&#x5F15;&#x64CE;&#x6240;&#x57F7;&#x884C;&#x7684;&#x3002;</p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>JavaScript 本身是一門單執行緒且同步執行的高階程式語言，意思是，它一次只能做一件事情，而且必須按順序執行，執行完一件才能繼續做下一件。</li>
-<li>JavaScript 能夠利用事件佇列與瀏覽器中的其他引擎互相溝通、分工合作，利用同步達到非同步的效果，使得非同步成為 JS 的特色。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>JavaScript &#x672C;&#x8EAB;&#x662F;&#x4E00;&#x9580;&#x55AE;&#x57F7;&#x884C;&#x7DD2;&#x4E14;&#x540C;&#x6B65;&#x57F7;&#x884C;&#x7684;&#x9AD8;&#x968E;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#xFF0C;&#x610F;&#x601D;&#x662F;&#xFF0C;&#x5B83;&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#xFF0C;&#x800C;&#x4E14;&#x5FC5;&#x9808;&#x6309;&#x9806;&#x5E8F;&#x57F7;&#x884C;&#xFF0C;&#x57F7;&#x884C;&#x5B8C;&#x4E00;&#x4EF6;&#x624D;&#x80FD;&#x7E7C;&#x7E8C;&#x505A;&#x4E0B;&#x4E00;&#x4EF6;&#x3002;</li>
+<li>JavaScript &#x80FD;&#x5920;&#x5229;&#x7528;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x8207;&#x700F;&#x89BD;&#x5668;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x5F15;&#x64CE;&#x4E92;&#x76F8;&#x6E9D;&#x901A;&#x3001;&#x5206;&#x5DE5;&#x5408;&#x4F5C;&#xFF0C;&#x5229;&#x7528;&#x540C;&#x6B65;&#x9054;&#x5230;&#x975E;&#x540C;&#x6B65;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x4F7F;&#x5F97;&#x975E;&#x540C;&#x6B65;&#x6210;&#x70BA; JS &#x7684;&#x7279;&#x8272;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 2-13、2-18</li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10191427" target="_blank" rel="noopener">先來看看瀏覽器內核長怎樣吧！</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Callback_function" target="_blank" rel="noopener">MDN：Callback function</a></li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 2-13&#x3001;2-18</li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191427" target="_blank" rel="noopener">&#x5148;&#x4F86;&#x770B;&#x770B;&#x700F;&#x89BD;&#x5668;&#x5167;&#x6838;&#x9577;&#x600E;&#x6A23;&#x5427;&#xFF01;</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Callback_function" target="_blank" rel="noopener">MDN&#xFF1A;Callback function</a></li>
 </ol>
 
     

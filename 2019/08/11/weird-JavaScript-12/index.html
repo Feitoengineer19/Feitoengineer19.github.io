@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="瞭解運算子的優先性與相依性，我們才知道許多種類的運算子擺在一起時，誰會先處理？從哪裡開始處理？">
+    <meta name="description" content="&amp;#x77AD;&amp;#x89E3;&amp;#x904B;&amp;#x7B97;&amp;#x5B50;&amp;#x7684;&amp;#x512A;&amp;#x5148;&amp;#x6027;&amp;#x8207;&amp;#x76F8;&amp;#x4F9D;&amp;#x6027;&amp;#xFF0C;&amp;#x6211;&amp;#x5011;&amp;#x624D;&amp;#x77E5;&amp;#x9053;&amp;#x8A31;&amp;#x591A;&amp;#x7A2E;&amp;#x985E;&amp;#x7684;&amp;#x904B;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 12：運算子的優先性與相依性">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/11/weird-JavaScript-12/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="瞭解運算子的優先性與相依性，我們才知道許多種類的運算子擺在一起時，誰會先處理？從哪裡開始處理？">
+<meta property="og:description" content="&amp;#x77AD;&amp;#x89E3;&amp;#x904B;&amp;#x7B97;&amp;#x5B50;&amp;#x7684;&amp;#x512A;&amp;#x5148;&amp;#x6027;&amp;#x8207;&amp;#x76F8;&amp;#x4F9D;&amp;#x6027;&amp;#xFF0C;&amp;#x6211;&amp;#x5011;&amp;#x624D;&amp;#x77E5;&amp;#x9053;&amp;#x8A31;&amp;#x591A;&amp;#x7A2E;&amp;#x985E;&amp;#x7684;&amp;#x904B;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2020-02-23T09:35:09.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 12：運算子的優先性與相依性">
-<meta name="twitter:description" content="瞭解運算子的優先性與相依性，我們才知道許多種類的運算子擺在一起時，誰會先處理？從哪裡開始處理？">
+<meta name="twitter:description" content="&amp;#x77AD;&amp;#x89E3;&amp;#x904B;&amp;#x7B97;&amp;#x5B50;&amp;#x7684;&amp;#x512A;&amp;#x5148;&amp;#x6027;&amp;#x8207;&amp;#x76F8;&amp;#x4F9D;&amp;#x6027;&amp;#xFF0C;&amp;#x6211;&amp;#x5011;&amp;#x624D;&amp;#x77E5;&amp;#x9053;&amp;#x8A31;&amp;#x591A;&amp;#x7A2E;&amp;#x985E;&amp;#x7684;&amp;#x904B;">
 
 
 
@@ -111,25 +111,25 @@
                     
                     
                     
-                    <a class="navbar-item" href="#優先性（Operator-Precedence）">1&nbsp;&nbsp;<b>優先性（Operator Precedence）</b></a>
+                    <a class="navbar-item" href="#&amp;#x512A;&amp;#x5148;&amp;#x6027;&amp;#xFF08;Operator-Precedence&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x512A;&amp;amp;#x5148;&amp;amp;#x6027;&amp;amp;#xFF08;Operator Precedence&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#相依性（Operator-Associativity）">2&nbsp;&nbsp;<b>相依性（Operator Associativity）</b></a>
+                    <a class="navbar-item" href="#&amp;#x76F8;&amp;#x4F9D;&amp;#x6027;&amp;#xFF08;Operator-Associativity&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x76F8;&amp;amp;#x4F9D;&amp;amp;#x6027;&amp;amp;#xFF08;Operator Associativity&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">3&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">3&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">4&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">4&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -168,39 +168,39 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>瞭解運算子的優先性與相依性，我們才知道許多種類的運算子擺在一起時，誰會先處理？從哪裡開始處理？</p>
+        <p>&#x77AD;&#x89E3;&#x904B;&#x7B97;&#x5B50;&#x7684;&#x512A;&#x5148;&#x6027;&#x8207;&#x76F8;&#x4F9D;&#x6027;&#xFF0C;&#x6211;&#x5011;&#x624D;&#x77E5;&#x9053;&#x8A31;&#x591A;&#x7A2E;&#x985E;&#x7684;&#x904B;&#x7B97;&#x5B50;&#x64FA;&#x5728;&#x4E00;&#x8D77;&#x6642;&#xFF0C;&#x8AB0;&#x6703;&#x5148;&#x8655;&#x7406;&#xFF1F;&#x5F9E;&#x54EA;&#x88E1;&#x958B;&#x59CB;&#x8655;&#x7406;&#xFF1F;</p>
   <a id="more"></a>
 
 
-<h3 id="優先性（Operator-Precedence）"><a href="#優先性（Operator-Precedence）" class="headerlink" title="優先性（Operator Precedence）"></a>優先性（Operator Precedence）</h3><blockquote>
+<h3 id="&#x512A;&#x5148;&#x6027;&#xFF08;Operator-Precedence&#xFF09;"><a href="#&#x512A;&#x5148;&#x6027;&#xFF08;Operator-Precedence&#xFF09;" class="headerlink" title="&#x512A;&#x5148;&#x6027;&#xFF08;Operator Precedence&#xFF09;"></a>&#x512A;&#x5148;&#x6027;&#xFF08;Operator Precedence&#xFF09;</h3><blockquote>
 <p>Which operator function gets called first.</p>
 </blockquote>
-<p>運算子的優先性指的是，哪一個運算子會優先被 JS 引擎呼叫執行？</p>
-<p>也就是說，許多運算子擺一起時， <strong>JS 會先執行擁有較高優先次序的運算子</strong>。</p>
-<p>以算術運算子為例，很常見的「先乘除後加減」在 JS 亦如是：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 乘法、除法在 JS 中的優先次序為 14 。</span></span><br><span class="line"><span class="hljs-comment">// 加法、減法在 JS 中的優先次序為 13 。</span></span><br><span class="line"><span class="hljs-comment">// 賦值在 JS 中的優先次序為 3 。 </span></span><br><span class="line"><span class="hljs-comment">// 因此 4 * 5 會先被執行，而後為 3 + 20 ，得到 23 ，會後賦值給變數 num。</span></span><br><span class="line"><span class="hljs-keyword">var</span> num = <span class="hljs-number">3</span> + <span class="hljs-number">4</span> * <span class="hljs-number">5</span> ; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(num) ; <span class="hljs-comment">// 23</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x904B;&#x7B97;&#x5B50;&#x7684;&#x512A;&#x5148;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x54EA;&#x4E00;&#x500B;&#x904B;&#x7B97;&#x5B50;&#x6703;&#x512A;&#x5148;&#x88AB; JS &#x5F15;&#x64CE;&#x547C;&#x53EB;&#x57F7;&#x884C;&#xFF1F;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x8A31;&#x591A;&#x904B;&#x7B97;&#x5B50;&#x64FA;&#x4E00;&#x8D77;&#x6642;&#xFF0C; <strong>JS &#x6703;&#x5148;&#x57F7;&#x884C;&#x64C1;&#x6709;&#x8F03;&#x9AD8;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x7684;&#x904B;&#x7B97;&#x5B50;</strong>&#x3002;</p>
+<p>&#x4EE5;&#x7B97;&#x8853;&#x904B;&#x7B97;&#x5B50;&#x70BA;&#x4F8B;&#xFF0C;&#x5F88;&#x5E38;&#x898B;&#x7684;&#x300C;&#x5148;&#x4E58;&#x9664;&#x5F8C;&#x52A0;&#x6E1B;&#x300D;&#x5728; JS &#x4EA6;&#x5982;&#x662F;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// &#x4E58;&#x6CD5;&#x3001;&#x9664;&#x6CD5;&#x5728; JS &#x4E2D;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x70BA; 14 &#x3002;</span></span><br><span class="line"><span class="hljs-comment">// &#x52A0;&#x6CD5;&#x3001;&#x6E1B;&#x6CD5;&#x5728; JS &#x4E2D;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x70BA; 13 &#x3002;</span></span><br><span class="line"><span class="hljs-comment">// &#x8CE6;&#x503C;&#x5728; JS &#x4E2D;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x70BA; 3 &#x3002; </span></span><br><span class="line"><span class="hljs-comment">// &#x56E0;&#x6B64; 4 * 5 &#x6703;&#x5148;&#x88AB;&#x57F7;&#x884C;&#xFF0C;&#x800C;&#x5F8C;&#x70BA; 3 + 20 &#xFF0C;&#x5F97;&#x5230; 23 &#xFF0C;&#x6703;&#x5F8C;&#x8CE6;&#x503C;&#x7D66;&#x8B8A;&#x6578; num&#x3002;</span></span><br><span class="line"><span class="hljs-keyword">var</span> num = <span class="hljs-number">3</span> + <span class="hljs-number">4</span> * <span class="hljs-number">5</span> ; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(num) ; <span class="hljs-comment">// 23</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="相依性（Operator-Associativity）"><a href="#相依性（Operator-Associativity）" class="headerlink" title="相依性（Operator Associativity）"></a>相依性（Operator Associativity）</h3><blockquote>
+<h3 id="&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator-Associativity&#xFF09;"><a href="#&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator-Associativity&#xFF09;" class="headerlink" title="&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator Associativity&#xFF09;"></a>&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator Associativity&#xFF09;</h3><blockquote>
 <p>What order operator functions get called in: <strong>Left-to-right</strong> or <strong>Right-to-left</strong>.<br>When operator functions have the same precedence. </p>
 </blockquote>
-<p>相依性指的是，<strong>當運算子具有相同優先性時，運算子執行的方向為何？</strong>分為兩種：</p>
+<p>&#x76F8;&#x4F9D;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF0C;<strong>&#x7576;&#x904B;&#x7B97;&#x5B50;&#x5177;&#x6709;&#x76F8;&#x540C;&#x512A;&#x5148;&#x6027;&#x6642;&#xFF0C;&#x904B;&#x7B97;&#x5B50;&#x57F7;&#x884C;&#x7684;&#x65B9;&#x5411;&#x70BA;&#x4F55;&#xFF1F;</strong>&#x5206;&#x70BA;&#x5169;&#x7A2E;&#xFF1A;</p>
 <ul>
-<li><strong>左相依性（Left-to-right）</strong></li>
-<li><strong>右相依性（Right-to-left）</strong></li>
+<li><strong>&#x5DE6;&#x76F8;&#x4F9D;&#x6027;&#xFF08;Left-to-right&#xFF09;</strong></li>
+<li><strong>&#x53F3;&#x76F8;&#x4F9D;&#x6027;&#xFF08;Right-to-left&#xFF09;</strong></li>
 </ul>
-<p>我們在上一篇中提到運算子執行的方向性，即相依性，用以判斷優先性相同的情境。</p>
-<p>以賦值運算子為例，請看下方程式碼：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 賦值在 JS 中的優先次序為 3 ，屬於右相依性（從右邊開始往左邊看）。 </span></span><br><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">3</span> , b = <span class="hljs-number">4</span> , c = <span class="hljs-number">5</span> ;</span><br><span class="line">a = b = c ; </span><br><span class="line"><span class="hljs-comment">// c 會將值 5 向左賦值給 b 使其為 5，又 b 向左賦值給 a 使其為 5，以致 a、b、c 最後的值都是 5。</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a) ; <span class="hljs-comment">// 5</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(b) ; <span class="hljs-comment">// 5</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(c) ; <span class="hljs-comment">// 5</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x6211;&#x5011;&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x4E2D;&#x63D0;&#x5230;&#x904B;&#x7B97;&#x5B50;&#x57F7;&#x884C;&#x7684;&#x65B9;&#x5411;&#x6027;&#xFF0C;&#x5373;&#x76F8;&#x4F9D;&#x6027;&#xFF0C;&#x7528;&#x4EE5;&#x5224;&#x65B7;&#x512A;&#x5148;&#x6027;&#x76F8;&#x540C;&#x7684;&#x60C5;&#x5883;&#x3002;</p>
+<p>&#x4EE5;&#x8CE6;&#x503C;&#x904B;&#x7B97;&#x5B50;&#x70BA;&#x4F8B;&#xFF0C;&#x8ACB;&#x770B;&#x4E0B;&#x65B9;&#x7A0B;&#x5F0F;&#x78BC;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// &#x8CE6;&#x503C;&#x5728; JS &#x4E2D;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x70BA; 3 &#xFF0C;&#x5C6C;&#x65BC;&#x53F3;&#x76F8;&#x4F9D;&#x6027;&#xFF08;&#x5F9E;&#x53F3;&#x908A;&#x958B;&#x59CB;&#x5F80;&#x5DE6;&#x908A;&#x770B;&#xFF09;&#x3002; </span></span><br><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">3</span> , b = <span class="hljs-number">4</span> , c = <span class="hljs-number">5</span> ;</span><br><span class="line">a = b = c ; </span><br><span class="line"><span class="hljs-comment">// c &#x6703;&#x5C07;&#x503C; 5 &#x5411;&#x5DE6;&#x8CE6;&#x503C;&#x7D66; b &#x4F7F;&#x5176;&#x70BA; 5&#xFF0C;&#x53C8; b &#x5411;&#x5DE6;&#x8CE6;&#x503C;&#x7D66; a &#x4F7F;&#x5176;&#x70BA; 5&#xFF0C;&#x4EE5;&#x81F4; a&#x3001;b&#x3001;c &#x6700;&#x5F8C;&#x7684;&#x503C;&#x90FD;&#x662F; 5&#x3002;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a) ; <span class="hljs-comment">// 5</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(b) ; <span class="hljs-comment">// 5</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(c) ; <span class="hljs-comment">// 5</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>運算子的優先性指的是，JS 會處理擁有高優先次序的運算子。</li>
-<li>運算子的相依性指的是，當運算子具有相同優先次序時，運算子執行的方向。</li>
-<li>運算子的優先性與相依性可以參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">MND 所整理的表格</a>。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x904B;&#x7B97;&#x5B50;&#x7684;&#x512A;&#x5148;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF0C;JS &#x6703;&#x8655;&#x7406;&#x64C1;&#x6709;&#x9AD8;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x7684;&#x904B;&#x7B97;&#x5B50;&#x3002;</li>
+<li>&#x904B;&#x7B97;&#x5B50;&#x7684;&#x76F8;&#x4F9D;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x7576;&#x904B;&#x7B97;&#x5B50;&#x5177;&#x6709;&#x76F8;&#x540C;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x6642;&#xFF0C;&#x904B;&#x7B97;&#x5B50;&#x57F7;&#x884C;&#x7684;&#x65B9;&#x5411;&#x3002;</li>
+<li>&#x904B;&#x7B97;&#x5B50;&#x7684;&#x512A;&#x5148;&#x6027;&#x8207;&#x76F8;&#x4F9D;&#x6027;&#x53EF;&#x4EE5;&#x53C3;&#x8003; <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">MND &#x6240;&#x6574;&#x7406;&#x7684;&#x8868;&#x683C;</a>&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 3-22</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 3-22</li>
 </ol>
 
     

@@ -16,19 +16,19 @@
 
 
 
-    <meta name="description" content="學習取用物件的屬性和方法。">
+    <meta name="description" content="&amp;#x5B78;&amp;#x7FD2;&amp;#x53D6;&amp;#x7528;&amp;#x7269;&amp;#x4EF6;&amp;#x7684;&amp;#x5C6C;&amp;#x6027;&amp;#x548C;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 16：物件的屬性、方法以及取用">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/13/weird-JavaScript-16/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="學習取用物件的屬性和方法。">
+<meta property="og:description" content="&amp;#x5B78;&amp;#x7FD2;&amp;#x53D6;&amp;#x7528;&amp;#x7269;&amp;#x4EF6;&amp;#x7684;&amp;#x5C6C;&amp;#x6027;&amp;#x548C;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/13/weird-JavaScript-16/object.JPG">
 <meta property="og:updated_time" content="2020-02-23T09:32:32.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 16：物件的屬性、方法以及取用">
-<meta name="twitter:description" content="學習取用物件的屬性和方法。">
+<meta name="twitter:description" content="&amp;#x5B78;&amp;#x7FD2;&amp;#x53D6;&amp;#x7528;&amp;#x7269;&amp;#x4EF6;&amp;#x7684;&amp;#x5C6C;&amp;#x6027;&amp;#x548C;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/13/weird-JavaScript-16/object.JPG">
 
 
@@ -113,25 +113,25 @@
                     
                     
                     
-                    <a class="navbar-item" href="#物件的屬性與方法">1&nbsp;&nbsp;<b>物件的屬性與方法</b></a>
+                    <a class="navbar-item" href="#&amp;#x7269;&amp;#x4EF6;&amp;#x7684;&amp;#x5C6C;&amp;#x6027;&amp;#x8207;&amp;#x65B9;&amp;#x6CD5;">1&nbsp;&nbsp;<b>&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x7684;&amp;amp;#x5C6C;&amp;amp;#x6027;&amp;amp;#x8207;&amp;amp;#x65B9;&amp;amp;#x6CD5;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#屬性取用運算子">2&nbsp;&nbsp;<b>屬性取用運算子</b></a>
+                    <a class="navbar-item" href="#&amp;#x5C6C;&amp;#x6027;&amp;#x53D6;&amp;#x7528;&amp;#x904B;&amp;#x7B97;&amp;#x5B50;">2&nbsp;&nbsp;<b>&amp;amp;#x5C6C;&amp;amp;#x6027;&amp;amp;#x53D6;&amp;amp;#x7528;&amp;amp;#x904B;&amp;amp;#x7B97;&amp;amp;#x5B50;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">3&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">3&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">4&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">4&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -170,39 +170,39 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>學習取用物件的屬性和方法。</p>
+        <p>&#x5B78;&#x7FD2;&#x53D6;&#x7528;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="物件的屬性與方法"><a href="#物件的屬性與方法" class="headerlink" title="物件的屬性與方法"></a>物件的屬性與方法</h3><p>在 JavaScript 中，物件與函式息息相關，因為<strong>函式是一種特殊的物件</strong>，兩者不應分開討論。</p>
-<p>我們一再強調，物件就是 <strong>Name/Value 的集合</strong>，具有<strong>屬性</strong>和<strong>方法</strong>。</p>
-<p>物件中的屬性指的是物件中的一組 Name/Value ，其 Value 屬於另一個<strong>基本型別（純值）或物件型別</strong>。</p>
-<p>物件中的方法指的是物件中的一組 Name/Value ，其 Value 屬於另一個<strong>函式</strong>。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = &#123;</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是'Fei'（純值）</span></span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個物件。</span></span><br><span class="line">  family: &#123;</span><br><span class="line">    dad: <span class="hljs-string">'Jason'</span>,</span><br><span class="line">    mom: <span class="hljs-string">'Teresa'</span>,</span><br><span class="line">    bro: <span class="hljs-string">'Bai'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個陣列，因為陣列也屬於物件的一種。</span></span><br><span class="line">  friends: [<span class="hljs-string">'Shiba'</span>,<span class="hljs-string">'giraffe'</span>,<span class="hljs-string">'Fish'</span>],</span><br><span class="line">  <span class="hljs-comment">// Method: 一組 Name/Value ，其中 Value 是一個函式，因為函式也屬於物件的一種。</span></span><br><span class="line">  say: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Welcome to my blog!!'</span>) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure></p>
-<p>值得注意的是， JS 引擎創造物件時，除了<strong>整個物件本身</strong>會被儲存在一個<strong>記憶體位置（Address）</strong>，其中<strong>所有的屬性或方法</strong>也會分別被存進記憶體中。</p>
-<p>當我們在存取、修改物件中的某一個屬性或方法時，其實 JS 引擎所指向的是儲存該屬性或方法的記憶體位置，而非整個物件儲存的記憶體位置。</p>
-<p>只有當我們在取用整個物件時，JS 引擎才會指向儲存整個物件的記憶體位置。</p>
-<p>物件、物件中的屬性與方法在記憶體中的儲存位置，對於傳值、傳參考的概念非常重要！</p>
-<p>總而言之，可以用課程中的這張圖來總結物件的結構：</p>
-<p><img src="/2019/08/13/weird-JavaScript-16/object.JPG" alt="物件的組成（圖片源自參考資料 1.）"></p>
+<h3 id="&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;"><a href="#&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;"></a>&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;</h3><p>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x7269;&#x4EF6;&#x8207;&#x51FD;&#x5F0F;&#x606F;&#x606F;&#x76F8;&#x95DC;&#xFF0C;&#x56E0;&#x70BA;<strong>&#x51FD;&#x5F0F;&#x662F;&#x4E00;&#x7A2E;&#x7279;&#x6B8A;&#x7684;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x5169;&#x8005;&#x4E0D;&#x61C9;&#x5206;&#x958B;&#x8A0E;&#x8AD6;&#x3002;</p>
+<p>&#x6211;&#x5011;&#x4E00;&#x518D;&#x5F37;&#x8ABF;&#xFF0C;&#x7269;&#x4EF6;&#x5C31;&#x662F; <strong>Name/Value &#x7684;&#x96C6;&#x5408;</strong>&#xFF0C;&#x5177;&#x6709;<strong>&#x5C6C;&#x6027;</strong>&#x548C;<strong>&#x65B9;&#x6CD5;</strong>&#x3002;</p>
+<p>&#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x5C6C;&#x6027;&#x6307;&#x7684;&#x662F;&#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176; Value &#x5C6C;&#x65BC;&#x53E6;&#x4E00;&#x500B;<strong>&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;&#x7D14;&#x503C;&#xFF09;&#x6216;&#x7269;&#x4EF6;&#x578B;&#x5225;</strong>&#x3002;</p>
+<p>&#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x6307;&#x7684;&#x662F;&#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176; Value &#x5C6C;&#x65BC;&#x53E6;&#x4E00;&#x500B;<strong>&#x51FD;&#x5F0F;</strong>&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = {</span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&apos;Fei&apos;&#xFF08;&#x7D14;&#x503C;&#xFF09;</span></span><br><span class="line">  name: <span class="hljs-string">&apos;Fei&apos;</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x3002;</span></span><br><span class="line">  family: {</span><br><span class="line">    dad: <span class="hljs-string">&apos;Jason&apos;</span>,</span><br><span class="line">    mom: <span class="hljs-string">&apos;Teresa&apos;</span>,</span><br><span class="line">    bro: <span class="hljs-string">&apos;Bai&apos;</span></span><br><span class="line">  },</span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&#x4E00;&#x500B;&#x9663;&#x5217;&#xFF0C;&#x56E0;&#x70BA;&#x9663;&#x5217;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#x3002;</span></span><br><span class="line">  friends: [<span class="hljs-string">&apos;Shiba&apos;</span>,<span class="hljs-string">&apos;giraffe&apos;</span>,<span class="hljs-string">&apos;Fish&apos;</span>],</span><br><span class="line">  <span class="hljs-comment">// Method: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;&#x56E0;&#x70BA;&#x51FD;&#x5F0F;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#x3002;</span></span><br><span class="line">  say: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Welcome to my blog!!&apos;</span>) ;</span><br><span class="line">  }</span><br><span class="line">} ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C; JS &#x5F15;&#x64CE;&#x5275;&#x9020;&#x7269;&#x4EF6;&#x6642;&#xFF0C;&#x9664;&#x4E86;<strong>&#x6574;&#x500B;&#x7269;&#x4EF6;&#x672C;&#x8EAB;</strong>&#x6703;&#x88AB;&#x5132;&#x5B58;&#x5728;&#x4E00;&#x500B;<strong>&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF08;Address&#xFF09;</strong>&#xFF0C;&#x5176;&#x4E2D;<strong>&#x6240;&#x6709;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;</strong>&#x4E5F;&#x6703;&#x5206;&#x5225;&#x88AB;&#x5B58;&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x3002;</p>
+<p>&#x7576;&#x6211;&#x5011;&#x5728;&#x5B58;&#x53D6;&#x3001;&#x4FEE;&#x6539;&#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x500B;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x6642;&#xFF0C;&#x5176;&#x5BE6; JS &#x5F15;&#x64CE;&#x6240;&#x6307;&#x5411;&#x7684;&#x662F;&#x5132;&#x5B58;&#x8A72;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF0C;&#x800C;&#x975E;&#x6574;&#x500B;&#x7269;&#x4EF6;&#x5132;&#x5B58;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x53EA;&#x6709;&#x7576;&#x6211;&#x5011;&#x5728;&#x53D6;&#x7528;&#x6574;&#x500B;&#x7269;&#x4EF6;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x624D;&#x6703;&#x6307;&#x5411;&#x5132;&#x5B58;&#x6574;&#x500B;&#x7269;&#x4EF6;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x7269;&#x4EF6;&#x3001;&#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;&#x5132;&#x5B58;&#x4F4D;&#x7F6E;&#xFF0C;&#x5C0D;&#x65BC;&#x50B3;&#x503C;&#x3001;&#x50B3;&#x53C3;&#x8003;&#x7684;&#x6982;&#x5FF5;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF01;</p>
+<p>&#x7E3D;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x8AB2;&#x7A0B;&#x4E2D;&#x7684;&#x9019;&#x5F35;&#x5716;&#x4F86;&#x7E3D;&#x7D50;&#x7269;&#x4EF6;&#x7684;&#x7D50;&#x69CB;&#xFF1A;</p>
+<p><img src="/2019/08/13/weird-JavaScript-16/object.JPG" alt="&#x7269;&#x4EF6;&#x7684;&#x7D44;&#x6210;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <hr>
 
-<h3 id="屬性取用運算子"><a href="#屬性取用運算子" class="headerlink" title="屬性取用運算子"></a>屬性取用運算子</h3><p>我們可以利用屬性取用運算子 <code>[]</code> 來存取物件內的屬性，或呼叫物件內的方法。記得呼叫函式都要以 <code>()</code> 來呼叫。</p>
-<p>注意， <code>[]</code> 內要用<strong>字串（String）</strong>來表示我們想取用的屬性或方法名稱（Name）：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(person[<span class="hljs-string">'name'</span>]) ; <span class="hljs-comment">// Fei</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person[<span class="hljs-string">'family'</span>]) ; <span class="hljs-comment">// &#123; dad: 'Jason', mom: 'Teresa', bro: 'Bai'&#125;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person[<span class="hljs-string">'family'</span>][<span class="hljs-string">'bro'</span>]) ; <span class="hljs-comment">// Bai</span></span><br><span class="line">person[<span class="hljs-string">'say'</span>]() ; <span class="hljs-comment">// Welcome to my blog!!</span></span><br></pre></td></tr></table></figure></p>
-<p>除此之外，我們也可以用<strong>物件專屬的取用運算子</strong> <code>.</code> 來存取物件內的屬性或呼叫物件內的方法。與 <code>[]</code> 不同的是，我們不需要用字串來表示所欲取用的 name，因此使用上更為簡潔。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(person.name) ; <span class="hljs-comment">// Fei</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person.friends) ; <span class="hljs-comment">// ['Shiba','giraffe','Fish']</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person.friends[<span class="hljs-number">2</span>]) ; <span class="hljs-comment">// Fish</span></span><br><span class="line">person.say() ; <span class="hljs-comment">// Welcome to my blog!!</span></span><br></pre></td></tr></table></figure></p>
-<p>從 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">MDN 所整理的運算子優先性表格</a>中，可以發現 <strong><code>.</code> 運算子與 <code>[]</code> 運算子的優先次序是第二高的</strong>，僅次於群組運算子 <code>()</code> ，且為左相依性，<strong>由左至右</strong>運算。</p>
-<p>當然，我們也可以利用 <code>.</code> 運算子與 <code>[]</code> 運算子新增、修改物件的屬性或方法：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">person.hobby = [<span class="hljs-string">'Coding, Singing, Traveling'</span>] ;</span><br><span class="line">person[<span class="hljs-string">'family'</span>].sis = <span class="hljs-string">'Mei'</span> ;</span><br><span class="line">person.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'JS is so WEIRD!!'</span>)&#125; ;</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x5C6C;&#x6027;&#x53D6;&#x7528;&#x904B;&#x7B97;&#x5B50;"><a href="#&#x5C6C;&#x6027;&#x53D6;&#x7528;&#x904B;&#x7B97;&#x5B50;" class="headerlink" title="&#x5C6C;&#x6027;&#x53D6;&#x7528;&#x904B;&#x7B97;&#x5B50;"></a>&#x5C6C;&#x6027;&#x53D6;&#x7528;&#x904B;&#x7B97;&#x5B50;</h3><p>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x5C6C;&#x6027;&#x53D6;&#x7528;&#x904B;&#x7B97;&#x5B50; <code>[]</code> &#x4F86;&#x5B58;&#x53D6;&#x7269;&#x4EF6;&#x5167;&#x7684;&#x5C6C;&#x6027;&#xFF0C;&#x6216;&#x547C;&#x53EB;&#x7269;&#x4EF6;&#x5167;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x8A18;&#x5F97;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#x90FD;&#x8981;&#x4EE5; <code>()</code> &#x4F86;&#x547C;&#x53EB;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C; <code>[]</code> &#x5167;&#x8981;&#x7528;<strong>&#x5B57;&#x4E32;&#xFF08;String&#xFF09;</strong>&#x4F86;&#x8868;&#x793A;&#x6211;&#x5011;&#x60F3;&#x53D6;&#x7528;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x540D;&#x7A31;&#xFF08;Name&#xFF09;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(person[<span class="hljs-string">&apos;name&apos;</span>]) ; <span class="hljs-comment">// Fei</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person[<span class="hljs-string">&apos;family&apos;</span>]) ; <span class="hljs-comment">// { dad: &apos;Jason&apos;, mom: &apos;Teresa&apos;, bro: &apos;Bai&apos;}</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person[<span class="hljs-string">&apos;family&apos;</span>][<span class="hljs-string">&apos;bro&apos;</span>]) ; <span class="hljs-comment">// Bai</span></span><br><span class="line">person[<span class="hljs-string">&apos;say&apos;</span>]() ; <span class="hljs-comment">// Welcome to my blog!!</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x5011;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;<strong>&#x7269;&#x4EF6;&#x5C08;&#x5C6C;&#x7684;&#x53D6;&#x7528;&#x904B;&#x7B97;&#x5B50;</strong> <code>.</code> &#x4F86;&#x5B58;&#x53D6;&#x7269;&#x4EF6;&#x5167;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x547C;&#x53EB;&#x7269;&#x4EF6;&#x5167;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x8207; <code>[]</code> &#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x5011;&#x4E0D;&#x9700;&#x8981;&#x7528;&#x5B57;&#x4E32;&#x4F86;&#x8868;&#x793A;&#x6240;&#x6B32;&#x53D6;&#x7528;&#x7684; name&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;&#x4E0A;&#x66F4;&#x70BA;&#x7C21;&#x6F54;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(person.name) ; <span class="hljs-comment">// Fei</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person.friends) ; <span class="hljs-comment">// [&apos;Shiba&apos;,&apos;giraffe&apos;,&apos;Fish&apos;]</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(person.friends[<span class="hljs-number">2</span>]) ; <span class="hljs-comment">// Fish</span></span><br><span class="line">person.say() ; <span class="hljs-comment">// Welcome to my blog!!</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x5F9E; <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">MDN &#x6240;&#x6574;&#x7406;&#x7684;&#x904B;&#x7B97;&#x5B50;&#x512A;&#x5148;&#x6027;&#x8868;&#x683C;</a>&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x767C;&#x73FE; <strong><code>.</code> &#x904B;&#x7B97;&#x5B50;&#x8207; <code>[]</code> &#x904B;&#x7B97;&#x5B50;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x662F;&#x7B2C;&#x4E8C;&#x9AD8;&#x7684;</strong>&#xFF0C;&#x50C5;&#x6B21;&#x65BC;&#x7FA4;&#x7D44;&#x904B;&#x7B97;&#x5B50; <code>()</code> &#xFF0C;&#x4E14;&#x70BA;&#x5DE6;&#x76F8;&#x4F9D;&#x6027;&#xFF0C;<strong>&#x7531;&#x5DE6;&#x81F3;&#x53F3;</strong>&#x904B;&#x7B97;&#x3002;</p>
+<p>&#x7576;&#x7136;&#xFF0C;&#x6211;&#x5011;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528; <code>.</code> &#x904B;&#x7B97;&#x5B50;&#x8207; <code>[]</code> &#x904B;&#x7B97;&#x5B50;&#x65B0;&#x589E;&#x3001;&#x4FEE;&#x6539;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">person.hobby = [<span class="hljs-string">&apos;Coding, Singing, Traveling&apos;</span>] ;</span><br><span class="line">person[<span class="hljs-string">&apos;family&apos;</span>].sis = <span class="hljs-string">&apos;Mei&apos;</span> ;</span><br><span class="line">person.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;JS is so WEIRD!!&apos;</span>)} ;</span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>物件是 Name/Value 的集合 ，每一組鍵值配對都是一組屬性或方法。</li>
-<li>JS 創造物件時，會把物件整個存進一個記憶體位置，也會將每一個屬性或方法分別儲存進不同的記憶體位置。</li>
-<li>我們可以用 <code>[]</code> 或 <code>.</code> 運算子新增、修改、取用物件的屬性或呼叫物件的方法。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x7269;&#x4EF6;&#x662F; Name/Value &#x7684;&#x96C6;&#x5408; &#xFF0C;&#x6BCF;&#x4E00;&#x7D44;&#x9375;&#x503C;&#x914D;&#x5C0D;&#x90FD;&#x662F;&#x4E00;&#x7D44;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>JS &#x5275;&#x9020;&#x7269;&#x4EF6;&#x6642;&#xFF0C;&#x6703;&#x628A;&#x7269;&#x4EF6;&#x6574;&#x500B;&#x5B58;&#x9032;&#x4E00;&#x500B;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E5F;&#x6703;&#x5C07;&#x6BCF;&#x4E00;&#x500B;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x5206;&#x5225;&#x5132;&#x5B58;&#x9032;&#x4E0D;&#x540C;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x7528; <code>[]</code> &#x6216; <code>.</code> &#x904B;&#x7B97;&#x5B50;&#x65B0;&#x589E;&#x3001;&#x4FEE;&#x6539;&#x3001;&#x53D6;&#x7528;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x547C;&#x53EB;&#x7269;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-30</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-30</li>
 </ol>
 
     

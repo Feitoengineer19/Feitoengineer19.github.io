@@ -16,20 +16,20 @@
 
 
 
-    <meta name="description" content="這題沒答對，你敢說你懂閉包？">
+    <meta name="description" content="&amp;#x9019;&amp;#x984C;&amp;#x6C92;&amp;#x7B54;&amp;#x5C0D;&amp;#xFF0C;&amp;#x4F60;&amp;#x6562;&amp;#x8AAA;&amp;#x4F60;&amp;#x61C2;&amp;#x9589;&amp;#x5305;&amp;#xFF1F;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 32：閉包（2）">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="這題沒答對，你敢說你懂閉包？">
+<meta property="og:description" content="&amp;#x9019;&amp;#x984C;&amp;#x6C92;&amp;#x7B54;&amp;#x5C0D;&amp;#xFF0C;&amp;#x4F60;&amp;#x6562;&amp;#x8AAA;&amp;#x4F60;&amp;#x61C2;&amp;#x9589;&amp;#x5305;&amp;#xFF1F;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/black.jpg">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/closure2.JPG">
 <meta property="og:updated_time" content="2019-11-22T13:38:59.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 32：閉包（2）">
-<meta name="twitter:description" content="這題沒答對，你敢說你懂閉包？">
+<meta name="twitter:description" content="&amp;#x9019;&amp;#x984C;&amp;#x6C92;&amp;#x7B54;&amp;#x5C0D;&amp;#xFF0C;&amp;#x4F60;&amp;#x6562;&amp;#x8AAA;&amp;#x4F60;&amp;#x61C2;&amp;#x9589;&amp;#x5305;&amp;#xFF1F;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/black.jpg">
 
 
@@ -114,31 +114,31 @@
                     
                     
                     
-                    <a class="navbar-item" href="#閉包概念的程式碼範例">1&nbsp;&nbsp;<b>閉包概念的程式碼範例</b></a>
+                    <a class="navbar-item" href="#&amp;#x9589;&amp;#x5305;&amp;#x6982;&amp;#x5FF5;&amp;#x7684;&amp;#x7A0B;&amp;#x5F0F;&amp;#x78BC;&amp;#x7BC4;&amp;#x4F8B;">1&nbsp;&nbsp;<b>&amp;amp;#x9589;&amp;amp;#x5305;&amp;amp;#x6982;&amp;amp;#x5FF5;&amp;amp;#x7684;&amp;amp;#x7A0B;&amp;amp;#x5F0F;&amp;amp;#x78BC;&amp;amp;#x7BC4;&amp;amp;#x4F8B;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#範例解析">2&nbsp;&nbsp;<b>範例解析</b></a>
+                    <a class="navbar-item" href="#&amp;#x7BC4;&amp;#x4F8B;&amp;#x89E3;&amp;#x6790;">2&nbsp;&nbsp;<b>&amp;amp;#x7BC4;&amp;amp;#x4F8B;&amp;amp;#x89E3;&amp;amp;#x6790;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#創造函式-v-s-執行函式">3&nbsp;&nbsp;<b>創造函式 v.s. 執行函式</b></a>
+                    <a class="navbar-item" href="#&amp;#x5275;&amp;#x9020;&amp;#x51FD;&amp;#x5F0F;-v-s-&amp;#x57F7;&amp;#x884C;&amp;#x51FD;&amp;#x5F0F;">3&nbsp;&nbsp;<b>&amp;amp;#x5275;&amp;amp;#x9020;&amp;amp;#x51FD;&amp;amp;#x5F0F; v.s. &amp;amp;#x57F7;&amp;amp;#x884C;&amp;amp;#x51FD;&amp;amp;#x5F0F;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">4&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">5&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -177,102 +177,102 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>這題沒答對，你敢說你懂閉包？</p>
+        <p>&#x9019;&#x984C;&#x6C92;&#x7B54;&#x5C0D;&#xFF0C;&#x4F60;&#x6562;&#x8AAA;&#x4F60;&#x61C2;&#x9589;&#x5305;&#xFF1F;</p>
   <a id="more"></a>
 
-<h3 id="閉包概念的程式碼範例"><a href="#閉包概念的程式碼範例" class="headerlink" title="閉包概念的程式碼範例"></a>閉包概念的程式碼範例</h3><p>請看下面這段程式碼，想一想這段程式碼在做什麼？</p>
-<p>你認為 <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 執行後，分別會印出什麼數字？</p>
-<p>請將答案紀錄在一張白紙上，再複製貼上這段程式碼至瀏覽器中，檢驗是否正確。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = buildFunctions() ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fs[<span class="hljs-number">0</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">1</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">2</span>]() ;</span><br></pre></td></tr></table></figure></p>
-<p>檢驗後答案如你所預期的一樣嗎？如果你答對的話，恭喜你（應該）已經掌握閉包的概念了！</p>
-<p>解釋這個例子的原理之前，有必要畫個防雷分隔線：</p>
+<h3 id="&#x9589;&#x5305;&#x6982;&#x5FF5;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x7BC4;&#x4F8B;"><a href="#&#x9589;&#x5305;&#x6982;&#x5FF5;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x7BC4;&#x4F8B;" class="headerlink" title="&#x9589;&#x5305;&#x6982;&#x5FF5;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x7BC4;&#x4F8B;"></a>&#x9589;&#x5305;&#x6982;&#x5FF5;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x7BC4;&#x4F8B;</h3><p>&#x8ACB;&#x770B;&#x4E0B;&#x9762;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x60F3;&#x4E00;&#x60F3;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x5728;&#x505A;&#x4EC0;&#x9EBC;&#xFF1F;</p>
+<p>&#x4F60;&#x8A8D;&#x70BA; <code>fs[0]()</code> &#x3001; <code>fs[1]()</code> &#x3001; <code>fs[2]()</code> &#x57F7;&#x884C;&#x5F8C;&#xFF0C;&#x5206;&#x5225;&#x6703;&#x5370;&#x51FA;&#x4EC0;&#x9EBC;&#x6578;&#x5B57;&#xFF1F;</p>
+<p>&#x8ACB;&#x5C07;&#x7B54;&#x6848;&#x7D00;&#x9304;&#x5728;&#x4E00;&#x5F35;&#x767D;&#x7D19;&#x4E0A;&#xFF0C;&#x518D;&#x8907;&#x88FD;&#x8CBC;&#x4E0A;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x81F3;&#x700F;&#x89BD;&#x5668;&#x4E2D;&#xFF0C;&#x6AA2;&#x9A57;&#x662F;&#x5426;&#x6B63;&#x78BA;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = buildFunctions() ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++){</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    })</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">fs[<span class="hljs-number">0</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">1</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">2</span>]() ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x6AA2;&#x9A57;&#x5F8C;&#x7B54;&#x6848;&#x5982;&#x4F60;&#x6240;&#x9810;&#x671F;&#x7684;&#x4E00;&#x6A23;&#x55CE;&#xFF1F;&#x5982;&#x679C;&#x4F60;&#x7B54;&#x5C0D;&#x7684;&#x8A71;&#xFF0C;&#x606D;&#x559C;&#x4F60;&#xFF08;&#x61C9;&#x8A72;&#xFF09;&#x5DF2;&#x7D93;&#x638C;&#x63E1;&#x9589;&#x5305;&#x7684;&#x6982;&#x5FF5;&#x4E86;&#xFF01;</p>
+<p>&#x89E3;&#x91CB;&#x9019;&#x500B;&#x4F8B;&#x5B50;&#x7684;&#x539F;&#x7406;&#x4E4B;&#x524D;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x756B;&#x500B;&#x9632;&#x96F7;&#x5206;&#x9694;&#x7DDA;&#xFF1A;</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
-<p>沒錯，在這個例子中， <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 執行後，印出的結果都是 <code>3</code> 。</p>
-<p>許多人預期 <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 會分別印出 <code>0</code> 、 <code>1</code> 、 <code>2</code> ，怎麼會是 <code>3</code> ？這數字哪來的？</p>
-<p>簡單來說，這是因為：當你在<strong>執行</strong> <code>fs[0]()</code> 這三個函式的時候，它們所參考的外部（詞彙）環境 <code>buildFunctions()</code> 所儲存的區域變數 <code>i</code> ，已經是 <code>3</code> ，和你<strong>創造</strong> <code>fs[0]()</code> 這三個函式的時候的 <code>i</code> 是不一樣的。 </p>
-<p><img src="/2019/08/26/weird-JavaScript-32/black.jpg" alt="黑人問號"></p>
-<p>還是不懂？沒關係，不用害怕，繼續跟我往下走。</p>
+<p>&#x6C92;&#x932F;&#xFF0C;&#x5728;&#x9019;&#x500B;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C; <code>fs[0]()</code> &#x3001; <code>fs[1]()</code> &#x3001; <code>fs[2]()</code> &#x57F7;&#x884C;&#x5F8C;&#xFF0C;&#x5370;&#x51FA;&#x7684;&#x7D50;&#x679C;&#x90FD;&#x662F; <code>3</code> &#x3002;</p>
+<p>&#x8A31;&#x591A;&#x4EBA;&#x9810;&#x671F; <code>fs[0]()</code> &#x3001; <code>fs[1]()</code> &#x3001; <code>fs[2]()</code> &#x6703;&#x5206;&#x5225;&#x5370;&#x51FA; <code>0</code> &#x3001; <code>1</code> &#x3001; <code>2</code> &#xFF0C;&#x600E;&#x9EBC;&#x6703;&#x662F; <code>3</code> &#xFF1F;&#x9019;&#x6578;&#x5B57;&#x54EA;&#x4F86;&#x7684;&#xFF1F;</p>
+<p>&#x7C21;&#x55AE;&#x4F86;&#x8AAA;&#xFF0C;&#x9019;&#x662F;&#x56E0;&#x70BA;&#xFF1A;&#x7576;&#x4F60;&#x5728;<strong>&#x57F7;&#x884C;</strong> <code>fs[0]()</code> &#x9019;&#x4E09;&#x500B;&#x51FD;&#x5F0F;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x5B83;&#x5011;&#x6240;&#x53C3;&#x8003;&#x7684;&#x5916;&#x90E8;&#xFF08;&#x8A5E;&#x5F59;&#xFF09;&#x74B0;&#x5883; <code>buildFunctions()</code> &#x6240;&#x5132;&#x5B58;&#x7684;&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>i</code> &#xFF0C;&#x5DF2;&#x7D93;&#x662F; <code>3</code> &#xFF0C;&#x548C;&#x4F60;<strong>&#x5275;&#x9020;</strong> <code>fs[0]()</code> &#x9019;&#x4E09;&#x500B;&#x51FD;&#x5F0F;&#x7684;&#x6642;&#x5019;&#x7684; <code>i</code> &#x662F;&#x4E0D;&#x4E00;&#x6A23;&#x7684;&#x3002; </p>
+<p><img src="/2019/08/26/weird-JavaScript-32/black.jpg" alt="&#x9ED1;&#x4EBA;&#x554F;&#x865F;"></p>
+<p>&#x9084;&#x662F;&#x4E0D;&#x61C2;&#xFF1F;&#x6C92;&#x95DC;&#x4FC2;&#xFF0C;&#x4E0D;&#x7528;&#x5BB3;&#x6015;&#xFF0C;&#x7E7C;&#x7E8C;&#x8DDF;&#x6211;&#x5F80;&#x4E0B;&#x8D70;&#x3002;</p>
 <hr>
 
-<h3 id="範例解析"><a href="#範例解析" class="headerlink" title="範例解析"></a>範例解析</h3><p>綜合過去的觀念，我們一步一步拆解這段程式碼在幹嘛。</p>
-<p>首先，在 JS 執行程式碼之前，它會做兩件事，你還記得嗎？</p>
-<p><strong>Creation</strong>： JS 引擎會創造全域執行環境、 <code>window</code> 物件，以及 <code>this</code> 變數（代指 <code>window</code> 物件）。</p>
-<p><strong>Hoisting</strong>： JS 引擎會將變數宣告與函式宣告儲存進記憶體空間，即創造全域變數與全域函式。在這個例子中，變數 <code>fs</code> 會先被創造並賦值為 <code>undefined</code> ，而函式 <code>buildFunctions()</code> 會被宣告完成。</p>
-<p>接著， JS 引擎才會真正開始執行程式碼。而第一行程式碼是：</p>
+<h3 id="&#x7BC4;&#x4F8B;&#x89E3;&#x6790;"><a href="#&#x7BC4;&#x4F8B;&#x89E3;&#x6790;" class="headerlink" title="&#x7BC4;&#x4F8B;&#x89E3;&#x6790;"></a>&#x7BC4;&#x4F8B;&#x89E3;&#x6790;</h3><p>&#x7D9C;&#x5408;&#x904E;&#x53BB;&#x7684;&#x89C0;&#x5FF5;&#xFF0C;&#x6211;&#x5011;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x62C6;&#x89E3;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x5728;&#x5E79;&#x561B;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5728; JS &#x57F7;&#x884C;&#x7A0B;&#x5F0F;&#x78BC;&#x4E4B;&#x524D;&#xFF0C;&#x5B83;&#x6703;&#x505A;&#x5169;&#x4EF6;&#x4E8B;&#xFF0C;&#x4F60;&#x9084;&#x8A18;&#x5F97;&#x55CE;&#xFF1F;</p>
+<p><strong>Creation</strong>&#xFF1A; JS &#x5F15;&#x64CE;&#x6703;&#x5275;&#x9020;&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x3001; <code>window</code> &#x7269;&#x4EF6;&#xFF0C;&#x4EE5;&#x53CA; <code>this</code> &#x8B8A;&#x6578;&#xFF08;&#x4EE3;&#x6307; <code>window</code> &#x7269;&#x4EF6;&#xFF09;&#x3002;</p>
+<p><strong>Hoisting</strong>&#xFF1A; JS &#x5F15;&#x64CE;&#x6703;&#x5C07;&#x8B8A;&#x6578;&#x5BA3;&#x544A;&#x8207;&#x51FD;&#x5F0F;&#x5BA3;&#x544A;&#x5132;&#x5B58;&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF0C;&#x5373;&#x5275;&#x9020;&#x5168;&#x57DF;&#x8B8A;&#x6578;&#x8207;&#x5168;&#x57DF;&#x51FD;&#x5F0F;&#x3002;&#x5728;&#x9019;&#x500B;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x8B8A;&#x6578; <code>fs</code> &#x6703;&#x5148;&#x88AB;&#x5275;&#x9020;&#x4E26;&#x8CE6;&#x503C;&#x70BA; <code>undefined</code> &#xFF0C;&#x800C;&#x51FD;&#x5F0F; <code>buildFunctions()</code> &#x6703;&#x88AB;&#x5BA3;&#x544A;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x63A5;&#x8457;&#xFF0C; JS &#x5F15;&#x64CE;&#x624D;&#x6703;&#x771F;&#x6B63;&#x958B;&#x59CB;&#x57F7;&#x884C;&#x7A0B;&#x5F0F;&#x78BC;&#x3002;&#x800C;&#x7B2C;&#x4E00;&#x884C;&#x7A0B;&#x5F0F;&#x78BC;&#x662F;&#xFF1A;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = buildFunctions() ;</span><br></pre></td></tr></table></figure></p>
-<p>這行程式碼的意思是：</p>
+<p>&#x9019;&#x884C;&#x7A0B;&#x5F0F;&#x78BC;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF1A;</p>
 <blockquote>
-<p>呼叫函式 buildFunctions ，並將執行後 return 的值賦予給變數 fs 。</p>
+<p>&#x547C;&#x53EB;&#x51FD;&#x5F0F; buildFunctions &#xFF0C;&#x4E26;&#x5C07;&#x57F7;&#x884C;&#x5F8C; return &#x7684;&#x503C;&#x8CE6;&#x4E88;&#x7D66;&#x8B8A;&#x6578; fs &#x3002;</p>
 </blockquote>
-<p>所以，我們接著要理解函式 <code>buildFunctions</code> 到底執行了什麼？</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>函式 <code>buildFunctions</code> 被呼叫後，<strong>JS 引擎會創造屬於它的執行環境</strong>，並開始執行 <code>{}</code> 內部的程式碼（也就是函式物件的程式屬性）。</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x5011;&#x63A5;&#x8457;&#x8981;&#x7406;&#x89E3;&#x51FD;&#x5F0F; <code>buildFunctions</code> &#x5230;&#x5E95;&#x57F7;&#x884C;&#x4E86;&#x4EC0;&#x9EBC;&#xFF1F;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++){</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    })</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x51FD;&#x5F0F; <code>buildFunctions</code> &#x88AB;&#x547C;&#x53EB;&#x5F8C;&#xFF0C;<strong>JS &#x5F15;&#x64CE;&#x6703;&#x5275;&#x9020;&#x5C6C;&#x65BC;&#x5B83;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;</strong>&#xFF0C;&#x4E26;&#x958B;&#x59CB;&#x57F7;&#x884C; <code>{}</code> &#x5167;&#x90E8;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;&#xFF09;&#x3002;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr = [] ;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>宣告一個區域變數 <code>arr</code> 為一個空陣列 <code>[]</code>。</p>
+<p>&#x5BA3;&#x544A;&#x4E00;&#x500B;&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>arr</code> &#x70BA;&#x4E00;&#x500B;&#x7A7A;&#x9663;&#x5217; <code>[]</code>&#x3002;</p>
 </blockquote>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">  arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++){</span><br><span class="line">  arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">  })</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>跑一個 <code>for</code> 迴圈，若符合條件就執行迴圈內容，反之則結束迴圈。 </p>
+<p>&#x8DD1;&#x4E00;&#x500B; <code>for</code> &#x8FF4;&#x5708;&#xFF0C;&#x82E5;&#x7B26;&#x5408;&#x689D;&#x4EF6;&#x5C31;&#x57F7;&#x884C;&#x8FF4;&#x5708;&#x5167;&#x5BB9;&#xFF0C;&#x53CD;&#x4E4B;&#x5247;&#x7D50;&#x675F;&#x8FF4;&#x5708;&#x3002; </p>
 </blockquote>
-<p>在 <code>for</code> 迴圈這部分，我們宣告一個區域變數 <code>i = 0</code> 當作計數器，若 <code>i &lt; 3</code>，就執行 <code>for {}</code> 內的程式碼，反之則跳出迴圈。</p>
-<p>每次在 <code>for {}</code> 裡面，我們要<strong>創造</strong>一個新的函式 <code>function(){console.log(i)})</code> ，並將它 <code>push</code> 到變數 <code>arr</code> 陣列裡面。</p>
-<p>什麼？你說陣列裡面放函式很怪？忘記我們之前說過：陣列是任何東西的集合，可以存放任何純值或（函式）物件。</p>
-<p>我們將每一次迴圈的步驟拆開看：</p>
-<p>第一次迴圈時， <code>i = 0</code> ， <code>0 &lt; 3</code> ，符合條件，執行迴圈內容：<strong>創造</strong>函式 <code>function(){console.log(i)})</code> 並 <code>push</code> 到 <code>arr</code> 陣列中，接著 <code>i ++</code> 。 </p>
-<p>第二次迴圈時， <code>i = 1</code> ， <code>1 &lt; 3</code> ，符合條件，執行迴圈內容：<strong>創造</strong>函式 <code>function(){console.log(i)})</code> 並 <code>push</code> 到 <code>arr</code> 陣列中，接著 <code>i ++</code> 。 </p>
-<p>第三次迴圈時， <code>i = 2</code> ， <code>2 &lt; 3</code> ，符合條件，執行迴圈內容：<strong>創造</strong>函式 <code>function(){console.log(i)})</code> 並 <code>push</code> 到 <code>arr</code> 陣列中，接著 <code>i ++</code> 。 </p>
-<p>第四次迴圈時， <code>i = 3</code> ， <code>3 &lt; 3</code> ，不符合條件，跳出迴圈， <code>for</code> 迴圈結束。</p>
-<p>此時，區域變數 <code>arr</code> 為一個陣列，裡面包括三個函式（物件），而區域變數 <code>i = 3</code> 。</p>
+<p>&#x5728; <code>for</code> &#x8FF4;&#x5708;&#x9019;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x5011;&#x5BA3;&#x544A;&#x4E00;&#x500B;&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>i = 0</code> &#x7576;&#x4F5C;&#x8A08;&#x6578;&#x5668;&#xFF0C;&#x82E5; <code>i &lt; 3</code>&#xFF0C;&#x5C31;&#x57F7;&#x884C; <code>for {}</code> &#x5167;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x53CD;&#x4E4B;&#x5247;&#x8DF3;&#x51FA;&#x8FF4;&#x5708;&#x3002;</p>
+<p>&#x6BCF;&#x6B21;&#x5728; <code>for {}</code> &#x88E1;&#x9762;&#xFF0C;&#x6211;&#x5011;&#x8981;<strong>&#x5275;&#x9020;</strong>&#x4E00;&#x500B;&#x65B0;&#x7684;&#x51FD;&#x5F0F; <code>function(){console.log(i)})</code> &#xFF0C;&#x4E26;&#x5C07;&#x5B83; <code>push</code> &#x5230;&#x8B8A;&#x6578; <code>arr</code> &#x9663;&#x5217;&#x88E1;&#x9762;&#x3002;</p>
+<p>&#x4EC0;&#x9EBC;&#xFF1F;&#x4F60;&#x8AAA;&#x9663;&#x5217;&#x88E1;&#x9762;&#x653E;&#x51FD;&#x5F0F;&#x5F88;&#x602A;&#xFF1F;&#x5FD8;&#x8A18;&#x6211;&#x5011;&#x4E4B;&#x524D;&#x8AAA;&#x904E;&#xFF1A;&#x9663;&#x5217;&#x662F;&#x4EFB;&#x4F55;&#x6771;&#x897F;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x4EFB;&#x4F55;&#x7D14;&#x503C;&#x6216;&#xFF08;&#x51FD;&#x5F0F;&#xFF09;&#x7269;&#x4EF6;&#x3002;</p>
+<p>&#x6211;&#x5011;&#x5C07;&#x6BCF;&#x4E00;&#x6B21;&#x8FF4;&#x5708;&#x7684;&#x6B65;&#x9A5F;&#x62C6;&#x958B;&#x770B;&#xFF1A;</p>
+<p>&#x7B2C;&#x4E00;&#x6B21;&#x8FF4;&#x5708;&#x6642;&#xFF0C; <code>i = 0</code> &#xFF0C; <code>0 &lt; 3</code> &#xFF0C;&#x7B26;&#x5408;&#x689D;&#x4EF6;&#xFF0C;&#x57F7;&#x884C;&#x8FF4;&#x5708;&#x5167;&#x5BB9;&#xFF1A;<strong>&#x5275;&#x9020;</strong>&#x51FD;&#x5F0F; <code>function(){console.log(i)})</code> &#x4E26; <code>push</code> &#x5230; <code>arr</code> &#x9663;&#x5217;&#x4E2D;&#xFF0C;&#x63A5;&#x8457; <code>i ++</code> &#x3002; </p>
+<p>&#x7B2C;&#x4E8C;&#x6B21;&#x8FF4;&#x5708;&#x6642;&#xFF0C; <code>i = 1</code> &#xFF0C; <code>1 &lt; 3</code> &#xFF0C;&#x7B26;&#x5408;&#x689D;&#x4EF6;&#xFF0C;&#x57F7;&#x884C;&#x8FF4;&#x5708;&#x5167;&#x5BB9;&#xFF1A;<strong>&#x5275;&#x9020;</strong>&#x51FD;&#x5F0F; <code>function(){console.log(i)})</code> &#x4E26; <code>push</code> &#x5230; <code>arr</code> &#x9663;&#x5217;&#x4E2D;&#xFF0C;&#x63A5;&#x8457; <code>i ++</code> &#x3002; </p>
+<p>&#x7B2C;&#x4E09;&#x6B21;&#x8FF4;&#x5708;&#x6642;&#xFF0C; <code>i = 2</code> &#xFF0C; <code>2 &lt; 3</code> &#xFF0C;&#x7B26;&#x5408;&#x689D;&#x4EF6;&#xFF0C;&#x57F7;&#x884C;&#x8FF4;&#x5708;&#x5167;&#x5BB9;&#xFF1A;<strong>&#x5275;&#x9020;</strong>&#x51FD;&#x5F0F; <code>function(){console.log(i)})</code> &#x4E26; <code>push</code> &#x5230; <code>arr</code> &#x9663;&#x5217;&#x4E2D;&#xFF0C;&#x63A5;&#x8457; <code>i ++</code> &#x3002; </p>
+<p>&#x7B2C;&#x56DB;&#x6B21;&#x8FF4;&#x5708;&#x6642;&#xFF0C; <code>i = 3</code> &#xFF0C; <code>3 &lt; 3</code> &#xFF0C;&#x4E0D;&#x7B26;&#x5408;&#x689D;&#x4EF6;&#xFF0C;&#x8DF3;&#x51FA;&#x8FF4;&#x5708;&#xFF0C; <code>for</code> &#x8FF4;&#x5708;&#x7D50;&#x675F;&#x3002;</p>
+<p>&#x6B64;&#x6642;&#xFF0C;&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>arr</code> &#x70BA;&#x4E00;&#x500B;&#x9663;&#x5217;&#xFF0C;&#x88E1;&#x9762;&#x5305;&#x62EC;&#x4E09;&#x500B;&#x51FD;&#x5F0F;&#xFF08;&#x7269;&#x4EF6;&#xFF09;&#xFF0C;&#x800C;&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>i = 3</code> &#x3002;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">return</span> arr ;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>回傳變數 <code>arr</code> 陣列。</p>
+<p>&#x56DE;&#x50B3;&#x8B8A;&#x6578; <code>arr</code> &#x9663;&#x5217;&#x3002;</p>
 </blockquote>
-<p>至此，函式 <code>buildFunctions</code> 執行完畢，<strong>JS 引擎會消滅屬於它執行環境</strong>。</p>
-<p>但是！上篇我們有說，<strong>JS 引擎會保留儲存函式參數與區域變數的記憶體空間</strong>，也就是說，<strong>區域變數 <code>arr</code> 和 <code>i</code> 仍會存於該函式專屬的記憶體空間，並不會消滅</strong>。</p>
-<p>回到全域執行環境，函式 <code>buildFunctions</code> 執行後回傳變數 <code>arr</code> 陣列，並賦值給變數 <code>fs</code> 。</p>
-<p>因此 <code>fs = arr</code> 。（想一想，是傳值？還是<strong>傳參考？</strong>） </p>
-<p>終於來到最後一步：</p>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x51FD;&#x5F0F; <code>buildFunctions</code> &#x57F7;&#x884C;&#x5B8C;&#x7562;&#xFF0C;<strong>JS &#x5F15;&#x64CE;&#x6703;&#x6D88;&#x6EC5;&#x5C6C;&#x65BC;&#x5B83;&#x57F7;&#x884C;&#x74B0;&#x5883;</strong>&#x3002;</p>
+<p>&#x4F46;&#x662F;&#xFF01;&#x4E0A;&#x7BC7;&#x6211;&#x5011;&#x6709;&#x8AAA;&#xFF0C;<strong>JS &#x5F15;&#x64CE;&#x6703;&#x4FDD;&#x7559;&#x5132;&#x5B58;&#x51FD;&#x5F0F;&#x53C3;&#x6578;&#x8207;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;<strong>&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>arr</code> &#x548C; <code>i</code> &#x4ECD;&#x6703;&#x5B58;&#x65BC;&#x8A72;&#x51FD;&#x5F0F;&#x5C08;&#x5C6C;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF0C;&#x4E26;&#x4E0D;&#x6703;&#x6D88;&#x6EC5;</strong>&#x3002;</p>
+<p>&#x56DE;&#x5230;&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x51FD;&#x5F0F; <code>buildFunctions</code> &#x57F7;&#x884C;&#x5F8C;&#x56DE;&#x50B3;&#x8B8A;&#x6578; <code>arr</code> &#x9663;&#x5217;&#xFF0C;&#x4E26;&#x8CE6;&#x503C;&#x7D66;&#x8B8A;&#x6578; <code>fs</code> &#x3002;</p>
+<p>&#x56E0;&#x6B64; <code>fs = arr</code> &#x3002;&#xFF08;&#x60F3;&#x4E00;&#x60F3;&#xFF0C;&#x662F;&#x50B3;&#x503C;&#xFF1F;&#x9084;&#x662F;<strong>&#x50B3;&#x53C3;&#x8003;&#xFF1F;</strong>&#xFF09; </p>
+<p>&#x7D42;&#x65BC;&#x4F86;&#x5230;&#x6700;&#x5F8C;&#x4E00;&#x6B65;&#xFF1A;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs[<span class="hljs-number">0</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">1</span>]() ;</span><br><span class="line">fs[<span class="hljs-number">2</span>]() ;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>依序呼叫變數 <code>fs</code> 裡的三個函式並<strong>執行</strong>。 </p>
+<p>&#x4F9D;&#x5E8F;&#x547C;&#x53EB;&#x8B8A;&#x6578; <code>fs</code> &#x88E1;&#x7684;&#x4E09;&#x500B;&#x51FD;&#x5F0F;&#x4E26;<strong>&#x57F7;&#x884C;</strong>&#x3002; </p>
 </blockquote>
-<p> <code>fs[0]</code> 、 <code>fs[1]</code> 、 <code>fs[2]</code> 三個函式都指向函式 <code>function(){console.log(i)})</code> ，以 <code>fs[0]()</code> 為例，JS 執行後，會創造其專屬的執行環境，並開始執行程式：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>JS 引擎知道要執行 <code>console.log(i)</code> ，於是開始在函式 <code>function(){console.log(i)})</code> 裡面找 <code>i</code>，但很顯然，它找不到（因為沒有定義），所以它只好依照<strong>範圍鍊</strong>的規則，向<strong>外部（詞彙）環境</strong>尋找可以取用的 <code>i</code> 。</p>
-<p>外部詞彙環境是誰？想一想，我們在哪裡<strong>創造</strong>函式 <code>function(){console.log(i)})</code> ？</p>
-<p>沒錯！就是在函式 <code>buildFunctions</code> 裡面！</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++)&#123;</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>所以，JS 引擎會參考外部（詞彙）環境函式 <code>buildFunctions</code> 裡的區域變數 <code>i</code> 。</p>
-<p>此時 <code>i</code> 是多少？ <code>i = 3</code> 。</p>
-<p>按此邏輯， <code>fs[0]()</code> 、 <code>fs[1]()</code> 、 <code>fs[2]()</code> 印出的結果當然都會是 <code>3</code> 了。</p>
+<p> <code>fs[0]</code> &#x3001; <code>fs[1]</code> &#x3001; <code>fs[2]</code> &#x4E09;&#x500B;&#x51FD;&#x5F0F;&#x90FD;&#x6307;&#x5411;&#x51FD;&#x5F0F; <code>function(){console.log(i)})</code> &#xFF0C;&#x4EE5; <code>fs[0]()</code> &#x70BA;&#x4F8B;&#xFF0C;JS &#x57F7;&#x884C;&#x5F8C;&#xFF0C;&#x6703;&#x5275;&#x9020;&#x5176;&#x5C08;&#x5C6C;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E26;&#x958B;&#x59CB;&#x57F7;&#x884C;&#x7A0B;&#x5F0F;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>JS &#x5F15;&#x64CE;&#x77E5;&#x9053;&#x8981;&#x57F7;&#x884C; <code>console.log(i)</code> &#xFF0C;&#x65BC;&#x662F;&#x958B;&#x59CB;&#x5728;&#x51FD;&#x5F0F; <code>function(){console.log(i)})</code> &#x88E1;&#x9762;&#x627E; <code>i</code>&#xFF0C;&#x4F46;&#x5F88;&#x986F;&#x7136;&#xFF0C;&#x5B83;&#x627E;&#x4E0D;&#x5230;&#xFF08;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x5B9A;&#x7FA9;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x53EA;&#x597D;&#x4F9D;&#x7167;<strong>&#x7BC4;&#x570D;&#x934A;</strong>&#x7684;&#x898F;&#x5247;&#xFF0C;&#x5411;<strong>&#x5916;&#x90E8;&#xFF08;&#x8A5E;&#x5F59;&#xFF09;&#x74B0;&#x5883;</strong>&#x5C0B;&#x627E;&#x53EF;&#x4EE5;&#x53D6;&#x7528;&#x7684; <code>i</code> &#x3002;</p>
+<p>&#x5916;&#x90E8;&#x8A5E;&#x5F59;&#x74B0;&#x5883;&#x662F;&#x8AB0;&#xFF1F;&#x60F3;&#x4E00;&#x60F3;&#xFF0C;&#x6211;&#x5011;&#x5728;&#x54EA;&#x88E1;<strong>&#x5275;&#x9020;</strong>&#x51FD;&#x5F0F; <code>function(){console.log(i)})</code> &#xFF1F;</p>
+<p>&#x6C92;&#x932F;&#xFF01;&#x5C31;&#x662F;&#x5728;&#x51FD;&#x5F0F; <code>buildFunctions</code> &#x88E1;&#x9762;&#xFF01;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildFunctions</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> arr = [] ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">3</span> ; i++){</span><br><span class="line">    arr.push(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(i)</span><br><span class="line">    })</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> arr ;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x6240;&#x4EE5;&#xFF0C;JS &#x5F15;&#x64CE;&#x6703;&#x53C3;&#x8003;&#x5916;&#x90E8;&#xFF08;&#x8A5E;&#x5F59;&#xFF09;&#x74B0;&#x5883;&#x51FD;&#x5F0F; <code>buildFunctions</code> &#x88E1;&#x7684;&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>i</code> &#x3002;</p>
+<p>&#x6B64;&#x6642; <code>i</code> &#x662F;&#x591A;&#x5C11;&#xFF1F; <code>i = 3</code> &#x3002;</p>
+<p>&#x6309;&#x6B64;&#x908F;&#x8F2F;&#xFF0C; <code>fs[0]()</code> &#x3001; <code>fs[1]()</code> &#x3001; <code>fs[2]()</code> &#x5370;&#x51FA;&#x7684;&#x7D50;&#x679C;&#x7576;&#x7136;&#x90FD;&#x6703;&#x662F; <code>3</code> &#x4E86;&#x3002;</p>
 <hr>
 
-<h3 id="創造函式-v-s-執行函式"><a href="#創造函式-v-s-執行函式" class="headerlink" title="創造函式 v.s. 執行函式"></a>創造函式 v.s. 執行函式</h3><p>有些人之所以預期執行結果為 <code>0</code> 、 <code>1</code> 、 <code>2</code> ，那是因為混淆<strong>創造函式</strong>和<strong>執行函式</strong>的時機與差異。</p>
-<p>其實，我認為只要釐清<strong>創造函式</strong>和<strong>執行函式</strong>的時機與差異，閉包的原理就很清晰了。</p>
-<p>在這個例子中，<strong>創造函式</strong> <code>function(){console.log(i)})</code> 的時候，就只是<strong>單純創造該函式</strong>而已，並不會將外部環境的變數 <code>i</code> 一起存進記憶體。</p>
-<p>等到<strong>執行函式</strong>時， JS 引擎在函式執行環境 <code>function(){console.log(i)})</code> 中找不到可用的 <code>i</code>（因為它函式內部本身並沒有宣告 <code>i</code> 值），所以它會依照範圍鍊，向外部詞彙環境參考可用的值。</p>
-<p><strong>外部詞彙環境</strong>，指的就是，我們在哪裡<strong>創造</strong>函式？或說，函式被我們寫在哪裡？</p>
-<p>綜合 JS 種種的特性，形成了閉包的原理：<strong>利用函式執行環境，創造一個封閉空間，包住可供取用的變數</strong>。而那些在範圍鍊中可供取用的變數，又稱為<strong>自由變數（Free Variable）</strong></p>
-<p>總而言之，分清楚<strong>創造（宣告）函式</strong>與<strong>執行（呼叫）函式</strong>的時機以及差異，有助於理解閉包的原理，因為閉包就是綜合這些概念而來。</p>
-<p>課程中用這張圖來解釋本篇範例的運作原理：</p>
-<p><img src="/2019/08/26/weird-JavaScript-32/closure2.JPG" alt="函式範例的解釋（圖片源自參考資料 1.）"></p>
+<h3 id="&#x5275;&#x9020;&#x51FD;&#x5F0F;-v-s-&#x57F7;&#x884C;&#x51FD;&#x5F0F;"><a href="#&#x5275;&#x9020;&#x51FD;&#x5F0F;-v-s-&#x57F7;&#x884C;&#x51FD;&#x5F0F;" class="headerlink" title="&#x5275;&#x9020;&#x51FD;&#x5F0F; v.s. &#x57F7;&#x884C;&#x51FD;&#x5F0F;"></a>&#x5275;&#x9020;&#x51FD;&#x5F0F; v.s. &#x57F7;&#x884C;&#x51FD;&#x5F0F;</h3><p>&#x6709;&#x4E9B;&#x4EBA;&#x4E4B;&#x6240;&#x4EE5;&#x9810;&#x671F;&#x57F7;&#x884C;&#x7D50;&#x679C;&#x70BA; <code>0</code> &#x3001; <code>1</code> &#x3001; <code>2</code> &#xFF0C;&#x90A3;&#x662F;&#x56E0;&#x70BA;&#x6DF7;&#x6DC6;<strong>&#x5275;&#x9020;&#x51FD;&#x5F0F;</strong>&#x548C;<strong>&#x57F7;&#x884C;&#x51FD;&#x5F0F;</strong>&#x7684;&#x6642;&#x6A5F;&#x8207;&#x5DEE;&#x7570;&#x3002;</p>
+<p>&#x5176;&#x5BE6;&#xFF0C;&#x6211;&#x8A8D;&#x70BA;&#x53EA;&#x8981;&#x91D0;&#x6E05;<strong>&#x5275;&#x9020;&#x51FD;&#x5F0F;</strong>&#x548C;<strong>&#x57F7;&#x884C;&#x51FD;&#x5F0F;</strong>&#x7684;&#x6642;&#x6A5F;&#x8207;&#x5DEE;&#x7570;&#xFF0C;&#x9589;&#x5305;&#x7684;&#x539F;&#x7406;&#x5C31;&#x5F88;&#x6E05;&#x6670;&#x4E86;&#x3002;</p>
+<p>&#x5728;&#x9019;&#x500B;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;<strong>&#x5275;&#x9020;&#x51FD;&#x5F0F;</strong> <code>function(){console.log(i)})</code> &#x7684;&#x6642;&#x5019;&#xFF0C;&#x5C31;&#x53EA;&#x662F;<strong>&#x55AE;&#x7D14;&#x5275;&#x9020;&#x8A72;&#x51FD;&#x5F0F;</strong>&#x800C;&#x5DF2;&#xFF0C;&#x4E26;&#x4E0D;&#x6703;&#x5C07;&#x5916;&#x90E8;&#x74B0;&#x5883;&#x7684;&#x8B8A;&#x6578; <code>i</code> &#x4E00;&#x8D77;&#x5B58;&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#x3002;</p>
+<p>&#x7B49;&#x5230;<strong>&#x57F7;&#x884C;&#x51FD;&#x5F0F;</strong>&#x6642;&#xFF0C; JS &#x5F15;&#x64CE;&#x5728;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883; <code>function(){console.log(i)})</code> &#x4E2D;&#x627E;&#x4E0D;&#x5230;&#x53EF;&#x7528;&#x7684; <code>i</code>&#xFF08;&#x56E0;&#x70BA;&#x5B83;&#x51FD;&#x5F0F;&#x5167;&#x90E8;&#x672C;&#x8EAB;&#x4E26;&#x6C92;&#x6709;&#x5BA3;&#x544A; <code>i</code> &#x503C;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x6703;&#x4F9D;&#x7167;&#x7BC4;&#x570D;&#x934A;&#xFF0C;&#x5411;&#x5916;&#x90E8;&#x8A5E;&#x5F59;&#x74B0;&#x5883;&#x53C3;&#x8003;&#x53EF;&#x7528;&#x7684;&#x503C;&#x3002;</p>
+<p><strong>&#x5916;&#x90E8;&#x8A5E;&#x5F59;&#x74B0;&#x5883;</strong>&#xFF0C;&#x6307;&#x7684;&#x5C31;&#x662F;&#xFF0C;&#x6211;&#x5011;&#x5728;&#x54EA;&#x88E1;<strong>&#x5275;&#x9020;</strong>&#x51FD;&#x5F0F;&#xFF1F;&#x6216;&#x8AAA;&#xFF0C;&#x51FD;&#x5F0F;&#x88AB;&#x6211;&#x5011;&#x5BEB;&#x5728;&#x54EA;&#x88E1;&#xFF1F;</p>
+<p>&#x7D9C;&#x5408; JS &#x7A2E;&#x7A2E;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5F62;&#x6210;&#x4E86;&#x9589;&#x5305;&#x7684;&#x539F;&#x7406;&#xFF1A;<strong>&#x5229;&#x7528;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x5275;&#x9020;&#x4E00;&#x500B;&#x5C01;&#x9589;&#x7A7A;&#x9593;&#xFF0C;&#x5305;&#x4F4F;&#x53EF;&#x4F9B;&#x53D6;&#x7528;&#x7684;&#x8B8A;&#x6578;</strong>&#x3002;&#x800C;&#x90A3;&#x4E9B;&#x5728;&#x7BC4;&#x570D;&#x934A;&#x4E2D;&#x53EF;&#x4F9B;&#x53D6;&#x7528;&#x7684;&#x8B8A;&#x6578;&#xFF0C;&#x53C8;&#x7A31;&#x70BA;<strong>&#x81EA;&#x7531;&#x8B8A;&#x6578;&#xFF08;Free Variable&#xFF09;</strong></p>
+<p>&#x7E3D;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x5206;&#x6E05;&#x695A;<strong>&#x5275;&#x9020;&#xFF08;&#x5BA3;&#x544A;&#xFF09;&#x51FD;&#x5F0F;</strong>&#x8207;<strong>&#x57F7;&#x884C;&#xFF08;&#x547C;&#x53EB;&#xFF09;&#x51FD;&#x5F0F;</strong>&#x7684;&#x6642;&#x6A5F;&#x4EE5;&#x53CA;&#x5DEE;&#x7570;&#xFF0C;&#x6709;&#x52A9;&#x65BC;&#x7406;&#x89E3;&#x9589;&#x5305;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x56E0;&#x70BA;&#x9589;&#x5305;&#x5C31;&#x662F;&#x7D9C;&#x5408;&#x9019;&#x4E9B;&#x6982;&#x5FF5;&#x800C;&#x4F86;&#x3002;</p>
+<p>&#x8AB2;&#x7A0B;&#x4E2D;&#x7528;&#x9019;&#x5F35;&#x5716;&#x4F86;&#x89E3;&#x91CB;&#x672C;&#x7BC7;&#x7BC4;&#x4F8B;&#x7684;&#x904B;&#x4F5C;&#x539F;&#x7406;&#xFF1A;</p>
+<p><img src="/2019/08/26/weird-JavaScript-32/closure2.JPG" alt="&#x51FD;&#x5F0F;&#x7BC4;&#x4F8B;&#x7684;&#x89E3;&#x91CB;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>分清楚創造函式與執行函式的時機以及差異，有助於理解閉包的原理。</li>
-<li>創造函式時， JS 引擎會創造該函式的記憶體空間，並儲存函式內宣告的變數，並不會將外部環境的自由變數一起存進記憶體（除非以參數傳入）。</li>
-<li>執行函式時， JS 引擎如果在函式執行環境中找不到可取用的值，它會依照範圍鍊向外部詞彙環境參考可用的值，直到找到為止。</li>
-<li>閉包的原理就是：利用函式執行環境，創造一個專屬的封閉空間（記憶體空間），包住可供取用的變數。</li>
-<li>自由變數指的是：函式在範圍鍊中可供取用的變數。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x5206;&#x6E05;&#x695A;&#x5275;&#x9020;&#x51FD;&#x5F0F;&#x8207;&#x57F7;&#x884C;&#x51FD;&#x5F0F;&#x7684;&#x6642;&#x6A5F;&#x4EE5;&#x53CA;&#x5DEE;&#x7570;&#xFF0C;&#x6709;&#x52A9;&#x65BC;&#x7406;&#x89E3;&#x9589;&#x5305;&#x7684;&#x539F;&#x7406;&#x3002;</li>
+<li>&#x5275;&#x9020;&#x51FD;&#x5F0F;&#x6642;&#xFF0C; JS &#x5F15;&#x64CE;&#x6703;&#x5275;&#x9020;&#x8A72;&#x51FD;&#x5F0F;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF0C;&#x4E26;&#x5132;&#x5B58;&#x51FD;&#x5F0F;&#x5167;&#x5BA3;&#x544A;&#x7684;&#x8B8A;&#x6578;&#xFF0C;&#x4E26;&#x4E0D;&#x6703;&#x5C07;&#x5916;&#x90E8;&#x74B0;&#x5883;&#x7684;&#x81EA;&#x7531;&#x8B8A;&#x6578;&#x4E00;&#x8D77;&#x5B58;&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#xFF08;&#x9664;&#x975E;&#x4EE5;&#x53C3;&#x6578;&#x50B3;&#x5165;&#xFF09;&#x3002;</li>
+<li>&#x57F7;&#x884C;&#x51FD;&#x5F0F;&#x6642;&#xFF0C; JS &#x5F15;&#x64CE;&#x5982;&#x679C;&#x5728;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x4E2D;&#x627E;&#x4E0D;&#x5230;&#x53EF;&#x53D6;&#x7528;&#x7684;&#x503C;&#xFF0C;&#x5B83;&#x6703;&#x4F9D;&#x7167;&#x7BC4;&#x570D;&#x934A;&#x5411;&#x5916;&#x90E8;&#x8A5E;&#x5F59;&#x74B0;&#x5883;&#x53C3;&#x8003;&#x53EF;&#x7528;&#x7684;&#x503C;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x70BA;&#x6B62;&#x3002;</li>
+<li>&#x9589;&#x5305;&#x7684;&#x539F;&#x7406;&#x5C31;&#x662F;&#xFF1A;&#x5229;&#x7528;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x5275;&#x9020;&#x4E00;&#x500B;&#x5C08;&#x5C6C;&#x7684;&#x5C01;&#x9589;&#x7A7A;&#x9593;&#xFF08;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#xFF09;&#xFF0C;&#x5305;&#x4F4F;&#x53EF;&#x4F9B;&#x53D6;&#x7528;&#x7684;&#x8B8A;&#x6578;&#x3002;</li>
+<li>&#x81EA;&#x7531;&#x8B8A;&#x6578;&#x6307;&#x7684;&#x662F;&#xFF1A;&#x51FD;&#x5F0F;&#x5728;&#x7BC4;&#x570D;&#x934A;&#x4E2D;&#x53EF;&#x4F9B;&#x53D6;&#x7528;&#x7684;&#x8B8A;&#x6578;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-47</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-47</li>
 </ol>
 
     

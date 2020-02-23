@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="如果你曾經使用過 jQuery 、 setTimeout 等 Callback Function，其實你已經使用過閉包的概念了。">
+    <meta name="description" content="&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x66FE;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E; jQuery &amp;#x3001; setTimeout &amp;#x7B49; Callback Function&amp;#xFF0C;&amp;#x5176;&amp;#x5BE6;&amp;#x4F60;&amp;#x5DF2;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E;&amp;#x9589;&amp;#">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 34：閉包與回呼">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/29/weird-JavaScript-34/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="如果你曾經使用過 jQuery 、 setTimeout 等 Callback Function，其實你已經使用過閉包的概念了。">
+<meta property="og:description" content="&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x66FE;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E; jQuery &amp;#x3001; setTimeout &amp;#x7B49; Callback Function&amp;#xFF0C;&amp;#x5176;&amp;#x5BE6;&amp;#x4F60;&amp;#x5DF2;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E;&amp;#x9589;&amp;#">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2019-11-22T13:39:05.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 34：閉包與回呼">
-<meta name="twitter:description" content="如果你曾經使用過 jQuery 、 setTimeout 等 Callback Function，其實你已經使用過閉包的概念了。">
+<meta name="twitter:description" content="&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x66FE;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E; jQuery &amp;#x3001; setTimeout &amp;#x7B49; Callback Function&amp;#xFF0C;&amp;#x5176;&amp;#x5BE6;&amp;#x4F60;&amp;#x5DF2;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E;&amp;#x9589;&amp;#">
 
 
 
@@ -111,25 +111,25 @@
                     
                     
                     
-                    <a class="navbar-item" href="#閉包與回呼">1&nbsp;&nbsp;<b>閉包與回呼</b></a>
+                    <a class="navbar-item" href="#&amp;#x9589;&amp;#x5305;&amp;#x8207;&amp;#x56DE;&amp;#x547C;">1&nbsp;&nbsp;<b>&amp;amp;#x9589;&amp;amp;#x5305;&amp;amp;#x8207;&amp;amp;#x56DE;&amp;amp;#x547C;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#回呼函式（Callback-Function）">2&nbsp;&nbsp;<b>回呼函式（Callback Function）</b></a>
+                    <a class="navbar-item" href="#&amp;#x56DE;&amp;#x547C;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF08;Callback-Function&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x56DE;&amp;amp;#x547C;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#xFF08;Callback Function&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">3&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">3&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">4&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">4&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -168,51 +168,51 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>如果你曾經使用過 jQuery 、 <code>setTimeout</code> 等 Callback Function，其實你已經使用過閉包的概念了。</p>
+        <p>&#x5982;&#x679C;&#x4F60;&#x66FE;&#x7D93;&#x4F7F;&#x7528;&#x904E; jQuery &#x3001; <code>setTimeout</code> &#x7B49; Callback Function&#xFF0C;&#x5176;&#x5BE6;&#x4F60;&#x5DF2;&#x7D93;&#x4F7F;&#x7528;&#x904E;&#x9589;&#x5305;&#x7684;&#x6982;&#x5FF5;&#x4E86;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="閉包與回呼"><a href="#閉包與回呼" class="headerlink" title="閉包與回呼"></a>閉包與回呼</h3><p>以 <code>setTimeout</code> 這段程式碼作為範例：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHiLater</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> greeting = <span class="hljs-string">'Hi!'</span> ;</span><br><span class="line"></span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(greeting) ;</span><br><span class="line">  &#125;, <span class="hljs-number">3000</span>) </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayHiLater() ;</span><br></pre></td></tr></table></figure></p>
-<p>這段程式碼的執行結果為 <strong>「3 秒鐘後印出字串 Hi!」</strong>。</p>
-<p>你有想過為什麼 3 秒後，回呼函式 <code>function(){console.log(greeting) ;}</code> ，為什麼能夠取用到外部詞彙環境的 <code>greeting</code> 嗎？明明函式 <code>sayHiLater()</code> 執行環境早就已經消滅。</p>
-<p>這是因為閉包的機制會將 <code>greeting</code> 的值 <code>&#39;Hi!&#39;</code> 儲存在函式 <code>sayHiLater</code> 專屬的記憶體中，即便執行環境消滅、執行堆疊消失後，回呼函式在詞彙環境中仍然能夠取用到自由變數 <code>greeting</code> 的值 <code>&#39;Hi!&#39;</code> 。</p>
-<p>我們在很遙遠的 05 篇中稍微提過<strong>回呼（Callback）</strong>這個概念，當時和<strong>非同步</strong>的概念綁在一起講。而這裡回呼函式 <code>function(){console.log(greeting) ;}</code> 同樣是<strong>非同步回呼函式</strong>，指的是<strong>非同步事件中，當執行堆疊為空以後，檢視事件佇列，回頭執行的函式</strong>。</p>
-<p>而 <code>function(){console.log(greeting) ;}</code> 之所以匿名，是因為用了<strong>一級函式</strong>的概念，直接創造函式並丟入 <code>setTimeout</code> 中。</p>
-<p>所以，仔細檢視這段程式碼的執行流程，應是這樣子的：</p>
+<h3 id="&#x9589;&#x5305;&#x8207;&#x56DE;&#x547C;"><a href="#&#x9589;&#x5305;&#x8207;&#x56DE;&#x547C;" class="headerlink" title="&#x9589;&#x5305;&#x8207;&#x56DE;&#x547C;"></a>&#x9589;&#x5305;&#x8207;&#x56DE;&#x547C;</h3><p>&#x4EE5; <code>setTimeout</code> &#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x4F5C;&#x70BA;&#x7BC4;&#x4F8B;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHiLater</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> greeting = <span class="hljs-string">&apos;Hi!&apos;</span> ;</span><br><span class="line"></span><br><span class="line">  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(greeting) ;</span><br><span class="line">  }, <span class="hljs-number">3000</span>) </span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">sayHiLater() ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x7684;&#x57F7;&#x884C;&#x7D50;&#x679C;&#x70BA; <strong>&#x300C;3 &#x79D2;&#x9418;&#x5F8C;&#x5370;&#x51FA;&#x5B57;&#x4E32; Hi!&#x300D;</strong>&#x3002;</p>
+<p>&#x4F60;&#x6709;&#x60F3;&#x904E;&#x70BA;&#x4EC0;&#x9EBC; 3 &#x79D2;&#x5F8C;&#xFF0C;&#x56DE;&#x547C;&#x51FD;&#x5F0F; <code>function(){console.log(greeting) ;}</code> &#xFF0C;&#x70BA;&#x4EC0;&#x9EBC;&#x80FD;&#x5920;&#x53D6;&#x7528;&#x5230;&#x5916;&#x90E8;&#x8A5E;&#x5F59;&#x74B0;&#x5883;&#x7684; <code>greeting</code> &#x55CE;&#xFF1F;&#x660E;&#x660E;&#x51FD;&#x5F0F; <code>sayHiLater()</code> &#x57F7;&#x884C;&#x74B0;&#x5883;&#x65E9;&#x5C31;&#x5DF2;&#x7D93;&#x6D88;&#x6EC5;&#x3002;</p>
+<p>&#x9019;&#x662F;&#x56E0;&#x70BA;&#x9589;&#x5305;&#x7684;&#x6A5F;&#x5236;&#x6703;&#x5C07; <code>greeting</code> &#x7684;&#x503C; <code>&apos;Hi!&apos;</code> &#x5132;&#x5B58;&#x5728;&#x51FD;&#x5F0F; <code>sayHiLater</code> &#x5C08;&#x5C6C;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#xFF0C;&#x5373;&#x4FBF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x6D88;&#x6EC5;&#x3001;&#x57F7;&#x884C;&#x5806;&#x758A;&#x6D88;&#x5931;&#x5F8C;&#xFF0C;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x5728;&#x8A5E;&#x5F59;&#x74B0;&#x5883;&#x4E2D;&#x4ECD;&#x7136;&#x80FD;&#x5920;&#x53D6;&#x7528;&#x5230;&#x81EA;&#x7531;&#x8B8A;&#x6578; <code>greeting</code> &#x7684;&#x503C; <code>&apos;Hi!&apos;</code> &#x3002;</p>
+<p>&#x6211;&#x5011;&#x5728;&#x5F88;&#x9059;&#x9060;&#x7684; 05 &#x7BC7;&#x4E2D;&#x7A0D;&#x5FAE;&#x63D0;&#x904E;<strong>&#x56DE;&#x547C;&#xFF08;Callback&#xFF09;</strong>&#x9019;&#x500B;&#x6982;&#x5FF5;&#xFF0C;&#x7576;&#x6642;&#x548C;<strong>&#x975E;&#x540C;&#x6B65;</strong>&#x7684;&#x6982;&#x5FF5;&#x7D81;&#x5728;&#x4E00;&#x8D77;&#x8B1B;&#x3002;&#x800C;&#x9019;&#x88E1;&#x56DE;&#x547C;&#x51FD;&#x5F0F; <code>function(){console.log(greeting) ;}</code> &#x540C;&#x6A23;&#x662F;<strong>&#x975E;&#x540C;&#x6B65;&#x56DE;&#x547C;&#x51FD;&#x5F0F;</strong>&#xFF0C;&#x6307;&#x7684;&#x662F;<strong>&#x975E;&#x540C;&#x6B65;&#x4E8B;&#x4EF6;&#x4E2D;&#xFF0C;&#x7576;&#x57F7;&#x884C;&#x5806;&#x758A;&#x70BA;&#x7A7A;&#x4EE5;&#x5F8C;&#xFF0C;&#x6AA2;&#x8996;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#xFF0C;&#x56DE;&#x982D;&#x57F7;&#x884C;&#x7684;&#x51FD;&#x5F0F;</strong>&#x3002;</p>
+<p>&#x800C; <code>function(){console.log(greeting) ;}</code> &#x4E4B;&#x6240;&#x4EE5;&#x533F;&#x540D;&#xFF0C;&#x662F;&#x56E0;&#x70BA;&#x7528;&#x4E86;<strong>&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;</strong>&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x76F4;&#x63A5;&#x5275;&#x9020;&#x51FD;&#x5F0F;&#x4E26;&#x4E1F;&#x5165; <code>setTimeout</code> &#x4E2D;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x4ED4;&#x7D30;&#x6AA2;&#x8996;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x7684;&#x57F7;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x61C9;&#x662F;&#x9019;&#x6A23;&#x5B50;&#x7684;&#xFF1A;</p>
 <ol>
-<li>JS 引擎建立全域執行環境、 <code>window</code> 和 <code>this</code> 。</li>
-<li>Creation &amp; Hoisting : funciton <code>sayHiLater</code> 。</li>
-<li><code>sayHiLater()</code>，建立函式 <code>sayHiLater</code> 的函式執行環境，並執行程式內容。</li>
-<li><code>var greeting = &#39;Hi!&#39;</code> ，宣告區域變數 <code>greeting</code> ，賦值為 <code>&#39;Hi!&#39;</code> 。</li>
-<li><code>setTimeout(function(){console.log(greeting)}, 3000)</code>，<strong>創造</strong>匿名（非同步回呼）函式 <code>function(){console.log(greeting)</code> ，並將 <code>setTimeout</code> 放進<strong>事件佇列</strong>，等到<strong>執行堆疊為空</strong>時再執行。 </li>
-<li>函式 <code>sayHiLater</code> 的程式內容結束，消滅其函式執行環境（但其記憶體空間不會被消滅）。</li>
-<li>全域執行環境結束，執行堆疊為空，檢視事件佇列裡的非同步事件。</li>
-<li>執行 <code>setTimeout</code> ，倒數 3 秒（3000 豪秒），計時開始。</li>
-<li>3 秒後，倒數完畢，執行回呼函式 <code>function(){console.log(greeting)</code> ，印出字串 <code>Hi!</code>。</li>
+<li>JS &#x5F15;&#x64CE;&#x5EFA;&#x7ACB;&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x3001; <code>window</code> &#x548C; <code>this</code> &#x3002;</li>
+<li>Creation &amp; Hoisting : funciton <code>sayHiLater</code> &#x3002;</li>
+<li><code>sayHiLater()</code>&#xFF0C;&#x5EFA;&#x7ACB;&#x51FD;&#x5F0F; <code>sayHiLater</code> &#x7684;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4E26;&#x57F7;&#x884C;&#x7A0B;&#x5F0F;&#x5167;&#x5BB9;&#x3002;</li>
+<li><code>var greeting = &apos;Hi!&apos;</code> &#xFF0C;&#x5BA3;&#x544A;&#x5340;&#x57DF;&#x8B8A;&#x6578; <code>greeting</code> &#xFF0C;&#x8CE6;&#x503C;&#x70BA; <code>&apos;Hi!&apos;</code> &#x3002;</li>
+<li><code>setTimeout(function(){console.log(greeting)}, 3000)</code>&#xFF0C;<strong>&#x5275;&#x9020;</strong>&#x533F;&#x540D;&#xFF08;&#x975E;&#x540C;&#x6B65;&#x56DE;&#x547C;&#xFF09;&#x51FD;&#x5F0F; <code>function(){console.log(greeting)</code> &#xFF0C;&#x4E26;&#x5C07; <code>setTimeout</code> &#x653E;&#x9032;<strong>&#x4E8B;&#x4EF6;&#x4F47;&#x5217;</strong>&#xFF0C;&#x7B49;&#x5230;<strong>&#x57F7;&#x884C;&#x5806;&#x758A;&#x70BA;&#x7A7A;</strong>&#x6642;&#x518D;&#x57F7;&#x884C;&#x3002; </li>
+<li>&#x51FD;&#x5F0F; <code>sayHiLater</code> &#x7684;&#x7A0B;&#x5F0F;&#x5167;&#x5BB9;&#x7D50;&#x675F;&#xFF0C;&#x6D88;&#x6EC5;&#x5176;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF08;&#x4F46;&#x5176;&#x8A18;&#x61B6;&#x9AD4;&#x7A7A;&#x9593;&#x4E0D;&#x6703;&#x88AB;&#x6D88;&#x6EC5;&#xFF09;&#x3002;</li>
+<li>&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x7D50;&#x675F;&#xFF0C;&#x57F7;&#x884C;&#x5806;&#x758A;&#x70BA;&#x7A7A;&#xFF0C;&#x6AA2;&#x8996;&#x4E8B;&#x4EF6;&#x4F47;&#x5217;&#x88E1;&#x7684;&#x975E;&#x540C;&#x6B65;&#x4E8B;&#x4EF6;&#x3002;</li>
+<li>&#x57F7;&#x884C; <code>setTimeout</code> &#xFF0C;&#x5012;&#x6578; 3 &#x79D2;&#xFF08;3000 &#x8C6A;&#x79D2;&#xFF09;&#xFF0C;&#x8A08;&#x6642;&#x958B;&#x59CB;&#x3002;</li>
+<li>3 &#x79D2;&#x5F8C;&#xFF0C;&#x5012;&#x6578;&#x5B8C;&#x7562;&#xFF0C;&#x57F7;&#x884C;&#x56DE;&#x547C;&#x51FD;&#x5F0F; <code>function(){console.log(greeting)</code> &#xFF0C;&#x5370;&#x51FA;&#x5B57;&#x4E32; <code>Hi!</code>&#x3002;</li>
 </ol>
 <hr>
 
-<h3 id="回呼函式（Callback-Function）"><a href="#回呼函式（Callback-Function）" class="headerlink" title="回呼函式（Callback Function）"></a>回呼函式（Callback Function）</h3><blockquote>
-<p>A function you five to another function, to be run when the other function is finished.<br>the function you call(invoke), ‘calls back’ by calling the function you gave it when finished.</p>
+<h3 id="&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback-Function&#xFF09;"><a href="#&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback-Function&#xFF09;" class="headerlink" title="&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback Function&#xFF09;"></a>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback Function&#xFF09;</h3><blockquote>
+<p>A function you five to another function, to be run when the other function is finished.<br>the function you call(invoke), &#x2018;calls back&#x2019; by calling the function you gave it when finished.</p>
 </blockquote>
-<p>理解回呼函式，可以舉 A 函式與 B 函式來說明：我們在 A 函式中創造 B 函式，接著執行 A 函式，等到 A 函式執行結束後，才回頭呼叫 B 函式，此時 B 函式就是所謂的回呼函式。</p>
-<p>簡言之，<strong>回頭呼叫的函式，即回呼函式</strong>（其所在的外部執行環境可能已經消滅）。</p>
-<p>回呼函式也可以想成：<strong>將 B 函式當作 A 函式的參數傳入，並在 A 函式中呼叫 B 函式</strong>。</p>
-<p>從非同步事件或 DOM 監聽事件的角度來看，回呼函式也是指<strong>那些滿足特定條件才會被動觸發的函式</strong>，如上例 <code>setTimeout</code> 或 Click 事件。</p>
-<p>課程中，講師用下面這個例子來解釋回呼函式：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tellMeWhenDone</span>(<span class="hljs-params">callback</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Function tellMeWhenDone is done!'</span>) ;</span><br><span class="line"></span><br><span class="line">  callback() ; <span class="hljs-comment">// 執行回呼函式</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 創造一個匿名函式作為參數傳入函式 tellMeWhenDone</span></span><br><span class="line">tellMeWhenDone(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Callback function is done!'</span>) ;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>稍加改寫講師舉的例子，想一想，下面的回呼函式會印出哪一個名字？</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> name = <span class="hljs-string">'Fei'</span> ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tellMeWhenDone</span>(<span class="hljs-params">callback</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> name = <span class="hljs-string">'Bai'</span> ;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Function tellMeWhenDone is done!'</span>) ;</span><br><span class="line"></span><br><span class="line">  callback() ; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tellMeWhenDone(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(name) ;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>&#x7406;&#x89E3;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x8209; A &#x51FD;&#x5F0F;&#x8207; B &#x51FD;&#x5F0F;&#x4F86;&#x8AAA;&#x660E;&#xFF1A;&#x6211;&#x5011;&#x5728; A &#x51FD;&#x5F0F;&#x4E2D;&#x5275;&#x9020; B &#x51FD;&#x5F0F;&#xFF0C;&#x63A5;&#x8457;&#x57F7;&#x884C; A &#x51FD;&#x5F0F;&#xFF0C;&#x7B49;&#x5230; A &#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x7D50;&#x675F;&#x5F8C;&#xFF0C;&#x624D;&#x56DE;&#x982D;&#x547C;&#x53EB; B &#x51FD;&#x5F0F;&#xFF0C;&#x6B64;&#x6642; B &#x51FD;&#x5F0F;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x3002;</p>
+<p>&#x7C21;&#x8A00;&#x4E4B;&#xFF0C;<strong>&#x56DE;&#x982D;&#x547C;&#x53EB;&#x7684;&#x51FD;&#x5F0F;&#xFF0C;&#x5373;&#x56DE;&#x547C;&#x51FD;&#x5F0F;</strong>&#xFF08;&#x5176;&#x6240;&#x5728;&#x7684;&#x5916;&#x90E8;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x53EF;&#x80FD;&#x5DF2;&#x7D93;&#x6D88;&#x6EC5;&#xFF09;&#x3002;</p>
+<p>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x4E5F;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#xFF1A;<strong>&#x5C07; B &#x51FD;&#x5F0F;&#x7576;&#x4F5C; A &#x51FD;&#x5F0F;&#x7684;&#x53C3;&#x6578;&#x50B3;&#x5165;&#xFF0C;&#x4E26;&#x5728; A &#x51FD;&#x5F0F;&#x4E2D;&#x547C;&#x53EB; B &#x51FD;&#x5F0F;</strong>&#x3002;</p>
+<p>&#x5F9E;&#x975E;&#x540C;&#x6B65;&#x4E8B;&#x4EF6;&#x6216; DOM &#x76E3;&#x807D;&#x4E8B;&#x4EF6;&#x7684;&#x89D2;&#x5EA6;&#x4F86;&#x770B;&#xFF0C;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x4E5F;&#x662F;&#x6307;<strong>&#x90A3;&#x4E9B;&#x6EFF;&#x8DB3;&#x7279;&#x5B9A;&#x689D;&#x4EF6;&#x624D;&#x6703;&#x88AB;&#x52D5;&#x89F8;&#x767C;&#x7684;&#x51FD;&#x5F0F;</strong>&#xFF0C;&#x5982;&#x4E0A;&#x4F8B; <code>setTimeout</code> &#x6216; Click &#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x8AB2;&#x7A0B;&#x4E2D;&#xFF0C;&#x8B1B;&#x5E2B;&#x7528;&#x4E0B;&#x9762;&#x9019;&#x500B;&#x4F8B;&#x5B50;&#x4F86;&#x89E3;&#x91CB;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tellMeWhenDone</span>(<span class="hljs-params">callback</span>)</span>{</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Function tellMeWhenDone is done!&apos;</span>) ;</span><br><span class="line"></span><br><span class="line">  callback() ; <span class="hljs-comment">// &#x57F7;&#x884C;&#x56DE;&#x547C;&#x51FD;&#x5F0F;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// &#x5275;&#x9020;&#x4E00;&#x500B;&#x533F;&#x540D;&#x51FD;&#x5F0F;&#x4F5C;&#x70BA;&#x53C3;&#x6578;&#x50B3;&#x5165;&#x51FD;&#x5F0F; tellMeWhenDone</span></span><br><span class="line">tellMeWhenDone(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Callback function is done!&apos;</span>) ;</span><br><span class="line">})</span><br></pre></td></tr></table></figure></p>
+<p>&#x7A0D;&#x52A0;&#x6539;&#x5BEB;&#x8B1B;&#x5E2B;&#x8209;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x60F3;&#x4E00;&#x60F3;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x6703;&#x5370;&#x51FA;&#x54EA;&#x4E00;&#x500B;&#x540D;&#x5B57;&#xFF1F;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> name = <span class="hljs-string">&apos;Fei&apos;</span> ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tellMeWhenDone</span>(<span class="hljs-params">callback</span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> name = <span class="hljs-string">&apos;Bai&apos;</span> ;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Function tellMeWhenDone is done!&apos;</span>) ;</span><br><span class="line"></span><br><span class="line">  callback() ; </span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">tellMeWhenDone(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(name) ;</span><br><span class="line">})</span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>回呼函式，即回頭呼叫執行的函式（其所在的外部執行環境可能已經消滅）。</li>
-<li>回呼函式，也可以想成：將 B 函式當作 A 函式的參數傳入，並在 A 函式中呼叫 B 函式，則 B 函式為回呼函式。</li>
-<li>回呼函式亦指那些滿足特定條件才會被動觸發的函式。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF0C;&#x5373;&#x56DE;&#x982D;&#x547C;&#x53EB;&#x57F7;&#x884C;&#x7684;&#x51FD;&#x5F0F;&#xFF08;&#x5176;&#x6240;&#x5728;&#x7684;&#x5916;&#x90E8;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x53EF;&#x80FD;&#x5DF2;&#x7D93;&#x6D88;&#x6EC5;&#xFF09;&#x3002;</li>
+<li>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#xFF1A;&#x5C07; B &#x51FD;&#x5F0F;&#x7576;&#x4F5C; A &#x51FD;&#x5F0F;&#x7684;&#x53C3;&#x6578;&#x50B3;&#x5165;&#xFF0C;&#x4E26;&#x5728; A &#x51FD;&#x5F0F;&#x4E2D;&#x547C;&#x53EB; B &#x51FD;&#x5F0F;&#xFF0C;&#x5247; B &#x51FD;&#x5F0F;&#x70BA;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x3002;</li>
+<li>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x4EA6;&#x6307;&#x90A3;&#x4E9B;&#x6EFF;&#x8DB3;&#x7279;&#x5B9A;&#x689D;&#x4EF6;&#x624D;&#x6703;&#x88AB;&#x52D5;&#x89F8;&#x767C;&#x7684;&#x51FD;&#x5F0F;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-49</li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10192739" target="_blank" rel="noopener">重新認識 JavaScript: Day 18 Callback Function 與 IIFE</a></li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-49</li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10192739" target="_blank" rel="noopener">&#x91CD;&#x65B0;&#x8A8D;&#x8B58; JavaScript: Day 18 Callback Function &#x8207; IIFE</a></li>
 </ol>
 
     

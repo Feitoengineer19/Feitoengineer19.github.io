@@ -16,20 +16,20 @@
 
 
 
-    <meta name="description" content="傳值 v.s. 傳參考， JavaScript 偷偷做但不告訴你的概念。">
+    <meta name="description" content="&amp;#x50B3;&amp;#x503C; v.s. &amp;#x50B3;&amp;#x53C3;&amp;#x8003;&amp;#xFF0C; JavaScript &amp;#x5077;&amp;#x5077;&amp;#x505A;&amp;#x4F46;&amp;#x4E0D;&amp;#x544A;&amp;#x8A34;&amp;#x4F60;&amp;#x7684;&amp;#x6982;&amp;#x5FF5;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 21：傳值 v.s. 傳參考">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-21/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="傳值 v.s. 傳參考， JavaScript 偷偷做但不告訴你的概念。">
+<meta property="og:description" content="&amp;#x50B3;&amp;#x503C; v.s. &amp;#x50B3;&amp;#x53C3;&amp;#x8003;&amp;#xFF0C; JavaScript &amp;#x5077;&amp;#x5077;&amp;#x505A;&amp;#x4F46;&amp;#x4E0D;&amp;#x544A;&amp;#x8A34;&amp;#x4F60;&amp;#x7684;&amp;#x6982;&amp;#x5FF5;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-21/byValue.JPG">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-21/byReference.JPG">
 <meta property="og:updated_time" content="2020-02-23T09:32:23.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 21：傳值 v.s. 傳參考">
-<meta name="twitter:description" content="傳值 v.s. 傳參考， JavaScript 偷偷做但不告訴你的概念。">
+<meta name="twitter:description" content="&amp;#x50B3;&amp;#x503C; v.s. &amp;#x50B3;&amp;#x53C3;&amp;#x8003;&amp;#xFF0C; JavaScript &amp;#x5077;&amp;#x5077;&amp;#x505A;&amp;#x4F46;&amp;#x4E0D;&amp;#x544A;&amp;#x8A34;&amp;#x4F60;&amp;#x7684;&amp;#x6982;&amp;#x5FF5;&amp;#x3002;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-21/byValue.JPG">
 
 
@@ -114,31 +114,31 @@
                     
                     
                     
-                    <a class="navbar-item" href="#資料型別">1&nbsp;&nbsp;<b>資料型別</b></a>
+                    <a class="navbar-item" href="#&amp;#x8CC7;&amp;#x6599;&amp;#x578B;&amp;#x5225;">1&nbsp;&nbsp;<b>&amp;amp;#x8CC7;&amp;amp;#x6599;&amp;amp;#x578B;&amp;amp;#x5225;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#傳值（by-Value）">2&nbsp;&nbsp;<b>傳值（by Value）</b></a>
+                    <a class="navbar-item" href="#&amp;#x50B3;&amp;#x503C;&amp;#xFF08;by-Value&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x50B3;&amp;amp;#x503C;&amp;amp;#xFF08;by Value&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#傳參考（by-Reference）">3&nbsp;&nbsp;<b>傳參考（by Reference）</b></a>
+                    <a class="navbar-item" href="#&amp;#x50B3;&amp;#x53C3;&amp;#x8003;&amp;#xFF08;by-Reference&amp;#xFF09;">3&nbsp;&nbsp;<b>&amp;amp;#x50B3;&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#xFF08;by Reference&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">4&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">5&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -177,12 +177,12 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>傳值 v.s. 傳參考， JavaScript 偷偷做但不告訴你的概念。</p>
+        <p>&#x50B3;&#x503C; v.s. &#x50B3;&#x53C3;&#x8003;&#xFF0C; JavaScript &#x5077;&#x5077;&#x505A;&#x4F46;&#x4E0D;&#x544A;&#x8A34;&#x4F60;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="資料型別"><a href="#資料型別" class="headerlink" title="資料型別"></a>資料型別</h3><p>回顧 JavaScript 的資料型別，可以分為兩大類，共七種。哪兩類？哪七種呀？</p>
+<h3 id="&#x8CC7;&#x6599;&#x578B;&#x5225;"><a href="#&#x8CC7;&#x6599;&#x578B;&#x5225;" class="headerlink" title="&#x8CC7;&#x6599;&#x578B;&#x5225;"></a>&#x8CC7;&#x6599;&#x578B;&#x5225;</h3><p>&#x56DE;&#x9867; JavaScript &#x7684;&#x8CC7;&#x6599;&#x578B;&#x5225;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x70BA;&#x5169;&#x5927;&#x985E;&#xFF0C;&#x5171;&#x4E03;&#x7A2E;&#x3002;&#x54EA;&#x5169;&#x985E;&#xFF1F;&#x54EA;&#x4E03;&#x7A2E;&#x5440;&#xFF1F;</p>
 <ol>
-<li>基本型別類（Primitive）<ul>
+<li>&#x57FA;&#x672C;&#x578B;&#x5225;&#x985E;&#xFF08;Primitive&#xFF09;<ul>
 <li>String</li>
 <li>Number</li>
 <li>Boolean</li>
@@ -191,58 +191,58 @@
 <li>Symbol</li>
 </ul>
 </li>
-<li>物件型別類（Object）<ul>
+<li>&#x7269;&#x4EF6;&#x578B;&#x5225;&#x985E;&#xFF08;Object&#xFF09;<ul>
 <li>Object (Function / Array)</li>
 </ul>
 </li>
 </ol>
-<p>其中，基本型別的六種值會以<strong>純值</strong>的方式表現，而物件型別中的<strong>物件則是 Name/Value 的集合</strong>，換句話說，<strong>物件也是許多資料型別的集合。</strong></p>
-<p>除此之外，我們也說過，當宣告新的變數或值（物件）時，JS 都會將這些資料型別分別存進記憶體，而變數在讀取值時，其實是參照的是值在記憶體中的位置（Address）。</p>
-<p>搞懂上面這兩個觀念之後，傳值與傳參考的原理就呼之欲出了！</p>
+<p>&#x5176;&#x4E2D;&#xFF0C;&#x57FA;&#x672C;&#x578B;&#x5225;&#x7684;&#x516D;&#x7A2E;&#x503C;&#x6703;&#x4EE5;<strong>&#x7D14;&#x503C;</strong>&#x7684;&#x65B9;&#x5F0F;&#x8868;&#x73FE;&#xFF0C;&#x800C;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x4E2D;&#x7684;<strong>&#x7269;&#x4EF6;&#x5247;&#x662F; Name/Value &#x7684;&#x96C6;&#x5408;</strong>&#xFF0C;&#x63DB;&#x53E5;&#x8A71;&#x8AAA;&#xFF0C;<strong>&#x7269;&#x4EF6;&#x4E5F;&#x662F;&#x8A31;&#x591A;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x7684;&#x96C6;&#x5408;&#x3002;</strong></p>
+<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x5011;&#x4E5F;&#x8AAA;&#x904E;&#xFF0C;&#x7576;&#x5BA3;&#x544A;&#x65B0;&#x7684;&#x8B8A;&#x6578;&#x6216;&#x503C;&#xFF08;&#x7269;&#x4EF6;&#xFF09;&#x6642;&#xFF0C;JS &#x90FD;&#x6703;&#x5C07;&#x9019;&#x4E9B;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x5206;&#x5225;&#x5B58;&#x9032;&#x8A18;&#x61B6;&#x9AD4;&#xFF0C;&#x800C;&#x8B8A;&#x6578;&#x5728;&#x8B80;&#x53D6;&#x503C;&#x6642;&#xFF0C;&#x5176;&#x5BE6;&#x662F;&#x53C3;&#x7167;&#x7684;&#x662F;&#x503C;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF08;Address&#xFF09;&#x3002;</p>
+<p>&#x641E;&#x61C2;&#x4E0A;&#x9762;&#x9019;&#x5169;&#x500B;&#x89C0;&#x5FF5;&#x4E4B;&#x5F8C;&#xFF0C;&#x50B3;&#x503C;&#x8207;&#x50B3;&#x53C3;&#x8003;&#x7684;&#x539F;&#x7406;&#x5C31;&#x547C;&#x4E4B;&#x6B32;&#x51FA;&#x4E86;&#xFF01;</p>
 <hr>
 
-<h3 id="傳值（by-Value）"><a href="#傳值（by-Value）" class="headerlink" title="傳值（by Value）"></a>傳值（by Value）</h3><p>在 JavaScript 中，<strong>基本型別（純值）</strong>的變數賦值或拷貝大部分是以<strong>傳值</strong>的方式實現。</p>
-<p>什麼意思？我們可以這樣解釋：因為基本型別本身就是<strong>純值</strong>，所以無論變數賦值，或是複製變數，大部分都是<strong>傳遞（純）值</strong>。</p>
-<p>直接舉例說明：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = a ; <span class="hljs-comment">// 複製變數</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// 100 100</span></span><br><span class="line">a = <span class="hljs-number">200</span> ;　<span class="hljs-comment">//  變數更新（重新賦值）</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// 200 100</span></span><br></pre></td></tr></table></figure></p>
-<p>我們宣告變數 <code>a</code> 並賦值 <code>100</code> ，接著宣告變數 <code>b</code> ，並讓它的值等於 <code>a</code> 。此時，JS 引擎在複製變數 <code>a</code> 的值時，會傳遞值 <code>100</code> 並賦予給變數 <code>b</code> ，使變數 <code>b</code> 值也等於 <code>100</code>。（如第 3 行結果）</p>
-<p>如果我們接著修改變數 <code>a</code> ，賦值 <code>200</code> ，此時變數 <code>a</code> 更新後的值等於 <code>200</code>，而變數 <code>b</code> 的值仍然是 <code>100</code>，並沒有改變。</p>
-<p>也就是說，基本型別在賦予變數值、複製變數或更新（重新賦值）變數時，JS 引擎會參照到該值在記憶體中的位置，並傳遞值本身，<strong>為複製的變數建立一個新的記憶體位置來儲存傳遞的值</strong>。</p>
-<p>所以，在上面這段範例中，第 2 行執行後，變數 <code>a</code> 和變數 <code>b</code> 雖然都是 <code>100</code> ，但這<strong>兩個變數所參考的記憶體位置並不一樣</strong>，以致修改變數 <code>a</code> 後，變數 <code>b</code> 不受影響。</p>
-<p>課程中以這張圖來說明傳值的概念：</p>
-<p><img src="/2019/08/15/weird-JavaScript-21/byValue.JPG" alt="傳值：變數儲存新的純值到新的記憶體位置（圖片源自參考資料 1.）"></p>
+<h3 id="&#x50B3;&#x503C;&#xFF08;by-Value&#xFF09;"><a href="#&#x50B3;&#x503C;&#xFF08;by-Value&#xFF09;" class="headerlink" title="&#x50B3;&#x503C;&#xFF08;by Value&#xFF09;"></a>&#x50B3;&#x503C;&#xFF08;by Value&#xFF09;</h3><p>&#x5728; JavaScript &#x4E2D;&#xFF0C;<strong>&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;&#x7D14;&#x503C;&#xFF09;</strong>&#x7684;&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#x6216;&#x62F7;&#x8C9D;&#x5927;&#x90E8;&#x5206;&#x662F;&#x4EE5;<strong>&#x50B3;&#x503C;</strong>&#x7684;&#x65B9;&#x5F0F;&#x5BE6;&#x73FE;&#x3002;</p>
+<p>&#x4EC0;&#x9EBC;&#x610F;&#x601D;&#xFF1F;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x9019;&#x6A23;&#x89E3;&#x91CB;&#xFF1A;&#x56E0;&#x70BA;&#x57FA;&#x672C;&#x578B;&#x5225;&#x672C;&#x8EAB;&#x5C31;&#x662F;<strong>&#x7D14;&#x503C;</strong>&#xFF0C;&#x6240;&#x4EE5;&#x7121;&#x8AD6;&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#xFF0C;&#x6216;&#x662F;&#x8907;&#x88FD;&#x8B8A;&#x6578;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x90FD;&#x662F;<strong>&#x50B3;&#x905E;&#xFF08;&#x7D14;&#xFF09;&#x503C;</strong>&#x3002;</p>
+<p>&#x76F4;&#x63A5;&#x8209;&#x4F8B;&#x8AAA;&#x660E;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = a ; <span class="hljs-comment">// &#x8907;&#x88FD;&#x8B8A;&#x6578;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// 100 100</span></span><br><span class="line">a = <span class="hljs-number">200</span> ;&#x3000;<span class="hljs-comment">//  &#x8B8A;&#x6578;&#x66F4;&#x65B0;&#xFF08;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#xFF09;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// 200 100</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x6211;&#x5011;&#x5BA3;&#x544A;&#x8B8A;&#x6578; <code>a</code> &#x4E26;&#x8CE6;&#x503C; <code>100</code> &#xFF0C;&#x63A5;&#x8457;&#x5BA3;&#x544A;&#x8B8A;&#x6578; <code>b</code> &#xFF0C;&#x4E26;&#x8B93;&#x5B83;&#x7684;&#x503C;&#x7B49;&#x65BC; <code>a</code> &#x3002;&#x6B64;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x5728;&#x8907;&#x88FD;&#x8B8A;&#x6578; <code>a</code> &#x7684;&#x503C;&#x6642;&#xFF0C;&#x6703;&#x50B3;&#x905E;&#x503C; <code>100</code> &#x4E26;&#x8CE6;&#x4E88;&#x7D66;&#x8B8A;&#x6578; <code>b</code> &#xFF0C;&#x4F7F;&#x8B8A;&#x6578; <code>b</code> &#x503C;&#x4E5F;&#x7B49;&#x65BC; <code>100</code>&#x3002;&#xFF08;&#x5982;&#x7B2C; 3 &#x884C;&#x7D50;&#x679C;&#xFF09;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x5011;&#x63A5;&#x8457;&#x4FEE;&#x6539;&#x8B8A;&#x6578; <code>a</code> &#xFF0C;&#x8CE6;&#x503C; <code>200</code> &#xFF0C;&#x6B64;&#x6642;&#x8B8A;&#x6578; <code>a</code> &#x66F4;&#x65B0;&#x5F8C;&#x7684;&#x503C;&#x7B49;&#x65BC; <code>200</code>&#xFF0C;&#x800C;&#x8B8A;&#x6578; <code>b</code> &#x7684;&#x503C;&#x4ECD;&#x7136;&#x662F; <code>100</code>&#xFF0C;&#x4E26;&#x6C92;&#x6709;&#x6539;&#x8B8A;&#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x57FA;&#x672C;&#x578B;&#x5225;&#x5728;&#x8CE6;&#x4E88;&#x8B8A;&#x6578;&#x503C;&#x3001;&#x8907;&#x88FD;&#x8B8A;&#x6578;&#x6216;&#x66F4;&#x65B0;&#xFF08;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#xFF09;&#x8B8A;&#x6578;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x6703;&#x53C3;&#x7167;&#x5230;&#x8A72;&#x503C;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E26;&#x50B3;&#x905E;&#x503C;&#x672C;&#x8EAB;&#xFF0C;<strong>&#x70BA;&#x8907;&#x88FD;&#x7684;&#x8B8A;&#x6578;&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x65B0;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x4F86;&#x5132;&#x5B58;&#x50B3;&#x905E;&#x7684;&#x503C;</strong>&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x5728;&#x4E0A;&#x9762;&#x9019;&#x6BB5;&#x7BC4;&#x4F8B;&#x4E2D;&#xFF0C;&#x7B2C; 2 &#x884C;&#x57F7;&#x884C;&#x5F8C;&#xFF0C;&#x8B8A;&#x6578; <code>a</code> &#x548C;&#x8B8A;&#x6578; <code>b</code> &#x96D6;&#x7136;&#x90FD;&#x662F; <code>100</code> &#xFF0C;&#x4F46;&#x9019;<strong>&#x5169;&#x500B;&#x8B8A;&#x6578;&#x6240;&#x53C3;&#x8003;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x4E26;&#x4E0D;&#x4E00;&#x6A23;</strong>&#xFF0C;&#x4EE5;&#x81F4;&#x4FEE;&#x6539;&#x8B8A;&#x6578; <code>a</code> &#x5F8C;&#xFF0C;&#x8B8A;&#x6578; <code>b</code> &#x4E0D;&#x53D7;&#x5F71;&#x97FF;&#x3002;</p>
+<p>&#x8AB2;&#x7A0B;&#x4E2D;&#x4EE5;&#x9019;&#x5F35;&#x5716;&#x4F86;&#x8AAA;&#x660E;&#x50B3;&#x503C;&#x7684;&#x6982;&#x5FF5;&#xFF1A;</p>
+<p><img src="/2019/08/15/weird-JavaScript-21/byValue.JPG" alt="&#x50B3;&#x503C;&#xFF1A;&#x8B8A;&#x6578;&#x5132;&#x5B58;&#x65B0;&#x7684;&#x7D14;&#x503C;&#x5230;&#x65B0;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <hr>
 
-<h3 id="傳參考（by-Reference）"><a href="#傳參考（by-Reference）" class="headerlink" title="傳參考（by Reference）"></a>傳參考（by Reference）</h3><p>在 JavaScript 中，<strong>物件型別（物件、函式、陣列）</strong>的變數賦值或拷貝大部分是以<strong>傳參考</strong>的方式實現。</p>
-<p>同樣的思維，我們可以這樣解釋：因為物件型別本身就是<strong>物件（許多資料型別的集合）</strong>，所以無論變數賦值，或是複製變數，大部分都是<strong>傳遞參考（物件）</strong>。</p>
-<p>什麼是<strong>參考</strong>？也就是變數所參考到<strong>儲存物件的記憶體位置（Address）</strong>。因此，傳參考又稱為<strong>傳址</strong>。</p>
-<p>請看下方範例：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>,</span><br><span class="line">  age: <span class="hljs-number">23</span></span><br><span class="line">&#125; ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = a ; <span class="hljs-comment">// 複製變數</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// &#123;name: "Fei", age: 23&#125; &#123;name: "Fei", age: 23&#125;</span></span><br><span class="line">a.age = <span class="hljs-number">17</span> ;　<span class="hljs-comment">//  變數更新（重新賦值）</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// &#123;name: "Fei", age: 17&#125; &#123;name: "Fei", age: 17&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>由於物件<strong>傳參考</strong>的特性，第 5 行執行後，變數 <code>a</code> 和變數 <code>b</code> 這<strong>兩個變數所參考的記憶體位置是相同的</strong>，都指向儲存物件 <code>{name: &quot;Fei&quot;, age: 23}</code> 的位置。</p>
-<p>也就是說，物件型別在賦予變數值、複製變數或更新（重新賦值）變數時，JS 引擎會參照到該物件在記憶體中的位置，並傳遞參考位置，<strong>複製的變數會同樣參考到物件儲存的記憶體位置</strong>。</p>
-<p>換句話說，物件並不像純值那樣會被複製到新的記憶體位置中。背後的真相是：<strong>物件不會被複製（新建記憶體位置儲存）</strong>。</p>
-<p>是以，第 7 行執行後，修改變數 <code>a</code> 物件裡的 <code>age</code> 值，等同修改了變數 <code>b</code> 物件裡的 <code>age</code> 值，因為變數 <code>a</code> 和變數 <code>b</code> 這兩個變數所參考的記憶體位置是相同的，指的是同一個物件。</p>
-<p>其實，我們也曾經說過，JavaScript 物件中的每個 Name/Value 都各自擁有不同的記憶體位置，既然如此，我們可以想成：儲存物件的記憶體位置，該物件在取用屬性或方法時，也會參考到儲存其所擁有的 Name/Value 的記憶體位置。</p>
-<p>因此，我們必須將物件視為一個<strong>實體（Instance）</strong>，當我們更新物件裡的屬性或方法時，<strong>修改（Mutate）</strong>的正是 Name/Value 記憶體位置的<strong>值</strong>，這當然會更動到所有參考到該物件實體的變數。</p>
-<p>或許是考量效率問題，JS 在更新或複製變數時，若碰到物件資料，會以傳參考（指向相同記憶體位置）的方式實現。試想，如果要像純值那樣複製值本身，倘若物件擁有上百個 Name/Value Pairs 該怎麼辦？效率肯定會變差。那直接指向相同物件（的記憶體位置）不更省事？</p>
-<p>因為物件是 Name/Value 的集合，也是儲存 Name/Value 記憶體位置的集合。</p>
-<p>最後，還有一個觀念：<strong>物件被傳入函式中執行，同樣擁有傳參考的特性</strong>。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>,</span><br><span class="line">  age: <span class="hljs-number">23</span></span><br><span class="line">&#125; ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = a ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mutateProperty</span>(<span class="hljs-params">obj</span>)</span>&#123;</span><br><span class="line">  obj.age = <span class="hljs-number">17</span> ; <span class="hljs-comment">// 修改物件的屬性</span></span><br><span class="line">&#125;</span><br><span class="line">mutateProperty(a) ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// &#123;name: "Fei", age: 17&#125; &#123;name: "Fei", age: 17&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>課程以這張圖來說明傳參考的概念：</p>
-<p><img src="/2019/08/15/weird-JavaScript-21/byReference.JPG" alt="傳參考：變數會參考到相同物件的記憶體位置（圖片源自參考資料 1.）"></p>
+<h3 id="&#x50B3;&#x53C3;&#x8003;&#xFF08;by-Reference&#xFF09;"><a href="#&#x50B3;&#x53C3;&#x8003;&#xFF08;by-Reference&#xFF09;" class="headerlink" title="&#x50B3;&#x53C3;&#x8003;&#xFF08;by Reference&#xFF09;"></a>&#x50B3;&#x53C3;&#x8003;&#xFF08;by Reference&#xFF09;</h3><p>&#x5728; JavaScript &#x4E2D;&#xFF0C;<strong>&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;&#x7269;&#x4EF6;&#x3001;&#x51FD;&#x5F0F;&#x3001;&#x9663;&#x5217;&#xFF09;</strong>&#x7684;&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#x6216;&#x62F7;&#x8C9D;&#x5927;&#x90E8;&#x5206;&#x662F;&#x4EE5;<strong>&#x50B3;&#x53C3;&#x8003;</strong>&#x7684;&#x65B9;&#x5F0F;&#x5BE6;&#x73FE;&#x3002;</p>
+<p>&#x540C;&#x6A23;&#x7684;&#x601D;&#x7DAD;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x9019;&#x6A23;&#x89E3;&#x91CB;&#xFF1A;&#x56E0;&#x70BA;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x672C;&#x8EAB;&#x5C31;&#x662F;<strong>&#x7269;&#x4EF6;&#xFF08;&#x8A31;&#x591A;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x7684;&#x96C6;&#x5408;&#xFF09;</strong>&#xFF0C;&#x6240;&#x4EE5;&#x7121;&#x8AD6;&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#xFF0C;&#x6216;&#x662F;&#x8907;&#x88FD;&#x8B8A;&#x6578;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x90FD;&#x662F;<strong>&#x50B3;&#x905E;&#x53C3;&#x8003;&#xFF08;&#x7269;&#x4EF6;&#xFF09;</strong>&#x3002;</p>
+<p>&#x4EC0;&#x9EBC;&#x662F;<strong>&#x53C3;&#x8003;</strong>&#xFF1F;&#x4E5F;&#x5C31;&#x662F;&#x8B8A;&#x6578;&#x6240;&#x53C3;&#x8003;&#x5230;<strong>&#x5132;&#x5B58;&#x7269;&#x4EF6;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF08;Address&#xFF09;</strong>&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x50B3;&#x53C3;&#x8003;&#x53C8;&#x7A31;&#x70BA;<strong>&#x50B3;&#x5740;</strong>&#x3002;</p>
+<p>&#x8ACB;&#x770B;&#x4E0B;&#x65B9;&#x7BC4;&#x4F8B;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = {</span><br><span class="line">  name: <span class="hljs-string">&apos;Fei&apos;</span>,</span><br><span class="line">  age: <span class="hljs-number">23</span></span><br><span class="line">} ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = a ; <span class="hljs-comment">// &#x8907;&#x88FD;&#x8B8A;&#x6578;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// {name: &quot;Fei&quot;, age: 23} {name: &quot;Fei&quot;, age: 23}</span></span><br><span class="line">a.age = <span class="hljs-number">17</span> ;&#x3000;<span class="hljs-comment">//  &#x8B8A;&#x6578;&#x66F4;&#x65B0;&#xFF08;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#xFF09;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// {name: &quot;Fei&quot;, age: 17} {name: &quot;Fei&quot;, age: 17}</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x7531;&#x65BC;&#x7269;&#x4EF6;<strong>&#x50B3;&#x53C3;&#x8003;</strong>&#x7684;&#x7279;&#x6027;&#xFF0C;&#x7B2C; 5 &#x884C;&#x57F7;&#x884C;&#x5F8C;&#xFF0C;&#x8B8A;&#x6578; <code>a</code> &#x548C;&#x8B8A;&#x6578; <code>b</code> &#x9019;<strong>&#x5169;&#x500B;&#x8B8A;&#x6578;&#x6240;&#x53C3;&#x8003;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x662F;&#x76F8;&#x540C;&#x7684;</strong>&#xFF0C;&#x90FD;&#x6307;&#x5411;&#x5132;&#x5B58;&#x7269;&#x4EF6; <code>{name: &quot;Fei&quot;, age: 23}</code> &#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x5728;&#x8CE6;&#x4E88;&#x8B8A;&#x6578;&#x503C;&#x3001;&#x8907;&#x88FD;&#x8B8A;&#x6578;&#x6216;&#x66F4;&#x65B0;&#xFF08;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#xFF09;&#x8B8A;&#x6578;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x6703;&#x53C3;&#x7167;&#x5230;&#x8A72;&#x7269;&#x4EF6;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E26;&#x50B3;&#x905E;&#x53C3;&#x8003;&#x4F4D;&#x7F6E;&#xFF0C;<strong>&#x8907;&#x88FD;&#x7684;&#x8B8A;&#x6578;&#x6703;&#x540C;&#x6A23;&#x53C3;&#x8003;&#x5230;&#x7269;&#x4EF6;&#x5132;&#x5B58;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;</strong>&#x3002;</p>
+<p>&#x63DB;&#x53E5;&#x8A71;&#x8AAA;&#xFF0C;&#x7269;&#x4EF6;&#x4E26;&#x4E0D;&#x50CF;&#x7D14;&#x503C;&#x90A3;&#x6A23;&#x6703;&#x88AB;&#x8907;&#x88FD;&#x5230;&#x65B0;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x4E2D;&#x3002;&#x80CC;&#x5F8C;&#x7684;&#x771F;&#x76F8;&#x662F;&#xFF1A;<strong>&#x7269;&#x4EF6;&#x4E0D;&#x6703;&#x88AB;&#x8907;&#x88FD;&#xFF08;&#x65B0;&#x5EFA;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x5132;&#x5B58;&#xFF09;</strong>&#x3002;</p>
+<p>&#x662F;&#x4EE5;&#xFF0C;&#x7B2C; 7 &#x884C;&#x57F7;&#x884C;&#x5F8C;&#xFF0C;&#x4FEE;&#x6539;&#x8B8A;&#x6578; <code>a</code> &#x7269;&#x4EF6;&#x88E1;&#x7684; <code>age</code> &#x503C;&#xFF0C;&#x7B49;&#x540C;&#x4FEE;&#x6539;&#x4E86;&#x8B8A;&#x6578; <code>b</code> &#x7269;&#x4EF6;&#x88E1;&#x7684; <code>age</code> &#x503C;&#xFF0C;&#x56E0;&#x70BA;&#x8B8A;&#x6578; <code>a</code> &#x548C;&#x8B8A;&#x6578; <code>b</code> &#x9019;&#x5169;&#x500B;&#x8B8A;&#x6578;&#x6240;&#x53C3;&#x8003;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x540C;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x3002;</p>
+<p>&#x5176;&#x5BE6;&#xFF0C;&#x6211;&#x5011;&#x4E5F;&#x66FE;&#x7D93;&#x8AAA;&#x904E;&#xFF0C;JavaScript &#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x6BCF;&#x500B; Name/Value &#x90FD;&#x5404;&#x81EA;&#x64C1;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF0C;&#x65E2;&#x7136;&#x5982;&#x6B64;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#xFF1A;&#x5132;&#x5B58;&#x7269;&#x4EF6;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF0C;&#x8A72;&#x7269;&#x4EF6;&#x5728;&#x53D6;&#x7528;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x6642;&#xFF0C;&#x4E5F;&#x6703;&#x53C3;&#x8003;&#x5230;&#x5132;&#x5B58;&#x5176;&#x6240;&#x64C1;&#x6709;&#x7684; Name/Value &#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x5011;&#x5FC5;&#x9808;&#x5C07;&#x7269;&#x4EF6;&#x8996;&#x70BA;&#x4E00;&#x500B;<strong>&#x5BE6;&#x9AD4;&#xFF08;Instance&#xFF09;</strong>&#xFF0C;&#x7576;&#x6211;&#x5011;&#x66F4;&#x65B0;&#x7269;&#x4EF6;&#x88E1;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x6642;&#xFF0C;<strong>&#x4FEE;&#x6539;&#xFF08;Mutate&#xFF09;</strong>&#x7684;&#x6B63;&#x662F; Name/Value &#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x7684;<strong>&#x503C;</strong>&#xFF0C;&#x9019;&#x7576;&#x7136;&#x6703;&#x66F4;&#x52D5;&#x5230;&#x6240;&#x6709;&#x53C3;&#x8003;&#x5230;&#x8A72;&#x7269;&#x4EF6;&#x5BE6;&#x9AD4;&#x7684;&#x8B8A;&#x6578;&#x3002;</p>
+<p>&#x6216;&#x8A31;&#x662F;&#x8003;&#x91CF;&#x6548;&#x7387;&#x554F;&#x984C;&#xFF0C;JS &#x5728;&#x66F4;&#x65B0;&#x6216;&#x8907;&#x88FD;&#x8B8A;&#x6578;&#x6642;&#xFF0C;&#x82E5;&#x78B0;&#x5230;&#x7269;&#x4EF6;&#x8CC7;&#x6599;&#xFF0C;&#x6703;&#x4EE5;&#x50B3;&#x53C3;&#x8003;&#xFF08;&#x6307;&#x5411;&#x76F8;&#x540C;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF09;&#x7684;&#x65B9;&#x5F0F;&#x5BE6;&#x73FE;&#x3002;&#x8A66;&#x60F3;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x50CF;&#x7D14;&#x503C;&#x90A3;&#x6A23;&#x8907;&#x88FD;&#x503C;&#x672C;&#x8EAB;&#xFF0C;&#x5018;&#x82E5;&#x7269;&#x4EF6;&#x64C1;&#x6709;&#x4E0A;&#x767E;&#x500B; Name/Value Pairs &#x8A72;&#x600E;&#x9EBC;&#x8FA6;&#xFF1F;&#x6548;&#x7387;&#x80AF;&#x5B9A;&#x6703;&#x8B8A;&#x5DEE;&#x3002;&#x90A3;&#x76F4;&#x63A5;&#x6307;&#x5411;&#x76F8;&#x540C;&#x7269;&#x4EF6;&#xFF08;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF09;&#x4E0D;&#x66F4;&#x7701;&#x4E8B;&#xFF1F;</p>
+<p>&#x56E0;&#x70BA;&#x7269;&#x4EF6;&#x662F; Name/Value &#x7684;&#x96C6;&#x5408;&#xFF0C;&#x4E5F;&#x662F;&#x5132;&#x5B58; Name/Value &#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x7684;&#x96C6;&#x5408;&#x3002;</p>
+<p>&#x6700;&#x5F8C;&#xFF0C;&#x9084;&#x6709;&#x4E00;&#x500B;&#x89C0;&#x5FF5;&#xFF1A;<strong>&#x7269;&#x4EF6;&#x88AB;&#x50B3;&#x5165;&#x51FD;&#x5F0F;&#x4E2D;&#x57F7;&#x884C;&#xFF0C;&#x540C;&#x6A23;&#x64C1;&#x6709;&#x50B3;&#x53C3;&#x8003;&#x7684;&#x7279;&#x6027;</strong>&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = {</span><br><span class="line">  name: <span class="hljs-string">&apos;Fei&apos;</span>,</span><br><span class="line">  age: <span class="hljs-number">23</span></span><br><span class="line">} ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = a ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mutateProperty</span>(<span class="hljs-params">obj</span>)</span>{</span><br><span class="line">  obj.age = <span class="hljs-number">17</span> ; <span class="hljs-comment">// &#x4FEE;&#x6539;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;</span></span><br><span class="line">}</span><br><span class="line">mutateProperty(a) ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(a,b) ; <span class="hljs-comment">// {name: &quot;Fei&quot;, age: 17} {name: &quot;Fei&quot;, age: 17}</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x8AB2;&#x7A0B;&#x4EE5;&#x9019;&#x5F35;&#x5716;&#x4F86;&#x8AAA;&#x660E;&#x50B3;&#x53C3;&#x8003;&#x7684;&#x6982;&#x5FF5;&#xFF1A;</p>
+<p><img src="/2019/08/15/weird-JavaScript-21/byReference.JPG" alt="&#x50B3;&#x53C3;&#x8003;&#xFF1A;&#x8B8A;&#x6578;&#x6703;&#x53C3;&#x8003;&#x5230;&#x76F8;&#x540C;&#x7269;&#x4EF6;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>在 JS 中，基本型別（純值）在賦予變數值、複製變數或更新（重新賦值）變數時，JS 引擎會參照到該值在記憶體中的位置，並傳遞值本身，為複製的變數建立一個新的記憶體位置來儲存傳遞的值。</li>
-<li>在 JS 中，物件型別（物件、函式、陣列）在賦予變數值、複製變數或更新（重新賦值）變數時，JS 引擎會參照到該物件在記憶體中的位置，並傳遞參考位置，複製的變數會同樣參考到物件儲存的記憶體位置。此外，物件被傳入函式中執行也擁有傳參考的特性。</li>
-<li>變數賦值、複製或更新（重新賦值），可以歸納到使用賦值運算子 <code>=</code> 的情境，此時純值會傳值，物件會傳參考。</li>
-<li>賦值運算子 <code>=</code> 的意義在於，若賦值資料是第一次宣告，則 JS 會新建記憶體位置儲存該資料，並賦值給左方變數。</li>
-<li>傳值或傳參考的歸納符合大部分的狀況，但有例外，且目前學界對於 JS 究竟是傳值、傳參考還是傳享（by Sharing）？並無定論，有興趣的人可以進一步參考下方資料文章。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x5728; JS &#x4E2D;&#xFF0C;&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;&#x7D14;&#x503C;&#xFF09;&#x5728;&#x8CE6;&#x4E88;&#x8B8A;&#x6578;&#x503C;&#x3001;&#x8907;&#x88FD;&#x8B8A;&#x6578;&#x6216;&#x66F4;&#x65B0;&#xFF08;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#xFF09;&#x8B8A;&#x6578;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x6703;&#x53C3;&#x7167;&#x5230;&#x8A72;&#x503C;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E26;&#x50B3;&#x905E;&#x503C;&#x672C;&#x8EAB;&#xFF0C;&#x70BA;&#x8907;&#x88FD;&#x7684;&#x8B8A;&#x6578;&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x65B0;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x4F86;&#x5132;&#x5B58;&#x50B3;&#x905E;&#x7684;&#x503C;&#x3002;</li>
+<li>&#x5728; JS &#x4E2D;&#xFF0C;&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;&#x7269;&#x4EF6;&#x3001;&#x51FD;&#x5F0F;&#x3001;&#x9663;&#x5217;&#xFF09;&#x5728;&#x8CE6;&#x4E88;&#x8B8A;&#x6578;&#x503C;&#x3001;&#x8907;&#x88FD;&#x8B8A;&#x6578;&#x6216;&#x66F4;&#x65B0;&#xFF08;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#xFF09;&#x8B8A;&#x6578;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x6703;&#x53C3;&#x7167;&#x5230;&#x8A72;&#x7269;&#x4EF6;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E26;&#x50B3;&#x905E;&#x53C3;&#x8003;&#x4F4D;&#x7F6E;&#xFF0C;&#x8907;&#x88FD;&#x7684;&#x8B8A;&#x6578;&#x6703;&#x540C;&#x6A23;&#x53C3;&#x8003;&#x5230;&#x7269;&#x4EF6;&#x5132;&#x5B58;&#x7684;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x7269;&#x4EF6;&#x88AB;&#x50B3;&#x5165;&#x51FD;&#x5F0F;&#x4E2D;&#x57F7;&#x884C;&#x4E5F;&#x64C1;&#x6709;&#x50B3;&#x53C3;&#x8003;&#x7684;&#x7279;&#x6027;&#x3002;</li>
+<li>&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#x3001;&#x8907;&#x88FD;&#x6216;&#x66F4;&#x65B0;&#xFF08;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x6B78;&#x7D0D;&#x5230;&#x4F7F;&#x7528;&#x8CE6;&#x503C;&#x904B;&#x7B97;&#x5B50; <code>=</code> &#x7684;&#x60C5;&#x5883;&#xFF0C;&#x6B64;&#x6642;&#x7D14;&#x503C;&#x6703;&#x50B3;&#x503C;&#xFF0C;&#x7269;&#x4EF6;&#x6703;&#x50B3;&#x53C3;&#x8003;&#x3002;</li>
+<li>&#x8CE6;&#x503C;&#x904B;&#x7B97;&#x5B50; <code>=</code> &#x7684;&#x610F;&#x7FA9;&#x5728;&#x65BC;&#xFF0C;&#x82E5;&#x8CE6;&#x503C;&#x8CC7;&#x6599;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x5BA3;&#x544A;&#xFF0C;&#x5247; JS &#x6703;&#x65B0;&#x5EFA;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;&#x5132;&#x5B58;&#x8A72;&#x8CC7;&#x6599;&#xFF0C;&#x4E26;&#x8CE6;&#x503C;&#x7D66;&#x5DE6;&#x65B9;&#x8B8A;&#x6578;&#x3002;</li>
+<li>&#x50B3;&#x503C;&#x6216;&#x50B3;&#x53C3;&#x8003;&#x7684;&#x6B78;&#x7D0D;&#x7B26;&#x5408;&#x5927;&#x90E8;&#x5206;&#x7684;&#x72C0;&#x6CC1;&#xFF0C;&#x4F46;&#x6709;&#x4F8B;&#x5916;&#xFF0C;&#x4E14;&#x76EE;&#x524D;&#x5B78;&#x754C;&#x5C0D;&#x65BC; JS &#x7A76;&#x7ADF;&#x662F;&#x50B3;&#x503C;&#x3001;&#x50B3;&#x53C3;&#x8003;&#x9084;&#x662F;&#x50B3;&#x4EAB;&#xFF08;by Sharing&#xFF09;&#xFF1F;&#x4E26;&#x7121;&#x5B9A;&#x8AD6;&#xFF0C;&#x6709;&#x8208;&#x8DA3;&#x7684;&#x4EBA;&#x53EF;&#x4EE5;&#x9032;&#x4E00;&#x6B65;&#x53C3;&#x8003;&#x4E0B;&#x65B9;&#x8CC7;&#x6599;&#x6587;&#x7AE0;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-36</li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10191057" target="_blank" rel="noopener">重新認識 JavaScript: Day 05 JavaScript 是「傳值」或「傳址」？</a></li>
-<li><a href="https://blog.techbridge.cc/2018/06/23/javascript-call-by-value-or-reference/" target="_blank" rel="noopener">深入探討 JavaScript 中的參數傳遞：call by value 還是 reference？</a></li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-36</li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191057" target="_blank" rel="noopener">&#x91CD;&#x65B0;&#x8A8D;&#x8B58; JavaScript: Day 05 JavaScript &#x662F;&#x300C;&#x50B3;&#x503C;&#x300D;&#x6216;&#x300C;&#x50B3;&#x5740;&#x300D;&#xFF1F;</a></li>
+<li><a href="https://blog.techbridge.cc/2018/06/23/javascript-call-by-value-or-reference/" target="_blank" rel="noopener">&#x6DF1;&#x5165;&#x63A2;&#x8A0E; JavaScript &#x4E2D;&#x7684;&#x53C3;&#x6578;&#x50B3;&#x905E;&#xFF1A;call by value &#x9084;&#x662F; reference&#xFF1F;</a></li>
 </ol>
 
     

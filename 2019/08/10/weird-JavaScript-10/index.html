@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？">
+    <meta name="description" content="JavaScript &amp;#x5C07;&amp;#x8CC7;&amp;#x6599;&amp;#x5206;&amp;#x70BA;&amp;#x57FA;&amp;#x672C;&amp;#x578B;&amp;#x5225;&amp;#x8207;&amp;#x7269;&amp;#x4EF6;&amp;#x578B;&amp;#x5225;&amp;#x5169;&amp;#x985E;&amp;#xFF0C;&amp;#x90A3;&amp;#x9EBC; JS &amp;#x5167;&amp;#x5EFA;&amp;#x7684;&amp;#x8CC7;&amp;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 10：基本型別（純值）與物件型別">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/10/weird-JavaScript-10/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？">
+<meta property="og:description" content="JavaScript &amp;#x5C07;&amp;#x8CC7;&amp;#x6599;&amp;#x5206;&amp;#x70BA;&amp;#x57FA;&amp;#x672C;&amp;#x578B;&amp;#x5225;&amp;#x8207;&amp;#x7269;&amp;#x4EF6;&amp;#x578B;&amp;#x5225;&amp;#x5169;&amp;#x985E;&amp;#xFF0C;&amp;#x90A3;&amp;#x9EBC; JS &amp;#x5167;&amp;#x5EFA;&amp;#x7684;&amp;#x8CC7;&amp;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2020-02-23T09:35:13.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 10：基本型別（純值）與物件型別">
-<meta name="twitter:description" content="JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？">
+<meta name="twitter:description" content="JavaScript &amp;#x5C07;&amp;#x8CC7;&amp;#x6599;&amp;#x5206;&amp;#x70BA;&amp;#x57FA;&amp;#x672C;&amp;#x578B;&amp;#x5225;&amp;#x8207;&amp;#x7269;&amp;#x4EF6;&amp;#x578B;&amp;#x5225;&amp;#x5169;&amp;#x985E;&amp;#xFF0C;&amp;#x90A3;&amp;#x9EBC; JS &amp;#x5167;&amp;#x5EFA;&amp;#x7684;&amp;#x8CC7;&amp;">
 
 
 
@@ -111,55 +111,55 @@
                     
                     
                     
-                    <a class="navbar-item" href="#資料型別（Data-Type）">1&nbsp;&nbsp;<b>資料型別（Data Type）</b></a>
+                    <a class="navbar-item" href="#&amp;#x8CC7;&amp;#x6599;&amp;#x578B;&amp;#x5225;&amp;#xFF08;Data-Type&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x8CC7;&amp;amp;#x6599;&amp;amp;#x578B;&amp;amp;#x5225;&amp;amp;#xFF08;Data Type&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#基本型別（Primitive）">2&nbsp;&nbsp;<b>基本型別（Primitive）</b></a>
+                    <a class="navbar-item" href="#&amp;#x57FA;&amp;#x672C;&amp;#x578B;&amp;#x5225;&amp;#xFF08;Primitive&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x57FA;&amp;amp;#x672C;&amp;amp;#x578B;&amp;amp;#x5225;&amp;amp;#xFF08;Primitive&amp;amp;#xFF09;</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#字串（String）">2.1&nbsp;&nbsp;字串（String）</a>
+                    <a class="navbar-item" href="#&amp;#x5B57;&amp;#x4E32;&amp;#xFF08;String&amp;#xFF09;">2.1&nbsp;&nbsp;&amp;amp;#x5B57;&amp;amp;#x4E32;&amp;amp;#xFF08;String&amp;amp;#xFF09;</a>
                     
                     
                     
-                    <a class="navbar-item" href="#數字（Number）">2.2&nbsp;&nbsp;數字（Number）</a>
+                    <a class="navbar-item" href="#&amp;#x6578;&amp;#x5B57;&amp;#xFF08;Number&amp;#xFF09;">2.2&nbsp;&nbsp;&amp;amp;#x6578;&amp;amp;#x5B57;&amp;amp;#xFF08;Number&amp;amp;#xFF09;</a>
                     
                     
                     
-                    <a class="navbar-item" href="#布林值（Boolean）">2.3&nbsp;&nbsp;布林值（Boolean）</a>
+                    <a class="navbar-item" href="#&amp;#x5E03;&amp;#x6797;&amp;#x503C;&amp;#xFF08;Boolean&amp;#xFF09;">2.3&nbsp;&nbsp;&amp;amp;#x5E03;&amp;amp;#x6797;&amp;amp;#x503C;&amp;amp;#xFF08;Boolean&amp;amp;#xFF09;</a>
                     
                     
                     
-                    <a class="navbar-item" href="#空值（Null）">2.4&nbsp;&nbsp;空值（Null）</a>
+                    <a class="navbar-item" href="#&amp;#x7A7A;&amp;#x503C;&amp;#xFF08;Null&amp;#xFF09;">2.4&nbsp;&nbsp;&amp;amp;#x7A7A;&amp;amp;#x503C;&amp;amp;#xFF08;Null&amp;amp;#xFF09;</a>
                     
                     
                     
-                    <a class="navbar-item" href="#未定義（Undefined）">2.5&nbsp;&nbsp;未定義（Undefined）</a>
+                    <a class="navbar-item" href="#&amp;#x672A;&amp;#x5B9A;&amp;#x7FA9;&amp;#xFF08;Undefined&amp;#xFF09;">2.5&nbsp;&nbsp;&amp;amp;#x672A;&amp;amp;#x5B9A;&amp;amp;#x7FA9;&amp;amp;#xFF08;Undefined&amp;amp;#xFF09;</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Symbol（ES6-新增的型別）">2.6&nbsp;&nbsp;Symbol（ES6 新增的型別）</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#物件型別（Object）">3&nbsp;&nbsp;<b>物件型別（Object）</b></a>
+                    <a class="navbar-item" href="#Symbol&amp;#xFF08;ES6-&amp;#x65B0;&amp;#x589E;&amp;#x7684;&amp;#x578B;&amp;#x5225;&amp;#xFF09;">2.6&nbsp;&nbsp;Symbol&amp;amp;#xFF08;ES6 &amp;amp;#x65B0;&amp;amp;#x589E;&amp;amp;#x7684;&amp;amp;#x578B;&amp;amp;#x5225;&amp;amp;#xFF09;</a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7269;&amp;#x4EF6;&amp;#x578B;&amp;#x5225;&amp;#xFF08;Object&amp;#xFF09;">3&nbsp;&nbsp;<b>&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x578B;&amp;amp;#x5225;&amp;amp;#xFF08;Object&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">4&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">5&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -198,127 +198,127 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>JavaScript 將資料分為基本型別與物件型別兩類，那麼 JS 內建的資料型別到底有幾種呢？</p>
+        <p>JavaScript &#x5C07;&#x8CC7;&#x6599;&#x5206;&#x70BA;&#x57FA;&#x672C;&#x578B;&#x5225;&#x8207;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x5169;&#x985E;&#xFF0C;&#x90A3;&#x9EBC; JS &#x5167;&#x5EFA;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x5230;&#x5E95;&#x6709;&#x5E7E;&#x7A2E;&#x5462;&#xFF1F;</p>
   <a id="more"></a>
 
 <hr>
 
-<h3 id="資料型別（Data-Type）"><a href="#資料型別（Data-Type）" class="headerlink" title="資料型別（Data Type）"></a>資料型別（Data Type）</h3><p>其實在 02 篇就已經大概介紹過，在 JavaScript 中，資料型別分為兩類：</p>
+<h3 id="&#x8CC7;&#x6599;&#x578B;&#x5225;&#xFF08;Data-Type&#xFF09;"><a href="#&#x8CC7;&#x6599;&#x578B;&#x5225;&#xFF08;Data-Type&#xFF09;" class="headerlink" title="&#x8CC7;&#x6599;&#x578B;&#x5225;&#xFF08;Data Type&#xFF09;"></a>&#x8CC7;&#x6599;&#x578B;&#x5225;&#xFF08;Data Type&#xFF09;</h3><p>&#x5176;&#x5BE6;&#x5728; 02 &#x7BC7;&#x5C31;&#x5DF2;&#x7D93;&#x5927;&#x6982;&#x4ECB;&#x7D39;&#x904E;&#xFF0C;&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x5206;&#x70BA;&#x5169;&#x985E;&#xFF1A;</p>
 <ol>
-<li>基本型別／原始型別（純值）</li>
-<li>物件型別（物件）</li>
+<li>&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF0F;&#x539F;&#x59CB;&#x578B;&#x5225;&#xFF08;&#x7D14;&#x503C;&#xFF09;</li>
+<li>&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;&#x7269;&#x4EF6;&#xFF09;</li>
 </ol>
-<p>也就是說，在 JS 中，所有的<strong>值（Value）</strong>都是<strong>純值</strong>或<strong>物件</strong>。</p>
-<p>更精闢一點地說，<strong>所有的值，都是物件</strong>。（這個概念比較進階，等到我們更深入瞭解物件後，就能理解。）</p>
-<p>這篇主要介紹這兩大資料型別。</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x5728; JS &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x7684;<strong>&#x503C;&#xFF08;Value&#xFF09;</strong>&#x90FD;&#x662F;<strong>&#x7D14;&#x503C;</strong>&#x6216;<strong>&#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p>&#x66F4;&#x7CBE;&#x95E2;&#x4E00;&#x9EDE;&#x5730;&#x8AAA;&#xFF0C;<strong>&#x6240;&#x6709;&#x7684;&#x503C;&#xFF0C;&#x90FD;&#x662F;&#x7269;&#x4EF6;</strong>&#x3002;&#xFF08;&#x9019;&#x500B;&#x6982;&#x5FF5;&#x6BD4;&#x8F03;&#x9032;&#x968E;&#xFF0C;&#x7B49;&#x5230;&#x6211;&#x5011;&#x66F4;&#x6DF1;&#x5165;&#x77AD;&#x89E3;&#x7269;&#x4EF6;&#x5F8C;&#xFF0C;&#x5C31;&#x80FD;&#x7406;&#x89E3;&#x3002;&#xFF09;</p>
+<p>&#x9019;&#x7BC7;&#x4E3B;&#x8981;&#x4ECB;&#x7D39;&#x9019;&#x5169;&#x5927;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x3002;</p>
 <hr>
 
-<h3 id="基本型別（Primitive）"><a href="#基本型別（Primitive）" class="headerlink" title="基本型別（Primitive）"></a>基本型別（Primitive）</h3><blockquote>
+<h3 id="&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;Primitive&#xFF09;"><a href="#&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;Primitive&#xFF09;" class="headerlink" title="&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;Primitive&#xFF09;"></a>&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;Primitive&#xFF09;</h3><blockquote>
 <p>A type of data that represent <strong>a single value</strong>.(Not an object)</p>
 </blockquote>
-<p>基本型別，又稱<strong>原始型別</strong>，又細分為六種，每一種都是<strong>值（Value）</strong>，因此基本型別指的就是：<strong>「純值」</strong>。</p>
-<p>什麼意思？相較於<strong>物件</strong>作為 <strong>Name/Value 的集合體</strong>，基本型別就只有它這個<strong>值（Value）</strong>。</p>
-<p>而這六種值分別是：</p>
-<h4 id="字串（String）"><a href="#字串（String）" class="headerlink" title="字串（String）"></a>字串（String）</h4><blockquote>
+<p>&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF0C;&#x53C8;&#x7A31;<strong>&#x539F;&#x59CB;&#x578B;&#x5225;</strong>&#xFF0C;&#x53C8;&#x7D30;&#x5206;&#x70BA;&#x516D;&#x7A2E;&#xFF0C;&#x6BCF;&#x4E00;&#x7A2E;&#x90FD;&#x662F;<strong>&#x503C;&#xFF08;Value&#xFF09;</strong>&#xFF0C;&#x56E0;&#x6B64;&#x57FA;&#x672C;&#x578B;&#x5225;&#x6307;&#x7684;&#x5C31;&#x662F;&#xFF1A;<strong>&#x300C;&#x7D14;&#x503C;&#x300D;</strong>&#x3002;</p>
+<p>&#x4EC0;&#x9EBC;&#x610F;&#x601D;&#xFF1F;&#x76F8;&#x8F03;&#x65BC;<strong>&#x7269;&#x4EF6;</strong>&#x4F5C;&#x70BA; <strong>Name/Value &#x7684;&#x96C6;&#x5408;&#x9AD4;</strong>&#xFF0C;&#x57FA;&#x672C;&#x578B;&#x5225;&#x5C31;&#x53EA;&#x6709;&#x5B83;&#x9019;&#x500B;<strong>&#x503C;&#xFF08;Value&#xFF09;</strong>&#x3002;</p>
+<p>&#x800C;&#x9019;&#x516D;&#x7A2E;&#x503C;&#x5206;&#x5225;&#x662F;&#xFF1A;</p>
+<h4 id="&#x5B57;&#x4E32;&#xFF08;String&#xFF09;"><a href="#&#x5B57;&#x4E32;&#xFF08;String&#xFF09;" class="headerlink" title="&#x5B57;&#x4E32;&#xFF08;String&#xFF09;"></a>&#x5B57;&#x4E32;&#xFF08;String&#xFF09;</h4><blockquote>
 <p>a sequence of characters</p>
 </blockquote>
-<p>用<strong>單引號（’Fei’）</strong>或<strong>雙引號（”Fei”）</strong>包覆的內容就屬於字串，如 <code>&#39;Fei&#39;</code> 、 <code>&#39;5566&#39;</code> 、 <code>&quot;True&quot;</code> 、 <code>&#39;undefined&#39;</code> 等等。</p>
-<p>注意！單引號與雙引號混用是不被接受的： <del><code>&quot;Fei&#39;</code></del> 。</p>
-<p>我會推薦使用<strong>單引號（’’）</strong>來表達字串，因為使用雙引號的話，如果字串內容遇到雙引號或其他特殊字元，就必須作<strong>跳脫字元（Escape Character）</strong>處理，單引號少有這樣的衝突。如下範例：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> noteA = <span class="hljs-string">'"JavaScript" is not equal to "Java"!!'</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> noteB = <span class="hljs-string">""</span>JavaScript<span class="hljs-string">" is not equal to "</span>Java<span class="hljs-string">"!!"</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(noteA) ;　<span class="hljs-comment">// "JavaScript" is not equal to "Java"!!</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(noteB) ;　<span class="hljs-comment">// SyntaxError: Unexpected identifier</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 利用反斜線（\）跳脫字元後，noteB 即可執行：</span></span><br><span class="line"><span class="hljs-keyword">var</span> noteB = <span class="hljs-string">"\"JavaScript\" is not equal to \"Java\"!!"</span> ;</span><br></pre></td></tr></table></figure></p>
-<h4 id="數字（Number）"><a href="#數字（Number）" class="headerlink" title="數字（Number）"></a>數字（Number）</h4><blockquote>
-<p>floating point number.<br>Unlike other programming languages, there’s only one ‘number’ type.</p>
+<p>&#x7528;<strong>&#x55AE;&#x5F15;&#x865F;&#xFF08;&#x2019;Fei&#x2019;&#xFF09;</strong>&#x6216;<strong>&#x96D9;&#x5F15;&#x865F;&#xFF08;&#x201D;Fei&#x201D;&#xFF09;</strong>&#x5305;&#x8986;&#x7684;&#x5167;&#x5BB9;&#x5C31;&#x5C6C;&#x65BC;&#x5B57;&#x4E32;&#xFF0C;&#x5982; <code>&apos;Fei&apos;</code> &#x3001; <code>&apos;5566&apos;</code> &#x3001; <code>&quot;True&quot;</code> &#x3001; <code>&apos;undefined&apos;</code> &#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF01;&#x55AE;&#x5F15;&#x865F;&#x8207;&#x96D9;&#x5F15;&#x865F;&#x6DF7;&#x7528;&#x662F;&#x4E0D;&#x88AB;&#x63A5;&#x53D7;&#x7684;&#xFF1A; <del><code>&quot;Fei&apos;</code></del> &#x3002;</p>
+<p>&#x6211;&#x6703;&#x63A8;&#x85A6;&#x4F7F;&#x7528;<strong>&#x55AE;&#x5F15;&#x865F;&#xFF08;&#x2019;&#x2019;&#xFF09;</strong>&#x4F86;&#x8868;&#x9054;&#x5B57;&#x4E32;&#xFF0C;&#x56E0;&#x70BA;&#x4F7F;&#x7528;&#x96D9;&#x5F15;&#x865F;&#x7684;&#x8A71;&#xFF0C;&#x5982;&#x679C;&#x5B57;&#x4E32;&#x5167;&#x5BB9;&#x9047;&#x5230;&#x96D9;&#x5F15;&#x865F;&#x6216;&#x5176;&#x4ED6;&#x7279;&#x6B8A;&#x5B57;&#x5143;&#xFF0C;&#x5C31;&#x5FC5;&#x9808;&#x4F5C;<strong>&#x8DF3;&#x812B;&#x5B57;&#x5143;&#xFF08;Escape Character&#xFF09;</strong>&#x8655;&#x7406;&#xFF0C;&#x55AE;&#x5F15;&#x865F;&#x5C11;&#x6709;&#x9019;&#x6A23;&#x7684;&#x885D;&#x7A81;&#x3002;&#x5982;&#x4E0B;&#x7BC4;&#x4F8B;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> noteA = <span class="hljs-string">&apos;&quot;JavaScript&quot; is not equal to &quot;Java&quot;!!&apos;</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> noteB = <span class="hljs-string">&quot;&quot;</span>JavaScript<span class="hljs-string">&quot; is not equal to &quot;</span>Java<span class="hljs-string">&quot;!!&quot;</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(noteA) ;&#x3000;<span class="hljs-comment">// &quot;JavaScript&quot; is not equal to &quot;Java&quot;!!</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(noteB) ;&#x3000;<span class="hljs-comment">// SyntaxError: Unexpected identifier</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// &#x5229;&#x7528;&#x53CD;&#x659C;&#x7DDA;&#xFF08;\&#xFF09;&#x8DF3;&#x812B;&#x5B57;&#x5143;&#x5F8C;&#xFF0C;noteB &#x5373;&#x53EF;&#x57F7;&#x884C;&#xFF1A;</span></span><br><span class="line"><span class="hljs-keyword">var</span> noteB = <span class="hljs-string">&quot;\&quot;JavaScript\&quot; is not equal to \&quot;Java\&quot;!!&quot;</span> ;</span><br></pre></td></tr></table></figure></p>
+<h4 id="&#x6578;&#x5B57;&#xFF08;Number&#xFF09;"><a href="#&#x6578;&#x5B57;&#xFF08;Number&#xFF09;" class="headerlink" title="&#x6578;&#x5B57;&#xFF08;Number&#xFF09;"></a>&#x6578;&#x5B57;&#xFF08;Number&#xFF09;</h4><blockquote>
+<p>floating point number.<br>Unlike other programming languages, there&#x2019;s only one &#x2018;number&#x2019; type.</p>
 </blockquote>
-<p>和其他語言不同， JavaScript 的數字型別都屬於<strong>浮點數（Float）</strong>。</p>
-<p>除了常見的整數或小數，JS 還包含一些特別的數字：</p>
+<p>&#x548C;&#x5176;&#x4ED6;&#x8A9E;&#x8A00;&#x4E0D;&#x540C;&#xFF0C; JavaScript &#x7684;&#x6578;&#x5B57;&#x578B;&#x5225;&#x90FD;&#x5C6C;&#x65BC;<strong>&#x6D6E;&#x9EDE;&#x6578;&#xFF08;Float&#xFF09;</strong>&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x5E38;&#x898B;&#x7684;&#x6574;&#x6578;&#x6216;&#x5C0F;&#x6578;&#xFF0C;JS &#x9084;&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x7279;&#x5225;&#x7684;&#x6578;&#x5B57;&#xFF1A;</p>
 <ul>
-<li><code>Infinity</code>（無限大）</li>
-<li><code>-Infinity</code>（無限小）</li>
-<li><code>NaN</code>（不是數字，Not a Number）</li>
+<li><code>Infinity</code>&#xFF08;&#x7121;&#x9650;&#x5927;&#xFF09;</li>
+<li><code>-Infinity</code>&#xFF08;&#x7121;&#x9650;&#x5C0F;&#xFF09;</li>
+<li><code>NaN</code>&#xFF08;&#x4E0D;&#x662F;&#x6578;&#x5B57;&#xFF0C;Not a Number&#xFF09;</li>
 </ul>
-<p>任何正數除以 <code>0</code> 都會得到 <code>Infinity</code> ；反之，任何負數除以 <code>0</code> 都會得到 <code>-Infinity</code>。</p>
-<p><code>Infinity</code> 除以 <code>Infinity</code> 會得到 <code>NaN</code>。</p>
-<p><code>0</code> 除以 <code>0</code> 也會得到 <code>NaN</code>。</p>
-<p>其實，只要任何運算中出現 <code>NaN</code> ，結果都會是 <code>NaN</code>。</p>
-<p> <code>NaN</code> 甚至不等於自己，更別說等於任何數字。但是， <code>NaN</code> 還是屬於<strong>數字型別（Number）</strong>。</p>
-<p>如果你想判斷一個變數或值是不是 <code>NaN</code> ，可以用 <code>isNaN()</code> 來判斷。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> === <span class="hljs-literal">NaN</span>) ; <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> === <span class="hljs-number">100</span>) ; <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">isNaN</span>(<span class="hljs-string">'NaN'</span>) ; <span class="hljs-comment">// true ；因為 'NaN' 無法轉成其他數字。</span></span><br><span class="line"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">NaN</span> ; <span class="hljs-comment">// Number ；NaN 屬於數字型別（Number）。</span></span><br></pre></td></tr></table></figure></p>
-<p>回到數字型別本身，由於 JS 對 Number 的處理採用的是「<a href="https://zh.wikipedia.org/wiki/IEEE_754" target="_blank" rel="noopener">IEEE 754</a>」二進位浮點數算術標準，在運算上會出現極其微小的誤差，導致某些運算式的判斷會令人不解，經典案例如下：</p>
+<p>&#x4EFB;&#x4F55;&#x6B63;&#x6578;&#x9664;&#x4EE5; <code>0</code> &#x90FD;&#x6703;&#x5F97;&#x5230; <code>Infinity</code> &#xFF1B;&#x53CD;&#x4E4B;&#xFF0C;&#x4EFB;&#x4F55;&#x8CA0;&#x6578;&#x9664;&#x4EE5; <code>0</code> &#x90FD;&#x6703;&#x5F97;&#x5230; <code>-Infinity</code>&#x3002;</p>
+<p><code>Infinity</code> &#x9664;&#x4EE5; <code>Infinity</code> &#x6703;&#x5F97;&#x5230; <code>NaN</code>&#x3002;</p>
+<p><code>0</code> &#x9664;&#x4EE5; <code>0</code> &#x4E5F;&#x6703;&#x5F97;&#x5230; <code>NaN</code>&#x3002;</p>
+<p>&#x5176;&#x5BE6;&#xFF0C;&#x53EA;&#x8981;&#x4EFB;&#x4F55;&#x904B;&#x7B97;&#x4E2D;&#x51FA;&#x73FE; <code>NaN</code> &#xFF0C;&#x7D50;&#x679C;&#x90FD;&#x6703;&#x662F; <code>NaN</code>&#x3002;</p>
+<p> <code>NaN</code> &#x751A;&#x81F3;&#x4E0D;&#x7B49;&#x65BC;&#x81EA;&#x5DF1;&#xFF0C;&#x66F4;&#x5225;&#x8AAA;&#x7B49;&#x65BC;&#x4EFB;&#x4F55;&#x6578;&#x5B57;&#x3002;&#x4F46;&#x662F;&#xFF0C; <code>NaN</code> &#x9084;&#x662F;&#x5C6C;&#x65BC;<strong>&#x6578;&#x5B57;&#x578B;&#x5225;&#xFF08;Number&#xFF09;</strong>&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5224;&#x65B7;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x6216;&#x503C;&#x662F;&#x4E0D;&#x662F; <code>NaN</code> &#xFF0C;&#x53EF;&#x4EE5;&#x7528; <code>isNaN()</code> &#x4F86;&#x5224;&#x65B7;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> === <span class="hljs-literal">NaN</span>) ; <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> === <span class="hljs-number">100</span>) ; <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&apos;NaN&apos;</span>) ; <span class="hljs-comment">// true &#xFF1B;&#x56E0;&#x70BA; &apos;NaN&apos; &#x7121;&#x6CD5;&#x8F49;&#x6210;&#x5176;&#x4ED6;&#x6578;&#x5B57;&#x3002;</span></span><br><span class="line"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">NaN</span> ; <span class="hljs-comment">// Number &#xFF1B;NaN &#x5C6C;&#x65BC;&#x6578;&#x5B57;&#x578B;&#x5225;&#xFF08;Number&#xFF09;&#x3002;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x56DE;&#x5230;&#x6578;&#x5B57;&#x578B;&#x5225;&#x672C;&#x8EAB;&#xFF0C;&#x7531;&#x65BC; JS &#x5C0D; Number &#x7684;&#x8655;&#x7406;&#x63A1;&#x7528;&#x7684;&#x662F;&#x300C;<a href="https://zh.wikipedia.org/wiki/IEEE_754" target="_blank" rel="noopener">IEEE 754</a>&#x300D;&#x4E8C;&#x9032;&#x4F4D;&#x6D6E;&#x9EDE;&#x6578;&#x7B97;&#x8853;&#x6A19;&#x6E96;&#xFF0C;&#x5728;&#x904B;&#x7B97;&#x4E0A;&#x6703;&#x51FA;&#x73FE;&#x6975;&#x5176;&#x5FAE;&#x5C0F;&#x7684;&#x8AA4;&#x5DEE;&#xFF0C;&#x5C0E;&#x81F4;&#x67D0;&#x4E9B;&#x904B;&#x7B97;&#x5F0F;&#x7684;&#x5224;&#x65B7;&#x6703;&#x4EE4;&#x4EBA;&#x4E0D;&#x89E3;&#xFF0C;&#x7D93;&#x5178;&#x6848;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span> === <span class="hljs-number">0.3</span>) ; <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="布林值（Boolean）"><a href="#布林值（Boolean）" class="headerlink" title="布林值（Boolean）"></a>布林值（Boolean）</h4><blockquote>
+<h4 id="&#x5E03;&#x6797;&#x503C;&#xFF08;Boolean&#xFF09;"><a href="#&#x5E03;&#x6797;&#x503C;&#xFF08;Boolean&#xFF09;" class="headerlink" title="&#x5E03;&#x6797;&#x503C;&#xFF08;Boolean&#xFF09;"></a>&#x5E03;&#x6797;&#x503C;&#xFF08;Boolean&#xFF09;</h4><blockquote>
 <p>true or false</p>
 </blockquote>
-<p><del>斯斯有三種，但</del> Boolean 只有兩種值： <code>true</code>（是） 和 <code>false</code>（否）。</p>
-<p>Boolean 多被用來判斷運算式，藉此控制流程，決定要不要做某一件事，譬如 <code>if</code> ：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">55</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = <span class="hljs-number">66</span> ;</span><br><span class="line"><span class="hljs-keyword">if</span>(a &gt; b)&#123;　<span class="hljs-comment">// 55 &gt; 66 不成立， a &gt; b 會被轉成 false 代入 if，因此 if(false)</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a is LARGER than b.'</span>) ;  <span class="hljs-comment">// 這段不會執行。</span></span><br><span class="line">&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a is SMALLER than b.'</span>) ; <span class="hljs-comment">// 執行這段，印出 a is SMALLER than b.  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在 JavaScript 中，判斷或比較的運算式能夠被隱性轉型成 Boolean ，好比上面這段程式碼中的 `` ，詳細我們不久後就會提到。</p>
-<h4 id="空值（Null）"><a href="#空值（Null）" class="headerlink" title="空值（Null）"></a>空值（Null）</h4><blockquote>
+<p><del>&#x65AF;&#x65AF;&#x6709;&#x4E09;&#x7A2E;&#xFF0C;&#x4F46;</del> Boolean &#x53EA;&#x6709;&#x5169;&#x7A2E;&#x503C;&#xFF1A; <code>true</code>&#xFF08;&#x662F;&#xFF09; &#x548C; <code>false</code>&#xFF08;&#x5426;&#xFF09;&#x3002;</p>
+<p>Boolean &#x591A;&#x88AB;&#x7528;&#x4F86;&#x5224;&#x65B7;&#x904B;&#x7B97;&#x5F0F;&#xFF0C;&#x85C9;&#x6B64;&#x63A7;&#x5236;&#x6D41;&#x7A0B;&#xFF0C;&#x6C7A;&#x5B9A;&#x8981;&#x4E0D;&#x8981;&#x505A;&#x67D0;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x8B6C;&#x5982; <code>if</code> &#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">55</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = <span class="hljs-number">66</span> ;</span><br><span class="line"><span class="hljs-keyword">if</span>(a &gt; b){&#x3000;<span class="hljs-comment">// 55 &gt; 66 &#x4E0D;&#x6210;&#x7ACB;&#xFF0C; a &gt; b &#x6703;&#x88AB;&#x8F49;&#x6210; false &#x4EE3;&#x5165; if&#xFF0C;&#x56E0;&#x6B64; if(false)</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;a is LARGER than b.&apos;</span>) ;  <span class="hljs-comment">// &#x9019;&#x6BB5;&#x4E0D;&#x6703;&#x57F7;&#x884C;&#x3002;</span></span><br><span class="line">}<span class="hljs-keyword">else</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;a is SMALLER than b.&apos;</span>) ; <span class="hljs-comment">// &#x57F7;&#x884C;&#x9019;&#x6BB5;&#xFF0C;&#x5370;&#x51FA; a is SMALLER than b.  </span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x5224;&#x65B7;&#x6216;&#x6BD4;&#x8F03;&#x7684;&#x904B;&#x7B97;&#x5F0F;&#x80FD;&#x5920;&#x88AB;&#x96B1;&#x6027;&#x8F49;&#x578B;&#x6210; Boolean &#xFF0C;&#x597D;&#x6BD4;&#x4E0A;&#x9762;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x4E2D;&#x7684; `` &#xFF0C;&#x8A73;&#x7D30;&#x6211;&#x5011;&#x4E0D;&#x4E45;&#x5F8C;&#x5C31;&#x6703;&#x63D0;&#x5230;&#x3002;</p>
+<h4 id="&#x7A7A;&#x503C;&#xFF08;Null&#xFF09;"><a href="#&#x7A7A;&#x503C;&#xFF08;Null&#xFF09;" class="headerlink" title="&#x7A7A;&#x503C;&#xFF08;Null&#xFF09;"></a>&#x7A7A;&#x503C;&#xFF08;Null&#xFF09;</h4><blockquote>
 <p>null represents lack of exitence.</p>
 </blockquote>
-<p>Null 只有 <code>null</code> 這個值，指的是，該變數存在於 JS（記憶體） 中，<strong>已經被宣告，可能曾經有值，但現在沒有值</strong>。</p>
-<p>如果你不想讓一個變數有前述三種值，那麼將它設定為 <code>null</code> 是<strong>可以被接受的</strong>，因為在必要時，它會被 JS <strong>強制轉型</strong>成 <code>0</code> 進行運算。請看下方程式碼：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> num = <span class="hljs-number">5566</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> nul = <span class="hljs-literal">null</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> und = <span class="hljs-literal">undefined</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(num + nul) ; <span class="hljs-comment">// 5566</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(num + und) ; <span class="hljs-comment">// NaN　ˊ&lt;_ˋ...??????</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="未定義（Undefined）"><a href="#未定義（Undefined）" class="headerlink" title="未定義（Undefined）"></a>未定義（Undefined）</h4><blockquote>
+<p>Null &#x53EA;&#x6709; <code>null</code> &#x9019;&#x500B;&#x503C;&#xFF0C;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x8A72;&#x8B8A;&#x6578;&#x5B58;&#x5728;&#x65BC; JS&#xFF08;&#x8A18;&#x61B6;&#x9AD4;&#xFF09; &#x4E2D;&#xFF0C;<strong>&#x5DF2;&#x7D93;&#x88AB;&#x5BA3;&#x544A;&#xFF0C;&#x53EF;&#x80FD;&#x66FE;&#x7D93;&#x6709;&#x503C;&#xFF0C;&#x4F46;&#x73FE;&#x5728;&#x6C92;&#x6709;&#x503C;</strong>&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x60F3;&#x8B93;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x6709;&#x524D;&#x8FF0;&#x4E09;&#x7A2E;&#x503C;&#xFF0C;&#x90A3;&#x9EBC;&#x5C07;&#x5B83;&#x8A2D;&#x5B9A;&#x70BA; <code>null</code> &#x662F;<strong>&#x53EF;&#x4EE5;&#x88AB;&#x63A5;&#x53D7;&#x7684;</strong>&#xFF0C;&#x56E0;&#x70BA;&#x5728;&#x5FC5;&#x8981;&#x6642;&#xFF0C;&#x5B83;&#x6703;&#x88AB; JS <strong>&#x5F37;&#x5236;&#x8F49;&#x578B;</strong>&#x6210; <code>0</code> &#x9032;&#x884C;&#x904B;&#x7B97;&#x3002;&#x8ACB;&#x770B;&#x4E0B;&#x65B9;&#x7A0B;&#x5F0F;&#x78BC;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> num = <span class="hljs-number">5566</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> nul = <span class="hljs-literal">null</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> und = <span class="hljs-literal">undefined</span> ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(num + nul) ; <span class="hljs-comment">// 5566</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(num + und) ; <span class="hljs-comment">// NaN&#x3000;&#x2CA;&lt;_&#x2CB;...??????</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="&#x672A;&#x5B9A;&#x7FA9;&#xFF08;Undefined&#xFF09;"><a href="#&#x672A;&#x5B9A;&#x7FA9;&#xFF08;Undefined&#xFF09;" class="headerlink" title="&#x672A;&#x5B9A;&#x7FA9;&#xFF08;Undefined&#xFF09;"></a>&#x672A;&#x5B9A;&#x7FA9;&#xFF08;Undefined&#xFF09;</h4><blockquote>
 <p>undefined represents lack of existence.</p>
 </blockquote>
-<p>Undefined 只有 <code>undefined</code> 這個值，指的是，該變數存在於 JS（記憶體） 中，<strong>已經被宣告，但尚未被賦值</strong>。</p>
-<p>一個變數如果是 <code>undefined</code> ，代表變數沒有其他值（字串、數字、null等等），才會被賦值為 <code>undefined</code>。</p>
-<p>還記得 Hoisting 嗎？ JS 在 Hoisting 階段時，會先幫我們宣告變數並賦予 <code>undefined</code> ，等到它真正執行後，才真正賦值。</p>
-<p>我們可以說， <code>undefined</code> 是 JS 用來告訴我們<strong>變數未被賦值</strong>的狀況。</p>
-<p>注意！請不要將變數賦值為 <code>undefined</code>，因為它需要運算時，會被 JS <strong>強制轉型</strong> 為 <code>NaN</code> ，如上方範例。</p>
-<p>所以， <code>undefined</code> 真正的意涵，表示<strong>變數佔據記憶體位置</strong>，但是變數還沒有被賦予其它值。</p>
-<p>總結來說，對 JS 而言， <code>null</code> 與 <code>undefined</code> 具有<strong>值不存在</strong>的意思，但實際上兩者在功能與運算仍有差異，不然何必無緣無故設計兩種型別呢？</p>
-<h4 id="Symbol（ES6-新增的型別）"><a href="#Symbol（ES6-新增的型別）" class="headerlink" title="Symbol（ES6 新增的型別）"></a>Symbol（ES6 新增的型別）</h4><blockquote>
-<p>Used in ES6. We won’t talk about this here…</p>
+<p>Undefined &#x53EA;&#x6709; <code>undefined</code> &#x9019;&#x500B;&#x503C;&#xFF0C;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x8A72;&#x8B8A;&#x6578;&#x5B58;&#x5728;&#x65BC; JS&#xFF08;&#x8A18;&#x61B6;&#x9AD4;&#xFF09; &#x4E2D;&#xFF0C;<strong>&#x5DF2;&#x7D93;&#x88AB;&#x5BA3;&#x544A;&#xFF0C;&#x4F46;&#x5C1A;&#x672A;&#x88AB;&#x8CE6;&#x503C;</strong>&#x3002;</p>
+<p>&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x5982;&#x679C;&#x662F; <code>undefined</code> &#xFF0C;&#x4EE3;&#x8868;&#x8B8A;&#x6578;&#x6C92;&#x6709;&#x5176;&#x4ED6;&#x503C;&#xFF08;&#x5B57;&#x4E32;&#x3001;&#x6578;&#x5B57;&#x3001;null&#x7B49;&#x7B49;&#xFF09;&#xFF0C;&#x624D;&#x6703;&#x88AB;&#x8CE6;&#x503C;&#x70BA; <code>undefined</code>&#x3002;</p>
+<p>&#x9084;&#x8A18;&#x5F97; Hoisting &#x55CE;&#xFF1F; JS &#x5728; Hoisting &#x968E;&#x6BB5;&#x6642;&#xFF0C;&#x6703;&#x5148;&#x5E6B;&#x6211;&#x5011;&#x5BA3;&#x544A;&#x8B8A;&#x6578;&#x4E26;&#x8CE6;&#x4E88; <code>undefined</code> &#xFF0C;&#x7B49;&#x5230;&#x5B83;&#x771F;&#x6B63;&#x57F7;&#x884C;&#x5F8C;&#xFF0C;&#x624D;&#x771F;&#x6B63;&#x8CE6;&#x503C;&#x3002;</p>
+<p>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x8AAA;&#xFF0C; <code>undefined</code> &#x662F; JS &#x7528;&#x4F86;&#x544A;&#x8A34;&#x6211;&#x5011;<strong>&#x8B8A;&#x6578;&#x672A;&#x88AB;&#x8CE6;&#x503C;</strong>&#x7684;&#x72C0;&#x6CC1;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF01;&#x8ACB;&#x4E0D;&#x8981;&#x5C07;&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#x70BA; <code>undefined</code>&#xFF0C;&#x56E0;&#x70BA;&#x5B83;&#x9700;&#x8981;&#x904B;&#x7B97;&#x6642;&#xFF0C;&#x6703;&#x88AB; JS <strong>&#x5F37;&#x5236;&#x8F49;&#x578B;</strong> &#x70BA; <code>NaN</code> &#xFF0C;&#x5982;&#x4E0A;&#x65B9;&#x7BC4;&#x4F8B;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C; <code>undefined</code> &#x771F;&#x6B63;&#x7684;&#x610F;&#x6DB5;&#xFF0C;&#x8868;&#x793A;<strong>&#x8B8A;&#x6578;&#x4F54;&#x64DA;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x7F6E;</strong>&#xFF0C;&#x4F46;&#x662F;&#x8B8A;&#x6578;&#x9084;&#x6C92;&#x6709;&#x88AB;&#x8CE6;&#x4E88;&#x5176;&#x5B83;&#x503C;&#x3002;</p>
+<p>&#x7E3D;&#x7D50;&#x4F86;&#x8AAA;&#xFF0C;&#x5C0D; JS &#x800C;&#x8A00;&#xFF0C; <code>null</code> &#x8207; <code>undefined</code> &#x5177;&#x6709;<strong>&#x503C;&#x4E0D;&#x5B58;&#x5728;</strong>&#x7684;&#x610F;&#x601D;&#xFF0C;&#x4F46;&#x5BE6;&#x969B;&#x4E0A;&#x5169;&#x8005;&#x5728;&#x529F;&#x80FD;&#x8207;&#x904B;&#x7B97;&#x4ECD;&#x6709;&#x5DEE;&#x7570;&#xFF0C;&#x4E0D;&#x7136;&#x4F55;&#x5FC5;&#x7121;&#x7DE3;&#x7121;&#x6545;&#x8A2D;&#x8A08;&#x5169;&#x7A2E;&#x578B;&#x5225;&#x5462;&#xFF1F;</p>
+<h4 id="Symbol&#xFF08;ES6-&#x65B0;&#x589E;&#x7684;&#x578B;&#x5225;&#xFF09;"><a href="#Symbol&#xFF08;ES6-&#x65B0;&#x589E;&#x7684;&#x578B;&#x5225;&#xFF09;" class="headerlink" title="Symbol&#xFF08;ES6 &#x65B0;&#x589E;&#x7684;&#x578B;&#x5225;&#xFF09;"></a>Symbol&#xFF08;ES6 &#x65B0;&#x589E;&#x7684;&#x578B;&#x5225;&#xFF09;</h4><blockquote>
+<p>Used in ES6. We won&#x2019;t talk about this here&#x2026;</p>
 </blockquote>
-<p>ES6 後才新增的型別，因為不常見<del>（我也還不會用）</del>，這裡先不談。</p>
-<p>最後，在介紹物件型別之前，我要先簡單介紹一個很重要的觀念：</p>
-<p>在 JavaScript 中，<strong>基本型別（上述六種值）</strong>的變數賦值或拷貝（Copy）大部分是以<strong>傳值（by Value）</strong>的方式實現。</p>
-<p>聽不懂？沒關係，我們會再細談的。</p>
+<p>ES6 &#x5F8C;&#x624D;&#x65B0;&#x589E;&#x7684;&#x578B;&#x5225;&#xFF0C;&#x56E0;&#x70BA;&#x4E0D;&#x5E38;&#x898B;<del>&#xFF08;&#x6211;&#x4E5F;&#x9084;&#x4E0D;&#x6703;&#x7528;&#xFF09;</del>&#xFF0C;&#x9019;&#x88E1;&#x5148;&#x4E0D;&#x8AC7;&#x3002;</p>
+<p>&#x6700;&#x5F8C;&#xFF0C;&#x5728;&#x4ECB;&#x7D39;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x8981;&#x5148;&#x7C21;&#x55AE;&#x4ECB;&#x7D39;&#x4E00;&#x500B;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x89C0;&#x5FF5;&#xFF1A;</p>
+<p>&#x5728; JavaScript &#x4E2D;&#xFF0C;<strong>&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;&#x4E0A;&#x8FF0;&#x516D;&#x7A2E;&#x503C;&#xFF09;</strong>&#x7684;&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#x6216;&#x62F7;&#x8C9D;&#xFF08;Copy&#xFF09;&#x5927;&#x90E8;&#x5206;&#x662F;&#x4EE5;<strong>&#x50B3;&#x503C;&#xFF08;by Value&#xFF09;</strong>&#x7684;&#x65B9;&#x5F0F;&#x5BE6;&#x73FE;&#x3002;</p>
+<p>&#x807D;&#x4E0D;&#x61C2;&#xFF1F;&#x6C92;&#x95DC;&#x4FC2;&#xFF0C;&#x6211;&#x5011;&#x6703;&#x518D;&#x7D30;&#x8AC7;&#x7684;&#x3002;</p>
 <hr>
 
-<h3 id="物件型別（Object）"><a href="#物件型別（Object）" class="headerlink" title="物件型別（Object）"></a>物件型別（Object）</h3><p>相較於基本型別有六種（純值），物件型別只有一種，就是<strong>物件（Object）</strong>。</p>
-<p>什麼是物件？我們說過，物件是<strong>Name/Value（鍵值配對） 的集合體</strong>，每一對 Name/Value 都是物件的<strong>屬性（Property）</strong>，其中， Value 可以是其他純值或物件。</p>
-<p>創造物件有很多種方式，最常見的是<strong>物件實字（Object Literal）</strong>，我們用程式碼來看會比較清楚：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = &#123;</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是'Fei'（純值）</span></span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個物件。</span></span><br><span class="line">  family: &#123;</span><br><span class="line">    dad: <span class="hljs-string">'Jason'</span>,</span><br><span class="line">    mom: <span class="hljs-string">'Teresa'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure></p>
-<p>好，重點來了！物件型別只有一種，就是物件（Object），但它擁有<strong>次型別（subtype）</strong>，常見的有這兩個：</p>
+<h3 id="&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;Object&#xFF09;"><a href="#&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;Object&#xFF09;" class="headerlink" title="&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;Object&#xFF09;"></a>&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;Object&#xFF09;</h3><p>&#x76F8;&#x8F03;&#x65BC;&#x57FA;&#x672C;&#x578B;&#x5225;&#x6709;&#x516D;&#x7A2E;&#xFF08;&#x7D14;&#x503C;&#xFF09;&#xFF0C;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x53EA;&#x6709;&#x4E00;&#x7A2E;&#xFF0C;&#x5C31;&#x662F;<strong>&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;</strong>&#x3002;</p>
+<p>&#x4EC0;&#x9EBC;&#x662F;&#x7269;&#x4EF6;&#xFF1F;&#x6211;&#x5011;&#x8AAA;&#x904E;&#xFF0C;&#x7269;&#x4EF6;&#x662F;<strong>Name/Value&#xFF08;&#x9375;&#x503C;&#x914D;&#x5C0D;&#xFF09; &#x7684;&#x96C6;&#x5408;&#x9AD4;</strong>&#xFF0C;&#x6BCF;&#x4E00;&#x5C0D; Name/Value &#x90FD;&#x662F;&#x7269;&#x4EF6;&#x7684;<strong>&#x5C6C;&#x6027;&#xFF08;Property&#xFF09;</strong>&#xFF0C;&#x5176;&#x4E2D;&#xFF0C; Value &#x53EF;&#x4EE5;&#x662F;&#x5176;&#x4ED6;&#x7D14;&#x503C;&#x6216;&#x7269;&#x4EF6;&#x3002;</p>
+<p>&#x5275;&#x9020;&#x7269;&#x4EF6;&#x6709;&#x5F88;&#x591A;&#x7A2E;&#x65B9;&#x5F0F;&#xFF0C;&#x6700;&#x5E38;&#x898B;&#x7684;&#x662F;<strong>&#x7269;&#x4EF6;&#x5BE6;&#x5B57;&#xFF08;Object Literal&#xFF09;</strong>&#xFF0C;&#x6211;&#x5011;&#x7528;&#x7A0B;&#x5F0F;&#x78BC;&#x4F86;&#x770B;&#x6703;&#x6BD4;&#x8F03;&#x6E05;&#x695A;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = {</span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&apos;Fei&apos;&#xFF08;&#x7D14;&#x503C;&#xFF09;</span></span><br><span class="line">  name: <span class="hljs-string">&apos;Fei&apos;</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x3002;</span></span><br><span class="line">  family: {</span><br><span class="line">    dad: <span class="hljs-string">&apos;Jason&apos;</span>,</span><br><span class="line">    mom: <span class="hljs-string">&apos;Teresa&apos;</span></span><br><span class="line">  }</span><br><span class="line">} ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x597D;&#xFF0C;&#x91CD;&#x9EDE;&#x4F86;&#x4E86;&#xFF01;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x53EA;&#x6709;&#x4E00;&#x7A2E;&#xFF0C;&#x5C31;&#x662F;&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;&#xFF0C;&#x4F46;&#x5B83;&#x64C1;&#x6709;<strong>&#x6B21;&#x578B;&#x5225;&#xFF08;subtype&#xFF09;</strong>&#xFF0C;&#x5E38;&#x898B;&#x7684;&#x6709;&#x9019;&#x5169;&#x500B;&#xFF1A;</p>
 <ul>
-<li><strong>陣列（Array）</strong>，又稱為陣列物件。</li>
-<li><strong>函式（Function）</strong>，又稱為函式物件。</li>
+<li><strong>&#x9663;&#x5217;&#xFF08;Array&#xFF09;</strong>&#xFF0C;&#x53C8;&#x7A31;&#x70BA;&#x9663;&#x5217;&#x7269;&#x4EF6;&#x3002;</li>
+<li><strong>&#x51FD;&#x5F0F;&#xFF08;Function&#xFF09;</strong>&#xFF0C;&#x53C8;&#x7A31;&#x70BA;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x3002;</li>
 </ul>
-<p>當然還包括其他次型別物件，等我們有遇到再介紹。</p>
-<p>所以，物件內容其實可以很複雜：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = &#123;</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是'Fei'（純值）</span></span><br><span class="line">  name: <span class="hljs-string">'Fei'</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個物件。</span></span><br><span class="line">  family: &#123;</span><br><span class="line">    dad: <span class="hljs-string">'Jason'</span>,</span><br><span class="line">    mom: <span class="hljs-string">'Teresa'</span>,</span><br><span class="line">    bro: <span class="hljs-string">'Bai'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// Property: 一組 Name/Value ，其中 Value 是一個陣列，因為陣列也屬於物件的一種。</span></span><br><span class="line">  friends: [<span class="hljs-string">'Shiba'</span>,<span class="hljs-string">'giraffe'</span>,<span class="hljs-string">'Fish'</span>],</span><br><span class="line">  <span class="hljs-comment">// Method: 一組 Name/Value ，其中 Value 是一個函式，因為函式也屬於物件的一種。</span></span><br><span class="line">  say: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Welcome to my blog!!'</span>) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure></p>
-<p>物件中的函式 ，我們稱之為物件的<strong>方法（Method）</strong>，既然是 function ，當然可以呼叫。</p>
-<p>使用<strong>點運算子（.）</strong>取用物件內的屬性或方法：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(person.name) ; <span class="hljs-comment">// Fei</span></span><br><span class="line">person.say() ; <span class="hljs-comment">// 'Welcome to my blog!!'</span></span><br></pre></td></tr></table></figure></p>
-<p>之後我們會更深入探討陣列、函式與物件的關係。</p>
-<p>簡言之，物件擁有一組以上的<strong>屬性（Property）</strong>或<strong>方法（Method）</strong>，而屬性和方法也必然符合「鍵值配對」法則。</p>
-<p>最後，在進到結論之前，我要先簡單介紹一個很重要的觀念：</p>
-<p>在 JavaScript 中，<strong>物件型別（也就是物件這一種值）</strong>的變數賦值或拷貝（Copy）大部分是以<strong>傳參考（by Reference）</strong>的方式實現。</p>
-<p><strong>傳值（By Value）</strong>和<strong>傳參考（By Reference）</strong>是 JavaScript 處理資料的運作邏輯，也是它偷偷不告訴你的事情之一。</p>
+<p>&#x7576;&#x7136;&#x9084;&#x5305;&#x62EC;&#x5176;&#x4ED6;&#x6B21;&#x578B;&#x5225;&#x7269;&#x4EF6;&#xFF0C;&#x7B49;&#x6211;&#x5011;&#x6709;&#x9047;&#x5230;&#x518D;&#x4ECB;&#x7D39;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x7269;&#x4EF6;&#x5167;&#x5BB9;&#x5176;&#x5BE6;&#x53EF;&#x4EE5;&#x5F88;&#x8907;&#x96DC;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> person = {</span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&apos;Fei&apos;&#xFF08;&#x7D14;&#x503C;&#xFF09;</span></span><br><span class="line">  name: <span class="hljs-string">&apos;Fei&apos;</span>, </span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x3002;</span></span><br><span class="line">  family: {</span><br><span class="line">    dad: <span class="hljs-string">&apos;Jason&apos;</span>,</span><br><span class="line">    mom: <span class="hljs-string">&apos;Teresa&apos;</span>,</span><br><span class="line">    bro: <span class="hljs-string">&apos;Bai&apos;</span></span><br><span class="line">  },</span><br><span class="line">  <span class="hljs-comment">// Property: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&#x4E00;&#x500B;&#x9663;&#x5217;&#xFF0C;&#x56E0;&#x70BA;&#x9663;&#x5217;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#x3002;</span></span><br><span class="line">  friends: [<span class="hljs-string">&apos;Shiba&apos;</span>,<span class="hljs-string">&apos;giraffe&apos;</span>,<span class="hljs-string">&apos;Fish&apos;</span>],</span><br><span class="line">  <span class="hljs-comment">// Method: &#x4E00;&#x7D44; Name/Value &#xFF0C;&#x5176;&#x4E2D; Value &#x662F;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;&#x56E0;&#x70BA;&#x51FD;&#x5F0F;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#x3002;</span></span><br><span class="line">  say: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Welcome to my blog!!&apos;</span>) ;</span><br><span class="line">  }</span><br><span class="line">} ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x7269;&#x4EF6;&#x4E2D;&#x7684;&#x51FD;&#x5F0F; &#xFF0C;&#x6211;&#x5011;&#x7A31;&#x4E4B;&#x70BA;&#x7269;&#x4EF6;&#x7684;<strong>&#x65B9;&#x6CD5;&#xFF08;Method&#xFF09;</strong>&#xFF0C;&#x65E2;&#x7136;&#x662F; function &#xFF0C;&#x7576;&#x7136;&#x53EF;&#x4EE5;&#x547C;&#x53EB;&#x3002;</p>
+<p>&#x4F7F;&#x7528;<strong>&#x9EDE;&#x904B;&#x7B97;&#x5B50;&#xFF08;.&#xFF09;</strong>&#x53D6;&#x7528;&#x7269;&#x4EF6;&#x5167;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(person.name) ; <span class="hljs-comment">// Fei</span></span><br><span class="line">person.say() ; <span class="hljs-comment">// &apos;Welcome to my blog!!&apos;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x4E4B;&#x5F8C;&#x6211;&#x5011;&#x6703;&#x66F4;&#x6DF1;&#x5165;&#x63A2;&#x8A0E;&#x9663;&#x5217;&#x3001;&#x51FD;&#x5F0F;&#x8207;&#x7269;&#x4EF6;&#x7684;&#x95DC;&#x4FC2;&#x3002;</p>
+<p>&#x7C21;&#x8A00;&#x4E4B;&#xFF0C;&#x7269;&#x4EF6;&#x64C1;&#x6709;&#x4E00;&#x7D44;&#x4EE5;&#x4E0A;&#x7684;<strong>&#x5C6C;&#x6027;&#xFF08;Property&#xFF09;</strong>&#x6216;<strong>&#x65B9;&#x6CD5;&#xFF08;Method&#xFF09;</strong>&#xFF0C;&#x800C;&#x5C6C;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x4E5F;&#x5FC5;&#x7136;&#x7B26;&#x5408;&#x300C;&#x9375;&#x503C;&#x914D;&#x5C0D;&#x300D;&#x6CD5;&#x5247;&#x3002;</p>
+<p>&#x6700;&#x5F8C;&#xFF0C;&#x5728;&#x9032;&#x5230;&#x7D50;&#x8AD6;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x8981;&#x5148;&#x7C21;&#x55AE;&#x4ECB;&#x7D39;&#x4E00;&#x500B;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x89C0;&#x5FF5;&#xFF1A;</p>
+<p>&#x5728; JavaScript &#x4E2D;&#xFF0C;<strong>&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x7269;&#x4EF6;&#x9019;&#x4E00;&#x7A2E;&#x503C;&#xFF09;</strong>&#x7684;&#x8B8A;&#x6578;&#x8CE6;&#x503C;&#x6216;&#x62F7;&#x8C9D;&#xFF08;Copy&#xFF09;&#x5927;&#x90E8;&#x5206;&#x662F;&#x4EE5;<strong>&#x50B3;&#x53C3;&#x8003;&#xFF08;by Reference&#xFF09;</strong>&#x7684;&#x65B9;&#x5F0F;&#x5BE6;&#x73FE;&#x3002;</p>
+<p><strong>&#x50B3;&#x503C;&#xFF08;By Value&#xFF09;</strong>&#x548C;<strong>&#x50B3;&#x53C3;&#x8003;&#xFF08;By Reference&#xFF09;</strong>&#x662F; JavaScript &#x8655;&#x7406;&#x8CC7;&#x6599;&#x7684;&#x904B;&#x4F5C;&#x908F;&#x8F2F;&#xFF0C;&#x4E5F;&#x662F;&#x5B83;&#x5077;&#x5077;&#x4E0D;&#x544A;&#x8A34;&#x4F60;&#x7684;&#x4E8B;&#x60C5;&#x4E4B;&#x4E00;&#x3002;</p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>在 JS 中，所有的值（Value）都是純值或物件。</li>
-<li>JS 內建的資料型別分兩大類，分別是基本型別與物件型別。</li>
-<li>基本型別（Primitive）有六種：<ul>
-<li>字串（String）</li>
-<li>數字（Number）</li>
-<li>布林值（Boolean）</li>
-<li>空值（Null）</li>
-<li>未定義（Undefined）</li>
-<li>符號（Symbol，ES6 新增的型別）</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x5728; JS &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x503C;&#xFF08;Value&#xFF09;&#x90FD;&#x662F;&#x7D14;&#x503C;&#x6216;&#x7269;&#x4EF6;&#x3002;</li>
+<li>JS &#x5167;&#x5EFA;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x5206;&#x5169;&#x5927;&#x985E;&#xFF0C;&#x5206;&#x5225;&#x662F;&#x57FA;&#x672C;&#x578B;&#x5225;&#x8207;&#x7269;&#x4EF6;&#x578B;&#x5225;&#x3002;</li>
+<li>&#x57FA;&#x672C;&#x578B;&#x5225;&#xFF08;Primitive&#xFF09;&#x6709;&#x516D;&#x7A2E;&#xFF1A;<ul>
+<li>&#x5B57;&#x4E32;&#xFF08;String&#xFF09;</li>
+<li>&#x6578;&#x5B57;&#xFF08;Number&#xFF09;</li>
+<li>&#x5E03;&#x6797;&#x503C;&#xFF08;Boolean&#xFF09;</li>
+<li>&#x7A7A;&#x503C;&#xFF08;Null&#xFF09;</li>
+<li>&#x672A;&#x5B9A;&#x7FA9;&#xFF08;Undefined&#xFF09;</li>
+<li>&#x7B26;&#x865F;&#xFF08;Symbol&#xFF0C;ES6 &#x65B0;&#x589E;&#x7684;&#x578B;&#x5225;&#xFF09;</li>
 </ul>
 </li>
-<li>物件型別（Object）只有一種，就是物件（Object）。</li>
-<li>物件型別包含陣列、函式等次型別，它們都屬於特殊的物件。</li>
-<li>所以，JS 內建的資料型別總共有 7 種：6 種純值 + 1 種物件。</li>
+<li>&#x7269;&#x4EF6;&#x578B;&#x5225;&#xFF08;Object&#xFF09;&#x53EA;&#x6709;&#x4E00;&#x7A2E;&#xFF0C;&#x5C31;&#x662F;&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;&#x3002;</li>
+<li>&#x7269;&#x4EF6;&#x578B;&#x5225;&#x5305;&#x542B;&#x9663;&#x5217;&#x3001;&#x51FD;&#x5F0F;&#x7B49;&#x6B21;&#x578B;&#x5225;&#xFF0C;&#x5B83;&#x5011;&#x90FD;&#x5C6C;&#x65BC;&#x7279;&#x6B8A;&#x7684;&#x7269;&#x4EF6;&#x3002;</li>
+<li>&#x6240;&#x4EE5;&#xFF0C;JS &#x5167;&#x5EFA;&#x7684;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x7E3D;&#x5171;&#x6709; 7 &#x7A2E;&#xFF1A;6 &#x7A2E;&#x7D14;&#x503C; + 1 &#x7A2E;&#x7269;&#x4EF6;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 3-20</li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10190873" target="_blank" rel="noopener">重新認識 JavaScript: Day 03 變數與資料型別</a></li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10190962" target="_blank" rel="noopener">重新認識 JavaScript: Day 04 物件、陣列以及型別判斷</a></li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 3-20</li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10190873" target="_blank" rel="noopener">&#x91CD;&#x65B0;&#x8A8D;&#x8B58; JavaScript: Day 03 &#x8B8A;&#x6578;&#x8207;&#x8CC7;&#x6599;&#x578B;&#x5225;</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10190962" target="_blank" rel="noopener">&#x91CD;&#x65B0;&#x8A8D;&#x8B58; JavaScript: Day 04 &#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x4EE5;&#x53CA;&#x578B;&#x5225;&#x5224;&#x65B7;</a></li>
 </ol>
 
     

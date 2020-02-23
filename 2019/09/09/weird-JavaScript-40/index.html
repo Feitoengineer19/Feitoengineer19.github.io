@@ -16,23 +16,23 @@
 
 
 
-    <meta name="description" content="欸！ JavaScript 裡面的所有東西都是物件！">
+    <meta name="description" content="&amp;#x6B38;&amp;#xFF01; JavaScript &amp;#x88E1;&amp;#x9762;&amp;#x7684;&amp;#x6240;&amp;#x6709;&amp;#x6771;&amp;#x897F;&amp;#x90FD;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF01;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 40：所有東西都是物件（或純值）">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="欸！ JavaScript 裡面的所有東西都是物件！">
+<meta property="og:description" content="&amp;#x6B38;&amp;#xFF01; JavaScript &amp;#x88E1;&amp;#x9762;&amp;#x7684;&amp;#x6240;&amp;#x6709;&amp;#x6771;&amp;#x897F;&amp;#x90FD;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF01;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/prototypeAll.JPG">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/objProto.JPG">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/arrProto.JPG">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/funProto.JPG">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/funProtoBase.JPG">
-<meta property="og:updated_time" content="2020-02-18T10:27:55.954Z">
+<meta property="og:updated_time" content="2020-02-23T09:34:52.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 40：所有東西都是物件（或純值）">
-<meta name="twitter:description" content="欸！ JavaScript 裡面的所有東西都是物件！">
+<meta name="twitter:description" content="&amp;#x6B38;&amp;#xFF01; JavaScript &amp;#x88E1;&amp;#x9762;&amp;#x7684;&amp;#x6240;&amp;#x6709;&amp;#x6771;&amp;#x897F;&amp;#x90FD;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF01;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/prototypeAll.JPG">
 
 
@@ -117,31 +117,31 @@
                     
                     
                     
-                    <a class="navbar-item" href="#物件、陣列與函式的原型">1&nbsp;&nbsp;<b>物件、陣列與函式的原型</b></a>
+                    <a class="navbar-item" href="#&amp;#x7269;&amp;#x4EF6;&amp;#x3001;&amp;#x9663;&amp;#x5217;&amp;#x8207;&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x539F;&amp;#x578B;">1&nbsp;&nbsp;<b>&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x3001;&amp;amp;#x9663;&amp;amp;#x5217;&amp;amp;#x8207;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x7684;&amp;amp;#x539F;&amp;amp;#x578B;</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#物件的原型">1.1&nbsp;&nbsp;物件的原型</a>
+                    <a class="navbar-item" href="#&amp;#x7269;&amp;#x4EF6;&amp;#x7684;&amp;#x539F;&amp;#x578B;">1.1&nbsp;&nbsp;&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x7684;&amp;amp;#x539F;&amp;amp;#x578B;</a>
                     
                     
                     
-                    <a class="navbar-item" href="#陣列物件的原型">1.2&nbsp;&nbsp;陣列物件的原型</a>
+                    <a class="navbar-item" href="#&amp;#x9663;&amp;#x5217;&amp;#x7269;&amp;#x4EF6;&amp;#x7684;&amp;#x539F;&amp;#x578B;">1.2&nbsp;&nbsp;&amp;amp;#x9663;&amp;amp;#x5217;&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x7684;&amp;amp;#x539F;&amp;amp;#x578B;</a>
                     
                     
                     
-                    <a class="navbar-item" href="#函式物件的原型">1.3&nbsp;&nbsp;函式物件的原型</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#結論">2&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x51FD;&amp;#x5F0F;&amp;#x7269;&amp;#x4EF6;&amp;#x7684;&amp;#x539F;&amp;#x578B;">1.3&nbsp;&nbsp;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x7269;&amp;amp;#x4EF6;&amp;amp;#x7684;&amp;amp;#x539F;&amp;amp;#x578B;</a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">3&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">2&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">3&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -180,57 +180,57 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>欸！ JavaScript 裡面的所有東西都是物件！</p>
+        <p>&#x6B38;&#xFF01; JavaScript &#x88E1;&#x9762;&#x7684;&#x6240;&#x6709;&#x6771;&#x897F;&#x90FD;&#x662F;&#x7269;&#x4EF6;&#xFF01;</p>
   <a id="more"></a>
 
-<h2 id="物件、陣列與函式的原型"><a href="#物件、陣列與函式的原型" class="headerlink" title="物件、陣列與函式的原型"></a>物件、陣列與函式的原型</h2><p>上篇我們談到，所有物件，包括物件、陣列以及函式，都具有原型。</p>
-<p>我們可以用這段程式碼來驗證：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = &#123;&#125; ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = [] ;</span><br><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__) ; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(b.__proto__) ; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(c.__proto__) ;</span><br></pre></td></tr></table></figure></p>
-<p>執行上面這段程式碼，得到結果如下圖：</p>
-<p><img src="/2019/09/09/weird-JavaScript-40/prototypeAll.JPG" alt="原型"></p>
-<p>我們分別來看一下物件 <code>a</code> 、陣列 <code>b</code> 以及函式 <code>c</code> 的原型。</p>
-<h3 id="物件的原型"><a href="#物件的原型" class="headerlink" title="物件的原型"></a>物件的原型</h3><br>
+<h2 id="&#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x8207;&#x51FD;&#x5F0F;&#x7684;&#x539F;&#x578B;"><a href="#&#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x8207;&#x51FD;&#x5F0F;&#x7684;&#x539F;&#x578B;" class="headerlink" title="&#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x8207;&#x51FD;&#x5F0F;&#x7684;&#x539F;&#x578B;"></a>&#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x8207;&#x51FD;&#x5F0F;&#x7684;&#x539F;&#x578B;</h2><p>&#x4E0A;&#x7BC7;&#x6211;&#x5011;&#x8AC7;&#x5230;&#xFF0C;&#x6240;&#x6709;&#x7269;&#x4EF6;&#xFF0C;&#x5305;&#x62EC;&#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x4EE5;&#x53CA;&#x51FD;&#x5F0F;&#xFF0C;&#x90FD;&#x5177;&#x6709;&#x539F;&#x578B;&#x3002;</p>
+<p>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x7528;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#x4F86;&#x9A57;&#x8B49;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = {} ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = [] ;</span><br><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{} ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__) ; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(b.__proto__) ; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(c.__proto__) ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x57F7;&#x884C;&#x4E0A;&#x9762;&#x9019;&#x6BB5;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x5F97;&#x5230;&#x7D50;&#x679C;&#x5982;&#x4E0B;&#x5716;&#xFF1A;</p>
+<p><img src="/2019/09/09/weird-JavaScript-40/prototypeAll.JPG" alt="&#x539F;&#x578B;"></p>
+<p>&#x6211;&#x5011;&#x5206;&#x5225;&#x4F86;&#x770B;&#x4E00;&#x4E0B;&#x7269;&#x4EF6; <code>a</code> &#x3001;&#x9663;&#x5217; <code>b</code> &#x4EE5;&#x53CA;&#x51FD;&#x5F0F; <code>c</code> &#x7684;&#x539F;&#x578B;&#x3002;</p>
+<h3 id="&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"><a href="#&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;" class="headerlink" title="&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"></a>&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;</h3><br>
 
-<p>物件 <code>a</code> 的原型是一個<strong>物件</strong>，該物件包含一些我們平常在物件中可以取用的方法，如下圖：</p>
-<p><img src="/2019/09/09/weird-JavaScript-40/objProto.JPG" alt="物件的原型"></p>
-<p>以 <code>hasOwnProperty()</code> 為例：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = &#123;</span><br><span class="line">  firstname: <span class="hljs-string">'Hai'</span>,</span><br><span class="line">  lastname: <span class="hljs-string">'An'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a.hasOwnProperty(<span class="hljs-string">'firstname'</span>) ; <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p>在任何一個物件中，我們可以取用 <code>hasOwnProperty()</code> 來檢測該<strong>物件本身</strong>是否有某一個屬性，因為所有物件的原型都包含了 <code>hasOwnProperty()</code> 這個方法。</p>
-<p>也就是說，所有物件都有原型，指向一個<strong>擁有 JS 處理物件方法的物件</strong>。</p>
-<p>我們可以發現，物件 <code>a</code> 的原型裡面並沒有 <code>__proto__</code> 這個屬性，表示該原型已經是原型鍊的最底層，即<strong>基本物件（Base Object）</strong>。</p>
-<h3 id="陣列物件的原型"><a href="#陣列物件的原型" class="headerlink" title="陣列物件的原型"></a>陣列物件的原型</h3><br>
+<p>&#x7269;&#x4EF6; <code>a</code> &#x7684;&#x539F;&#x578B;&#x662F;&#x4E00;&#x500B;<strong>&#x7269;&#x4EF6;</strong>&#xFF0C;&#x8A72;&#x7269;&#x4EF6;&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x6211;&#x5011;&#x5E73;&#x5E38;&#x5728;&#x7269;&#x4EF6;&#x4E2D;&#x53EF;&#x4EE5;&#x53D6;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x4E0B;&#x5716;&#xFF1A;</p>
+<p><img src="/2019/09/09/weird-JavaScript-40/objProto.JPG" alt="&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"></p>
+<p>&#x4EE5; <code>hasOwnProperty()</code> &#x70BA;&#x4F8B;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = {</span><br><span class="line">  firstname: <span class="hljs-string">&apos;Hai&apos;</span>,</span><br><span class="line">  lastname: <span class="hljs-string">&apos;An&apos;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">a.hasOwnProperty(<span class="hljs-string">&apos;firstname&apos;</span>) ; <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x4EFB;&#x4F55;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x53D6;&#x7528; <code>hasOwnProperty()</code> &#x4F86;&#x6AA2;&#x6E2C;&#x8A72;<strong>&#x7269;&#x4EF6;&#x672C;&#x8EAB;</strong>&#x662F;&#x5426;&#x6709;&#x67D0;&#x4E00;&#x500B;&#x5C6C;&#x6027;&#xFF0C;&#x56E0;&#x70BA;&#x6240;&#x6709;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;&#x90FD;&#x5305;&#x542B;&#x4E86; <code>hasOwnProperty()</code> &#x9019;&#x500B;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x6240;&#x6709;&#x7269;&#x4EF6;&#x90FD;&#x6709;&#x539F;&#x578B;&#xFF0C;&#x6307;&#x5411;&#x4E00;&#x500B;<strong>&#x64C1;&#x6709; JS &#x8655;&#x7406;&#x7269;&#x4EF6;&#x65B9;&#x6CD5;&#x7684;&#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p>&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x767C;&#x73FE;&#xFF0C;&#x7269;&#x4EF6; <code>a</code> &#x7684;&#x539F;&#x578B;&#x88E1;&#x9762;&#x4E26;&#x6C92;&#x6709; <code>__proto__</code> &#x9019;&#x500B;&#x5C6C;&#x6027;&#xFF0C;&#x8868;&#x793A;&#x8A72;&#x539F;&#x578B;&#x5DF2;&#x7D93;&#x662F;&#x539F;&#x578B;&#x934A;&#x7684;&#x6700;&#x5E95;&#x5C64;&#xFF0C;&#x5373;<strong>&#x57FA;&#x672C;&#x7269;&#x4EF6;&#xFF08;Base Object&#xFF09;</strong>&#x3002;</p>
+<h3 id="&#x9663;&#x5217;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"><a href="#&#x9663;&#x5217;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;" class="headerlink" title="&#x9663;&#x5217;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"></a>&#x9663;&#x5217;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;</h3><br>
 
-<p>我們說過，陣列也屬於物件的一種，可稱之為陣列物件。</p>
-<p>陣列 <code>b</code> 的原型是一種<strong>陣列物件</strong>，該物件也包含一些我們平常在陣列中可以取用的方法，如 <code>push()</code> 、 <code>filter()</code> 、 <code>forEach()</code> 等等：</p>
-<p><img src="/2019/09/09/weird-JavaScript-40/arrProto.JPG" alt="陣列物件的原型"></p>
-<p>簡單來說，所有陣列都有原型，指向一個<strong>擁有 JS 處理陣列方法的物件</strong>。</p>
-<p>值得注意的是，陣列 <code>b</code> 的原型 <code>b.__proto__</code> 還有 <code>__proto__</code> 這個屬性，表示 <code>b.__proto__</code> 還能向上找到它自己的原型 <code>b.__proto__.__proto__</code> ，該原型是一個基本物件，即原型鍊最底層的物件。</p>
-<h3 id="函式物件的原型"><a href="#函式物件的原型" class="headerlink" title="函式物件的原型"></a>函式物件的原型</h3><p>根據一級函式的特性，函式也屬於物件的一種，我們稱為函式物件。</p>
-<p>函式 <code>c</code> 的原型是<strong>函式物件</strong>，該物件同樣包含一些我們平常在函式中可以取用的方法，如 <code>call()</code> 、 <code>apply()</code> 、 <code>bind()</code> 等等：</p>
-<p><img src="/2019/09/09/weird-JavaScript-40/funProto.JPG" alt="函式物件的原型"></p>
-<p>簡單來說，所有函式都有原型，指向一個<strong>擁有 JS 處理函式方法的物件</strong>。</p>
-<p>與陣列物件相仿，函式 <code>c</code> 的原型 <code>c.__proto__</code> 仍有 <code>__proto__</code> 這個屬性，表示 <code>c.__proto__</code> 還能向上找到它自己的原型 <code>c.__proto__.__proto__</code> ，該原型是一個<strong>基本物件</strong>，即原型鍊最底層的物件。</p>
+<p>&#x6211;&#x5011;&#x8AAA;&#x904E;&#xFF0C;&#x9663;&#x5217;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#xFF0C;&#x53EF;&#x7A31;&#x4E4B;&#x70BA;&#x9663;&#x5217;&#x7269;&#x4EF6;&#x3002;</p>
+<p>&#x9663;&#x5217; <code>b</code> &#x7684;&#x539F;&#x578B;&#x662F;&#x4E00;&#x7A2E;<strong>&#x9663;&#x5217;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x8A72;&#x7269;&#x4EF6;&#x4E5F;&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x6211;&#x5011;&#x5E73;&#x5E38;&#x5728;&#x9663;&#x5217;&#x4E2D;&#x53EF;&#x4EE5;&#x53D6;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5982; <code>push()</code> &#x3001; <code>filter()</code> &#x3001; <code>forEach()</code> &#x7B49;&#x7B49;&#xFF1A;</p>
+<p><img src="/2019/09/09/weird-JavaScript-40/arrProto.JPG" alt="&#x9663;&#x5217;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"></p>
+<p>&#x7C21;&#x55AE;&#x4F86;&#x8AAA;&#xFF0C;&#x6240;&#x6709;&#x9663;&#x5217;&#x90FD;&#x6709;&#x539F;&#x578B;&#xFF0C;&#x6307;&#x5411;&#x4E00;&#x500B;<strong>&#x64C1;&#x6709; JS &#x8655;&#x7406;&#x9663;&#x5217;&#x65B9;&#x6CD5;&#x7684;&#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x9663;&#x5217; <code>b</code> &#x7684;&#x539F;&#x578B; <code>b.__proto__</code> &#x9084;&#x6709; <code>__proto__</code> &#x9019;&#x500B;&#x5C6C;&#x6027;&#xFF0C;&#x8868;&#x793A; <code>b.__proto__</code> &#x9084;&#x80FD;&#x5411;&#x4E0A;&#x627E;&#x5230;&#x5B83;&#x81EA;&#x5DF1;&#x7684;&#x539F;&#x578B; <code>b.__proto__.__proto__</code> &#xFF0C;&#x8A72;&#x539F;&#x578B;&#x662F;&#x4E00;&#x500B;&#x57FA;&#x672C;&#x7269;&#x4EF6;&#xFF0C;&#x5373;&#x539F;&#x578B;&#x934A;&#x6700;&#x5E95;&#x5C64;&#x7684;&#x7269;&#x4EF6;&#x3002;</p>
+<h3 id="&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"><a href="#&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;" class="headerlink" title="&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"></a>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;</h3><p>&#x6839;&#x64DA;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x51FD;&#x5F0F;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#xFF0C;&#x6211;&#x5011;&#x7A31;&#x70BA;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x3002;</p>
+<p>&#x51FD;&#x5F0F; <code>c</code> &#x7684;&#x539F;&#x578B;&#x662F;<strong>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x8A72;&#x7269;&#x4EF6;&#x540C;&#x6A23;&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x6211;&#x5011;&#x5E73;&#x5E38;&#x5728;&#x51FD;&#x5F0F;&#x4E2D;&#x53EF;&#x4EE5;&#x53D6;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5982; <code>call()</code> &#x3001; <code>apply()</code> &#x3001; <code>bind()</code> &#x7B49;&#x7B49;&#xFF1A;</p>
+<p><img src="/2019/09/09/weird-JavaScript-40/funProto.JPG" alt="&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;"></p>
+<p>&#x7C21;&#x55AE;&#x4F86;&#x8AAA;&#xFF0C;&#x6240;&#x6709;&#x51FD;&#x5F0F;&#x90FD;&#x6709;&#x539F;&#x578B;&#xFF0C;&#x6307;&#x5411;&#x4E00;&#x500B;<strong>&#x64C1;&#x6709; JS &#x8655;&#x7406;&#x51FD;&#x5F0F;&#x65B9;&#x6CD5;&#x7684;&#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p>&#x8207;&#x9663;&#x5217;&#x7269;&#x4EF6;&#x76F8;&#x4EFF;&#xFF0C;&#x51FD;&#x5F0F; <code>c</code> &#x7684;&#x539F;&#x578B; <code>c.__proto__</code> &#x4ECD;&#x6709; <code>__proto__</code> &#x9019;&#x500B;&#x5C6C;&#x6027;&#xFF0C;&#x8868;&#x793A; <code>c.__proto__</code> &#x9084;&#x80FD;&#x5411;&#x4E0A;&#x627E;&#x5230;&#x5B83;&#x81EA;&#x5DF1;&#x7684;&#x539F;&#x578B; <code>c.__proto__.__proto__</code> &#xFF0C;&#x8A72;&#x539F;&#x578B;&#x662F;&#x4E00;&#x500B;<strong>&#x57FA;&#x672C;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x5373;&#x539F;&#x578B;&#x934A;&#x6700;&#x5E95;&#x5C64;&#x7684;&#x7269;&#x4EF6;&#x3002;</p>
 <hr>
 
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>下面這張圖檢驗了 <code>c.__proto__.__proto__</code> ，結果與 <code>a.__proto__</code> 和 <code>b.__proto__.__proto__</code> 相同 ：</p>
-<p><img src="/2019/09/09/weird-JavaScript-40/funProtoBase.JPG" alt="函式物件的原型鍊底層"></p>
-<p>我們用邏輯判斷來檢驗這三者是否相同：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = &#123;&#125; ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = [] ;</span><br><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__ === b.__proto__.__proto__) ; <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__ === c.__proto__.__proto__) ; <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(b.__proto__.__proto__ === c.__proto__.__proto__) ; <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<p>我們發現，物件、陣列與函式的原型鍊最終會指向同一個<strong>基本物件！</strong></p>
-<p>總而言之，<strong>除了刻意設定原型，如 <code>setPrototypeOf</code> 、 <code>Object.create()</code> 、 <code>new</code> 等情況以外</strong>，JS 引擎會自動幫我們設定物件、陣列與函式的原型，該<strong>原型包含一些 JS 內建處理資料的方法</strong>。</p>
-<p>而無論是哪一種資料型別，資料的<strong>原型鍊終點都會指向基本物件</strong>！</p>
-<p>咦？你問基本物件的原型是什麼？<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = &#123;&#125; ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__.__proto__) ; <span class="hljs-comment">// null</span></span><br></pre></td></tr></table></figure></p>
-<p>沒錯，就是 <code>null</code> ！</p>
-<p>那你知道 <code>null</code> 屬於什麼資料型態嗎？<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span> ; <span class="hljs-comment">// object</span></span><br></pre></td></tr></table></figure></p>
-<p>欸！就說了， <strong>JavaScript 裡面的所有東西都是物件！</strong></p>
+<h2 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h2><p>&#x4E0B;&#x9762;&#x9019;&#x5F35;&#x5716;&#x6AA2;&#x9A57;&#x4E86; <code>c.__proto__.__proto__</code> &#xFF0C;&#x7D50;&#x679C;&#x8207; <code>a.__proto__</code> &#x548C; <code>b.__proto__.__proto__</code> &#x76F8;&#x540C; &#xFF1A;</p>
+<p><img src="/2019/09/09/weird-JavaScript-40/funProtoBase.JPG" alt="&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;&#x934A;&#x5E95;&#x5C64;"></p>
+<p>&#x6211;&#x5011;&#x7528;&#x908F;&#x8F2F;&#x5224;&#x65B7;&#x4F86;&#x6AA2;&#x9A57;&#x9019;&#x4E09;&#x8005;&#x662F;&#x5426;&#x76F8;&#x540C;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = {} ;</span><br><span class="line"><span class="hljs-keyword">var</span> b = [] ;</span><br><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{} ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__ === b.__proto__.__proto__) ; <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__ === c.__proto__.__proto__) ; <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(b.__proto__.__proto__ === c.__proto__.__proto__) ; <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x6211;&#x5011;&#x767C;&#x73FE;&#xFF0C;&#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x8207;&#x51FD;&#x5F0F;&#x7684;&#x539F;&#x578B;&#x934A;&#x6700;&#x7D42;&#x6703;&#x6307;&#x5411;&#x540C;&#x4E00;&#x500B;<strong>&#x57FA;&#x672C;&#x7269;&#x4EF6;&#xFF01;</strong></p>
+<p>&#x7E3D;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;<strong>&#x9664;&#x4E86;&#x523B;&#x610F;&#x8A2D;&#x5B9A;&#x539F;&#x578B;&#xFF0C;&#x5982; <code>setPrototypeOf</code> &#x3001; <code>Object.create()</code> &#x3001; <code>new</code> &#x7B49;&#x60C5;&#x6CC1;&#x4EE5;&#x5916;</strong>&#xFF0C;JS &#x5F15;&#x64CE;&#x6703;&#x81EA;&#x52D5;&#x5E6B;&#x6211;&#x5011;&#x8A2D;&#x5B9A;&#x7269;&#x4EF6;&#x3001;&#x9663;&#x5217;&#x8207;&#x51FD;&#x5F0F;&#x7684;&#x539F;&#x578B;&#xFF0C;&#x8A72;<strong>&#x539F;&#x578B;&#x5305;&#x542B;&#x4E00;&#x4E9B; JS &#x5167;&#x5EFA;&#x8655;&#x7406;&#x8CC7;&#x6599;&#x7684;&#x65B9;&#x6CD5;</strong>&#x3002;</p>
+<p>&#x800C;&#x7121;&#x8AD6;&#x662F;&#x54EA;&#x4E00;&#x7A2E;&#x8CC7;&#x6599;&#x578B;&#x5225;&#xFF0C;&#x8CC7;&#x6599;&#x7684;<strong>&#x539F;&#x578B;&#x934A;&#x7D42;&#x9EDE;&#x90FD;&#x6703;&#x6307;&#x5411;&#x57FA;&#x672C;&#x7269;&#x4EF6;</strong>&#xFF01;</p>
+<p>&#x54A6;&#xFF1F;&#x4F60;&#x554F;&#x57FA;&#x672C;&#x7269;&#x4EF6;&#x7684;&#x539F;&#x578B;&#x662F;&#x4EC0;&#x9EBC;&#xFF1F;<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = {} ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(a.__proto__.__proto__) ; <span class="hljs-comment">// null</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x6C92;&#x932F;&#xFF0C;&#x5C31;&#x662F; <code>null</code> &#xFF01;</p>
+<p>&#x90A3;&#x4F60;&#x77E5;&#x9053; <code>null</code> &#x5C6C;&#x65BC;&#x4EC0;&#x9EBC;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x55CE;&#xFF1F;<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span> ; <span class="hljs-comment">// object</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x6B38;&#xFF01;&#x5C31;&#x8AAA;&#x4E86;&#xFF0C; <strong>JavaScript &#x88E1;&#x9762;&#x7684;&#x6240;&#x6709;&#x6771;&#x897F;&#x90FD;&#x662F;&#x7269;&#x4EF6;&#xFF01;</strong></p>
 <!-- 最後，我們可以畫出這張物件、陣列與函式的原型鍊結構： -->
 
 <!-- ![物件、陣列與函式的原型鍊結構](/protoStruct.JPG) -->
 
 <hr>
 
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 5-54</li>
+<h2 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h2><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 5-54</li>
 </ol>
 
     

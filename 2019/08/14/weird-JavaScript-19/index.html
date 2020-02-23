@@ -16,19 +16,19 @@
 
 
 
-    <meta name="description" content="函式就是物件，物件就是函式，就是所謂一級函式。">
+    <meta name="description" content="&amp;#x51FD;&amp;#x5F0F;&amp;#x5C31;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF0C;&amp;#x7269;&amp;#x4EF6;&amp;#x5C31;&amp;#x662F;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C31;&amp;#x662F;&amp;#x6240;&amp;#x8B02;&amp;#x4E00;&amp;#x7D1A;&amp;#x51FD;&amp;#x5F0F;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 19：一級函式">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="函式就是物件，物件就是函式，就是所謂一級函式。">
+<meta property="og:description" content="&amp;#x51FD;&amp;#x5F0F;&amp;#x5C31;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF0C;&amp;#x7269;&amp;#x4EF6;&amp;#x5C31;&amp;#x662F;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C31;&amp;#x662F;&amp;#x6240;&amp;#x8B02;&amp;#x4E00;&amp;#x7D1A;&amp;#x51FD;&amp;#x5F0F;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/functionObject.JPG">
 <meta property="og:updated_time" content="2020-02-23T09:32:26.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 19：一級函式">
-<meta name="twitter:description" content="函式就是物件，物件就是函式，就是所謂一級函式。">
+<meta name="twitter:description" content="&amp;#x51FD;&amp;#x5F0F;&amp;#x5C31;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;&amp;#xFF0C;&amp;#x7269;&amp;#x4EF6;&amp;#x5C31;&amp;#x662F;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C31;&amp;#x662F;&amp;#x6240;&amp;#x8B02;&amp;#x4E00;&amp;#x7D1A;&amp;#x51FD;&amp;#x5F0F;&amp;#x3002;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/functionObject.JPG">
 
 
@@ -113,31 +113,31 @@
                     
                     
                     
-                    <a class="navbar-item" href="#函式就是物件">1&nbsp;&nbsp;<b>函式就是物件</b></a>
+                    <a class="navbar-item" href="#&amp;#x51FD;&amp;#x5F0F;&amp;#x5C31;&amp;#x662F;&amp;#x7269;&amp;#x4EF6;">1&nbsp;&nbsp;<b>&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x5C31;&amp;amp;#x662F;&amp;amp;#x7269;&amp;amp;#x4EF6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#一級函式（First-Class-Functions）">2&nbsp;&nbsp;<b>一級函式（First Class Functions）</b></a>
+                    <a class="navbar-item" href="#&amp;#x4E00;&amp;#x7D1A;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF08;First-Class-Functions&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x4E00;&amp;amp;#x7D1A;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#xFF08;First Class Functions&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#函式物件">3&nbsp;&nbsp;<b>函式物件</b></a>
+                    <a class="navbar-item" href="#&amp;#x51FD;&amp;#x5F0F;&amp;#x7269;&amp;#x4EF6;">3&nbsp;&nbsp;<b>&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x7269;&amp;amp;#x4EF6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">4&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">4&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">5&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">5&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -176,43 +176,43 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>函式就是物件，物件就是函式，就是所謂一級函式。</p>
+        <p>&#x51FD;&#x5F0F;&#x5C31;&#x662F;&#x7269;&#x4EF6;&#xFF0C;&#x7269;&#x4EF6;&#x5C31;&#x662F;&#x51FD;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="函式就是物件"><a href="#函式就是物件" class="headerlink" title="函式就是物件"></a>函式就是物件</h3><p>我們之前談到資料型別時，就已經提過：在 JavaScript 中，<strong>函式是一種特殊的物件</strong>。</p>
-<p>也就是說，我們也可以賦予函式屬性以及方法：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">personSay</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The function is an object in JavaScript!'</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">personSay.who = <span class="hljs-string">'John'</span> ;</span><br><span class="line">personSay.age  = <span class="hljs-number">28</span> ;</span><br><span class="line">personSay.yell = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'JS is Soooooo HARD!!'</span>)&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(personSay.who) ; <span class="hljs-comment">// John</span></span><br><span class="line">personSay.yell() ; <span class="hljs-comment">// JS is Soooooo HARD!!</span></span><br></pre></td></tr></table></figure></p>
-<p>而這樣的函式特色，在程式語言中被稱為<strong>一級函式（First Class Functions）</strong>。</p>
+<h3 id="&#x51FD;&#x5F0F;&#x5C31;&#x662F;&#x7269;&#x4EF6;"><a href="#&#x51FD;&#x5F0F;&#x5C31;&#x662F;&#x7269;&#x4EF6;" class="headerlink" title="&#x51FD;&#x5F0F;&#x5C31;&#x662F;&#x7269;&#x4EF6;"></a>&#x51FD;&#x5F0F;&#x5C31;&#x662F;&#x7269;&#x4EF6;</h3><p>&#x6211;&#x5011;&#x4E4B;&#x524D;&#x8AC7;&#x5230;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x6642;&#xFF0C;&#x5C31;&#x5DF2;&#x7D93;&#x63D0;&#x904E;&#xFF1A;&#x5728; JavaScript &#x4E2D;&#xFF0C;<strong>&#x51FD;&#x5F0F;&#x662F;&#x4E00;&#x7A2E;&#x7279;&#x6B8A;&#x7684;&#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x6211;&#x5011;&#x4E5F;&#x53EF;&#x4EE5;&#x8CE6;&#x4E88;&#x51FD;&#x5F0F;&#x5C6C;&#x6027;&#x4EE5;&#x53CA;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">personSay</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;The function is an object in JavaScript!&apos;</span>) ;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">personSay.who = <span class="hljs-string">&apos;John&apos;</span> ;</span><br><span class="line">personSay.age  = <span class="hljs-number">28</span> ;</span><br><span class="line">personSay.yell = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;JS is Soooooo HARD!!&apos;</span>)} ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(personSay.who) ; <span class="hljs-comment">// John</span></span><br><span class="line">personSay.yell() ; <span class="hljs-comment">// JS is Soooooo HARD!!</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x800C;&#x9019;&#x6A23;&#x7684;&#x51FD;&#x5F0F;&#x7279;&#x8272;&#xFF0C;&#x5728;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x4E2D;&#x88AB;&#x7A31;&#x70BA;<strong>&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#xFF08;First Class Functions&#xFF09;</strong>&#x3002;</p>
 <hr>
 
-<h3 id="一級函式（First-Class-Functions）"><a href="#一級函式（First-Class-Functions）" class="headerlink" title="一級函式（First Class Functions）"></a>一級函式（First Class Functions）</h3><blockquote>
+<h3 id="&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#xFF08;First-Class-Functions&#xFF09;"><a href="#&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#xFF08;First-Class-Functions&#xFF09;" class="headerlink" title="&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#xFF08;First Class Functions&#xFF09;"></a>&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#xFF08;First Class Functions&#xFF09;</h3><blockquote>
 <p>Everything you can do with other types you can do with functions.<br>Assign them to variables, pass them around, create them on the fly.</p>
 </blockquote>
-<p>上面這段對於一級函式的簡介意思是：任何你對其它型別做的事情，你都可以用一級函式做到。</p>
-<p>蛤？好拗口？這是什麼意思？</p>
-<p>意思就是，基本上，<strong>你可以利用一級函式做任何事情！</strong>包括將函式賦予給變數、將函式當作參數傳入另一個函式、利用實字語法建立函式、賦予函式屬性或方法等等。</p>
-<p>現在聽起來很抽象，往後介紹<strong>閉包（Closure）</strong>時，就能夠深入理解一級函式的威力。</p>
-<p>雖然一級函式並非 JavaScript 獨有的特色，但因為具備這樣的特性，使得 JavaScript 成為一種<strong>以函式為核心（Functional Programming）</strong>的程式設計語言。</p>
+<p>&#x4E0A;&#x9762;&#x9019;&#x6BB5;&#x5C0D;&#x65BC;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x7684;&#x7C21;&#x4ECB;&#x610F;&#x601D;&#x662F;&#xFF1A;&#x4EFB;&#x4F55;&#x4F60;&#x5C0D;&#x5176;&#x5B83;&#x578B;&#x5225;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x4F60;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x505A;&#x5230;&#x3002;</p>
+<p>&#x86E4;&#xFF1F;&#x597D;&#x62D7;&#x53E3;&#xFF1F;&#x9019;&#x662F;&#x4EC0;&#x9EBC;&#x610F;&#x601D;&#xFF1F;</p>
+<p>&#x610F;&#x601D;&#x5C31;&#x662F;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#xFF0C;<strong>&#x4F60;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;&#xFF01;</strong>&#x5305;&#x62EC;&#x5C07;&#x51FD;&#x5F0F;&#x8CE6;&#x4E88;&#x7D66;&#x8B8A;&#x6578;&#x3001;&#x5C07;&#x51FD;&#x5F0F;&#x7576;&#x4F5C;&#x53C3;&#x6578;&#x50B3;&#x5165;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x3001;&#x5229;&#x7528;&#x5BE6;&#x5B57;&#x8A9E;&#x6CD5;&#x5EFA;&#x7ACB;&#x51FD;&#x5F0F;&#x3001;&#x8CE6;&#x4E88;&#x51FD;&#x5F0F;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x73FE;&#x5728;&#x807D;&#x8D77;&#x4F86;&#x5F88;&#x62BD;&#x8C61;&#xFF0C;&#x5F80;&#x5F8C;&#x4ECB;&#x7D39;<strong>&#x9589;&#x5305;&#xFF08;Closure&#xFF09;</strong>&#x6642;&#xFF0C;&#x5C31;&#x80FD;&#x5920;&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x7684;&#x5A01;&#x529B;&#x3002;</p>
+<p>&#x96D6;&#x7136;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x4E26;&#x975E; JavaScript &#x7368;&#x6709;&#x7684;&#x7279;&#x8272;&#xFF0C;&#x4F46;&#x56E0;&#x70BA;&#x5177;&#x5099;&#x9019;&#x6A23;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x4F7F;&#x5F97; JavaScript &#x6210;&#x70BA;&#x4E00;&#x7A2E;<strong>&#x4EE5;&#x51FD;&#x5F0F;&#x70BA;&#x6838;&#x5FC3;&#xFF08;Functional Programming&#xFF09;</strong>&#x7684;&#x7A0B;&#x5F0F;&#x8A2D;&#x8A08;&#x8A9E;&#x8A00;&#x3002;</p>
 <hr>
 
-<h3 id="函式物件"><a href="#函式物件" class="headerlink" title="函式物件"></a>函式物件</h3><p>在 JS 中，函式屬於一種特殊的物件，又稱為<strong>函式物件</strong>。</p>
-<p>而物件本身是 Name/Value Pairs 的集合，因此函式物件可以擁有<strong>屬性</strong>或<strong>方法</strong>。</p>
-<p>除了屬性或方法以外，函式物件還包括兩個我們不知道的特殊屬性：<strong>名稱屬性（Name）</strong>以及<strong>程式屬性（Code）</strong>。</p>
-<p>函式物件的名稱屬性指的就是<strong>函式名稱</strong>。函式可以有名字，也可以沒有名字，沒有名字的函式又稱<strong>匿名函式（Anonymous Function）</strong>。</p>
-<p>函式物件的程式屬性指的就是<strong>函式程式區塊</strong>，也就是 <code>{}</code> 內我們所寫的程式碼部分，而且，這個程式屬性是<strong>能夠被呼叫的（Invocable）</strong>，也就是在函式名稱後方加上 <code>()</code>。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yell</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'JS is Soooooo WEIRD!!'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// yell 就是函式物件的名稱屬性</span></span><br><span class="line"><span class="hljs-comment">// &#123;console.log('JS is Soooooo WEIRD!!')&#125; 就是函式物件的程式屬性</span></span><br><span class="line"><span class="hljs-comment">// 利用 名稱屬性() 來呼叫執行程式屬性</span></span><br><span class="line">yell() ;</span><br></pre></td></tr></table></figure></p>
-<p>順便回顧一下，當我們呼叫函式後，會建立新的執行環境，以執行函式的程式區塊，也就是 <code>{}</code> 內的程式碼，而 <code>{}</code> 內的環境同時也是該函式中區域變數作用域的範圍。</p>
-<p>課程以這張圖歸納了函式物件的組成：</p>
-<p><img src="/2019/08/14/weird-JavaScript-19/functionObject.JPG" alt="函式物件的構成：名稱屬性、程式屬性、屬性、方法（圖片源自參考資料 1.）"></p>
+<h3 id="&#x51FD;&#x5F0F;&#x7269;&#x4EF6;"><a href="#&#x51FD;&#x5F0F;&#x7269;&#x4EF6;" class="headerlink" title="&#x51FD;&#x5F0F;&#x7269;&#x4EF6;"></a>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;</h3><p>&#x5728; JS &#x4E2D;&#xFF0C;&#x51FD;&#x5F0F;&#x5C6C;&#x65BC;&#x4E00;&#x7A2E;&#x7279;&#x6B8A;&#x7684;&#x7269;&#x4EF6;&#xFF0C;&#x53C8;&#x7A31;&#x70BA;<strong>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;</strong>&#x3002;</p>
+<p>&#x800C;&#x7269;&#x4EF6;&#x672C;&#x8EAB;&#x662F; Name/Value Pairs &#x7684;&#x96C6;&#x5408;&#xFF0C;&#x56E0;&#x6B64;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x53EF;&#x4EE5;&#x64C1;&#x6709;<strong>&#x5C6C;&#x6027;</strong>&#x6216;<strong>&#x65B9;&#x6CD5;</strong>&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x4EE5;&#x5916;&#xFF0C;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x9084;&#x5305;&#x62EC;&#x5169;&#x500B;&#x6211;&#x5011;&#x4E0D;&#x77E5;&#x9053;&#x7684;&#x7279;&#x6B8A;&#x5C6C;&#x6027;&#xFF1A;<strong>&#x540D;&#x7A31;&#x5C6C;&#x6027;&#xFF08;Name&#xFF09;</strong>&#x4EE5;&#x53CA;<strong>&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;&#xFF08;Code&#xFF09;</strong>&#x3002;</p>
+<p>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x540D;&#x7A31;&#x5C6C;&#x6027;&#x6307;&#x7684;&#x5C31;&#x662F;<strong>&#x51FD;&#x5F0F;&#x540D;&#x7A31;</strong>&#x3002;&#x51FD;&#x5F0F;&#x53EF;&#x4EE5;&#x6709;&#x540D;&#x5B57;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6C92;&#x6709;&#x540D;&#x5B57;&#xFF0C;&#x6C92;&#x6709;&#x540D;&#x5B57;&#x7684;&#x51FD;&#x5F0F;&#x53C8;&#x7A31;<strong>&#x533F;&#x540D;&#x51FD;&#x5F0F;&#xFF08;Anonymous Function&#xFF09;</strong>&#x3002;</p>
+<p>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;&#x6307;&#x7684;&#x5C31;&#x662F;<strong>&#x51FD;&#x5F0F;&#x7A0B;&#x5F0F;&#x5340;&#x584A;</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>{}</code> &#x5167;&#x6211;&#x5011;&#x6240;&#x5BEB;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x90E8;&#x5206;&#xFF0C;&#x800C;&#x4E14;&#xFF0C;&#x9019;&#x500B;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;&#x662F;<strong>&#x80FD;&#x5920;&#x88AB;&#x547C;&#x53EB;&#x7684;&#xFF08;Invocable&#xFF09;</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x51FD;&#x5F0F;&#x540D;&#x7A31;&#x5F8C;&#x65B9;&#x52A0;&#x4E0A; <code>()</code>&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yell</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;JS is Soooooo WEIRD!!&apos;</span>)</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// yell &#x5C31;&#x662F;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x540D;&#x7A31;&#x5C6C;&#x6027;</span></span><br><span class="line"><span class="hljs-comment">// {console.log(&apos;JS is Soooooo WEIRD!!&apos;)} &#x5C31;&#x662F;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;</span></span><br><span class="line"><span class="hljs-comment">// &#x5229;&#x7528; &#x540D;&#x7A31;&#x5C6C;&#x6027;() &#x4F86;&#x547C;&#x53EB;&#x57F7;&#x884C;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;</span></span><br><span class="line">yell() ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x9806;&#x4FBF;&#x56DE;&#x9867;&#x4E00;&#x4E0B;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#x5F8C;&#xFF0C;&#x6703;&#x5EFA;&#x7ACB;&#x65B0;&#x7684;&#x57F7;&#x884C;&#x74B0;&#x5883;&#xFF0C;&#x4EE5;&#x57F7;&#x884C;&#x51FD;&#x5F0F;&#x7684;&#x7A0B;&#x5F0F;&#x5340;&#x584A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>{}</code> &#x5167;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#xFF0C;&#x800C; <code>{}</code> &#x5167;&#x7684;&#x74B0;&#x5883;&#x540C;&#x6642;&#x4E5F;&#x662F;&#x8A72;&#x51FD;&#x5F0F;&#x4E2D;&#x5340;&#x57DF;&#x8B8A;&#x6578;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x7BC4;&#x570D;&#x3002;</p>
+<p>&#x8AB2;&#x7A0B;&#x4EE5;&#x9019;&#x5F35;&#x5716;&#x6B78;&#x7D0D;&#x4E86;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x7D44;&#x6210;&#xFF1A;</p>
+<p><img src="/2019/08/14/weird-JavaScript-19/functionObject.JPG" alt="&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x69CB;&#x6210;&#xFF1A;&#x540D;&#x7A31;&#x5C6C;&#x6027;&#x3001;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;&#x3001;&#x5C6C;&#x6027;&#x3001;&#x65B9;&#x6CD5;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>在 JavaScript 中，函式是一種特殊的物件，而這樣的特色被稱為一級函式。</li>
-<li>在 JavaScript 中，函式屬於函式物件，可以擁有屬性與方法。</li>
-<li>函式物件的組成包括：名稱屬性（可以是匿名的）、程式屬性（能夠被呼叫的）、屬性、方法。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x51FD;&#x5F0F;&#x662F;&#x4E00;&#x7A2E;&#x7279;&#x6B8A;&#x7684;&#x7269;&#x4EF6;&#xFF0C;&#x800C;&#x9019;&#x6A23;&#x7684;&#x7279;&#x8272;&#x88AB;&#x7A31;&#x70BA;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x3002;</li>
+<li>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x51FD;&#x5F0F;&#x5C6C;&#x65BC;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x64C1;&#x6709;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x7D44;&#x6210;&#x5305;&#x62EC;&#xFF1A;&#x540D;&#x7A31;&#x5C6C;&#x6027;&#xFF08;&#x53EF;&#x4EE5;&#x662F;&#x533F;&#x540D;&#x7684;&#xFF09;&#x3001;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;&#xFF08;&#x80FD;&#x5920;&#x88AB;&#x547C;&#x53EB;&#x7684;&#xFF09;&#x3001;&#x5C6C;&#x6027;&#x3001;&#x65B9;&#x6CD5;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-34</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-34</li>
 </ol>
 
     

@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="許多程式語言中都有重載函式的設定，但 JavaScript 卻沒有。為什麼？">
+    <meta name="description" content="&amp;#x8A31;&amp;#x591A;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E2D;&amp;#x90FD;&amp;#x6709;&amp;#x91CD;&amp;#x8F09;&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x8A2D;&amp;#x5B9A;&amp;#xFF0C;&amp;#x4F46; JavaScript &amp;#x537B;&amp;#x6C92;&amp;#x6709;&amp;#x3002;&amp;#x70BA;&amp;#x4">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 25： 重載函式">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/20/weird-JavaScript-25/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="許多程式語言中都有重載函式的設定，但 JavaScript 卻沒有。為什麼？">
+<meta property="og:description" content="&amp;#x8A31;&amp;#x591A;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E2D;&amp;#x90FD;&amp;#x6709;&amp;#x91CD;&amp;#x8F09;&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x8A2D;&amp;#x5B9A;&amp;#xFF0C;&amp;#x4F46; JavaScript &amp;#x537B;&amp;#x6C92;&amp;#x6709;&amp;#x3002;&amp;#x70BA;&amp;#x4">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2019-11-22T13:38:31.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 25： 重載函式">
-<meta name="twitter:description" content="許多程式語言中都有重載函式的設定，但 JavaScript 卻沒有。為什麼？">
+<meta name="twitter:description" content="&amp;#x8A31;&amp;#x591A;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E2D;&amp;#x90FD;&amp;#x6709;&amp;#x91CD;&amp;#x8F09;&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x8A2D;&amp;#x5B9A;&amp;#xFF0C;&amp;#x4F46; JavaScript &amp;#x537B;&amp;#x6C92;&amp;#x6709;&amp;#x3002;&amp;#x70BA;&amp;#x4">
 
 
 
@@ -111,19 +111,19 @@
                     
                     
                     
-                    <a class="navbar-item" href="#重載函式（Function-Overloading）">1&nbsp;&nbsp;<b>重載函式（Function Overloading）</b></a>
+                    <a class="navbar-item" href="#&amp;#x91CD;&amp;#x8F09;&amp;#x51FD;&amp;#x5F0F;&amp;#xFF08;Function-Overloading&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x91CD;&amp;amp;#x8F09;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#xFF08;Function Overloading&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">2&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">2&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">3&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">3&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -162,22 +162,22 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>許多程式語言中都有重載函式的設定，但 JavaScript 卻沒有。為什麼？</p>
+        <p>&#x8A31;&#x591A;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x4E2D;&#x90FD;&#x6709;&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#x7684;&#x8A2D;&#x5B9A;&#xFF0C;&#x4F46; JavaScript &#x537B;&#x6C92;&#x6709;&#x3002;&#x70BA;&#x4EC0;&#x9EBC;&#xFF1F;</p>
   <a id="more"></a>
 
 
-<h3 id="重載函式（Function-Overloading）"><a href="#重載函式（Function-Overloading）" class="headerlink" title="重載函式（Function Overloading）"></a>重載函式（Function Overloading）</h3><p>重載函式的意思是，<strong>讓相同的函式擁有不同數量的參數</strong>。</p>
-<p>由於在 JavaScript 中，函式屬於特別的函式物件，並不支援重載函式的功能。</p>
-<p>不過，也因為函式在 JavaScript 中具有<strong>一級函式</strong>的特色，我們可以利用預設值，或<strong>將功能包裝成另一個函式</strong>，在流程中呼叫。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">name, age, city</span>)</span>&#123;</span><br><span class="line">  city = city || <span class="hljs-string">'Taipei'</span> ;</span><br><span class="line">  <span class="hljs-keyword">if</span>(city === <span class="hljs-string">'Taipei'</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello! I am '</span> + name + <span class="hljs-string">', and '</span> + age + <span class="hljs-string">'years old. I came from Taiwan.'</span>) ;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span>(city === <span class="hljs-string">'Tokyo'</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello! I am '</span> + name + <span class="hljs-string">', and '</span> + age + <span class="hljs-string">'years old. I came from Japan '</span>) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greetTaipei</span>(<span class="hljs-params">name, age</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> greet(name, age, <span class="hljs-string">'Taipei'</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greetTokyo</span>(<span class="hljs-params">name, age</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> greet(name, age, <span class="hljs-string">'Tokyo'</span>) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greetTaipei(<span class="hljs-string">'Fei'</span>, <span class="hljs-number">23</span>) ;</span><br><span class="line">greetTokyo(<span class="hljs-string">'Bai'</span>, <span class="hljs-number">28</span>) ;</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#xFF08;Function-Overloading&#xFF09;"><a href="#&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#xFF08;Function-Overloading&#xFF09;" class="headerlink" title="&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#xFF08;Function Overloading&#xFF09;"></a>&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#xFF08;Function Overloading&#xFF09;</h3><p>&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C;<strong>&#x8B93;&#x76F8;&#x540C;&#x7684;&#x51FD;&#x5F0F;&#x64C1;&#x6709;&#x4E0D;&#x540C;&#x6578;&#x91CF;&#x7684;&#x53C3;&#x6578;</strong>&#x3002;</p>
+<p>&#x7531;&#x65BC;&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x51FD;&#x5F0F;&#x5C6C;&#x65BC;&#x7279;&#x5225;&#x7684;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#xFF0C;&#x4E26;&#x4E0D;&#x652F;&#x63F4;&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x4E0D;&#x904E;&#xFF0C;&#x4E5F;&#x56E0;&#x70BA;&#x51FD;&#x5F0F;&#x5728; JavaScript &#x4E2D;&#x5177;&#x6709;<strong>&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;</strong>&#x7684;&#x7279;&#x8272;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x9810;&#x8A2D;&#x503C;&#xFF0C;&#x6216;<strong>&#x5C07;&#x529F;&#x80FD;&#x5305;&#x88DD;&#x6210;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;</strong>&#xFF0C;&#x5728;&#x6D41;&#x7A0B;&#x4E2D;&#x547C;&#x53EB;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">name, age, city</span>)</span>{</span><br><span class="line">  city = city || <span class="hljs-string">&apos;Taipei&apos;</span> ;</span><br><span class="line">  <span class="hljs-keyword">if</span>(city === <span class="hljs-string">&apos;Taipei&apos;</span>) {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Hello! I am &apos;</span> + name + <span class="hljs-string">&apos;, and &apos;</span> + age + <span class="hljs-string">&apos;years old. I came from Taiwan.&apos;</span>) ;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span>(city === <span class="hljs-string">&apos;Tokyo&apos;</span>) {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Hello! I am &apos;</span> + name + <span class="hljs-string">&apos;, and &apos;</span> + age + <span class="hljs-string">&apos;years old. I came from Japan &apos;</span>) ;</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greetTaipei</span>(<span class="hljs-params">name, age</span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> greet(name, age, <span class="hljs-string">&apos;Taipei&apos;</span>) ;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greetTokyo</span>(<span class="hljs-params">name, age</span>)</span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> greet(name, age, <span class="hljs-string">&apos;Tokyo&apos;</span>) ;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">greetTaipei(<span class="hljs-string">&apos;Fei&apos;</span>, <span class="hljs-number">23</span>) ;</span><br><span class="line">greetTokyo(<span class="hljs-string">&apos;Bai&apos;</span>, <span class="hljs-number">28</span>) ;</span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>在 JavaScript 中，函式屬於特別的函式物件，並不支援重載函式的功能。</li>
-<li>在 JavaScript 中，由於一級函式的特性，我們可以利用預設值或包裝函式的方式，達到重載函式的目的。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x51FD;&#x5F0F;&#x5C6C;&#x65BC;&#x7279;&#x5225;&#x7684;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#xFF0C;&#x4E26;&#x4E0D;&#x652F;&#x63F4;&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#x7684;&#x529F;&#x80FD;&#x3002;</li>
+<li>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x7531;&#x65BC;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x9810;&#x8A2D;&#x503C;&#x6216;&#x5305;&#x88DD;&#x51FD;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x9054;&#x5230;&#x91CD;&#x8F09;&#x51FD;&#x5F0F;&#x7684;&#x76EE;&#x7684;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-40</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-40</li>
 </ol>
 
     

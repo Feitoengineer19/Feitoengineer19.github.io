@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="當我們想要用相同的變數名稱來代指相似的資料，可以利用物件來建立偽裝的命名空間，避免資料被覆寫。">
+    <meta name="description" content="&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x60F3;&amp;#x8981;&amp;#x7528;&amp;#x76F8;&amp;#x540C;&amp;#x7684;&amp;#x8B8A;&amp;#x6578;&amp;#x540D;&amp;#x7A31;&amp;#x4F86;&amp;#x4EE3;&amp;#x6307;&amp;#x76F8;&amp;#x4F3C;&amp;#x7684;&amp;#x8CC7;&amp;#x6599;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x5229;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 17：偽裝命名空間">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-17/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="當我們想要用相同的變數名稱來代指相似的資料，可以利用物件來建立偽裝的命名空間，避免資料被覆寫。">
+<meta property="og:description" content="&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x60F3;&amp;#x8981;&amp;#x7528;&amp;#x76F8;&amp;#x540C;&amp;#x7684;&amp;#x8B8A;&amp;#x6578;&amp;#x540D;&amp;#x7A31;&amp;#x4F86;&amp;#x4EE3;&amp;#x6307;&amp;#x76F8;&amp;#x4F3C;&amp;#x7684;&amp;#x8CC7;&amp;#x6599;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x5229;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2020-02-23T09:32:30.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 17：偽裝命名空間">
-<meta name="twitter:description" content="當我們想要用相同的變數名稱來代指相似的資料，可以利用物件來建立偽裝的命名空間，避免資料被覆寫。">
+<meta name="twitter:description" content="&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x60F3;&amp;#x8981;&amp;#x7528;&amp;#x76F8;&amp;#x540C;&amp;#x7684;&amp;#x8B8A;&amp;#x6578;&amp;#x540D;&amp;#x7A31;&amp;#x4F86;&amp;#x4EE3;&amp;#x6307;&amp;#x76F8;&amp;#x4F3C;&amp;#x7684;&amp;#x8CC7;&amp;#x6599;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x5229;">
 
 
 
@@ -111,25 +111,25 @@
                     
                     
                     
-                    <a class="navbar-item" href="#命名空間（Namespace）">1&nbsp;&nbsp;<b>命名空間（Namespace）</b></a>
+                    <a class="navbar-item" href="#&amp;#x547D;&amp;#x540D;&amp;#x7A7A;&amp;#x9593;&amp;#xFF08;Namespace&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x547D;&amp;amp;#x540D;&amp;amp;#x7A7A;&amp;amp;#x9593;&amp;amp;#xFF08;Namespace&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#偽裝命名空間">2&nbsp;&nbsp;<b>偽裝命名空間</b></a>
+                    <a class="navbar-item" href="#&amp;#x507D;&amp;#x88DD;&amp;#x547D;&amp;#x540D;&amp;#x7A7A;&amp;#x9593;">2&nbsp;&nbsp;<b>&amp;amp;#x507D;&amp;amp;#x88DD;&amp;amp;#x547D;&amp;amp;#x540D;&amp;amp;#x7A7A;&amp;amp;#x9593;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">3&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">3&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">4&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">4&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -168,32 +168,32 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>當我們想要用相同的變數名稱來代指相似的資料，可以利用物件來建立偽裝的命名空間，避免資料被覆寫。</p>
+        <p>&#x7576;&#x6211;&#x5011;&#x60F3;&#x8981;&#x7528;&#x76F8;&#x540C;&#x7684;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x4F86;&#x4EE3;&#x6307;&#x76F8;&#x4F3C;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x7269;&#x4EF6;&#x4F86;&#x5EFA;&#x7ACB;&#x507D;&#x88DD;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF0C;&#x907F;&#x514D;&#x8CC7;&#x6599;&#x88AB;&#x8986;&#x5BEB;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="命名空間（Namespace）"><a href="#命名空間（Namespace）" class="headerlink" title="命名空間（Namespace）"></a>命名空間（Namespace）</h3><blockquote>
+<h3 id="&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;"><a href="#&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;" class="headerlink" title="&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;"></a>&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;</h3><blockquote>
 <p>A container for variables and functions<br>Typically to keep variables and functions with the same name seperate.</p>
 </blockquote>
-<p>命名空間指的是一個程式語言中<strong>儲存變數與函式名稱的容器</strong>，它的功用在於分離相同名稱的變數與函式。</p>
-<p>然而， <strong>JavaScript 沒有 Namespace</strong> 這項功能。因此，當我們想要用同一個變數名稱來指涉相似的資料，後者所定義的值，往往會覆蓋掉前面所定義的值。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-string">'Hello!'</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-string">'Hola!'</span>  ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(greet) ; <span class="hljs-comment">// Hola!</span></span><br></pre></td></tr></table></figure></p>
-<p>解決這樣的方法就是，借助物件的特性，<strong>假裝創造各自獨立的命名空間</strong>。</p>
+<p>&#x547D;&#x540D;&#x7A7A;&#x9593;&#x6307;&#x7684;&#x662F;&#x4E00;&#x500B;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x4E2D;<strong>&#x5132;&#x5B58;&#x8B8A;&#x6578;&#x8207;&#x51FD;&#x5F0F;&#x540D;&#x7A31;&#x7684;&#x5BB9;&#x5668;</strong>&#xFF0C;&#x5B83;&#x7684;&#x529F;&#x7528;&#x5728;&#x65BC;&#x5206;&#x96E2;&#x76F8;&#x540C;&#x540D;&#x7A31;&#x7684;&#x8B8A;&#x6578;&#x8207;&#x51FD;&#x5F0F;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C; <strong>JavaScript &#x6C92;&#x6709; Namespace</strong> &#x9019;&#x9805;&#x529F;&#x80FD;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x60F3;&#x8981;&#x7528;&#x540C;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x4F86;&#x6307;&#x6D89;&#x76F8;&#x4F3C;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x5F8C;&#x8005;&#x6240;&#x5B9A;&#x7FA9;&#x7684;&#x503C;&#xFF0C;&#x5F80;&#x5F80;&#x6703;&#x8986;&#x84CB;&#x6389;&#x524D;&#x9762;&#x6240;&#x5B9A;&#x7FA9;&#x7684;&#x503C;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-string">&apos;Hello!&apos;</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-string">&apos;Hola!&apos;</span>  ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(greet) ; <span class="hljs-comment">// Hola!</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x89E3;&#x6C7A;&#x9019;&#x6A23;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#xFF0C;&#x501F;&#x52A9;&#x7269;&#x4EF6;&#x7684;&#x7279;&#x6027;&#xFF0C;<strong>&#x5047;&#x88DD;&#x5275;&#x9020;&#x5404;&#x81EA;&#x7368;&#x7ACB;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x9593;</strong>&#x3002;</p>
 <hr>
 
-<h3 id="偽裝命名空間"><a href="#偽裝命名空間" class="headerlink" title="偽裝命名空間"></a>偽裝命名空間</h3><p>利用物件實字 <code>{}</code> 建立新物件，並將相同變數分別儲存進不同的物件中。</p>
-<p>此時，即便我們擁有兩個相同的變數名稱，但因為分屬不同物件，兩者都會被存進電腦記憶體，各自獨立存在，不會被覆寫。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greetEng = &#123;&#125; ;</span><br><span class="line"><span class="hljs-keyword">var</span> greetSpn = &#123;&#125; ;</span><br><span class="line">greetEng.greet = <span class="hljs-string">'Hello!'</span> ;</span><br><span class="line">greetSpn.greet = <span class="hljs-string">'Hola!'</span>  ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(greetEng.greet,greetSpn.greet) ; <span class="hljs-comment">// Hello! Hola!</span></span><br></pre></td></tr></table></figure></p>
-<p>注意！如果想在物件中建立一個新的物件，必須<strong>先宣告（初始化）物件</strong>，才能將變數或函數存進去，否則 JS 會因為找不到該物件，而將物件判定為 <code>undefined</code> ，以致取用運算子失效。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greetEng = &#123;&#125; ;</span><br><span class="line">greetEng.greet = <span class="hljs-string">'Hello!'</span> ;</span><br><span class="line"><span class="hljs-comment">// greetEng.say = &#123;&#125; ; 先宣告物件就可以執行</span></span><br><span class="line">greetEng.say.morning = <span class="hljs-string">'Good morning!'</span> ; <span class="hljs-comment">// cannot set property of undefined</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x507D;&#x88DD;&#x547D;&#x540D;&#x7A7A;&#x9593;"><a href="#&#x507D;&#x88DD;&#x547D;&#x540D;&#x7A7A;&#x9593;" class="headerlink" title="&#x507D;&#x88DD;&#x547D;&#x540D;&#x7A7A;&#x9593;"></a>&#x507D;&#x88DD;&#x547D;&#x540D;&#x7A7A;&#x9593;</h3><p>&#x5229;&#x7528;&#x7269;&#x4EF6;&#x5BE6;&#x5B57; <code>{}</code> &#x5EFA;&#x7ACB;&#x65B0;&#x7269;&#x4EF6;&#xFF0C;&#x4E26;&#x5C07;&#x76F8;&#x540C;&#x8B8A;&#x6578;&#x5206;&#x5225;&#x5132;&#x5B58;&#x9032;&#x4E0D;&#x540C;&#x7684;&#x7269;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x6B64;&#x6642;&#xFF0C;&#x5373;&#x4FBF;&#x6211;&#x5011;&#x64C1;&#x6709;&#x5169;&#x500B;&#x76F8;&#x540C;&#x7684;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#xFF0C;&#x4F46;&#x56E0;&#x70BA;&#x5206;&#x5C6C;&#x4E0D;&#x540C;&#x7269;&#x4EF6;&#xFF0C;&#x5169;&#x8005;&#x90FD;&#x6703;&#x88AB;&#x5B58;&#x9032;&#x96FB;&#x8166;&#x8A18;&#x61B6;&#x9AD4;&#xFF0C;&#x5404;&#x81EA;&#x7368;&#x7ACB;&#x5B58;&#x5728;&#xFF0C;&#x4E0D;&#x6703;&#x88AB;&#x8986;&#x5BEB;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greetEng = {} ;</span><br><span class="line"><span class="hljs-keyword">var</span> greetSpn = {} ;</span><br><span class="line">greetEng.greet = <span class="hljs-string">&apos;Hello!&apos;</span> ;</span><br><span class="line">greetSpn.greet = <span class="hljs-string">&apos;Hola!&apos;</span>  ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(greetEng.greet,greetSpn.greet) ; <span class="hljs-comment">// Hello! Hola!</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x6CE8;&#x610F;&#xFF01;&#x5982;&#x679C;&#x60F3;&#x5728;&#x7269;&#x4EF6;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x65B0;&#x7684;&#x7269;&#x4EF6;&#xFF0C;&#x5FC5;&#x9808;<strong>&#x5148;&#x5BA3;&#x544A;&#xFF08;&#x521D;&#x59CB;&#x5316;&#xFF09;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x624D;&#x80FD;&#x5C07;&#x8B8A;&#x6578;&#x6216;&#x51FD;&#x6578;&#x5B58;&#x9032;&#x53BB;&#xFF0C;&#x5426;&#x5247; JS &#x6703;&#x56E0;&#x70BA;&#x627E;&#x4E0D;&#x5230;&#x8A72;&#x7269;&#x4EF6;&#xFF0C;&#x800C;&#x5C07;&#x7269;&#x4EF6;&#x5224;&#x5B9A;&#x70BA; <code>undefined</code> &#xFF0C;&#x4EE5;&#x81F4;&#x53D6;&#x7528;&#x904B;&#x7B97;&#x5B50;&#x5931;&#x6548;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greetEng = {} ;</span><br><span class="line">greetEng.greet = <span class="hljs-string">&apos;Hello!&apos;</span> ;</span><br><span class="line"><span class="hljs-comment">// greetEng.say = {} ; &#x5148;&#x5BA3;&#x544A;&#x7269;&#x4EF6;&#x5C31;&#x53EF;&#x4EE5;&#x57F7;&#x884C;</span></span><br><span class="line">greetEng.say.morning = <span class="hljs-string">&apos;Good morning!&apos;</span> ; <span class="hljs-comment">// cannot set property of undefined</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>命名空間指的是一個程式語言中儲存變數與函式名稱的容器，但 JavaScript 並沒有這項功能。</li>
-<li>在 JS 中，當我們想要用同一個變數名稱來指涉相似的資料，可以利用物件來偽裝命名空間。</li>
-<li>必須先宣告（初始化）物件後，才能開始在物件中新增屬性或方法。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x547D;&#x540D;&#x7A7A;&#x9593;&#x6307;&#x7684;&#x662F;&#x4E00;&#x500B;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x4E2D;&#x5132;&#x5B58;&#x8B8A;&#x6578;&#x8207;&#x51FD;&#x5F0F;&#x540D;&#x7A31;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x4F46; JavaScript &#x4E26;&#x6C92;&#x6709;&#x9019;&#x9805;&#x529F;&#x80FD;&#x3002;</li>
+<li>&#x5728; JS &#x4E2D;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x60F3;&#x8981;&#x7528;&#x540C;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x4F86;&#x6307;&#x6D89;&#x76F8;&#x4F3C;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x7269;&#x4EF6;&#x4F86;&#x507D;&#x88DD;&#x547D;&#x540D;&#x7A7A;&#x9593;&#x3002;</li>
+<li>&#x5FC5;&#x9808;&#x5148;&#x5BA3;&#x544A;&#xFF08;&#x521D;&#x59CB;&#x5316;&#xFF09;&#x7269;&#x4EF6;&#x5F8C;&#xFF0C;&#x624D;&#x80FD;&#x958B;&#x59CB;&#x5728;&#x7269;&#x4EF6;&#x4E2D;&#x65B0;&#x589E;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-32</li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-32</li>
 </ol>
 
     

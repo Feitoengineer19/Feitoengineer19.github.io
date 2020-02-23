@@ -16,18 +16,18 @@
 
 
 
-    <meta name="description" content="JavaScript 的兩種句型：陳述式和表達式。">
+    <meta name="description" content="JavaScript &amp;#x7684;&amp;#x5169;&amp;#x7A2E;&amp;#x53E5;&amp;#x578B;&amp;#xFF1A;&amp;#x9673;&amp;#x8FF0;&amp;#x5F0F;&amp;#x548C;&amp;#x8868;&amp;#x9054;&amp;#x5F0F;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weird-JavaScript 20：函式陳述式與函式表達式">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-20/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
-<meta property="og:description" content="JavaScript 的兩種句型：陳述式和表達式。">
+<meta property="og:description" content="JavaScript &amp;#x7684;&amp;#x5169;&amp;#x7A2E;&amp;#x53E5;&amp;#x578B;&amp;#xFF1A;&amp;#x9673;&amp;#x8FF0;&amp;#x5F0F;&amp;#x548C;&amp;#x8868;&amp;#x9054;&amp;#x5F0F;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2020-02-23T09:32:24.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 20：函式陳述式與函式表達式">
-<meta name="twitter:description" content="JavaScript 的兩種句型：陳述式和表達式。">
+<meta name="twitter:description" content="JavaScript &amp;#x7684;&amp;#x5169;&amp;#x7A2E;&amp;#x53E5;&amp;#x578B;&amp;#xFF1A;&amp;#x9673;&amp;#x8FF0;&amp;#x5F0F;&amp;#x548C;&amp;#x8868;&amp;#x9054;&amp;#x5F0F;&amp;#x3002;">
 
 
 
@@ -111,37 +111,37 @@
                     
                     
                     
-                    <a class="navbar-item" href="#表達式（Expression）">1&nbsp;&nbsp;<b>表達式（Expression）</b></a>
+                    <a class="navbar-item" href="#&amp;#x8868;&amp;#x9054;&amp;#x5F0F;&amp;#xFF08;Expression&amp;#xFF09;">1&nbsp;&nbsp;<b>&amp;amp;#x8868;&amp;amp;#x9054;&amp;amp;#x5F0F;&amp;amp;#xFF08;Expression&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#陳述式（Statement）">2&nbsp;&nbsp;<b>陳述式（Statement）</b></a>
+                    <a class="navbar-item" href="#&amp;#x9673;&amp;#x8FF0;&amp;#x5F0F;&amp;#xFF08;Statement&amp;#xFF09;">2&nbsp;&nbsp;<b>&amp;amp;#x9673;&amp;amp;#x8FF0;&amp;amp;#x5F0F;&amp;amp;#xFF08;Statement&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#函式表達式（Function-Expression）">3&nbsp;&nbsp;<b>函式表達式（Function Expression）</b></a>
+                    <a class="navbar-item" href="#&amp;#x51FD;&amp;#x5F0F;&amp;#x8868;&amp;#x9054;&amp;#x5F0F;&amp;#xFF08;Function-Expression&amp;#xFF09;">3&nbsp;&nbsp;<b>&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x8868;&amp;amp;#x9054;&amp;amp;#x5F0F;&amp;amp;#xFF08;Function Expression&amp;amp;#xFF09;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#一級函式與函式表達">4&nbsp;&nbsp;<b>一級函式與函式表達</b></a>
+                    <a class="navbar-item" href="#&amp;#x4E00;&amp;#x7D1A;&amp;#x51FD;&amp;#x5F0F;&amp;#x8207;&amp;#x51FD;&amp;#x5F0F;&amp;#x8868;&amp;#x9054;">4&nbsp;&nbsp;<b>&amp;amp;#x4E00;&amp;amp;#x7D1A;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x8207;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x8868;&amp;amp;#x9054;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#結論">5&nbsp;&nbsp;<b>結論</b></a>
+                    <a class="navbar-item" href="#&amp;#x7D50;&amp;#x8AD6;">5&nbsp;&nbsp;<b>&amp;amp;#x7D50;&amp;amp;#x8AD6;</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#參考資料">6&nbsp;&nbsp;<b>參考資料</b></a>
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">6&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
                     
                 </div>
             </div>
@@ -180,49 +180,49 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p> JavaScript 的兩種句型：陳述式和表達式。</p>
+        <p> JavaScript &#x7684;&#x5169;&#x7A2E;&#x53E5;&#x578B;&#xFF1A;&#x9673;&#x8FF0;&#x5F0F;&#x548C;&#x8868;&#x9054;&#x5F0F;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="表達式（Expression）"><a href="#表達式（Expression）" class="headerlink" title="表達式（Expression）"></a>表達式（Expression）</h3><blockquote>
-<p>A unit of code that <strong>results in a value</strong>.<br>It doesn’t have to save to a variable.</p>
+<h3 id="&#x8868;&#x9054;&#x5F0F;&#xFF08;Expression&#xFF09;"><a href="#&#x8868;&#x9054;&#x5F0F;&#xFF08;Expression&#xFF09;" class="headerlink" title="&#x8868;&#x9054;&#x5F0F;&#xFF08;Expression&#xFF09;"></a>&#x8868;&#x9054;&#x5F0F;&#xFF08;Expression&#xFF09;</h3><blockquote>
+<p>A unit of code that <strong>results in a value</strong>.<br>It doesn&#x2019;t have to save to a variable.</p>
 </blockquote>
-<p>表達式的<strong>執行結果會回傳一個值</strong>，而該值不一定要賦予給任一變數。譬如運算、賦值、呼叫函式等等。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="hljs-number">55</span> ; <span class="hljs-comment">// 55</span></span><br><span class="line"><span class="hljs-number">5</span> * <span class="hljs-number">6</span>  ; <span class="hljs-comment">// 30</span></span><br><span class="line"><span class="hljs-string">'a'</span> + <span class="hljs-string">'b'</span> ; <span class="hljs-comment">// 'ab'</span></span><br><span class="line"><span class="hljs-literal">false</span> + <span class="hljs-number">100</span> ; <span class="hljs-comment">// 100</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x8868;&#x9054;&#x5F0F;&#x7684;<strong>&#x57F7;&#x884C;&#x7D50;&#x679C;&#x6703;&#x56DE;&#x50B3;&#x4E00;&#x500B;&#x503C;</strong>&#xFF0C;&#x800C;&#x8A72;&#x503C;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x8CE6;&#x4E88;&#x7D66;&#x4EFB;&#x4E00;&#x8B8A;&#x6578;&#x3002;&#x8B6C;&#x5982;&#x904B;&#x7B97;&#x3001;&#x8CE6;&#x503C;&#x3001;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#x7B49;&#x7B49;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="hljs-number">55</span> ; <span class="hljs-comment">// 55</span></span><br><span class="line"><span class="hljs-number">5</span> * <span class="hljs-number">6</span>  ; <span class="hljs-comment">// 30</span></span><br><span class="line"><span class="hljs-string">&apos;a&apos;</span> + <span class="hljs-string">&apos;b&apos;</span> ; <span class="hljs-comment">// &apos;ab&apos;</span></span><br><span class="line"><span class="hljs-literal">false</span> + <span class="hljs-number">100</span> ; <span class="hljs-comment">// 100</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="陳述式（Statement）"><a href="#陳述式（Statement）" class="headerlink" title="陳述式（Statement）"></a>陳述式（Statement）</h3><blockquote>
+<h3 id="&#x9673;&#x8FF0;&#x5F0F;&#xFF08;Statement&#xFF09;"><a href="#&#x9673;&#x8FF0;&#x5F0F;&#xFF08;Statement&#xFF09;" class="headerlink" title="&#x9673;&#x8FF0;&#x5F0F;&#xFF08;Statement&#xFF09;"></a>&#x9673;&#x8FF0;&#x5F0F;&#xFF08;Statement&#xFF09;</h3><blockquote>
 <p>A unit of code that would not result in a value.</p>
 </blockquote>
-<p>陳述式的執行結果不會回傳值。譬如 <code>var</code> 宣告、函式宣告、 <code>switch</code> 判斷、 <code>{}</code> 函式區塊、 <code>break</code> 等等。</p>
-<p>有些陳述式會需要表達式產生值後才能運作，譬如 <code>if</code> 。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a ;</span><br><span class="line"><span class="hljs-keyword">if</span>(a === <span class="hljs-number">3</span>)&#123; ... &#125; <span class="hljs-comment">// 其中 a === 3 屬於表達式，若回傳 true ，執行 &#123;&#125; 內程式碼</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>函式陳述式</strong>也就是函式宣告。我們在 04 篇說過，函式宣告在全域環境具有 Hoisting 的效果，能在宣告之前呼叫函式。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">greet() ;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Function declaration statement would be hoisted in JS.'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// greet() 函式物件的名稱屬性： greet</span></span><br><span class="line"><span class="hljs-comment">// greet() 函式物件的程式屬性： &#123; console.log('Function declaration statement would be hoisted in JS.') &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x9673;&#x8FF0;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x7D50;&#x679C;&#x4E0D;&#x6703;&#x56DE;&#x50B3;&#x503C;&#x3002;&#x8B6C;&#x5982; <code>var</code> &#x5BA3;&#x544A;&#x3001;&#x51FD;&#x5F0F;&#x5BA3;&#x544A;&#x3001; <code>switch</code> &#x5224;&#x65B7;&#x3001; <code>{}</code> &#x51FD;&#x5F0F;&#x5340;&#x584A;&#x3001; <code>break</code> &#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x6709;&#x4E9B;&#x9673;&#x8FF0;&#x5F0F;&#x6703;&#x9700;&#x8981;&#x8868;&#x9054;&#x5F0F;&#x7522;&#x751F;&#x503C;&#x5F8C;&#x624D;&#x80FD;&#x904B;&#x4F5C;&#xFF0C;&#x8B6C;&#x5982; <code>if</code> &#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a ;</span><br><span class="line"><span class="hljs-keyword">if</span>(a === <span class="hljs-number">3</span>){ ... } <span class="hljs-comment">// &#x5176;&#x4E2D; a === 3 &#x5C6C;&#x65BC;&#x8868;&#x9054;&#x5F0F;&#xFF0C;&#x82E5;&#x56DE;&#x50B3; true &#xFF0C;&#x57F7;&#x884C; {} &#x5167;&#x7A0B;&#x5F0F;&#x78BC;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>&#x51FD;&#x5F0F;&#x9673;&#x8FF0;&#x5F0F;</strong>&#x4E5F;&#x5C31;&#x662F;&#x51FD;&#x5F0F;&#x5BA3;&#x544A;&#x3002;&#x6211;&#x5011;&#x5728; 04 &#x7BC7;&#x8AAA;&#x904E;&#xFF0C;&#x51FD;&#x5F0F;&#x5BA3;&#x544A;&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x5177;&#x6709; Hoisting &#x7684;&#x6548;&#x679C;&#xFF0C;&#x80FD;&#x5728;&#x5BA3;&#x544A;&#x4E4B;&#x524D;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">greet() ;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Function declaration statement would be hoisted in JS.&apos;</span>)</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">// greet() &#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x540D;&#x7A31;&#x5C6C;&#x6027;&#xFF1A; greet</span></span><br><span class="line"><span class="hljs-comment">// greet() &#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x7A0B;&#x5F0F;&#x5C6C;&#x6027;&#xFF1A; { console.log(&apos;Function declaration statement would be hoisted in JS.&apos;) }</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="函式表達式（Function-Expression）"><a href="#函式表達式（Function-Expression）" class="headerlink" title="函式表達式（Function Expression）"></a>函式表達式（Function Expression）</h3><p>既然<strong>函式</strong>屬於一種特殊的<strong>函式物件</strong>，當然能夠<strong>被賦予給任一變數</strong>，這樣的方式稱為函式表達式。</p>
-<p>唯要特別注意的是，將函式物件於賦予任一變數後，我們<strong>就能用該變數名稱參照到該函式物件</strong>，因此在表達函式物件時，不需要另外定義函式物件的名稱屬性，也就是說，必須使用<strong>匿名函式（Anonymous Function）</strong>來表達函式物件。</p>
-<p>然而，函式表達並非函式陳述，因此並沒有 Hoisting 的效果，必須等到變數被賦予函式物件後，才能用該變數呼叫函式。</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">anonymousGreet() ; <span class="hljs-comment">// anonymousGreet is not a function ; anonymousGreet 會先被宣告為 undefined！</span></span><br><span class="line"><span class="hljs-keyword">var</span> anonymousGreet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Function expression could be anonymous.'</span>)</span><br><span class="line">&#125;</span><br><span class="line">anonymousGreet() ; <span class="hljs-comment">// 必須等到賦予函式物件後才能呼叫</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x5F0F;&#xFF08;Function-Expression&#xFF09;"><a href="#&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x5F0F;&#xFF08;Function-Expression&#xFF09;" class="headerlink" title="&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x5F0F;&#xFF08;Function Expression&#xFF09;"></a>&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x5F0F;&#xFF08;Function Expression&#xFF09;</h3><p>&#x65E2;&#x7136;<strong>&#x51FD;&#x5F0F;</strong>&#x5C6C;&#x65BC;&#x4E00;&#x7A2E;&#x7279;&#x6B8A;&#x7684;<strong>&#x51FD;&#x5F0F;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x7576;&#x7136;&#x80FD;&#x5920;<strong>&#x88AB;&#x8CE6;&#x4E88;&#x7D66;&#x4EFB;&#x4E00;&#x8B8A;&#x6578;</strong>&#xFF0C;&#x9019;&#x6A23;&#x7684;&#x65B9;&#x5F0F;&#x7A31;&#x70BA;&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x5F0F;&#x3002;</p>
+<p>&#x552F;&#x8981;&#x7279;&#x5225;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5C07;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x65BC;&#x8CE6;&#x4E88;&#x4EFB;&#x4E00;&#x8B8A;&#x6578;&#x5F8C;&#xFF0C;&#x6211;&#x5011;<strong>&#x5C31;&#x80FD;&#x7528;&#x8A72;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x53C3;&#x7167;&#x5230;&#x8A72;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x8868;&#x9054;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x6642;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x53E6;&#x5916;&#x5B9A;&#x7FA9;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x540D;&#x7A31;&#x5C6C;&#x6027;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x5FC5;&#x9808;&#x4F7F;&#x7528;<strong>&#x533F;&#x540D;&#x51FD;&#x5F0F;&#xFF08;Anonymous Function&#xFF09;</strong>&#x4F86;&#x8868;&#x9054;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x4E26;&#x975E;&#x51FD;&#x5F0F;&#x9673;&#x8FF0;&#xFF0C;&#x56E0;&#x6B64;&#x4E26;&#x6C92;&#x6709; Hoisting &#x7684;&#x6548;&#x679C;&#xFF0C;&#x5FC5;&#x9808;&#x7B49;&#x5230;&#x8B8A;&#x6578;&#x88AB;&#x8CE6;&#x4E88;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x5F8C;&#xFF0C;&#x624D;&#x80FD;&#x7528;&#x8A72;&#x8B8A;&#x6578;&#x547C;&#x53EB;&#x51FD;&#x5F0F;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">anonymousGreet() ; <span class="hljs-comment">// anonymousGreet is not a function ; anonymousGreet &#x6703;&#x5148;&#x88AB;&#x5BA3;&#x544A;&#x70BA; undefined&#xFF01;</span></span><br><span class="line"><span class="hljs-keyword">var</span> anonymousGreet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Function expression could be anonymous.&apos;</span>)</span><br><span class="line">}</span><br><span class="line">anonymousGreet() ; <span class="hljs-comment">// &#x5FC5;&#x9808;&#x7B49;&#x5230;&#x8CE6;&#x4E88;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x5F8C;&#x624D;&#x80FD;&#x547C;&#x53EB;</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="一級函式與函式表達"><a href="#一級函式與函式表達" class="headerlink" title="一級函式與函式表達"></a>一級函式與函式表達</h3><p>在 JS 中，由於一級函式的特色，我們可以將一個函式物件當作另一個函式的參數，丟進函式中執行。</p>
-<p>結合函式表達的概念，我們能將一個儲存函式物件的變數當作參數丟進另一個函式中，並在函式中呼叫該函式：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num1,num2</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(num1 + num2) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">call(greet) ;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">call</span>(<span class="hljs-params">a</span>)</span>&#123;</span><br><span class="line">  a(<span class="hljs-number">55</span>,<span class="hljs-number">66</span>) ; <span class="hljs-comment">// 121</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>當然，我們也可以立即創造一個函式，將它當作參數丟進另一個函式並執行：</p>
-<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hola! '</span>+ name)</span><br><span class="line">&#125;) ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">call</span>(<span class="hljs-params">a</span>)</span>&#123;</span><br><span class="line">  a(<span class="hljs-string">'John'</span>) ; <span class="hljs-comment">// Hola! John</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x8207;&#x51FD;&#x5F0F;&#x8868;&#x9054;"><a href="#&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x8207;&#x51FD;&#x5F0F;&#x8868;&#x9054;" class="headerlink" title="&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x8207;&#x51FD;&#x5F0F;&#x8868;&#x9054;"></a>&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x8207;&#x51FD;&#x5F0F;&#x8868;&#x9054;</h3><p>&#x5728; JS &#x4E2D;&#xFF0C;&#x7531;&#x65BC;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x7684;&#x7279;&#x8272;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5C07;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7576;&#x4F5C;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x7684;&#x53C3;&#x6578;&#xFF0C;&#x4E1F;&#x9032;&#x51FD;&#x5F0F;&#x4E2D;&#x57F7;&#x884C;&#x3002;</p>
+<p>&#x7D50;&#x5408;&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x6211;&#x5011;&#x80FD;&#x5C07;&#x4E00;&#x500B;&#x5132;&#x5B58;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x8B8A;&#x6578;&#x7576;&#x4F5C;&#x53C3;&#x6578;&#x4E1F;&#x9032;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x4E2D;&#xFF0C;&#x4E26;&#x5728;&#x51FD;&#x5F0F;&#x4E2D;&#x547C;&#x53EB;&#x8A72;&#x51FD;&#x5F0F;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num1,num2</span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(num1 + num2) ;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">call(greet) ;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">call</span>(<span class="hljs-params">a</span>)</span>{</span><br><span class="line">  a(<span class="hljs-number">55</span>,<span class="hljs-number">66</span>) ; <span class="hljs-comment">// 121</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x7576;&#x7136;&#xFF0C;&#x6211;&#x5011;&#x4E5F;&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x5275;&#x9020;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;&#x5C07;&#x5B83;&#x7576;&#x4F5C;&#x53C3;&#x6578;&#x4E1F;&#x9032;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x4E26;&#x57F7;&#x884C;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Hola! &apos;</span>+ name)</span><br><span class="line">}) ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">call</span>(<span class="hljs-params">a</span>)</span>{</span><br><span class="line">  a(<span class="hljs-string">&apos;John&apos;</span>) ; <span class="hljs-comment">// Hola! John</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><ul>
-<li>表達式的執行結果會回傳一個值；陳述式的執行結果不會回傳值。</li>
-<li>函式陳述式指的是函式宣告，在全域環境中具有 Hoisting 特性，能夠在宣告之前呼叫。</li>
-<li>函式表達式指的是將一個函式（物件）賦予任一個變數。</li>
-<li>結合一級函式的特色，參考到函式物件的變數可以被當作參數丟進另一個函式中執行並回船結果。</li>
+<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><ul>
+<li>&#x8868;&#x9054;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x7D50;&#x679C;&#x6703;&#x56DE;&#x50B3;&#x4E00;&#x500B;&#x503C;&#xFF1B;&#x9673;&#x8FF0;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x7D50;&#x679C;&#x4E0D;&#x6703;&#x56DE;&#x50B3;&#x503C;&#x3002;</li>
+<li>&#x51FD;&#x5F0F;&#x9673;&#x8FF0;&#x5F0F;&#x6307;&#x7684;&#x662F;&#x51FD;&#x5F0F;&#x5BA3;&#x544A;&#xFF0C;&#x5728;&#x5168;&#x57DF;&#x74B0;&#x5883;&#x4E2D;&#x5177;&#x6709; Hoisting &#x7279;&#x6027;&#xFF0C;&#x80FD;&#x5920;&#x5728;&#x5BA3;&#x544A;&#x4E4B;&#x524D;&#x547C;&#x53EB;&#x3002;</li>
+<li>&#x51FD;&#x5F0F;&#x8868;&#x9054;&#x5F0F;&#x6307;&#x7684;&#x662F;&#x5C07;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF08;&#x7269;&#x4EF6;&#xFF09;&#x8CE6;&#x4E88;&#x4EFB;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x3002;</li>
+<li>&#x7D50;&#x5408;&#x4E00;&#x7D1A;&#x51FD;&#x5F0F;&#x7684;&#x7279;&#x8272;&#xFF0C;&#x53C3;&#x8003;&#x5230;&#x51FD;&#x5F0F;&#x7269;&#x4EF6;&#x7684;&#x8B8A;&#x6578;&#x53EF;&#x4EE5;&#x88AB;&#x7576;&#x4F5C;&#x53C3;&#x6578;&#x4E1F;&#x9032;&#x53E6;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#x4E2D;&#x57F7;&#x884C;&#x4E26;&#x56DE;&#x8239;&#x7D50;&#x679C;&#x3002;</li>
 </ul>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ol>
-<li>JavaScript 全攻略：克服 JS 奇怪的部分 4-35</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements" target="_blank" rel="noopener">MDN：Statements and declarations</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function" target="_blank" rel="noopener">MDN：Function expression</a></li>
+<h3 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h3><ol>
+<li>JavaScript &#x5168;&#x653B;&#x7565;&#xFF1A;&#x514B;&#x670D; JS &#x5947;&#x602A;&#x7684;&#x90E8;&#x5206; 4-35</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements" target="_blank" rel="noopener">MDN&#xFF1A;Statements and declarations</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function" target="_blank" rel="noopener">MDN&#xFF1A;Function expression</a></li>
 </ol>
 
     
