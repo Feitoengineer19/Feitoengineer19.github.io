@@ -74,10 +74,9 @@
         }
     });
 
-    /* NOTE: disable 自動處理時間轉換
     if (typeof(moment) === 'function') {
         $('.article-meta time').each(function () {
             $(this).text(moment($(this).attr('datetime')).fromNow());
         });
-    }*/
+    }
 })(jQuery);
