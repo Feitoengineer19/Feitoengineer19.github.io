@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>把網頁當畫布揮灑的 Canvas 2D 01：基礎語法與圖形繪製 - Luffy&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="「把網頁當畫布揮灑的 Canvas 2D」系列文章主要是我記錄吳哲宇老師所開設的「動畫互動網頁特效入門（JS/CANVAS）」這門課的學習過程，輔以網路上的教學資料，綜合撰寫而成的筆記。 現在，就踏進 Canvas 的世界吧！">
+<meta name="keywords" content="W3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把網頁當畫布揮灑的 Canvas 2D 01：基礎語法與圖形繪製">
+<meta property="og:url" content="https://feitoengineer19.github.io/2020/02/23/canvas-01/index.html">
+<meta property="og:site_name" content="Luffy&#39;s Blog">
+<meta property="og:description" content="「把網頁當畫布揮灑的 Canvas 2D」系列文章主要是我記錄吳哲宇老師所開設的「動畫互動網頁特效入門（JS/CANVAS）」這門課的學習過程，輔以網路上的教學資料，綜合撰寫而成的筆記。 現在，就踏進 Canvas 的世界吧！">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/02/23/canvas-01/coordinate-system.png">
+<meta property="og:updated_time" content="2020-02-23T09:30:15.993Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把網頁當畫布揮灑的 Canvas 2D 01：基礎語法與圖形繪製">
+<meta name="twitter:description" content="「把網頁當畫布揮灑的 Canvas 2D」系列文章主要是我記錄吳哲宇老師所開設的「動畫互動網頁特效入門（JS/CANVAS）」這門課的學習過程，輔以網路上的教學資料，綜合撰寫而成的筆記。 現在，就踏進 Canvas 的世界吧！">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2020/02/23/canvas-01/coordinate-system.png">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Luffy
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="目錄">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#什麼是-Canvas-？">1&nbsp;&nbsp;<b>什麼是 Canvas ？</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#使用-Canvas">2&nbsp;&nbsp;<b>使用 Canvas</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HTML-的-canvas-元素">2.1&nbsp;&nbsp;HTML 的 canvas 元素</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#JavaScript-獲取-Canvas-API">2.2&nbsp;&nbsp;JavaScript 獲取 Canvas API</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Canvas-2D-的座標系統">3&nbsp;&nbsp;<b>Canvas 2D 的座標系統</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#基本圖形繪製">4&nbsp;&nbsp;<b>基本圖形繪製</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#矩形">4.1&nbsp;&nbsp;矩形</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#路徑">4.2&nbsp;&nbsp;路徑</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#弧形（圓形）">4.3&nbsp;&nbsp;弧形（圓形）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#文字">4.4&nbsp;&nbsp;文字</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#繪製座標系來練習">5&nbsp;&nbsp;<b>繪製座標系來練習</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#參考資料">6&nbsp;&nbsp;<b>參考資料</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            把網頁當畫布揮灑的 Canvas 2D 01：基礎語法與圖形繪製
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-02-23T09:23:00.000Z" itemprop="datePublished">2020年2月23日</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>「把網頁當畫布揮灑的 Canvas 2D」系列文章主要是我記錄吳哲宇老師所開設的「<a href="https://hahow.in/courses/586fae97a8aae907000ce721/discussions?item=5a1e1755a2c4b000589dda2c" target="_blank" rel="noopener">動畫互動網頁特效入門（JS/CANVAS）</a>」這門課的學習過程，輔以網路上的教學資料，綜合撰寫而成的筆記。</p>
+<p>現在，就踏進 Canvas 的世界吧！</p>
+  <a id="more"></a>
+
+<hr>
+<h2 id="什麼是-Canvas-？"><a href="#什麼是-Canvas-？" class="headerlink" title="什麼是 Canvas ？"></a>什麼是 Canvas ？</h2><p>Canvas 最早由 Apple 為 Mac OS X Dashboard 所提出，而後 Canvas 被 <a href="https://www.w3schools.com/html/html5_canvas.asp" target="_blank" rel="noopener">HTML5 標準</a>加以定義為 <code>canvas</code> 元素，現已支援多數主流瀏覽器。我們可以透過 <strong>JavaScript</strong> 串接 <strong><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API" target="_blank" rel="noopener">Canvas API</a></strong> ，獲取 Canvas 物件的內部方法，藉此在網頁上繪製許多細緻的<a href="https://codepen.io/search/pens?q=canvas" target="_blank" rel="noopener">特效或動畫</a>。其中，Canvas 物件又可為 2D 或 3D 。</p>
+<p>簡而言之，我們可以把 <code>canvas</code> 想像成網頁中一張可以自由揮灑的畫布元素，透過 <strong>JavaScript</strong> 獲取 Canvas 物件，並利用物件裡的方法在畫布上繪製線條、形狀與顏色。</p>
+<p>瞭解原生 Canvas 後，未來接觸特效函式庫如 <a href="https://www.pixijs.com/" target="_blank" rel="noopener">PixiJS</a> 、 <a href="https://phaser.io/" target="_blank" rel="noopener">PhaserJs</a> 或 <a href="https://p5js.org/" target="_blank" rel="noopener">p5JS</a> 將更容易上手。 </p>
+<hr>
+<h2 id="使用-Canvas"><a href="#使用-Canvas" class="headerlink" title="使用 Canvas"></a>使用 Canvas</h2><h3 id="HTML-的-canvas-元素"><a href="#HTML-的-canvas-元素" class="headerlink" title="HTML 的 canvas 元素"></a>HTML 的 canvas 元素</h3><p>在 HTML 中加入 <code>canvas</code> 元素，預設的畫布寬高為 <strong>300px x 150px</strong>。我們可以透過 HTML 的寬高屬性自訂大小，或者，利用 CSS 指定寬高也是可行的（但內部影像也會跟著縮放）。</p>
+<p>部分舊版瀏覽器如 IE 9 並不支援 <code>canvas</code> 。我們可以在 <code>canvas</code> 內加入一段替代文字或靜態圖片，作為瀏覽器不支援時的替代內容。</p>
+<p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"my-canvas"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"200"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"100"</span>&gt;</span></span><br><span class="line">  你的瀏覽起不支援 canvas </span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"my-canvas-2"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"200"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"100"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./images/altImg.png"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"200"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"100"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="JavaScript-獲取-Canvas-API"><a href="#JavaScript-獲取-Canvas-API" class="headerlink" title="JavaScript 獲取 Canvas API"></a>JavaScript 獲取 Canvas API</h3><p>先透過 DOM 選取器指定 <code>canvas</code> 元素，再利用 <code>getContext()</code> 獲取 Canvas 繪圖物件，傳入參數 <code>&#39;2d&#39;</code> 得到 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/CanvasRenderingContext2D" target="_blank" rel="noopener">CanvasRenderingContext2D</a> 物件作為 Canvas 2D 的渲染環境。當然，我們也可以檢查瀏覽器的 canvas 元素是否支援 <code>getContext</code> 串接 Canvas API ：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'my-canvas'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span>(canvas.getContent) &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>)</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Canvas Unsupported!'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我們也可以透過 JS 動態調整畫布大小：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">canvas.width = <span class="hljs-built_in">window</span>.innerWidth</span><br><span class="line">canvas.height = <span class="hljs-built_in">window</span>.innerHeight</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Canvas-2D-的座標系統"><a href="#Canvas-2D-的座標系統" class="headerlink" title="Canvas 2D 的座標系統"></a>Canvas 2D 的座標系統</h2><p>和 CSS 的定位系統相似，Canvas 2D 的座標系統<strong>以左上角為原點</strong>，向右正射出 X 軸，向下正射出 Y 軸，順時針為旋轉方向。</p>
+<p><img src="/2020/02/23/canvas-01/coordinate-system.png" alt="Canvas 2D 座標系"></p>
+<hr>
+<h2 id="基本圖形繪製"><a href="#基本圖形繪製" class="headerlink" title="基本圖形繪製"></a>基本圖形繪製</h2><h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><p>Canvas 只支援矩形此一基本圖形，語法相對容易：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 繪製填色矩形</span></span><br><span class="line">ctx.fillRect(<span class="hljs-number">150</span>, <span class="hljs-number">50</span>, <span class="hljs-number">100</span>, <span class="hljs-number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 繪製路徑矩形</span></span><br><span class="line">ctx.strokeRect(<span class="hljs-number">150</span>, <span class="hljs-number">150</span>, <span class="hljs-number">100</span>, <span class="hljs-number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 清除矩形範圍（在動畫中作為清除整塊畫布範圍的影格效果）</span></span><br><span class="line">ctx.clearRect(x, y, width, height)</span><br></pre></td></tr></table></figure></p>
+<h3 id="路徑"><a href="#路徑" class="headerlink" title="路徑"></a>路徑</h3><p>我們可以把路徑想像成我們的畫筆。下筆之前，都必須以 <code>beginPath()</code> 來宣告我們即將畫路徑，JS 會把我們接下來畫的路徑存進一個清單裡面，成為<strong>路徑集合</strong>。每呼叫一次 <code>beginPath()</code> ，<strong>先前的路徑集合都會被清空</strong>，代表我們要<strong>重新開始繪製</strong>。</p>
+<p>第一次下筆時，我們要先確定下筆的點。 <code>moveTo()</code> 幫助我們<strong>將畫筆移動到（第一個）下筆的點</strong>，就像把筆從紙上提起來，移動到另外一個點上，並不會繪製任何圖形。通常 <code>beginPath()</code> 之後會接著 <code>moveTo()</code> 我們想要開始繪製的點上。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 繪製一個 5-12-13 直角三角形</span></span><br><span class="line">ctx.beginPath() <span class="hljs-comment">// 宣告繪製路徑</span></span><br><span class="line">  ctx.moveTo(<span class="hljs-number">50</span>, <span class="hljs-number">50</span>) <span class="hljs-comment">// 將畫筆移動至指定座標</span></span><br><span class="line">  ctx.lineTo(<span class="hljs-number">100</span>, <span class="hljs-number">50</span>) <span class="hljs-comment">// 繪製直線</span></span><br><span class="line">  ctx.lineTo(<span class="hljs-number">50</span>, <span class="hljs-number">170</span>)</span><br><span class="line">ctx.closePath() <span class="hljs-comment">// 自動封閉路徑</span></span><br><span class="line"></span><br><span class="line">ctx.lineWidth = <span class="hljs-number">5</span> <span class="hljs-comment">// 指定路徑寬度</span></span><br><span class="line">ctx.strokeStyle = <span class="hljs-string">'red'</span> <span class="hljs-comment">// 指定路徑顏色（字串，可以是顏色名稱、色票或 RGBA）</span></span><br><span class="line">ctx.fillStyle = <span class="hljs-string">'blue'</span> <span class="hljs-comment">// 指定路徑填色（字串，可以是顏色名稱、色票或 RGBA）</span></span><br><span class="line">ctx.stroke() <span class="hljs-comment">// 路徑上色</span></span><br><span class="line">ctx.fill() <span class="hljs-comment">// 路徑填色</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="弧形（圓形）"><a href="#弧形（圓形）" class="headerlink" title="弧形（圓形）"></a>弧形（圓形）</h3><p>在 Canvas 中，圓形也屬於<strong>路徑</strong>的一種，不像矩形可以單獨繪製，需要先宣告 <code>beginPath()</code> ，再透過 <code>arc(cx, cy, r, startAngle, endAngle, counterclockwise?)</code> 來繪製。其中 <code>startAngle</code> 和 <code>endAngle</code> 兩參數分別代表<strong>起點弧度</strong>與<strong>終點弧度（0度～360度）</strong>，<strong>可以 <code>Math.PI</code> 來表示</strong>。 <code>counterclockwis?</code> 參數則為一布林值，預設為 <code>false</code> ，代表順時針繪製。</p>
+<p>記得繪製完弧形路徑也要填色，否則什麼都看不到！</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath()</span><br><span class="line">  ctx.arc(<span class="hljs-number">350</span>, <span class="hljs-number">100</span>, <span class="hljs-number">50</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI)</span><br><span class="line">ctx.closePath()</span><br><span class="line">ctx.stroke()</span><br><span class="line">ctx.fill()</span><br></pre></td></tr></table></figure></p>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><p>Canvas 也支援文字繪製以及字型大小、字體、方向以及對齊方式等設定：</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 繪製填色文字</span></span><br><span class="line">ctx.fillText(<span class="hljs-string">'Hellow World!'</span>, x, y)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 繪製路徑文字</span></span><br><span class="line">ctx.strokeText(text, x, y) <span class="hljs-comment">// text 為字串</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 設定文字大小、字體與粗體</span></span><br><span class="line">ctx.font = <span class="hljs-string">'bold 18px "Microsoft JhengHei"'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 設定文字水平對齊方式（start、end、left、right、center，預設為 start）</span></span><br><span class="line">ctx.textAlign = <span class="hljs-string">'center'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 設定文字垂直對齊方式（top、hanging、middle、alphabetic、ideographic、bottom，預設為 alphabetic）</span></span><br><span class="line">ctx.textBaseline = <span class="hljs-string">'middle'</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="繪製座標系來練習"><a href="#繪製座標系來練習" class="headerlink" title="繪製座標系來練習"></a>繪製座標系來練習</h2><p>我們可以利用 <code>for</code> 來繪製 Canvas 的<a href="https://codepen.io/luffy-chen/pen/dyoOazQ?editors=0010" target="_blank" rel="noopener">網格座標系統</a>，以便我們練習繪製基本圖形。</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'my-canvas'</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> canvas_size = <span class="hljs-number">500</span></span><br><span class="line"></span><br><span class="line">canvas.width = canvas_size</span><br><span class="line">canvas.height = canvas_size</span><br><span class="line"></span><br><span class="line">ctx.beginPath()</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; canvas_size / <span class="hljs-number">50</span> ; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> pos = i * <span class="hljs-number">50</span></span><br><span class="line">  </span><br><span class="line">  <span class="hljs-comment">// X Axis</span></span><br><span class="line">  ctx.moveTo(<span class="hljs-number">0</span>, pos)</span><br><span class="line">  ctx.lineTo(<span class="hljs-number">500</span>, pos)</span><br><span class="line">  ctx.fillText(pos, <span class="hljs-number">0</span>, pos)</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-comment">// Y Axis</span></span><br><span class="line">  ctx.moveTo(pos, <span class="hljs-number">0</span>)</span><br><span class="line">  ctx.lineTo(pos, <span class="hljs-number">500</span>)</span><br><span class="line">  ctx.fillText(pos, pos, <span class="hljs-number">10</span>)</span><br><span class="line">&#125;</span><br><span class="line">ctx.strokeStyle = <span class="hljs-string">'gray'</span></span><br><span class="line">ctx.stroke()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ol>
+<li><a href="https://hahow.in/courses/586fae97a8aae907000ce721/discussions?item=5a1e1755a2c4b000589dda2c" target="_blank" rel="noopener">動畫互動網頁特效入門（JS/CANVAS）：5-1 Canvas 繪圖基礎語法與動畫原理</a></li>
+<li><a href="http://test.domojyun.net/MEMO/Canvas/" target="_blank" rel="noopener">Canvas 2D 學習筆記</a></li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">MDN：Canvas 教學文件</a></li>
+<li><a href="https://www.html5canvastutorials.com/" target="_blank" rel="noopener">HTML5 Canvas Tutorials Home</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/W3HexSchool/">#W3HexSchool</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/02/15/mask-map-share/">2020 口罩存貨實時地圖開發紀錄</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2020/02/23/canvas-01/';
+        this.page.identifier = '2020/02/23/canvas-01/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiBlog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Luffy&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/Feitoengineer19">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-tw");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

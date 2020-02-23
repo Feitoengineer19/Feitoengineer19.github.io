@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="與其他程式語言不同，JavaScript 採用原型繼承的方式，將所有物件串聯起來！">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-11-22T13:39:19.006Z">
+<meta property="og:updated_time" content="2020-02-18T10:33:14.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 38：古典繼承 v.s. 原型繼承">
 <meta name="twitter:description" content="與其他程式語言不同，JavaScript 採用原型繼承的方式，將所有物件串聯起來！">
@@ -196,20 +196,20 @@
 <p>而繼承的方式，主要分為<strong>古典繼承</strong>與<strong>原型繼承</strong>兩類。</p>
 <hr>
 
-<h3 id="古典繼承（Classical-Inheritance）"><a href="#古典繼承（Classical-Inheritance）" class="headerlink" title="古典繼承（Classical Inheritance）"></a>古典繼承（Classical Inheritance）</h3><p>古典繼承是當代非常主流而熱門的繼承方式， Java 、 C# 等程式語言都是採用古典繼承的設計機制。</p>
+<h3 id="古典繼承（Classical-Inheritance）"><a href="#古典繼承（Classical-Inheritance）" class="headerlink" title="古典繼承（Classical Inheritance）"></a>古典繼承（Classical Inheritance）</h3><p>古典繼承是當代非常主流而熱門的繼承方式， <strong>Java</strong> 、 <strong>C#</strong> 等程式語言都是採用古典繼承的設計機制。</p>
 <p>古典繼承的特點在於相當口語化（Verbose），而且有非常多的方法可以使用，譬如：</p>
 <ul>
-<li><code>friend</code>（夥伴）</li>
-<li><code>protected</code>（保護）</li>
-<li><code>private</code>（私用）</li>
-<li><code>interface</code>（介面）</li>
+<li>Friend（夥伴）</li>
+<li>Protected（保護）</li>
+<li>Private（私用）</li>
+<li>Interface（介面）</li>
 </ul>
 <p>但古典繼承的弱勢在於，必須瞭解上述規範的方法，才能輕易使用它。</p>
-<p>除此之外，古典繼承採用樹狀結構的設計模式，當繼承物件數量增加時，很容易將物件集合成一個大熔爐，讓人搞不清楚內部物件詳細的連結方式。講師將古典繼承比喻成一棟設計複雜的房子，當你想要換燈泡的時候，卻發現馬桶開始沖水，就好像，修改了 A 物件，卻非預期地影響了 B 物件。</p>
+<p>除此之外，古典繼承採用樹狀結構的設計模式，當繼承物件數量增加時，很容易將物件集合成一個大熔爐，讓人搞不清楚內部物件詳細的連結方式。古典繼承好比一棟設計複雜的房子，當你想要換燈泡的時候，卻發現馬桶開始沖水，就好像，修改了 A 物件，卻非預期地影響了 B 物件。</p>
 <hr>
 
-<h3 id="原型繼承（Prototypal-Inheritance）"><a href="#原型繼承（Prototypal-Inheritance）" class="headerlink" title="原型繼承（Prototypal Inheritance）"></a>原型繼承（Prototypal Inheritance）</h3><p>相較於古典繼承，原型繼承較簡單易懂（easy to understand），且具備彈性（flexible）、可延展（extensible）等優勢。</p>
-<p>而 JavaScript 正是透過<strong>原型繼承</strong>的方式，將所有物件都串聯起來。</p>
+<h3 id="原型繼承（Prototypal-Inheritance）"><a href="#原型繼承（Prototypal-Inheritance）" class="headerlink" title="原型繼承（Prototypal Inheritance）"></a>原型繼承（Prototypal Inheritance）</h3><p>相較於古典繼承，原型繼承較簡單易懂（Easy to understand），且具備彈性（Flexible）、可延展（Extensible）等優勢。</p>
+<p>而 <strong>JavaScript</strong> 正是透過<strong>原型繼承</strong>的方式，將所有物件都串聯起來。</p>
 <p>往後幾篇會介紹 JS 的原型以及繼承機制。</p>
 <hr>
 
