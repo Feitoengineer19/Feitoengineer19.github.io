@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>把網頁當畫布揮灑的 Canvas 02：動畫原理 - Luffy&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="&amp;#x52D5;&amp;#x756B;&amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x52D5;&amp;#x8D77;&amp;#x4F86;&amp;#x7684;&amp;#x5462;&amp;#xFF1F;">
+<meta name="keywords" content="W3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把網頁當畫布揮灑的 Canvas 02：動畫原理">
+<meta property="og:url" content="https://feitoengineer19.github.io/2020/03/01/canvas-02/index.html">
+<meta property="og:site_name" content="Luffy&#39;s Blog">
+<meta property="og:description" content="&amp;#x52D5;&amp;#x756B;&amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x52D5;&amp;#x8D77;&amp;#x4F86;&amp;#x7684;&amp;#x5462;&amp;#xFF1F;">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/03/01/canvas-02/frame.png">
+<meta property="og:updated_time" content="2020-03-01T03:19:32.285Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把網頁當畫布揮灑的 Canvas 02：動畫原理">
+<meta name="twitter:description" content="&amp;#x52D5;&amp;#x756B;&amp;#x662F;&amp;#x5982;&amp;#x4F55;&amp;#x52D5;&amp;#x8D77;&amp;#x4F86;&amp;#x7684;&amp;#x5462;&amp;#xFF1F;">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2020/03/01/canvas-02/frame.png">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Luffy
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="目錄">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x52D5;&amp;#x756B;&amp;#x539F;&amp;#x7406;">1&nbsp;&nbsp;<b>&amp;amp;#x52D5;&amp;amp;#x756B;&amp;amp;#x539F;&amp;amp;#x7406;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x900F;&amp;#x904E;&amp;#x8A08;&amp;#x6642;&amp;#x51FD;&amp;#x5F0F;&amp;#x7E6A;&amp;#x88FD;&amp;#x52D5;&amp;#x756B;">2&nbsp;&nbsp;<b>&amp;amp;#x900F;&amp;amp;#x904E;&amp;amp;#x8A08;&amp;amp;#x6642;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x7E6A;&amp;amp;#x88FD;&amp;amp;#x52D5;&amp;amp;#x756B;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#setTimeout">2.1&nbsp;&nbsp;setTimeout()</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#setInterval">2.2&nbsp;&nbsp;setInterval()</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#requestAnimationFrame">2.3&nbsp;&nbsp;requestAnimationFrame()</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x900F;&amp;#x904E;-Canvas-&amp;#x7C21;&amp;#x55AE;&amp;#x7E6A;&amp;#x88FD;&amp;#x52D5;&amp;#x756B;">3&nbsp;&nbsp;<b>&amp;amp;#x900F;&amp;amp;#x904E; Canvas &amp;amp;#x7C21;&amp;amp;#x55AE;&amp;amp;#x7E6A;&amp;amp;#x88FD;&amp;amp;#x52D5;&amp;amp;#x756B;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">4&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            把網頁當畫布揮灑的 Canvas 02：動畫原理
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-03-01T03:14:04.000Z" itemprop="datePublished">2020年3月1日</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&#x52D5;&#x756B;&#x662F;&#x5982;&#x4F55;&#x52D5;&#x8D77;&#x4F86;&#x7684;&#x5462;&#xFF1F;</p>
+  <a id="more"></a>
+
+<hr>
+<h2 id="&#x52D5;&#x756B;&#x539F;&#x7406;"><a href="#&#x52D5;&#x756B;&#x539F;&#x7406;" class="headerlink" title="&#x52D5;&#x756B;&#x539F;&#x7406;"></a>&#x52D5;&#x756B;&#x539F;&#x7406;</h2><p>&#x51E1;&#x4E8B;&#x5148; Google &#xFF0C;&#x4E0D;&#x61C2;&#x554F; Wiki &#xFF01;</p>
+<blockquote>
+<p>&#x52D5;&#x756B;&#x662F;&#x6307;&#x7531;&#x8A31;&#x591A;&#x5F71;&#x683C;&#x975C;&#x6B62;&#x7684;&#x756B;&#x9762;&#xFF0C;&#x4EE5;&#x4E00;&#x5B9A;&#x7684;&#x901F;&#x5EA6;&#xFF08;&#x5982;&#x6BCF;&#x79D2;16&#x5F35;&#xFF09;&#x9023;&#x7E8C;&#x64AD;&#x653E;&#x6642;&#xFF0C;&#x8089;&#x773C;&#x56E0;&#x8996;&#x89BA;&#x6B98;&#x8C61;&#x7522;&#x751F;&#x932F;&#x89BA;&#xFF0C;&#x800C;&#x8AA4;&#x4EE5;&#x70BA;&#x756B;&#x9762;&#x6D3B;&#x52D5;&#x7684;&#x4F5C;&#x54C1;&#x3002;&#xFF08;<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E7%94%BB" target="_blank" rel="noopener">&#x7DAD;&#x57FA;&#x767E;&#x79D1;</a>&#xFF09;</p>
+</blockquote>
+<p>&#x7C21;&#x55AE;&#x4F86;&#x8AAA;&#xFF0C;&#x52D5;&#x756B;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x9023;&#x4E32;&#x6D41;&#x66A2;&#x756B;&#x9762;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5728;<strong>&#x77ED;&#x6642;&#x9593;&#x5167;</strong>&#x5FEB;&#x901F;&#x8F2A;&#x64AD;&#x756B;&#x9762;&#xFF0C;&#x900F;&#x904E;&#x4EBA;&#x9AD4;&#x7684;&#x8996;&#x89BA;&#x66AB;&#x7559;&#x7279;&#x5FB5;&#xFF0C;&#x9054;&#x5230;&#x756B;&#x9762;&#x52D5;&#x8D77;&#x4F86;&#x7684;&#x6548;&#x679C;&#x3002;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x628A;&#x52D5;&#x756B;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x500B;&#x756B;&#x9762;&#x7A31;&#x70BA; <strong>&#x300C;&#x5F71;&#x683C;&#x300D;&#xFF08;Frame&#xFF09;</strong>&#xFF0C;&#x6216;&#x53EB;&#x4F5C; <strong>&#x300C;&#x5E40;&#x300D;&#xFF08;&#x3113;&#x3125;&#x2CB;&#xFF09;</strong>&#x3002;&#x901A;&#x5E38;&#x6211;&#x5011;&#x6703;&#x7528; <strong>&#x300C;&#x5F71;&#x683C;&#x7387;&#x300D;</strong> &#x4F5C;&#x70BA;&#x6E2C;&#x91CF;&#x986F;&#x793A;&#x5F71;&#x683C;&#x7684;&#x91CF;&#x5EA6;&#x55AE;&#x4F4D;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x300C;&#x6BCF;&#x79D2;&#x986F;&#x793A;&#x5F71;&#x683C;&#x6578;&#x300D;&#xFF08;Frame per Second&#xFF0C;<strong>FPS</strong>&#xFF09;&#xFF0C;&#x7528;&#x4EE5;&#x63CF;&#x8FF0;&#x6BCF;&#x79D2;&#x64AD;&#x653E;&#x591A;&#x5C11;&#x5F71;&#x683C;&#x3002;</p>
+<p><img src="/2020/03/01/canvas-02/frame.png" alt="&#x52D5;&#x756B;&#x7684;&#x5F71;&#x683C;&#x6982;&#x5FF5;"></p>
+<p>&#x5728;&#x524D;&#x7AEF;&#x958B;&#x767C;&#x7684;&#x6280;&#x8853;&#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x900F;&#x904E; CSS &#x4F86;&#x8A2D;&#x5B9A;&#x7DB2;&#x9801;&#x5143;&#x7D20;&#x7684;&#x6A23;&#x5F0F;&#xFF0C;&#x5305;&#x62EC;&#x5927;&#x5C0F;&#x3001;&#x984F;&#x8272;&#x3001;&#x5B9A;&#x4F4D;&#x4F4D;&#x7F6E;&#x3001;&#x65CB;&#x8F49;&#x89D2;&#x5EA6;&#x7B49;&#x7B49;&#xFF0C;&#x800C; <code>[@keyframes](https://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp)</code> &#x548C; <code>[animation](https://www.oxxostudio.tw/articles/201803/css-animation.html)</code> &#x7684;&#x5BE6;&#x4F5C;&#x8B93;&#x6211;&#x5011;&#x5F97;&#x4EE5;&#x88FD;&#x4F5C;&#x7C21;&#x55AE;&#x3001;&#x6709;&#x898F;&#x5F8B;&#x7684;&#x7DB2;&#x9801;&#x52D5;&#x756B;&#x3002;&#x4F46;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x88FD;&#x4F5C;&#x66F4;&#x7CBE;&#x7DFB;&#x3001;&#x5177;&#x5099;&#x7269;&#x7406;&#x6548;&#x679C;&#x6216;&#x662F;&#x53EF;&#x4EE5;&#x548C;&#x4F7F;&#x7528;&#x9019;&#x4E92;&#x52D5;&#x7684;&#x52D5;&#x756B;&#x6642;&#xFF0C;CSS &#x7684; <code>animation</code> &#x4FBF;&#x986F;&#x5F97;&#x4E0D;&#x8DB3;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5229;&#x7528; JavaScript &#x4F86;&#x64CD;&#x4F5C;&#x7DB2;&#x9801;&#x5143;&#x7D20;&#x7684; CSS &#x5C6C;&#x6027;&#xFF0C;&#x6216;&#x662F;&#x900F;&#x904E; Canvas &#x5143;&#x7D20;&#x4F86;&#x7E6A;&#x88FD;&#x9AD8;&#x6548;&#x800C;&#x7CBE;&#x7F8E;&#x7684;&#x4E92;&#x52D5;&#x8A2D;&#x8A08;&#x3002;&#x914D;&#x5408;&#x51FD;&#x5F0F;&#x6A21;&#x7D44;&#x5316;&#x3001;&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#x958B;&#x767C;&#x4EE5;&#x53CA;&#x8AF8;&#x591A;&#x91CD;&#x529B;&#x3001;&#x904A;&#x6232;&#x5F15;&#x64CE;&#x7684;&#x5354;&#x52A9;&#xFF0C;&#x8B93;&#x6211;&#x5011;&#x7684;&#x7DB2;&#x9801;&#x4E92;&#x52D5;&#x64C1;&#x6709;&#x66F4;&#x591A;&#x53EF;&#x80FD;&#x3002;</p>
+<hr>
+<h2 id="&#x900F;&#x904E;&#x8A08;&#x6642;&#x51FD;&#x5F0F;&#x7E6A;&#x88FD;&#x52D5;&#x756B;"><a href="#&#x900F;&#x904E;&#x8A08;&#x6642;&#x51FD;&#x5F0F;&#x7E6A;&#x88FD;&#x52D5;&#x756B;" class="headerlink" title="&#x900F;&#x904E;&#x8A08;&#x6642;&#x51FD;&#x5F0F;&#x7E6A;&#x88FD;&#x52D5;&#x756B;"></a>&#x900F;&#x904E;&#x8A08;&#x6642;&#x51FD;&#x5F0F;&#x7E6A;&#x88FD;&#x52D5;&#x756B;</h2><p>&#x65B9;&#x624D;&#x63D0;&#x5230;&#xFF0C;&#x6240;&#x8B02;&#x52D5;&#x756B;&#x662F;&#x7531;<strong>&#x591A;&#x500B;&#x5F71;&#x683C;&#x5728;&#x77ED;&#x6642;&#x9593;&#x5167;&#x5FEB;&#x901F;&#x8F2A;&#x64AD;</strong>&#x800C;&#x6210;&#x3002;&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x8A08;&#x6642;&#x51FD;&#x5F0F; <code>setTimeout()</code> &#x3001; <code>setInterval()</code> &#x6216; <code>requestAnimationFrame()</code> &#x4F86;&#x4E0D;&#x65B7;&#x66F4;&#x65B0;&#x7DB2;&#x9801;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x72C0;&#x614B;&#xFF0C;&#x9054;&#x5230;&#x52D5;&#x756B;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout()"></a>setTimeout()</h3><p>setTimeout() &#x662F;&#x5012;&#x6578;&#x8A08;&#x6642;&#x51FD;&#x5F0F;&#xFF0C;&#x5C6C;&#x65BC;&#x5168;&#x57DF;&#x7269;&#x4EF6; window &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x5012;&#x6578;&#x5B8C;&#x7562;&#x5F8C;&#xFF0C;&#x6703;&#x57F7;&#x884C;&#x6240;&#x50B3;&#x5165;&#x7684;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x3002;&#x5E38;&#x898B;&#x65BC;&#x904A;&#x6232;&#x958B;&#x59CB;&#x524D;&#x7684;&#x5012;&#x6578;&#x52D5;&#x756B;&#x7B49;&#x7B49;&#x3002;</p>
+<h3 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval()"></a>setInterval()</h3><p>setInterval() &#x662F;&#x9593;&#x9694;&#x8A08;&#x6642;&#x51FD;&#x5F0F;&#xFF0C;&#x5C6C;&#x65BC;&#x5168;&#x57DF;&#x7269;&#x4EF6; window &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x6642;&#x9593;&#xFF0C;&#x6703;&#x57F7;&#x884C;&#x6240;&#x50B3;&#x5165;&#x7684;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x3002;&#x8B6C;&#x5982;&#x88FD;&#x4F5C;<a href="https://codepen.io/luffy-chen/pen/zYGNKqx?editors=0110" target="_blank" rel="noopener">&#x9032;&#x5EA6;&#x689D;</a>&#xFF0C;&#x6216;&#x662F;<a href="https://codepen.io/luffy-chen/pen/BaNzbYP" target="_blank" rel="noopener">&#x66F4;&#x65B0;&#x904A;&#x6232;&#x756B;&#x9762;</a>&#x7B49;&#x7B49;&#xFF0C;</p>
+<h3 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame()"></a>requestAnimationFrame()</h3><p><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Window.requestAnimationFrame" target="_blank" rel="noopener">requestAnimationFrame()</a> &#x662F;&#x66F4;&#x65B0;&#x52D5;&#x756B;&#x51FD;&#x5F0F;&#xFF0C;&#x5C6C;&#x65BC;&#x5168;&#x57DF;&#x7269;&#x4EF6; window &#x7684;&#x65B9;&#x6CD5;&#x3002;&#x8207; <code>setTimeout()</code> &#x3001; <code>setInterval()</code> &#x7684;&#x5DEE;&#x7570;&#x5728;&#x65BC;&#xFF0C;&#x5B83;&#x6703;<a href="https://blog.camel2243.com/2017/01/31/javascript-requestanimationframe-%E5%84%AA%E5%8C%96%E5%8B%95%E7%95%AB%E6%95%88%E7%8E%87%E8%88%87%E8%B3%87%E6%BA%90/" target="_blank" rel="noopener">&#x512A;&#x5316;&#x52D5;&#x756B;&#x51FD;&#x5F0F;&#x7684;&#x57F7;&#x884C;&#x901F;&#x7387;&#x8207;&#x700F;&#x89BD;&#x5668;&#x672C;&#x8EAB;&#x7684; FPS &#x66F4;&#x65B0;&#x983B;&#x7387;&#x76F8;&#x540C;</a>&#xFF0C;&#x964D;&#x4F4E;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8017;&#x80FD;&#x8207;&#x8CC7;&#x6E90;&#xFF0C;<a href="https://cythilya.github.io/2018/06/26/animation-optimization/" target="_blank" rel="noopener">&#x3008;&#x5982;&#x4F55;&#x63D0;&#x5347;&#x52D5;&#x756B;&#x6548;&#x80FD;&#xFF1F;&#x3009;</a>&#x9019;&#x7BC7;&#x6587;&#x7AE0;&#x6B78;&#x7D0D;&#x4E09;&#x8005;&#x4E4B;&#x9593;&#x7684;&#x8A73;&#x7D30;&#x6BD4;&#x8F03;&#x3002;&#x7C21;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x5728;<strong>&#x5BE6;&#x4F5C;&#x4E2D;&#x6BD4;&#x8F03;&#x63A8;&#x85A6;&#x4F7F;&#x7528; <code>requestAnimationFrame()</code> &#x66F4;&#x65B0;&#x5F71;&#x683C;&#x756B;&#x9762;</strong>&#x3002;</p>
+<hr>
+<h2 id="&#x900F;&#x904E;-Canvas-&#x7C21;&#x55AE;&#x7E6A;&#x88FD;&#x52D5;&#x756B;"><a href="#&#x900F;&#x904E;-Canvas-&#x7C21;&#x55AE;&#x7E6A;&#x88FD;&#x52D5;&#x756B;" class="headerlink" title="&#x900F;&#x904E; Canvas &#x7C21;&#x55AE;&#x7E6A;&#x88FD;&#x52D5;&#x756B;"></a>&#x900F;&#x904E; Canvas &#x7C21;&#x55AE;&#x7E6A;&#x88FD;&#x52D5;&#x756B;</h2><p>&#x672C;&#x7BC7;<a href="https://codepen.io/luffy-chen/pen/vYOgLzR?editors=0010" target="_blank" rel="noopener">&#x5BE6;&#x4F5C;&#x7BC4;&#x4F8B;</a>&#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x5BA3;&#x544A;&#x4E00;&#x500B;&#x8B8A;&#x6578; <code>time</code> &#x7528;&#x4F86;&#x5132;&#x5B58;&#x6642;&#x9593;&#xFF0C;&#x4E26;&#x900F;&#x904E; <code>setInterval()</code> &#x4F86;&#x66F4;&#x65B0;&#x5F71;&#x683C;&#x3002;</p>
+<p>&#x6BCF;&#x6B21;&#x66F4;&#x65B0;&#x5F71;&#x683C;&#x90FD;&#x547C;&#x53EB;&#x4E00;&#x500B;&#x51FD;&#x5F0F;&#xFF0C;&#x5148;&#x5229;&#x7528; <code>ctx.clearRect()</code> &#x6E05;&#x51FA;&#x5148;&#x524D;&#x7684;&#x7E6A;&#x5716;&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x8907;&#x7E6A;&#x88FD;&#x800C;&#x7559;&#x4E0B;&#x6B98;&#x5F71;&#x3002;&#x63A5;&#x8457;&#xFF0C;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x7576;&#x524D;&#x7DB2;&#x9801;&#x5143;&#x7D20;&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x5305;&#x62EC;&#x6A4B;&#x58A9;&#x4E0A;&#x7684;&#x96FB;&#x8ECA;&#x4EE5;&#x53CA;&#x96A8;&#x8457;&#x6ED1;&#x9F20;&#x4F38;&#x7E2E;&#x3001;&#x8B8A;&#x8272;&#x7684;&#x65D7;&#x5E5F;&#xFF0C;&#x9054;&#x5230;&#x52D5;&#x756B;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x521D;&#x59CB;&#x5316; Canvas &#x4EE5;&#x53CA;&#x76F8;&#x95DC;&#x8B8A;&#x6578;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Init canvas</span></span><br><span class="line"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;my-canvas&apos;</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">&apos;2d&apos;</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> canvas_size = <span class="hljs-number">500</span></span><br><span class="line">canvas.width = canvas_size</span><br><span class="line">canvas.height = canvas_size</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> time = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  time++</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// Clear the canvas&#xFF08;&#x6BCF;&#x6B21;&#x66F4;&#x65B0;&#x7A4E;&#x683C;&#xFF09;</span></span><br><span class="line">  ctx.clearRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, canvas_size, canvas_size)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// update the canvas every 1000 / 30 second</span></span><br><span class="line">setInterval(draw, <span class="hljs-number">1000</span> / <span class="hljs-number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Mousemove Event</span></span><br><span class="line"><span class="hljs-keyword">const</span> mouse = {<span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>:<span class="hljs-number">0</span>}</span><br><span class="line">canvas.addEventListener(<span class="hljs-string">&apos;mousemove&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{</span><br><span class="line">  mouse.x = e.offsetX</span><br><span class="line">  mouse.y = e.offsetY</span><br><span class="line">})</span><br></pre></td></tr></table></figure></p>
+<p>&#x7E6A;&#x88FD;&#x96FB;&#x8ECA;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Train</span></span><br><span class="line"><span class="hljs-keyword">let</span> carX = time % <span class="hljs-number">550</span> * <span class="hljs-number">2</span> - <span class="hljs-number">50</span></span><br><span class="line">ctx.lineWidth = <span class="hljs-number">1</span></span><br><span class="line">ctx.fillStyle = <span class="hljs-string">&apos;skyblue&apos;</span></span><br><span class="line">ctx.beginPath()</span><br><span class="line">  ctx.fillRect(carX, <span class="hljs-number">265</span>, <span class="hljs-number">50</span>, <span class="hljs-number">30</span>)</span><br><span class="line">  ctx.strokeRect(carX, <span class="hljs-number">265</span>, <span class="hljs-number">50</span>, <span class="hljs-number">30</span>)</span><br><span class="line">  ctx.arc(carX + <span class="hljs-number">10</span>, <span class="hljs-number">295</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI)</span><br><span class="line">  ctx.arc(carX + <span class="hljs-number">40</span>, <span class="hljs-number">295</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI)</span><br><span class="line">ctx.fillStyle = <span class="hljs-string">&apos;black&apos;</span>;</span><br><span class="line">ctx.fill();</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure></p>
+<p>&#x7E6A;&#x88FD;&#x65D7;&#x5E5F;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Flag</span></span><br><span class="line">ctx.beginPath()</span><br><span class="line">  ctx.moveTo(<span class="hljs-number">225</span>, <span class="hljs-number">200</span>)</span><br><span class="line">  <span class="hljs-comment">// change the position of flag when mouse moving</span></span><br><span class="line">  ctx.lineTo(<span class="hljs-number">225</span>, <span class="hljs-number">50</span> + mouse.y / <span class="hljs-number">5</span>)</span><br><span class="line">  ctx.lineTo(<span class="hljs-number">250</span>, <span class="hljs-number">60</span> + mouse.y / <span class="hljs-number">5</span> - time % <span class="hljs-number">5</span>)</span><br><span class="line">  ctx.lineTo(<span class="hljs-number">225</span>, <span class="hljs-number">70</span> + mouse.y / <span class="hljs-number">5</span>)</span><br><span class="line">ctx.closePath()</span><br><span class="line"><span class="hljs-comment">// change the color of flag when mosue moving</span></span><br><span class="line">ctx.fillStyle = <span class="hljs-string">`hsl(<span class="hljs-subst">${mouse.x % <span class="hljs-number">360</span>}</span>, 50%, 50%`</span></span><br><span class="line">ctx.fill()</span><br><span class="line">ctx.stroke()</span><br></pre></td></tr></table></figure></p>
+<p>&#x2B50; &#x5584;&#x7528; <code>%</code> &#x53D6;&#x9918;&#x6578;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x7372;&#x5F97; 0 ~ X &#x4E4B;&#x9593;&#x7684;&#x6578;&#xFF0C;&#x53EF;&#x4EE5;&#x5275;&#x9020;&#x91CD;&#x8907;&#x7684;&#x52D5;&#x756B;&#x6548;&#x679C;&#xFF08;&#x65D7;&#x5E5F;&#x88AB;&#x98A8;&#x5439;&#x52D5;&#x3001;&#x96FB;&#x8ECA;&#x53CD;&#x8986;&#x884C;&#x99DB;&#xFF09;&#x3002;</p>
+<hr>
+<h2 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h2><ol>
+<li><a href="https://hahow.in/courses/586fae97a8aae907000ce721/discussions?item=5a1e1755a2c4b000589dda2c" target="_blank" rel="noopener">&#x52D5;&#x756B;&#x4E92;&#x52D5;&#x7DB2;&#x9801;&#x7279;&#x6548;&#x5165;&#x9580;&#xFF08;JS/CANVAS&#xFF09;&#xFF1A;5-1 Canvas &#x7E6A;&#x5716;&#x57FA;&#x790E;&#x8A9E;&#x6CD5;&#x8207;&#x52D5;&#x756B;&#x539F;&#x7406;</a></li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">MDN&#xFF1A;Canvas &#x6559;&#x5B78;&#x6587;&#x4EF6;</a></li>
+<li><a href="https://www.html5canvastutorials.com/" target="_blank" rel="noopener">HTML5 Canvas Tutorials Home</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/W3HexSchool/">#W3HexSchool</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/02/23/canvas-01/">把網頁當畫布揮灑的 Canvas 01：基礎圖形繪製</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2020/03/01/canvas-02/';
+        this.page.identifier = '2020/03/01/canvas-02/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiBlog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Luffy&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/Feitoengineer19">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-tw");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
