@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/promise.png">
 <meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/data.png">
 <meta property="og:image" content="https://feitoengineer19.github.io/2020/02/15/mask-map-share/geo.png">
-<meta property="og:updated_time" content="2020-02-27T03:01:11.519Z">
+<meta property="og:updated_time" content="2020-03-03T17:28:39.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020 口罩存貨實時地圖開發紀錄">
 <meta name="twitter:description" content="&amp;#x9019;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x4E3B;&amp;#x8981;&amp;#x662F;&amp;#x60F3;&amp;#x8A18;&amp;#x9304;&amp;#x9019;&amp;#x6B21;&amp;#x300C;2020 &amp;#x53E3;&amp;#x7F69;&amp;#x5B58;&amp;#x8CA8;&amp;#x5BE6;&amp;#x6642;&amp;#x5730;&amp;#x5716;&amp;#x300D;&amp;#x7684;&amp;#x958B;&amp;#x">
@@ -108,90 +108,6 @@
             </a>
             
             
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="目錄">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x4F7F;&amp;#x7528;-leaflet-js-&amp;#x8207;-OpenStreetMap-&amp;#x642D;&amp;#x5EFA;&amp;#x5730;&amp;#x5716;&amp;#x8CC7;&amp;#x6599;">1&nbsp;&nbsp;<b>&amp;amp;#x4F7F;&amp;amp;#x7528; leaflet.js &amp;amp;#x8207; OpenStreetMap &amp;amp;#x642D;&amp;amp;#x5EFA;&amp;amp;#x5730;&amp;amp;#x5716;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x900F;&amp;#x904E;-JavaScript-ES6-Promise-&amp;#x8A9E;&amp;#x6CD5;&amp;#x4E32;&amp;#x63A5;-API">2&nbsp;&nbsp;<b>&amp;amp;#x900F;&amp;amp;#x904E; JavaScript ES6 Promise &amp;amp;#x8A9E;&amp;amp;#x6CD5;&amp;amp;#x4E32;&amp;amp;#x63A5; API</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x4F7F;&amp;#x7528;-Leaflet-markercluster-&amp;#x7FA4;&amp;#x96C6;&amp;#x5316;&amp;#x8CC7;&amp;#x6599;">3&nbsp;&nbsp;<b>&amp;amp;#x4F7F;&amp;amp;#x7528; Leaflet.markercluster &amp;amp;#x7FA4;&amp;amp;#x96C6;&amp;amp;#x5316;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x7E23;&amp;#x5E02;&amp;#xFF0F;&amp;#x9109;&amp;#x93AE;&amp;#x5E02;&amp;#x5340;&amp;#xFF0F;&amp;#x95DC;&amp;#x9375;&amp;#x5B57;&amp;#x7BE9;&amp;#x9078;&amp;#x529F;&amp;#x80FD;&amp;#x5BE6;&amp;#x4F5C;">4&nbsp;&nbsp;<b>&amp;amp;#x7E23;&amp;amp;#x5E02;&amp;amp;#xFF0F;&amp;amp;#x9109;&amp;amp;#x93AE;&amp;amp;#x5E02;&amp;amp;#x5340;&amp;amp;#xFF0F;&amp;amp;#x95DC;&amp;amp;#x9375;&amp;amp;#x5B57;&amp;amp;#x7BE9;&amp;amp;#x9078;&amp;amp;#x529F;&amp;amp;#x80FD;&amp;amp;#x5BE6;&amp;amp;#x4F5C;</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#replace-&amp;#x548C;-Regex-&amp;#x6574;&amp;#x7406;&amp;#x5B57;&amp;#x4E32;">4.1&nbsp;&nbsp;replace() &amp;amp;#x548C; Regex &amp;amp;#x6574;&amp;amp;#x7406;&amp;amp;#x5B57;&amp;amp;#x4E32;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x522A;&amp;#x9664;&amp;#x9663;&amp;#x5217;&amp;#x4E2D;&amp;#x7279;&amp;#x5B9A;&amp;#x503C;&amp;#x7684;&amp;#x65B9;&amp;#x6CD5;">4.2&nbsp;&nbsp;&amp;amp;#x522A;&amp;amp;#x9664;&amp;amp;#x9663;&amp;amp;#x5217;&amp;amp;#x4E2D;&amp;amp;#x7279;&amp;amp;#x5B9A;&amp;amp;#x503C;&amp;amp;#x7684;&amp;amp;#x65B9;&amp;amp;#x6CD5;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x522A;&amp;#x9664;&amp;#x9663;&amp;#x5217;&amp;#x4E2D;&amp;#x91CD;&amp;#x8907;&amp;#x503C;&amp;#x7684;&amp;#x65B9;&amp;#x6CD5;">4.3&nbsp;&nbsp;&amp;amp;#x522A;&amp;amp;#x9664;&amp;amp;#x9663;&amp;amp;#x5217;&amp;amp;#x4E2D;&amp;amp;#x91CD;&amp;amp;#x8907;&amp;amp;#x503C;&amp;amp;#x7684;&amp;amp;#x65B9;&amp;amp;#x6CD5;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x7528;-include-&amp;#x5339;&amp;#x914D;&amp;#x9078;&amp;#x9805;&amp;#x548C;&amp;#x95DC;&amp;#x9375;&amp;#x5B57;">4.4&nbsp;&nbsp;&amp;amp;#x7528; include() &amp;amp;#x5339;&amp;amp;#x914D;&amp;amp;#x9078;&amp;amp;#x9805;&amp;amp;#x548C;&amp;amp;#x95DC;&amp;amp;#x9375;&amp;amp;#x5B57;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x5C07;&amp;#x8CC7;&amp;#x8A0A;&amp;#x6A23;&amp;#x677F;&amp;#x5C01;&amp;#x88DD;&amp;#x6210;&amp;#x51FD;&amp;#x5F0F;&amp;#x4EE5;&amp;#x4FBF;&amp;#x5F48;&amp;#x6027;&amp;#x547C;&amp;#x53EB;">4.5&nbsp;&nbsp;&amp;amp;#x5C07;&amp;amp;#x8CC7;&amp;amp;#x8A0A;&amp;amp;#x6A23;&amp;amp;#x677F;&amp;amp;#x5C01;&amp;amp;#x88DD;&amp;amp;#x6210;&amp;amp;#x51FD;&amp;amp;#x5F0F;&amp;amp;#x4EE5;&amp;amp;#x4FBF;&amp;amp;#x5F48;&amp;amp;#x6027;&amp;amp;#x547C;&amp;amp;#x53EB;</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x900F;&amp;#x904E;-Geolocation-&amp;#x53D6;&amp;#x5F97;&amp;#x4F7F;&amp;#x7528;&amp;#x8005;&amp;#x7684;&amp;#x4F4D;&amp;#x7F6E;&amp;#x8CC7;&amp;#x8A0A;">5&nbsp;&nbsp;<b>&amp;amp;#x900F;&amp;amp;#x904E; Geolocation &amp;amp;#x53D6;&amp;amp;#x5F97;&amp;amp;#x4F7F;&amp;amp;#x7528;&amp;amp;#x8005;&amp;amp;#x7684;&amp;amp;#x4F4D;&amp;amp;#x7F6E;&amp;amp;#x8CC7;&amp;amp;#x8A0A;</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x6536;&amp;#x85CF;&amp;#x529F;&amp;#x80FD;&amp;#x5BE6;&amp;#x4F5C;">6&nbsp;&nbsp;<b>&amp;amp;#x6536;&amp;amp;#x85CF;&amp;amp;#x529F;&amp;amp;#x80FD;&amp;amp;#x5BE6;&amp;amp;#x4F5C;</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Local-Storage-&amp;#x66AB;&amp;#x5B58;&amp;#x6536;&amp;#x85CF;&amp;#x85E5;&amp;#x5C40;">6.1&nbsp;&nbsp;Local Storage &amp;amp;#x66AB;&amp;amp;#x5B58;&amp;amp;#x6536;&amp;amp;#x85CF;&amp;amp;#x85E5;&amp;amp;#x5C40;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x539F;&amp;#x751F;-JS-&amp;#x65B0;&amp;#x589E;&amp;#xFF0F;&amp;#x79FB;&amp;#x9664;-HTML-&amp;#x4E2D;&amp;#x7684;-class">6.2&nbsp;&nbsp;&amp;amp;#x539F;&amp;amp;#x751F; JS &amp;amp;#x65B0;&amp;amp;#x589E;&amp;amp;#xFF0F;&amp;amp;#x79FB;&amp;amp;#x9664; HTML &amp;amp;#x4E2D;&amp;amp;#x7684; class</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x5F8C;&amp;#x8A18;">7&nbsp;&nbsp;<b>&amp;amp;#x5F8C;&amp;amp;#x8A18;</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x53C3;&amp;#x8003;&amp;#x8CC7;&amp;#x6599;">8&nbsp;&nbsp;<b>&amp;amp;#x53C3;&amp;amp;#x8003;&amp;amp;#x8CC7;&amp;amp;#x6599;</b></a>
-                    
-                </div>
-            </div>
-            
             
             <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
                 
@@ -219,7 +135,7 @@
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Side-project/">Side-project</a>
+            <a class="article-category-link" href="/categories/side-Project/">side-Project</a>
         </span>
         
         
