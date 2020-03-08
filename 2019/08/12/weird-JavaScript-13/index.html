@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="&amp;#x5F37;&amp;#x5236;&amp;#x578B;&amp;#x8F49;&amp;#xFF08;Coercion&amp;#xFF09;&amp;#xFF0C; JS &amp;#x5077;&amp;#x5077;&amp;#x5E6B;&amp;#x6211;&amp;#x5011;&amp;#x8655;&amp;#x7406;&amp;#x4F46;&amp;#x4E0D;&amp;#x544A;&amp;#x8A34;&amp;#x6211;&amp;#x5011;&amp;#x7684;&amp;#x4E8B;&amp;#x60C5;&amp;#x4">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-02-23T09:35:07.894Z">
+<meta property="og:updated_time" content="2020-03-05T17:28:16.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 13：強制型轉">
 <meta name="twitter:description" content="&amp;#x5F37;&amp;#x5236;&amp;#x578B;&amp;#x8F49;&amp;#xFF08;Coercion&amp;#xFF09;&amp;#xFF0C; JS &amp;#x5077;&amp;#x5077;&amp;#x5E6B;&amp;#x6211;&amp;#x5011;&amp;#x8655;&amp;#x7406;&amp;#x4F46;&amp;#x4E0D;&amp;#x544A;&amp;#x8A34;&amp;#x6211;&amp;#x5011;&amp;#x7684;&amp;#x4E8B;&amp;#x60C5;&amp;#x4">
@@ -139,9 +139,10 @@
         <p>&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;&#xFF0C; JS &#x5077;&#x5077;&#x5E6B;&#x6211;&#x5011;&#x8655;&#x7406;&#x4F46;&#x4E0D;&#x544A;&#x8A34;&#x6211;&#x5011;&#x7684;&#x4E8B;&#x60C5;&#x4E4B;&#x4E00;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;"><a href="#&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;" class="headerlink" title="&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;"></a>&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;</h3><blockquote>
-<p>Converting a value from one type to another.<br>This happens quite often in JavaScript because it&#x2019;s dynamically typed.</p>
+<h3 id="&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;"><a href="#&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;" class="headerlink" title="&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;"></a>&#x5F37;&#x5236;&#x578B;&#x8F49;&#xFF08;Coercion&#xFF09;</h3><blockquote class="colorquote warning"><p>Converting a value from one type to another.<br>This happens quite often in JavaScript because it&#x2019;s dynamically typed.</p>
 </blockquote>
+
+
 <p>&#x7531;&#x65BC; JavaScript &#x5C6C;&#x65BC;&#x52D5;&#x614B;&#x578B;&#x5225;&#x7684;&#x8A9E;&#x8A00;&#xFF0C;&#x8A9E;&#x6CD5;&#x5C0D;&#x65BC;&#x8CC7;&#x6599;&#x578B;&#x614B;&#x4E26;&#x6C92;&#x6709;&#x56B4;&#x683C;&#x7684;&#x898F;&#x7BC4;&#xFF0C;&#x4EE5;&#x81F4;&#x578B;&#x5225;&#x4E4B;&#x9593;&#x7684;&#x8F49;&#x63DB;&#x76F8;&#x7576;&#x5BB9;&#x6613;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;<strong>&#x7576;&#x78B0;&#x5230;&#x4E0D;&#x540C;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x4E4B;&#x9593;&#x7684;&#x904B;&#x7B97;&#x6216;&#x5224;&#x65B7;&#x6642;&#xFF0C;JS &#x6703;&#xFF08;&#x8CBC;&#x5FC3;&#xFF1F;&#xFF09;&#x5077;&#x5077;&#x5E6B;&#x6211;&#x5011;&#x8F49;&#x63DB;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x9032;&#x884C;&#x5224;&#x65B7;</strong>&#xFF0C;&#x9019;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;<strong>&#x5F37;&#x5236;&#x578B;&#x8F49;</strong>&#x3002;</p>
 <p>JS &#x5F37;&#x5236;&#x578B;&#x8F49;&#x7684;&#x7279;&#x8272;&#x662F;&#x6709;&#x8DE1;&#x53EF;&#x5FAA;&#x7684;&#xFF0C;&#x6211;&#x5011;&#x5148;&#x5F9E;&#x5B57;&#x4E32;&#x904B;&#x7B97;&#x5B50;&#x8B1B;&#x8D77;&#x3002;</p>
 <h4 id="&#x5B57;&#x4E32;&#x904B;&#x7B97;&#x5B50;&#xFF08;String-Operator&#xFF09;"><a href="#&#x5B57;&#x4E32;&#x904B;&#x7B97;&#x5B50;&#xFF08;String-Operator&#xFF09;" class="headerlink" title="&#x5B57;&#x4E32;&#x904B;&#x7B97;&#x5B50;&#xFF08;String Operator&#xFF09;"></a>&#x5B57;&#x4E32;&#x904B;&#x7B97;&#x5B50;&#xFF08;String Operator&#xFF09;</h4><p>&#x5B57;&#x4E32;&#x904B;&#x7B97;&#x5B50;&#x4E2D;&#x53EA;&#x6709; <code>+</code> &#x9019;&#x500B;&#x904B;&#x7B97;&#x5B50;&#xFF0C;&#x5B83;&#x9664;&#x4E86;&#x53EF;&#x4EE5;&#x4F5C;&#x70BA;&#x7B97;&#x8853;&#x4E2D;&#x7684;&#x52A0;&#x6CD5;&#xFF0C;&#x9084;&#x53EF;&#x4EE5;<strong>&#x4E32;&#x8D77;&#x5169;&#x908A;&#x7684;&#x5B57;&#x4E32;</strong>&#x3002;</p>

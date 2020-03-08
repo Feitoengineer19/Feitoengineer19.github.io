@@ -25,7 +25,7 @@
 <meta property="og:description" content="&amp;#x5224;&amp;#x65B7;&amp;#x8B8A;&amp;#x6578;&amp;#x5C6C;&amp;#x65BC;&amp;#x5168;&amp;#x57DF;&amp;#x8B8A;&amp;#x6578;&amp;#xFF08;Global Variable&amp;#xFF09;&amp;#x9084;&amp;#x662F;&amp;#x5340;&amp;#x57DF;&amp;#x8B8A;&amp;#x6578;&amp;#xFF08;Local Variable&amp;#xFF09;&amp;#xFF0C;&amp;#x">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/08/weird-JavaScript-07/scopeChain.JPG">
-<meta property="og:updated_time" content="2020-02-23T09:35:22.041Z">
+<meta property="og:updated_time" content="2020-03-05T17:38:00.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScriptㄋ 07：變數環境與範圍鍊">
 <meta name="twitter:description" content="&amp;#x5224;&amp;#x65B7;&amp;#x8B8A;&amp;#x6578;&amp;#x5C6C;&amp;#x65BC;&amp;#x5168;&amp;#x57DF;&amp;#x8B8A;&amp;#x6578;&amp;#xFF08;Global Variable&amp;#xFF09;&amp;#x9084;&amp;#x662F;&amp;#x5340;&amp;#x57DF;&amp;#x8B8A;&amp;#x6578;&amp;#xFF08;Local Variable&amp;#xFF09;&amp;#xFF0C;&amp;#x">
@@ -141,9 +141,10 @@
         <p>&#x5224;&#x65B7;&#x8B8A;&#x6578;&#x5C6C;&#x65BC;<strong>&#x5168;&#x57DF;&#x8B8A;&#x6578;&#xFF08;Global Variable&#xFF09;</strong>&#x9084;&#x662F;<strong>&#x5340;&#x57DF;&#x8B8A;&#x6578;&#xFF08;Local Variable&#xFF09;</strong>&#xFF0C;&#x6211;&#x5011;&#x5C31;&#x5F97;&#x770B;&#x8B8A;&#x6578;&#x5BA3;&#x544A;&#x6240;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8B8A;&#x6578;&#x74B0;&#x5883;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="&#x8B8A;&#x6578;&#x74B0;&#x5883;"><a href="#&#x8B8A;&#x6578;&#x74B0;&#x5883;" class="headerlink" title="&#x8B8A;&#x6578;&#x74B0;&#x5883;"></a>&#x8B8A;&#x6578;&#x74B0;&#x5883;</h3><blockquote>
-<p>Where the variables live.</p>
+<h3 id="&#x8B8A;&#x6578;&#x74B0;&#x5883;"><a href="#&#x8B8A;&#x6578;&#x74B0;&#x5883;" class="headerlink" title="&#x8B8A;&#x6578;&#x74B0;&#x5883;"></a>&#x8B8A;&#x6578;&#x74B0;&#x5883;</h3><blockquote class="colorquote warning"><p>Where the variables live.</p>
 </blockquote>
+
+
 <p>&#x8B8A;&#x6578;&#x74B0;&#x5883;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x8B8A;&#x6578;&#x6240;&#x8655;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
 <p>&#x5148;&#x524D;&#x5728; weirdJavaScript 03 &#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x5F97;&#x5230;&#x7D50;&#x8AD6;&#xFF1A;&#x5168;&#x57DF;&#x74B0;&#x5883;&#xFF0C;&#x6216;&#x8AAA;&#x5168;&#x57DF;&#x7269;&#x4EF6; <code>window</code> &#xFF0C;&#x6307;&#x7684;&#x662F;<strong>&#x4E0D;&#x5728;&#x51FD;&#x5F0F;&#x88E1;&#xFF08;Not in a function&#xFF09;</strong>&#x3002;</p>
 <p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;<strong>&#x5728;&#x5168;&#x57DF;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x88E1;&#x51FA;&#x73FE;&#x7684;&#x8B8A;&#x6578;&#xFF0C;&#x7121;&#x8AD6;&#x662F;&#x5426;&#x7D93;&#x904E; <code>var</code> &#x5BA3;&#x544A;&#xFF0C;&#x90FD;&#x5C6C;&#x65BC;&#x5168;&#x57DF;&#x8B8A;&#x6578;</strong>&#x3002;</p>

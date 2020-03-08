@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x66FE;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E; jQuery &amp;#x3001; setTimeout &amp;#x7B49; Callback Function&amp;#xFF0C;&amp;#x5176;&amp;#x5BE6;&amp;#x4F60;&amp;#x5DF2;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E;&amp;#x9589;&amp;#">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-11-22T13:39:05.626Z">
+<meta property="og:updated_time" content="2020-03-05T17:16:48.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 34：閉包與回呼">
 <meta name="twitter:description" content="&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x66FE;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E; jQuery &amp;#x3001; setTimeout &amp;#x7B49; Callback Function&amp;#xFF0C;&amp;#x5176;&amp;#x5BE6;&amp;#x4F60;&amp;#x5DF2;&amp;#x7D93;&amp;#x4F7F;&amp;#x7528;&amp;#x904E;&amp;#x9589;&amp;#">
@@ -160,9 +160,9 @@
 </ol>
 <hr>
 
-<h3 id="&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback-Function&#xFF09;"><a href="#&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback-Function&#xFF09;" class="headerlink" title="&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback Function&#xFF09;"></a>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback Function&#xFF09;</h3><blockquote>
-<p>A function you five to another function, to be run when the other function is finished.<br>the function you call(invoke), &#x2018;calls back&#x2019; by calling the function you gave it when finished.</p>
+<h3 id="&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback-Function&#xFF09;"><a href="#&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback-Function&#xFF09;" class="headerlink" title="&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback Function&#xFF09;"></a>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF08;Callback Function&#xFF09;</h3><blockquote class="colorquote warning"><p>A function you give to another function, to be run when the other function is finished.<br>The function you called(invoked), &#x2018;calls back&#x2019; by calling the function you gave it when finished.</p>
 </blockquote>
+
 <p>&#x7406;&#x89E3;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x8209; A &#x51FD;&#x5F0F;&#x8207; B &#x51FD;&#x5F0F;&#x4F86;&#x8AAA;&#x660E;&#xFF1A;&#x6211;&#x5011;&#x5728; A &#x51FD;&#x5F0F;&#x4E2D;&#x5275;&#x9020; B &#x51FD;&#x5F0F;&#xFF0C;&#x63A5;&#x8457;&#x57F7;&#x884C; A &#x51FD;&#x5F0F;&#xFF0C;&#x7B49;&#x5230; A &#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x7D50;&#x675F;&#x5F8C;&#xFF0C;&#x624D;&#x56DE;&#x982D;&#x547C;&#x53EB; B &#x51FD;&#x5F0F;&#xFF0C;&#x6B64;&#x6642; B &#x51FD;&#x5F0F;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x3002;</p>
 <p>&#x7C21;&#x8A00;&#x4E4B;&#xFF0C;<strong>&#x56DE;&#x982D;&#x547C;&#x53EB;&#x7684;&#x51FD;&#x5F0F;&#xFF0C;&#x5373;&#x56DE;&#x547C;&#x51FD;&#x5F0F;</strong>&#xFF08;&#x5176;&#x6240;&#x5728;&#x7684;&#x5916;&#x90E8;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x53EF;&#x80FD;&#x5DF2;&#x7D93;&#x6D88;&#x6EC5;&#xFF09;&#x3002;</p>
 <p>&#x56DE;&#x547C;&#x51FD;&#x5F0F;&#x4E5F;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#xFF1A;<strong>&#x5C07; B &#x51FD;&#x5F0F;&#x7576;&#x4F5C; A &#x51FD;&#x5F0F;&#x7684;&#x53C3;&#x6578;&#x50B3;&#x5165;&#xFF0C;&#x4E26;&#x5728; A &#x51FD;&#x5F0F;&#x4E2D;&#x547C;&#x53EB; B &#x51FD;&#x5F0F;</strong>&#x3002;</p>

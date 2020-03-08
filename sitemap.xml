@@ -2,37 +2,191 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://feitoengineer19.github.io/2020/02/15/mask-map-share/</loc>
+    <loc>https://feitoengineer19.github.io/2020/03/08/canvas-03/</loc>
     
-    <lastmod>2020-03-03T17:28:39.627Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/20/weird-JavaScript-26/</loc>
-    
-    <lastmod>2020-03-03T17:22:12.409Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/20/weird-JavaScript-25/</loc>
-    
-    <lastmod>2020-03-03T17:22:03.925Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/17/weird-JavaScript-24/</loc>
-    
-    <lastmod>2020-03-03T17:22:01.618Z</lastmod>
+    <lastmod>2020-03-08T05:23:51.250Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://feitoengineer19.github.io/2020/03/01/canvas-02/</loc>
     
-    <lastmod>2020-03-01T03:26:49.948Z</lastmod>
+    <lastmod>2020-03-08T05:16:56.412Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/04/weird-JavaScript-01/</loc>
+    
+    <lastmod>2020-03-05T17:46:26.633Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/</loc>
+    
+    <lastmod>2020-03-05T17:44:13.316Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/</loc>
+    
+    <lastmod>2020-03-05T17:42:12.009Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/07/weird-JavaScript-06/</loc>
+    
+    <lastmod>2020-03-05T17:39:42.269Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/08/weird-JavaScript-07/</loc>
+    
+    <lastmod>2020-03-05T17:38:00.088Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/09/weird-JavaScript-08/</loc>
+    
+    <lastmod>2020-03-05T17:37:22.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/10/weird-JavaScript-09/</loc>
+    
+    <lastmod>2020-03-05T17:36:05.752Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/10/weird-JavaScript-10/</loc>
+    
+    <lastmod>2020-03-05T17:35:27.166Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/11/weird-JavaScript-11/</loc>
+    
+    <lastmod>2020-03-05T17:30:18.743Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/11/weird-JavaScript-12/</loc>
+    
+    <lastmod>2020-03-05T17:29:47.529Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/12/weird-JavaScript-13/</loc>
+    
+    <lastmod>2020-03-05T17:28:16.992Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-17/</loc>
+    
+    <lastmod>2020-03-05T17:26:58.659Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/</loc>
+    
+    <lastmod>2020-03-05T17:25:54.037Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-20/</loc>
+    
+    <lastmod>2020-03-05T17:25:22.528Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/16/weird-JavaScript-22/</loc>
+    
+    <lastmod>2020-03-05T17:24:17.653Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/17/weird-JavaScript-24/</loc>
+    
+    <lastmod>2020-03-05T17:23:50.370Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/21/weird-JavaScript-28/</loc>
+    
+    <lastmod>2020-03-05T17:22:01.466Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/24/weird-JavaScript-30/</loc>
+    
+    <lastmod>2020-03-05T17:21:35.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/</loc>
+    
+    <lastmod>2020-03-05T17:19:01.610Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/29/weird-JavaScript-34/</loc>
+    
+    <lastmod>2020-03-05T17:16:48.372Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/09/07/weird-JavaScript-38/</loc>
+    
+    <lastmod>2020-03-05T17:13:44.176Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/09/16/HTML5-semantic-tag/</loc>
+    
+    <lastmod>2020-03-05T17:12:09.452Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/20/weird-JavaScript-26/</loc>
+    
+    <lastmod>2020-03-03T17:33:26.780Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2019/08/20/weird-JavaScript-25/</loc>
+    
+    <lastmod>2020-03-03T17:33:18.309Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://feitoengineer19.github.io/2020/02/15/mask-map-share/</loc>
+    
+    <lastmod>2020-03-03T17:28:39.627Z</lastmod>
     
   </url>
   
@@ -51,20 +205,6 @@
   </url>
   
   <url>
-    <loc>https://feitoengineer19.github.io/2019/08/04/weird-JavaScript-01/</loc>
-    
-    <lastmod>2020-02-23T09:35:33.137Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/</loc>
-    
-    <lastmod>2020-02-23T09:35:31.249Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-03/</loc>
     
     <lastmod>2020-02-23T09:35:29.187Z</lastmod>
@@ -79,69 +219,6 @@
   </url>
   
   <url>
-    <loc>https://feitoengineer19.github.io/2019/08/06/weird-JavaScript-05/</loc>
-    
-    <lastmod>2020-02-23T09:35:25.507Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/07/weird-JavaScript-06/</loc>
-    
-    <lastmod>2020-02-23T09:35:23.981Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/08/weird-JavaScript-07/</loc>
-    
-    <lastmod>2020-02-23T09:35:22.041Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/09/weird-JavaScript-08/</loc>
-    
-    <lastmod>2020-02-23T09:35:18.217Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/10/weird-JavaScript-09/</loc>
-    
-    <lastmod>2020-02-23T09:35:16.477Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/10/weird-JavaScript-10/</loc>
-    
-    <lastmod>2020-02-23T09:35:13.864Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/11/weird-JavaScript-11/</loc>
-    
-    <lastmod>2020-02-23T09:35:12.154Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/11/weird-JavaScript-12/</loc>
-    
-    <lastmod>2020-02-23T09:35:09.571Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/12/weird-JavaScript-13/</loc>
-    
-    <lastmod>2020-02-23T09:35:07.894Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://feitoengineer19.github.io/2019/09/09/weird-JavaScript-40/</loc>
     
     <lastmod>2020-02-23T09:34:52.386Z</lastmod>
@@ -152,13 +229,6 @@
     <loc>https://feitoengineer19.github.io/2019/09/08/weird-JavaScript-39/</loc>
     
     <lastmod>2020-02-23T09:34:49.100Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/09/07/weird-JavaScript-38/</loc>
-    
-    <lastmod>2020-02-23T09:34:46.942Z</lastmod>
     
   </url>
   
@@ -198,13 +268,6 @@
   </url>
   
   <url>
-    <loc>https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-17/</loc>
-    
-    <lastmod>2020-02-23T09:32:30.439Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-18/</loc>
     
     <lastmod>2020-02-23T09:32:28.584Z</lastmod>
@@ -212,30 +275,9 @@
   </url>
   
   <url>
-    <loc>https://feitoengineer19.github.io/2019/08/14/weird-JavaScript-19/</loc>
-    
-    <lastmod>2020-02-23T09:32:26.461Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-20/</loc>
-    
-    <lastmod>2020-02-23T09:32:24.840Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://feitoengineer19.github.io/2019/08/15/weird-JavaScript-21/</loc>
     
     <lastmod>2020-02-23T09:32:23.123Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/16/weird-JavaScript-22/</loc>
-    
-    <lastmod>2020-02-23T09:32:21.150Z</lastmod>
     
   </url>
   
@@ -268,20 +310,6 @@
   </url>
   
   <url>
-    <loc>https://feitoengineer19.github.io/2019/09/16/HTML5-semantic-tag/</loc>
-    
-    <lastmod>2020-02-15T16:39:42.597Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/24/weird-JavaScript-30/</loc>
-    
-    <lastmod>2020-02-15T16:34:05.403Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://feitoengineer19.github.io/2019/11/30/JS-Underground-B1/</loc>
     
     <lastmod>2019-11-30T16:26:58.969Z</lastmod>
@@ -289,23 +317,9 @@
   </url>
   
   <url>
-    <loc>https://feitoengineer19.github.io/2019/08/29/weird-JavaScript-34/</loc>
-    
-    <lastmod>2019-11-22T13:39:05.626Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://feitoengineer19.github.io/2019/08/27/weird-JavaScript-33/</loc>
     
     <lastmod>2019-11-22T13:39:03.114Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/26/weird-JavaScript-32/</loc>
-    
-    <lastmod>2019-11-22T13:38:59.955Z</lastmod>
     
   </url>
   
@@ -320,13 +334,6 @@
     <loc>https://feitoengineer19.github.io/2019/08/23/weird-JavaScript-29/</loc>
     
     <lastmod>2019-11-22T13:38:51.636Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://feitoengineer19.github.io/2019/08/21/weird-JavaScript-28/</loc>
-    
-    <lastmod>2019-11-22T13:38:46.869Z</lastmod>
     
   </url>
   

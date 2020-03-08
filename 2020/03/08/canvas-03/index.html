@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>把網頁當畫布揮灑的 Canvas 03：操作座標系 - Luffy&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="Canvas &amp;#x7E6A;&amp;#x5716;&amp;#x56FA;&amp;#x7136;&amp;#x53B2;&amp;#x5BB3;&amp;#xFF0C;&amp;#x4F46;&amp;#x6BCF;&amp;#x6B21;&amp;#x7E6A;&amp;#x5716;&amp;#x90FD;&amp;#x8981;&amp;#x7B97;&amp;#x5EA7;&amp;#x6A19;&amp;#x9EDE;&amp;#xFF0C;&amp;#x592A;&amp;#x7D2F;&amp;#x4E86;&amp;#x5427;&amp;#xFF1F;">
+<meta name="keywords" content="W3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把網頁當畫布揮灑的 Canvas 03：操作座標系">
+<meta property="og:url" content="https://feitoengineer19.github.io/2020/03/08/canvas-03/index.html">
+<meta property="og:site_name" content="Luffy&#39;s Blog">
+<meta property="og:description" content="Canvas &amp;#x7E6A;&amp;#x5716;&amp;#x56FA;&amp;#x7136;&amp;#x53B2;&amp;#x5BB3;&amp;#xFF0C;&amp;#x4F46;&amp;#x6BCF;&amp;#x6B21;&amp;#x7E6A;&amp;#x5716;&amp;#x90FD;&amp;#x8981;&amp;#x7B97;&amp;#x5EA7;&amp;#x6A19;&amp;#x9EDE;&amp;#xFF0C;&amp;#x592A;&amp;#x7D2F;&amp;#x4E86;&amp;#x5427;&amp;#xFF1F;">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/03/08/canvas-03/coordinateSystem.png">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/03/08/canvas-03/setTransform.png">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/03/08/canvas-03/demo.png">
+<meta property="og:updated_time" content="2020-03-08T05:23:51.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把網頁當畫布揮灑的 Canvas 03：操作座標系">
+<meta name="twitter:description" content="Canvas &amp;#x7E6A;&amp;#x5716;&amp;#x56FA;&amp;#x7136;&amp;#x53B2;&amp;#x5BB3;&amp;#xFF0C;&amp;#x4F46;&amp;#x6BCF;&amp;#x6B21;&amp;#x7E6A;&amp;#x5716;&amp;#x90FD;&amp;#x8981;&amp;#x7B97;&amp;#x5EA7;&amp;#x6A19;&amp;#x9EDE;&amp;#xFF0C;&amp;#x592A;&amp;#x7D2F;&amp;#x4E86;&amp;#x5427;&amp;#xFF1F;">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2020/03/08/canvas-03/coordinateSystem.png">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Luffy
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            把網頁當畫布揮灑的 Canvas 03：操作座標系
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-03-08T05:14:20.000Z" itemprop="datePublished">2020年3月8日</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>Canvas &#x7E6A;&#x5716;&#x56FA;&#x7136;&#x53B2;&#x5BB3;&#xFF0C;&#x4F46;&#x6BCF;&#x6B21;&#x7E6A;&#x5716;&#x90FD;&#x8981;&#x7B97;&#x5EA7;&#x6A19;&#x9EDE;&#xFF0C;&#x592A;&#x7D2F;&#x4E86;&#x5427;&#xFF1F;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x5011;&#x8981;&#x5B78;&#x6703;&#x64CD;&#x4F5C;&#x5EA7;&#x6A19;&#x7CFB;&#x7D71;&#xFF01;</p>
+  <a id="more"></a>
+
+<hr>
+<h2 id="&#x70BA;&#x4EC0;&#x9EBC;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x5EA7;&#x6A19;&#x7CFB;&#xFF1F;"><a href="#&#x70BA;&#x4EC0;&#x9EBC;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x5EA7;&#x6A19;&#x7CFB;&#xFF1F;" class="headerlink" title="&#x70BA;&#x4EC0;&#x9EBC;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x5EA7;&#x6A19;&#x7CFB;&#xFF1F;"></a>&#x70BA;&#x4EC0;&#x9EBC;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x5EA7;&#x6A19;&#x7CFB;&#xFF1F;</h2><p>&#x5982;&#x540C;&#x524D;&#x8A00;&#x6240;&#x8FF0;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x5728; Canvas &#x7E6A;&#x88FD;&#x5716;&#x5F62;&#x6642;&#xFF0C;&#x5982;&#x679C;&#x6C92;&#x6709;&#x5148;&#x628A;&#x5EA7;&#x6A19;&#x8EF8;&#x756B;&#x51FA;&#x4F86;&#xFF0C;&#x5176;&#x5BE6;&#x5F88;&#x96E3;&#x6191;&#x7A7A;&#x60F3;&#x50CF;&#x7E6A;&#x5716;&#x5EA7;&#x6A19;&#x3002;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x9047;&#x5230;<strong>&#x9700;&#x8981;&#x91CD;&#x8907;&#x7E6A;&#x88FD;&#x7684;&#x5716;&#x5F62;</strong>&#xFF0C;<strong>&#x96E3;&#x4EE5;&#x8A08;&#x7B97;&#x7684;&#x89D2;&#x5EA6;</strong>&#x6216;&#x662F;&#x7E6A;&#x88FD;<strong>&#x5716;&#x5F62;&#x7684;&#x76F8;&#x5C0D;&#x4F4D;&#x7F6E;</strong>&#x6642;&#xFF0C;&#x56FA;&#x5B9A;&#x7684;&#x5EA7;&#x6A19;&#x7CFB;&#x7D71;&#x4E5F;&#x6703;&#x986F;&#x5F97;&#x7D81;&#x624B;&#x7D81;&#x8173;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x5B78;&#x6703;&#x64CD;&#x4F5C;&#x5EA7;&#x6A19;&#x7CFB;&#x7D71;&#x53EF;&#x4EE5;&#x5E6B;&#x52A9;&#x6211;&#x5011;&#x63D0;&#x5347;&#x7E6A;&#x5716;&#x7684;&#x5F48;&#x6027;&#x8207;&#x6548;&#x7387;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x4E5F;&#x8F03;&#x70BA;&#x76F4;&#x89BA;&#xFF0C;&#x56E0;&#x70BA;&#x6211;&#x5011;&#x53EA;&#x8981;<strong>&#x601D;&#x8003;&#x5982;&#x4F55;&#x79FB;&#x52D5;&#x5EA7;&#x6A19;&#x7CFB;&#x5E6B;&#x52A9;&#x6211;&#x5011;&#x7E6A;&#x5716;</strong>&#x3002;</p>
+<hr>
+<h2 id="&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x7684;&#x64CD;&#x4F5C;"><a href="#&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x7684;&#x64CD;&#x4F5C;" class="headerlink" title="&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x7684;&#x64CD;&#x4F5C;"></a>&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x7684;&#x64CD;&#x4F5C;</h2><p>&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x7D71;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x5982;&#x540C; CSS &#x7684; <code>transform</code> &#x5C6C;&#x6027;&#xFF0C;&#x6709;&#x4E09;&#x7A2E;&#x8B8A;&#x5F62;&#x65B9;&#x5F0F;&#xFF0C;&#x5206;&#x5225;&#x662F; <code>translate(x, y)</code> &#x3001;<code>rotate(deg)</code> &#x4EE5;&#x53CA; <code>scale(x, y)</code>&#x3000;&#x3002;&#x3000;</p>
+<p><img src="/2020/03/08/canvas-03/coordinateSystem.png" alt="Canvas &#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x64CD;&#x4F5C;"></p>
+<h3 id="translate"><a href="#translate" class="headerlink" title="translate()"></a>translate()</h3><p>&#x5C0D;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x76EE;&#x524D;&#x7684;&#x4F4D;&#x7F6E;&#x9032;&#x884C;&#x504F;&#x79FB;&#xFF0C; <code>dx</code> &#x70BA;&#x6C34;&#x5E73;&#x504F;&#x79FB;&#x91CF;&#xFF0C; <code>dy</code> &#x70BA;&#x5782;&#x76F4;&#x504F;&#x79FB;&#x91CF;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.translate(dx, dy)</span><br></pre></td></tr></table></figure></p>
+<h3 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h3><p>&#x4EE5;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x539F;&#x9EDE;&#x70BA;&#x4E2D;&#x5FC3;&#x65CB;&#x8F49;&#xFF0C;&#x55AE;&#x4F4D;&#x70BA; <code>Math.PI</code> &#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.translate(angle)</span><br></pre></td></tr></table></figure></p>
+<h3 id="scale"><a href="#scale" class="headerlink" title="scale()"></a>scale()</h3><p>&#x4EE5;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x539F;&#x9EDE;&#x70BA;&#x4E2D;&#x5FC3;&#x7E2E;&#x653E;&#xFF0C; <code>dx</code> &#x70BA;&#x6C34;&#x5E73;&#x7E2E;&#x653E;&#x91CF;&#xFF0C; <code>dy</code> &#x70BA;&#x5782;&#x76F4;&#x7E2E;&#x653E;&#x91CF;&#x3002;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.translate(dx, dy)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="setTransform-&#x8A2D;&#x5B9A;&#x77E9;&#x9663;"><a href="#setTransform-&#x8A2D;&#x5B9A;&#x77E9;&#x9663;" class="headerlink" title="setTransform() &#x8A2D;&#x5B9A;&#x77E9;&#x9663;"></a><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setTransform" target="_blank" rel="noopener">setTransform()</a> &#x8A2D;&#x5B9A;&#x77E9;&#x9663;</h2><p><code>setTransform(a, b, c, d, e, f)</code> &#x53EF;&#x4EE5;&#x50B3;&#x5165; 6 &#x500B;&#x53C3;&#x6578;&#xFF0C;&#x5206;&#x5225;&#x4EE3;&#x8868;&#xFF1A;</p>
+<ul>
+<li><code>a</code> &#xFF1A;&#x6C34;&#x5E73;&#x7E2E;&#x653E;&#xFF08;&#x82E5;&#x503C;&#x70BA; <code>1</code> &#x4EE3;&#x8868;&#x6C92;&#x6709;&#x7E2E;&#x653E;&#xFF09;</li>
+<li><code>b</code> &#xFF1A;&#x5782;&#x76F4;&#x50BE;&#x659C;</li>
+<li><code>c</code> &#xFF1A;&#x6C34;&#x5E73;&#x50BE;&#x659C;</li>
+<li><code>d</code> &#xFF1A;&#x5782;&#x76F4;&#x7E2E;&#x653E;&#xFF08;&#x82E5;&#x503C;&#x70BA; <code>1</code> &#x4EE3;&#x8868;&#x6C92;&#x6709;&#x7E2E;&#x653E;&#xFF09;</li>
+<li><code>e</code> &#xFF1A;&#x6C34;&#x5E73;&#x504F;&#x79FB;</li>
+<li><code>f</code> &#xFF1A;&#x5782;&#x76F4;&#x504F;&#x79FB;</li>
+</ul>
+<p>&#x91CD;&#x8A2D;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#xFF1A;<code>ctx.setTransform(1, 0, 0, 1, 0, 0)</code> &#x3002;</p>
+<p>&#x6216;&#x50B3;&#x5165;&#x4E00;&#x500B;<strong>&#x77E9;&#x9663;&#xFF08;Matrix&#xFF09;</strong>&#xFF1A;</p>
+<p><img src="/2020/03/08/canvas-03/setTransform.png" alt="setTransform &#x77E9;&#x9663;&#x8A2D;&#x5B9A;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;"></p>
+<hr>
+<h2 id="&#x5BE6;&#x969B;&#x7BC4;&#x4F8B;"><a href="#&#x5BE6;&#x969B;&#x7BC4;&#x4F8B;" class="headerlink" title="&#x5BE6;&#x969B;&#x7BC4;&#x4F8B;"></a>&#x5BE6;&#x969B;&#x7BC4;&#x4F8B;</h2><p>&#x5BE6;&#x4F5C;&#x7BC4;&#x4F8B;&#x5728; <a href="https://codepen.io/luffy-chen/pen/dyovKMZ?editors=0010" target="_blank" rel="noopener">CodePen</a> &#xFF0C;&#x6709;&#x8208;&#x8DA3;&#x7684;&#x670B;&#x53CB;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5148;&#x8A66;&#x8457;&#x756B;&#x756B;&#x770B;&#x3002;</p>
+<p>&#x521D;&#x59CB;&#x5316; Canvas &#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;my-canvas&apos;</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">&apos;2d&apos;</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// &#x4E8B;&#x5148;&#x5BA3;&#x544A;&#x5E38;&#x7528;&#x7684;&#x8B8A;&#x6578;</span></span><br><span class="line"><span class="hljs-keyword">const</span> blockWidth = <span class="hljs-number">200</span></span><br><span class="line"><span class="hljs-keyword">const</span> PI = <span class="hljs-built_in">Math</span>.PI</span><br><span class="line"><span class="hljs-keyword">const</span> PI2 = <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">2</span></span><br><span class="line"></span><br><span class="line">canvas.width = blockWidth </span><br><span class="line">canvas.height = blockWidth</span><br></pre></td></tr></table></figure></p>
+<p>&#x900F;&#x904E; <code>translate</code> &#x7E6A;&#x88FD;&#x9ED1;&#x767D;&#x76F8;&#x9593;&#x7684;&#x897F;&#x6D0B;&#x68CB;&#x76E4;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">10</span> ; i++) {</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; <span class="hljs-number">10</span> ; j++) {</span><br><span class="line">		ctx.fillStyle = i % <span class="hljs-number">2</span> ? (j % <span class="hljs-number">2</span> ? <span class="hljs-string">&apos;black&apos;</span> : <span class="hljs-string">&apos;white&apos;</span>) : (j % <span class="hljs-number">2</span> ? <span class="hljs-string">&apos;white&apos;</span> : <span class="hljs-string">&apos;black&apos;</span>)</span><br><span class="line">		ctx.fillRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>)</span><br><span class="line">		ctx.translate(<span class="hljs-number">20</span>, <span class="hljs-number">0</span>)</span><br><span class="line">	}</span><br><span class="line">	<span class="hljs-comment">// &#x91CD;&#x8A2D;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;</span></span><br><span class="line">	ctx.setTransform(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span><br><span class="line">	<span class="hljs-comment">// &#x5782;&#x76F4;&#x504F;&#x79FB;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB; 20 &#x55AE;&#x4F4D;</span></span><br><span class="line">	ctx.translate(<span class="hljs-number">0</span>, (i + <span class="hljs-number">1</span>) * <span class="hljs-number">20</span>)</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x900F;&#x904E; <code>rotate</code> &#x7E6A;&#x88FD;&#x5341;&#x4E8C;&#x908A;&#x5F62;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ctx.setTransform(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span><br><span class="line"><span class="hljs-comment">// &#x504F;&#x79FB;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x81F3;&#x7B2C;&#x4E8C;&#x500B; Block</span></span><br><span class="line">ctx.translate(blockWidth, <span class="hljs-number">0</span>)</span><br><span class="line"><span class="hljs-comment">// &#x504F;&#x79FB;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x81F3;&#x7B2C;&#x4E8C;&#x500B; Block &#x4E2D;&#x5FC3;</span></span><br><span class="line">ctx.translate(blockWidth / <span class="hljs-number">2</span>, blockWidth / <span class="hljs-number">2</span>)</span><br><span class="line">ctx.beginPath()</span><br><span class="line">  ctx.moveTo(<span class="hljs-number">0</span>, <span class="hljs-number">80</span>)</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">12</span> ; i++) {</span><br><span class="line">    ctx.lineTo(<span class="hljs-number">0</span>, <span class="hljs-number">80</span>)</span><br><span class="line">    ctx.rotate(PI2 / <span class="hljs-number">12</span>) <span class="hljs-comment">// &#x6BCF;&#x756B;&#x4E00;&#x6B21;&#x756B;&#x5E03;&#x65CB;&#x8F49; 360 / 12 = 30 &#x5EA6;</span></span><br><span class="line">  }</span><br><span class="line">ctx.closePath()</span><br><span class="line">ctx.lineWidth = <span class="hljs-number">2.5</span></span><br><span class="line">ctx.strokeStyle = <span class="hljs-string">&apos;white&apos;</span></span><br><span class="line">ctx.stroke()</span><br></pre></td></tr></table></figure></p>
+<p>&#x900F;&#x904E; <code>scale</code> &#x548C; <code>rotate</code> &#x7E6A;&#x88FD;&#x87BA;&#x65CB;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ctx.setTransform(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span><br><span class="line">ctx.translate(blockWidth * <span class="hljs-number">2</span>, <span class="hljs-number">0</span>)</span><br><span class="line">ctx.translate(blockWidth / <span class="hljs-number">2</span>, blockWidth / <span class="hljs-number">2</span>)</span><br><span class="line">ctx.fillStyle = <span class="hljs-string">&apos;white&apos;</span></span><br><span class="line"><span class="hljs-comment">// &#x7E3D;&#x5171;&#x756B; 60 &#x500B;&#x5713;</span></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">60</span> ; i++) {</span><br><span class="line">  ctx.beginPath() <span class="hljs-comment">// &#x6BCF;&#x756B;&#x4E00;&#x500B;&#x5713;&#x90FD;&#x5FC5;&#x9808;&#x91CD;&#x7F6E;&#x7E6A;&#x5716;</span></span><br><span class="line">  ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">-80</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span>, PI2)</span><br><span class="line">  ctx.fill()</span><br><span class="line">  ctx.rotate(PI2 / <span class="hljs-number">12</span>)</span><br><span class="line">  ctx.scale(<span class="hljs-number">1</span> - i / <span class="hljs-number">80</span>, <span class="hljs-number">1</span> -  i / <span class="hljs-number">80</span>) <span class="hljs-comment">// &#x6BCF;&#x756B;&#x5B8C;&#x4E00;&#x500B;&#x5713;&#x5C31;&#x7E2E;&#x5C0F;&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2020/03/08/canvas-03/demo.png" alt="&#x672C;&#x7BC7;&#x5BE6;&#x4F5C;&#x7BC4;&#x4F8B;"></p>
+<hr>
+<h2 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h2><ol>
+<li><a href="https://hahow.in/courses/586fae97a8aae907000ce721/discussions?item=5a1e1755a2c4b000589dda2c" target="_blank" rel="noopener">&#x52D5;&#x756B;&#x4E92;&#x52D5;&#x7DB2;&#x9801;&#x7279;&#x6548;&#x5165;&#x9580;&#xFF08;JS/CANVAS&#xFF09;&#xFF1A;5-2 &#x756B;&#x5E03;&#x7684;&#x5EA7;&#x6A19;&#x7CFB;&#x64CD;&#x4F5C;</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/W3HexSchool/">#W3HexSchool</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/03/01/canvas-02/">把網頁當畫布揮灑的 Canvas 02：動畫原理</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2020/03/08/canvas-03/';
+        this.page.identifier = '2020/03/08/canvas-03/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiBlog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Luffy&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/Feitoengineer19">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-tw");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

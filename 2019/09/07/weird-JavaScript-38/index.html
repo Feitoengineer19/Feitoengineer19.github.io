@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="&amp;#x8207;&amp;#x5176;&amp;#x4ED6;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E0D;&amp;#x540C;&amp;#xFF0C;JavaScript &amp;#x63A1;&amp;#x7528;&amp;#x539F;&amp;#x578B;&amp;#x7E7C;&amp;#x627F;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C07;&amp;#x6240;&amp;#x6709;&amp;#x72">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-02-23T09:34:46.942Z">
+<meta property="og:updated_time" content="2020-03-05T17:13:44.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 38：古典繼承 v.s. 原型繼承">
 <meta name="twitter:description" content="&amp;#x8207;&amp;#x5176;&amp;#x4ED6;&amp;#x7A0B;&amp;#x5F0F;&amp;#x8A9E;&amp;#x8A00;&amp;#x4E0D;&amp;#x540C;&amp;#xFF0C;JavaScript &amp;#x63A1;&amp;#x7528;&amp;#x539F;&amp;#x578B;&amp;#x7E7C;&amp;#x627F;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#xFF0C;&amp;#x5C07;&amp;#x6240;&amp;#x6709;&amp;#x72">
@@ -143,9 +143,9 @@
 <p>&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#xFF0C;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x5728; JavaScript &#x4E2D;&#xFF0C;<strong>&#x7269;&#x4EF6;</strong>&#x88AB;&#x8996;&#x70BA;&#x7A0B;&#x5F0F;&#x7D44;&#x6210;&#x7684;&#x57FA;&#x672C;&#x55AE;&#x5143;&#xFF0C;&#x800C;&#x4E14;&#x7269;&#x4EF6;&#x4E4B;&#x9593;&#x5F7C;&#x6B64;&#x90FD;&#x6703;&#x900F;&#x904E;<strong>&#x7E7C;&#x627F;</strong>&#x7684;&#x65B9;&#x5F0F;&#x4E92;&#x76F8;&#x9023;&#x7D50;&#xFF0C;&#x7522;&#x751F;&#x95DC;&#x4FC2;&#xFF0C;&#x4EE5;&#x4FBF;&#x8CC7;&#x6599;&#x4E92;&#x76F8;&#x50B3;&#x905E;&#x3001;&#x53D6;&#x7528;&#x3002;</p>
 <hr>
 
-<h3 id="&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;"><a href="#&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;" class="headerlink" title="&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;"></a>&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;</h3><blockquote>
-<p>One object gets access to the properties and methods of another object.</p>
+<h3 id="&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;"><a href="#&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;" class="headerlink" title="&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;"></a>&#x7E7C;&#x627F;&#xFF08;Inheritance&#xFF09;</h3><blockquote class="colorquote info"><p>One object gets access to the properties and methods of another object.</p>
 </blockquote>
+
 <p>&#x7E7C;&#x627F;&#xFF0C;&#x6307;&#x7684;&#x662F;<strong>&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x53D6;&#x7528;&#x53E6;&#x5916;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x6216;&#x65B9;&#x6CD5;</strong>&#x3002;</p>
 <p>&#x5047;&#x8A2D;&#x6211;&#x6709;&#x5169;&#x500B;&#x7269;&#x4EF6; <code>ObjA</code> &#x8207; <code>ObjB</code> &#xFF0C; <code>ObjA</code> &#x7E7C;&#x627F;&#x4E86; <code>ObjB</code> &#xFF0C;&#x90A3;&#x9EBC;&#xFF0C;&#x6211;&#x5C31;&#x80FD;&#x5728; <code>ObjA</code> &#x4E2D;&#x53D6;&#x7528; <code>ObjB</code> &#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x5275;&#x9020;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x6642;&#xFF0C;JS &#x5F15;&#x64CE;&#x5176;&#x5BE6;&#x5DF2;&#x7D93;&#x5C07;&#x5B83;&#x8207;&#x53E6;&#x5916;&#x4E00;&#x500B;&#x7269;&#x4EF6;<strong>&#x9023;&#x8D77;&#x4F86;</strong>&#xFF0C;&#x800C;&#x9019;&#x500B;&#x9023;&#x8D77;&#x4F86;&#x7684;&#x6A5F;&#x5236;&#xFF0C;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;&#x7E7C;&#x627F;&#x3002;</p>

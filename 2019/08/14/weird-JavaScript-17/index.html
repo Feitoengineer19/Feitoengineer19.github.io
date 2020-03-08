@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x60F3;&amp;#x8981;&amp;#x7528;&amp;#x76F8;&amp;#x540C;&amp;#x7684;&amp;#x8B8A;&amp;#x6578;&amp;#x540D;&amp;#x7A31;&amp;#x4F86;&amp;#x4EE3;&amp;#x6307;&amp;#x76F8;&amp;#x4F3C;&amp;#x7684;&amp;#x8CC7;&amp;#x6599;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x5229;">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-02-23T09:32:30.439Z">
+<meta property="og:updated_time" content="2020-03-05T17:26:58.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 17：偽裝命名空間">
 <meta name="twitter:description" content="&amp;#x7576;&amp;#x6211;&amp;#x5011;&amp;#x60F3;&amp;#x8981;&amp;#x7528;&amp;#x76F8;&amp;#x540C;&amp;#x7684;&amp;#x8B8A;&amp;#x6578;&amp;#x540D;&amp;#x7A31;&amp;#x4F86;&amp;#x4EE3;&amp;#x6307;&amp;#x76F8;&amp;#x4F3C;&amp;#x7684;&amp;#x8CC7;&amp;#x6599;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x5229;">
@@ -139,9 +139,10 @@
         <p>&#x7576;&#x6211;&#x5011;&#x60F3;&#x8981;&#x7528;&#x76F8;&#x540C;&#x7684;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x4F86;&#x4EE3;&#x6307;&#x76F8;&#x4F3C;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x7269;&#x4EF6;&#x4F86;&#x5EFA;&#x7ACB;&#x507D;&#x88DD;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF0C;&#x907F;&#x514D;&#x8CC7;&#x6599;&#x88AB;&#x8986;&#x5BEB;&#x3002;</p>
   <a id="more"></a>
 
-<h3 id="&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;"><a href="#&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;" class="headerlink" title="&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;"></a>&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;</h3><blockquote>
-<p>A container for variables and functions<br>Typically to keep variables and functions with the same name seperate.</p>
+<h3 id="&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;"><a href="#&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;" class="headerlink" title="&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;"></a>&#x547D;&#x540D;&#x7A7A;&#x9593;&#xFF08;Namespace&#xFF09;</h3><blockquote class="colorquote warning"><p>A container for variables and functions.<br>Typically to keep variables and functions with the same name seperate.</p>
 </blockquote>
+
+
 <p>&#x547D;&#x540D;&#x7A7A;&#x9593;&#x6307;&#x7684;&#x662F;&#x4E00;&#x500B;&#x7A0B;&#x5F0F;&#x8A9E;&#x8A00;&#x4E2D;<strong>&#x5132;&#x5B58;&#x8B8A;&#x6578;&#x8207;&#x51FD;&#x5F0F;&#x540D;&#x7A31;&#x7684;&#x5BB9;&#x5668;</strong>&#xFF0C;&#x5B83;&#x7684;&#x529F;&#x7528;&#x5728;&#x65BC;&#x5206;&#x96E2;&#x76F8;&#x540C;&#x540D;&#x7A31;&#x7684;&#x8B8A;&#x6578;&#x8207;&#x51FD;&#x5F0F;&#x3002;</p>
 <p>&#x7136;&#x800C;&#xFF0C; <strong>JavaScript &#x6C92;&#x6709; Namespace</strong> &#x9019;&#x9805;&#x529F;&#x80FD;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x7576;&#x6211;&#x5011;&#x60F3;&#x8981;&#x7528;&#x540C;&#x4E00;&#x500B;&#x8B8A;&#x6578;&#x540D;&#x7A31;&#x4F86;&#x6307;&#x6D89;&#x76F8;&#x4F3C;&#x7684;&#x8CC7;&#x6599;&#xFF0C;&#x5F8C;&#x8005;&#x6240;&#x5B9A;&#x7FA9;&#x7684;&#x503C;&#xFF0C;&#x5F80;&#x5F80;&#x6703;&#x8986;&#x84CB;&#x6389;&#x524D;&#x9762;&#x6240;&#x5B9A;&#x7FA9;&#x7684;&#x503C;&#x3002;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-string">&apos;Hello!&apos;</span> ;</span><br><span class="line"><span class="hljs-keyword">var</span> greet = <span class="hljs-string">&apos;Hola!&apos;</span>  ;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(greet) ; <span class="hljs-comment">// Hola!</span></span><br></pre></td></tr></table></figure></p>

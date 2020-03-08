@@ -25,7 +25,7 @@
 <meta property="og:description" content="&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x53C3;&amp;#x6578;&amp;#xFF08;Parameter&amp;#xFF09;&amp;#x548C;&amp;#x53C3;&amp;#x6578; arguments &amp;#x6709;&amp;#x4EC0;&amp;#x9EBC;&amp;#x95DC;&amp;#x4FC2;&amp;#xFF1F;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/17/weird-JavaScript-24/argument.JPG">
-<meta property="og:updated_time" content="2020-03-03T17:22:01.618Z">
+<meta property="og:updated_time" content="2020-03-05T17:23:50.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 24：參數（parameter v.s. arguments）">
 <meta name="twitter:description" content="&amp;#x51FD;&amp;#x5F0F;&amp;#x7684;&amp;#x53C3;&amp;#x6578;&amp;#xFF08;Parameter&amp;#xFF09;&amp;#x548C;&amp;#x53C3;&amp;#x6578; arguments &amp;#x6709;&amp;#x4EC0;&amp;#x9EBC;&amp;#x95DC;&amp;#x4FC2;&amp;#xFF1F;">
@@ -147,9 +147,10 @@
 <p><img src="/2019/08/17/weird-JavaScript-24/argument.JPG" alt="&#x51FD;&#x5F0F;&#x547C;&#x53EB;&#x5F8C;&#x7684;&#x5275;&#x9020;&#x968E;&#x6BB5;&#xFF1A;&#x5275;&#x9020;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x3001;this&#x3001;arguments&#x4EE5;&#x53CA;&#x53C3;&#x8003;&#x5916;&#x90E8;&#x74B0;&#x5883;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <br>
 
-<blockquote>
-<p>The parameters you pass to a function<br>JavaScript gives you a keyword of the same name which contains them all</p>
+<blockquote class="colorquote info"><p>The parameters you pass to a function.<br>JavaScript gives you a keyword of the same name which contains them all.</p>
 </blockquote>
+
+
 <p>&#x7C21;&#x55AE;&#x4F86;&#x8AAA;&#xFF0C;<code>arguments</code> &#x5C31;&#x662F;<strong>&#x51FD;&#x5F0F;&#x53C3;&#x6578;&#x7684;&#x96C6;&#x5408;</strong>&#xFF0C;&#x5B83;&#x6703;&#x4EE5;<strong>&#x985E;&#x9663;&#x5217;&#xFF08;Array-like&#xFF09;</strong>&#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#x65BC;&#x51FD;&#x5F0F;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x4E2D;&#xFF0C;&#x4F9B;&#x6211;&#x5011;&#x53D6;&#x7528;&#x3002;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calc</span>(<span class="hljs-params">a, b</span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>) ; <span class="hljs-comment">// Arguments(2):[55, 66]</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">calc(<span class="hljs-number">55</span>, <span class="hljs-number">66</span>) ;</span><br></pre></td></tr></table></figure></p>
 <p>&#x5FC5;&#x9808;&#x8B39;&#x8A18;&#xFF01; <code>arguments</code> &#x662F;<strong>&#x985E;&#x9663;&#x5217;</strong>&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x9663;&#x5217;&#x3002;&#x96D6;&#x7136;&#x5B83;&#x64C1;&#x6709;&#x90E8;&#x5206;&#x9663;&#x5217;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x4F46;<strong>&#x5927;&#x591A;&#x6578;&#x9663;&#x5217;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C; <code>argument</code> &#x90FD;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;</strong>&#x3002;</p>

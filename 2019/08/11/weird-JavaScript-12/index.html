@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="&amp;#x77AD;&amp;#x89E3;&amp;#x904B;&amp;#x7B97;&amp;#x5B50;&amp;#x7684;&amp;#x512A;&amp;#x5148;&amp;#x6027;&amp;#x8207;&amp;#x76F8;&amp;#x4F9D;&amp;#x6027;&amp;#xFF0C;&amp;#x6211;&amp;#x5011;&amp;#x624D;&amp;#x77E5;&amp;#x9053;&amp;#x8A31;&amp;#x591A;&amp;#x7A2E;&amp;#x985E;&amp;#x7684;&amp;#x904B;">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-02-23T09:35:09.571Z">
+<meta property="og:updated_time" content="2020-03-05T17:29:47.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weird-JavaScript 12：運算子的優先性與相依性">
 <meta name="twitter:description" content="&amp;#x77AD;&amp;#x89E3;&amp;#x904B;&amp;#x7B97;&amp;#x5B50;&amp;#x7684;&amp;#x512A;&amp;#x5148;&amp;#x6027;&amp;#x8207;&amp;#x76F8;&amp;#x4F9D;&amp;#x6027;&amp;#xFF0C;&amp;#x6211;&amp;#x5011;&amp;#x624D;&amp;#x77E5;&amp;#x9053;&amp;#x8A31;&amp;#x591A;&amp;#x7A2E;&amp;#x985E;&amp;#x7684;&amp;#x904B;">
@@ -140,18 +140,19 @@
   <a id="more"></a>
 
 
-<h3 id="&#x512A;&#x5148;&#x6027;&#xFF08;Operator-Precedence&#xFF09;"><a href="#&#x512A;&#x5148;&#x6027;&#xFF08;Operator-Precedence&#xFF09;" class="headerlink" title="&#x512A;&#x5148;&#x6027;&#xFF08;Operator Precedence&#xFF09;"></a>&#x512A;&#x5148;&#x6027;&#xFF08;Operator Precedence&#xFF09;</h3><blockquote>
-<p>Which operator function gets called first.</p>
+<h3 id="&#x512A;&#x5148;&#x6027;&#xFF08;Operator-Precedence&#xFF09;"><a href="#&#x512A;&#x5148;&#x6027;&#xFF08;Operator-Precedence&#xFF09;" class="headerlink" title="&#x512A;&#x5148;&#x6027;&#xFF08;Operator Precedence&#xFF09;"></a>&#x512A;&#x5148;&#x6027;&#xFF08;Operator Precedence&#xFF09;</h3><blockquote class="colorquote warning"><p>Which operator function gets called first.</p>
 </blockquote>
+
+
 <p>&#x904B;&#x7B97;&#x5B50;&#x7684;&#x512A;&#x5148;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x54EA;&#x4E00;&#x500B;&#x904B;&#x7B97;&#x5B50;&#x6703;&#x512A;&#x5148;&#x88AB; JS &#x5F15;&#x64CE;&#x547C;&#x53EB;&#x57F7;&#x884C;&#xFF1F;</p>
 <p>&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x8A31;&#x591A;&#x904B;&#x7B97;&#x5B50;&#x64FA;&#x4E00;&#x8D77;&#x6642;&#xFF0C; <strong>JS &#x6703;&#x5148;&#x57F7;&#x884C;&#x64C1;&#x6709;&#x8F03;&#x9AD8;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x7684;&#x904B;&#x7B97;&#x5B50;</strong>&#x3002;</p>
 <p>&#x4EE5;&#x7B97;&#x8853;&#x904B;&#x7B97;&#x5B50;&#x70BA;&#x4F8B;&#xFF0C;&#x5F88;&#x5E38;&#x898B;&#x7684;&#x300C;&#x5148;&#x4E58;&#x9664;&#x5F8C;&#x52A0;&#x6E1B;&#x300D;&#x5728; JS &#x4EA6;&#x5982;&#x662F;&#xFF1A;</p>
 <p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// &#x4E58;&#x6CD5;&#x3001;&#x9664;&#x6CD5;&#x5728; JS &#x4E2D;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x70BA; 14 &#x3002;</span></span><br><span class="line"><span class="hljs-comment">// &#x52A0;&#x6CD5;&#x3001;&#x6E1B;&#x6CD5;&#x5728; JS &#x4E2D;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x70BA; 13 &#x3002;</span></span><br><span class="line"><span class="hljs-comment">// &#x8CE6;&#x503C;&#x5728; JS &#x4E2D;&#x7684;&#x512A;&#x5148;&#x6B21;&#x5E8F;&#x70BA; 3 &#x3002; </span></span><br><span class="line"><span class="hljs-comment">// &#x56E0;&#x6B64; 4 * 5 &#x6703;&#x5148;&#x88AB;&#x57F7;&#x884C;&#xFF0C;&#x800C;&#x5F8C;&#x70BA; 3 + 20 &#xFF0C;&#x5F97;&#x5230; 23 &#xFF0C;&#x6703;&#x5F8C;&#x8CE6;&#x503C;&#x7D66;&#x8B8A;&#x6578; num&#x3002;</span></span><br><span class="line"><span class="hljs-keyword">var</span> num = <span class="hljs-number">3</span> + <span class="hljs-number">4</span> * <span class="hljs-number">5</span> ; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(num) ; <span class="hljs-comment">// 23</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 
-<h3 id="&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator-Associativity&#xFF09;"><a href="#&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator-Associativity&#xFF09;" class="headerlink" title="&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator Associativity&#xFF09;"></a>&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator Associativity&#xFF09;</h3><blockquote>
-<p>What order operator functions get called in: <strong>Left-to-right</strong> or <strong>Right-to-left</strong>.<br>When operator functions have the same precedence. </p>
+<h3 id="&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator-Associativity&#xFF09;"><a href="#&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator-Associativity&#xFF09;" class="headerlink" title="&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator Associativity&#xFF09;"></a>&#x76F8;&#x4F9D;&#x6027;&#xFF08;Operator Associativity&#xFF09;</h3><blockquote class="colorquote warning"><p>What order operator functions get called in: <strong>Left-to-right</strong> or <strong>Right-to-left</strong>.<br>When operator functions have the same precedence. </p>
 </blockquote>
+
 <p>&#x76F8;&#x4F9D;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF0C;<strong>&#x7576;&#x904B;&#x7B97;&#x5B50;&#x5177;&#x6709;&#x76F8;&#x540C;&#x512A;&#x5148;&#x6027;&#x6642;&#xFF0C;&#x904B;&#x7B97;&#x5B50;&#x57F7;&#x884C;&#x7684;&#x65B9;&#x5411;&#x70BA;&#x4F55;&#xFF1F;</strong>&#x5206;&#x70BA;&#x5169;&#x7A2E;&#xFF1A;</p>
 <ul>
 <li><strong>&#x5DE6;&#x76F8;&#x4F9D;&#x6027;&#xFF08;Left-to-right&#xFF09;</strong></li>
