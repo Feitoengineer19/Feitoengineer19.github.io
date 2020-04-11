@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>標籤: W3HexSchool - Luffy&#39;s Blog</title>
+<title>標籤: w3HexSchool - Luffy&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -19,7 +19,7 @@
     <meta name="description" content="Emotional x Rational">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Luffy&#39;s Blog">
-<meta property="og:url" content="https://feitoengineer19.github.io/tags/W3HexSchool/index.html">
+<meta property="og:url" content="https://feitoengineer19.github.io/tags/w3HexSchool/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="Emotional x Rational">
 <meta property="og:locale" content="zh-tw">
@@ -115,7 +115,7 @@
     <section class="section section-heading">
     <div class="container">
         <div class="content">
-            <h5>#W3HexSchool</h5>
+            <h5>#w3HexSchool</h5>
         </div>
     </div>
 </section>
@@ -125,202 +125,38 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2020/04/02/canvas-06/" itemprop="url">把網頁當畫布揮灑的 Canvas 06：向量</a>
+            <a href="/2020/02/15/mask-map-share/" itemprop="url">2020 口罩存貨實時地圖開發紀錄</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2020-04-02T09:46:19.000Z" itemprop="datePublished">2020年4月2日</time>
+            <time datetime="2020-02-15T11:48:56.000Z" itemprop="datePublished">2020年2月15日</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+            <a class="article-category-link" href="/categories/side-Project/">side-Project</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>&#x4E0A;&#x56DE;&#x5BE6;&#x4F5C;&#x5F48;&#x529B;&#x7403;&#x6642;&#xFF0C;&#x6211;&#x5011;&#x5FC5;&#x9808;&#x8A2D;&#x5B9A;&#x5F48;&#x529B;&#x7403;&#x7684;<strong>&#x4F4D;&#x7F6E;</strong>&#x3001;<strong>&#x901F;&#x5EA6;</strong>&#x3001;<strong>&#x52A0;&#x901F;&#x5EA6;</strong>&#x7B49;&#x7269;&#x7406;&#x7279;&#x6027;&#xFF0C;&#x5F9E;&#x6578;&#x5B78;&#x7684;&#x89D2;&#x5EA6;&#x4F86;&#x770B;&#xFF0C;&#x9019;&#x4E9B;&#x7279;&#x6027;&#x90FD;&#x662F;<strong>&#x5177;&#x6709;&#x65B9;&#x5411;&#x6027;&#x7684;&#x6578;&#x91CF;</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;<strong>&#x5411;&#x91CF;&#xFF08;Vector&#xFF09;</strong>&#x3002;</p>
-<p>&#x5B78;&#x904E;&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#x958B;&#x767C;&#x7684;&#x89C0;&#x5FF5;&#xFF0C;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x5411;&#x91CF;<strong>&#x985E;&#x5225;&#xFF08;Class&#xFF09;</strong>&#x4F86;&#x5132;&#x5B58;&#x9019;&#x4E9B;&#x7269;&#x7406;&#x7279;&#x6027;&#xFF0C;&#x5C07;&#x7A0B;&#x5F0F;&#x78BC;&#x5316;&#x7E41;&#x70BA;&#x7C21;&#xFF0C;&#x63D0;&#x5347;&#x7A0B;&#x5F0F;&#x78BC;&#x8907;&#x7528;&#x7684;&#x5F48;&#x6027;&#x3002;</p>
+        <p>&#x9019;&#x7BC7;&#x6587;&#x7AE0;&#x4E3B;&#x8981;&#x662F;&#x60F3;&#x8A18;&#x9304;&#x9019;&#x6B21;<strong>&#x300C;2020 &#x53E3;&#x7F69;&#x5B58;&#x8CA8;&#x5BE6;&#x6642;&#x5730;&#x5716;&#x300D;</strong>&#x7684;&#x958B;&#x767C;&#x904E;&#x7A0B;&#x3002;&#x5F9E; 2/6 &#x885B;&#x670D;&#x90E8;&#x5065;&#x4FDD;&#x7F72;&#x91CB;&#x51FA; <a href="https://data.nhi.gov.tw/Datasets/DatasetResource.aspx?rId=A21030000I-D50001-001&amp;fbclid=IwAR11LdkhQPr1nyASKg0bUCx6LnIGY7KECOeVQ2EHwc67f2iKocIMuXRIpFE" target="_blank" rel="noopener">API</a> &#xFF0C;&#x8D95;&#x7DCA;&#x4E32;&#x63A5;&#x8CC7;&#x6599;&#x91CB;&#x51FA;&#x7C21;&#x6613;&#x7684;&#x5B58;&#x8CA8;&#x71B1;&#x9EDE;&#xFF0C;&#x5230;&#x4ECA;&#x5929;&#x958B;&#x767C;&#x544A;&#x4E00;&#x6BB5;&#x843D;&#xFF0C;&#x9019;&#x4E2D;&#x9593;&#x5F9E;&#x6478;&#x7D22;&#x5730;&#x5716;&#x8CC7;&#x6599;&#x3001;&#x7406;&#x89E3; JavaScript ES6 &#x7684; <code>Promise</code> &#x7B49;&#x7B49;&#xFF0C;&#x8457;&#x5BE6;&#x5B78;&#x5230;&#x883B;&#x591A;&#x6771;&#x897F;&#xFF0C;&#x4E5F;&#x9806;&#x4FBF;&#x8907;&#x7FD2;&#x539F;&#x751F;&#x7684; JS &#x8A9E;&#x6CD5;&#x3002;</p>
+<p>&#x76EE;&#x524D;&#x958B;&#x767C;&#x6210;&#x679C;&#x5982;&#x4E0B;&#x5716;&#xFF0C;&#x4F5C;&#x54C1;&#x8ACB;&#x53C3;&#x8003;<a href="https://feitoengineer19.github.io/mask-map/">&#x9023;&#x7D50;</a>&#xFF0C;&#x958B;&#x6E90;&#x7A0B;&#x5F0F;&#x78BC;&#x8ACB;&#x8A73;&#x898B; <a href="https://github.com/Feitoengineer19/mask-map" target="_blank" rel="noopener">GitHub</a> &#xFF0C;&#x66F4;&#x591A;&#x8CC7;&#x8A0A;&#x53EF;&#x67E5;&#x8A62;<a href="https://g0v.hackmd.io/gGrOI4_aTsmpoMfLP1OU4A?fbclid=IwAR0y8WgDOr_romMEgpGJxc6q-rpGFohySn5nebBnVYm21m8hrMdvHcDUL5k#%E9%96%8B%E7%99%BC%E8%B3%87%E6%BA%90%EF%BC%9A" target="_blank" rel="noopener">&#x53E3;&#x7F69;&#x4F9B;&#x9700;&#x8CC7;&#x8A0A;&#x5E73;&#x53F0;</a>&#x3002;</p>
+<p><img src="/2020/02/15/mask-map-share/cover.jpg" alt="2020 &#x53E3;&#x7F69;&#x5B58;&#x8CA8;&#x5BE6;&#x6642;&#x5730;&#x5716;"></p>
+<p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x7D00;&#x9304;&#x4EE5;&#x4E0B;&#x5E7E;&#x500B;&#x6280;&#x8853;&#x9762;&#x5411;&#xFF1A;</p>
+<ol>
+<li>&#x4F7F;&#x7528; <strong>leaflet.js</strong> &#x8207; <strong>OpenStreetMap</strong> &#x642D;&#x5EFA;&#x5730;&#x5716;&#x8CC7;&#x6599;</li>
+<li>&#x900F;&#x904E; JavaScript ES6 <strong>Promise</strong> &#x8A9E;&#x6CD5;&#x4E32;&#x63A5; API</li>
+<li>&#x4F7F;&#x7528; <strong>Leaflet.markercluster</strong> &#x7FA4;&#x96C6;&#x5316;&#x8CC7;&#x6599;</li>
+<li>&#x7E23;&#x5E02;&#xFF0F;&#x9109;&#x93AE;&#x5E02;&#x5340;&#xFF0F;&#x95DC;&#x9375;&#x5B57;<strong>&#x7BE9;&#x9078;&#x529F;&#x80FD;</strong>&#x5BE6;&#x4F5C;</li>
+<li>&#x900F;&#x904E; <strong>Geolocation</strong> &#x53D6;&#x5F97;&#x4F7F;&#x7528;&#x8005;&#x7684;&#x4F4D;&#x7F6E;&#x8CC7;&#x8A0A;</li>
+<li><strong>&#x6536;&#x85CF;&#x529F;&#x80FD;</strong>&#x5BE6;&#x4F5C;</li>
+</ol>
+<p>&#x597D;&#xFF0C;&#x6211;&#x5011;&#x958B;&#x59CB;&#x5427;&#xFF01;</p>
         <p class="article-more-link">
-            <a href="/2020/04/02/canvas-06/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2020/03/23/canvas-05/" itemprop="url">把網頁當畫布揮灑的 Canvas 05：物理基礎與dat-gui</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-03-23T08:25:40.000Z" itemprop="datePublished">2020年3月23日</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/HTML/">HTML</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>&#x5B78;&#x6703; Canvas &#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;&#x5F8C;&#xFF0C;&#x4ECA;&#x5929;&#x6211;&#x5011;&#x8981;&#x8A66;&#x8457;&#x7E6A;&#x88FD;&#x4E00;&#x9846;&#x5F48;&#x8DF3;&#x7403;&#xFF0C;&#x5C31;&#x50CF;&#x4E0B;&#x9762;&#x9019;&#x5F35; GIF &#xFF0C;&#x8B93;&#x7403;&#x64C1;&#x6709;&#x901F;&#x5EA6;&#x3001;&#x52A0;&#x901F;&#x5EA6;&#x7B49;&#x771F;&#x5BE6;&#x4E16;&#x754C;&#x4E2D;&#x7684;&#x7269;&#x7406;&#x7279;&#x6027;&#xFF0C;&#x5982;&#x4F55;&#x4E0D;&#x9760;&#x5176;&#x4ED6;&#x5957;&#x4EF6;&#x5BEB;&#x51FA;&#x4F86;&#x5462;&#xFF1F; </p>
-<p><img src="/2020/03/23/canvas-05/bouncingBall.gif" alt="&#x5F48;&#x8DF3;&#x7403;"></p>
-<p>&#x90A3;&#x5C31;&#x514D;&#x4E0D;&#x4E86;&#x8907;&#x7FD2;&#x4E00;&#x4E0B;&#x570B;&#x4E2D;&#x7269;&#x7406;&#x5566;&#xFF01;</p>
-        <p class="article-more-link">
-            <a href="/2020/03/23/canvas-05/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2020/03/16/canvas-04/" itemprop="url">把網頁當畫布揮灑的 Canvas 04：狀態儲存與還原</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-03-16T09:55:56.000Z" itemprop="datePublished">2020年3月16日</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/HTML/">HTML</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x6211;&#x5011;&#x63D0;&#x5230;&#x5982;&#x4F55;&#x64CD;&#x4F5C; Canvas &#x5EA7;&#x6A19;&#x7CFB;&#x4F86;&#x63D0;&#x5347;&#x6211;&#x5011;&#x7684;&#x7E6A;&#x5716;&#x6548;&#x7387;&#x3002;</p>
-<p>&#x4ECA;&#x5929;&#xFF0C;&#x6211;&#x5011;&#x5B78;&#x7FD2;&#x5982;&#x4F55;<strong>&#x5132;&#x5B58;</strong>&#xFF0F;<strong>&#x9084;&#x539F;</strong>&#x756B;&#x5E03;&#x5EA7;&#x6A19;&#x7CFB;&#x7684;&#x72C0;&#x614B;&#xFF0C;&#x8B93;&#x7E6A;&#x5716;&#x66F4;&#x6709;&#x689D;&#x7406;&#xFF01;</p>
-        <p class="article-more-link">
-            <a href="/2020/03/16/canvas-04/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2020/03/08/canvas-03/" itemprop="url">把網頁當畫布揮灑的 Canvas 03：操作座標系</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-03-08T05:14:20.000Z" itemprop="datePublished">2020年3月8日</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/HTML/">HTML</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Canvas &#x7E6A;&#x5716;&#x56FA;&#x7136;&#x53B2;&#x5BB3;&#xFF0C;&#x4F46;&#x6BCF;&#x6B21;&#x7E6A;&#x5716;&#x90FD;&#x8981;&#x7B97;&#x5EA7;&#x6A19;&#x9EDE;&#xFF0C;&#x592A;&#x7D2F;&#x4E86;&#x5427;&#xFF1F;</p>
-<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x5011;&#x8981;&#x5B78;&#x6703;&#x64CD;&#x4F5C;&#x5EA7;&#x6A19;&#x7CFB;&#x7D71;&#xFF01;</p>
-        <p class="article-more-link">
-            <a href="/2020/03/08/canvas-03/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2020/03/01/canvas-02/" itemprop="url">把網頁當畫布揮灑的 Canvas 02：動畫原理</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-03-01T03:14:04.000Z" itemprop="datePublished">2020年3月1日</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/HTML/">HTML</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>&#x52D5;&#x756B;&#x662F;&#x5982;&#x4F55;&#x52D5;&#x8D77;&#x4F86;&#x7684;&#x5462;&#xFF1F;</p>
-        <p class="article-more-link">
-            <a href="/2020/03/01/canvas-02/#more">閱讀更多</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2020/02/23/canvas-01/" itemprop="url">把網頁當畫布揮灑的 Canvas 01：基礎圖形繪製</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-02-23T09:23:00.000Z" itemprop="datePublished">2020年2月23日</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/HTML/">HTML</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>&#x300C;&#x628A;&#x7DB2;&#x9801;&#x7576;&#x756B;&#x5E03;&#x63EE;&#x7051;&#x7684; Canvas 2D&#x300D;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x4E3B;&#x8981;&#x662F;&#x6211;&#x8A18;&#x9304;&#x5433;&#x54F2;&#x5B87;&#x8001;&#x5E2B;&#x6240;&#x958B;&#x8A2D;&#x7684;&#x300C;<a href="https://hahow.in/courses/586fae97a8aae907000ce721/discussions?item=5a1e1755a2c4b000589dda2c" target="_blank" rel="noopener">&#x52D5;&#x756B;&#x4E92;&#x52D5;&#x7DB2;&#x9801;&#x7279;&#x6548;&#x5165;&#x9580;&#xFF08;JS/CANVAS&#xFF09;</a>&#x300D;&#x9019;&#x9580;&#x8AB2;&#x7684;&#x5B78;&#x7FD2;&#x904E;&#x7A0B;&#xFF0C;&#x8F14;&#x4EE5;&#x7DB2;&#x8DEF;&#x4E0A;&#x7684;&#x6559;&#x5B78;&#x8CC7;&#x6599;&#xFF0C;&#x7D9C;&#x5408;&#x64B0;&#x5BEB;&#x800C;&#x6210;&#x7684;&#x7B46;&#x8A18;&#x3002;</p>
-<p>&#x73FE;&#x5728;&#xFF0C;&#x5C31;&#x8E0F;&#x9032; Canvas &#x7684;&#x4E16;&#x754C;&#x5427;&#xFF01;</p>
-        <p class="article-more-link">
-            <a href="/2020/02/23/canvas-01/#more">閱讀更多</a>
+            <a href="/2020/02/15/mask-map-share/#more">閱讀更多</a>
         </p>
     
     </div>
