@@ -8,10 +8,10 @@ html {
   padding-top: 2.5rem !important; }
 
 body {
-  background-color: #fff8f7; }
+  background-color: #FFF8F7; }
 
 h2, h3, h4, h5, h6 {
-  background-color: #fff8f7;
+  background-color: #FFF8F7;
   text-decoration: underline;
   margin: 2rem 0 2rem 0; }
   h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
@@ -55,7 +55,7 @@ h1 {
   padding-left: 0.75rem;
   font-weight: 600 !important; }
   h1 a {
-    background-image: linear-gradient(0deg, #ffe4e4 50%, #fff8f7 0);
+    background-image: linear-gradient(0deg, #FFDBE0 50%, #FFF8F7 0);
     background-position: 0 0;
     background-size: 100% 210%;
     transition: all .3s; }
@@ -65,7 +65,7 @@ h1 {
 
 a.tag.article-tag {
   font-size: 0.9rem;
-  background-color: #ffc7a1;
+  background-color: #FFC7A1;
   margin-right: 12px;
   position: relative; }
   a.tag.article-tag:after {
@@ -75,18 +75,26 @@ a.tag.article-tag {
     width: 0;
     height: 0;
     border: 12px solid transparent;
-    border-left-color: #ffc7a1; }
+    border-left-color: #FFC7A1; }
 
 h6.title.is-6 {
   font-size: 18px; }
 
 article ::-moz-selection {
-  background: #ffe4e4;
+  background-color: #FFDBE0;
   color: black; }
 
 article ::selection {
-  background: #ffe4e4;
+  background-color: #FFDBE0;
   color: black; }
+
+article pre ::-moz-selection {
+  background-color: transparent;
+  color: inherit; }
+
+article pre ::selection {
+  background-color: transparent;
+  color: inherit; }
 
 @media screen and (min-width: 1024px) {
   .container {
