@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>weird-JavaScript 02：Name / Value Pair 與物件 - Luffy&#39;s Blog</title>
+<title>Weird-JavaScript 02：Name / Value Pair 與物件 - Luffy&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -19,15 +19,15 @@
     <meta name="description" content="Name/Value Pair&amp;#xFF1F; Key/Value Pair&amp;#xFF1F;&amp;#x6C92;&amp;#x5DEE;&amp;#x5566;&amp;#xFF01;&amp;#x53CD;&amp;#x6B63;&amp;#x5C31;&amp;#x5F97;&amp;#x6210;&amp;#x96D9;&amp;#x6210;&amp;#x5C0D;&amp;#x3002;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="weird-JavaScript 02：Name &#x2F; Value Pair 與物件">
+<meta property="og:title" content="Weird-JavaScript 02：Name &#x2F; Value Pair 與物件">
 <meta property="og:url" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/index.html">
 <meta property="og:site_name" content="Luffy&#39;s Blog">
 <meta property="og:description" content="Name/Value Pair&amp;#xFF1F; Key/Value Pair&amp;#xFF1F;&amp;#x6C92;&amp;#x5DEE;&amp;#x5566;&amp;#xFF01;&amp;#x53CD;&amp;#x6B63;&amp;#x5C31;&amp;#x5F97;&amp;#x6210;&amp;#x96D9;&amp;#x6210;&amp;#x5C0D;&amp;#x3002;">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/nameValuePairs.JPG">
-<meta property="og:updated_time" content="2020-03-05T17:44:13.316Z">
+<meta property="og:updated_time" content="2020-04-18T11:03:33.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="weird-JavaScript 02：Name &#x2F; Value Pair 與物件">
+<meta name="twitter:title" content="Weird-JavaScript 02：Name &#x2F; Value Pair 與物件">
 <meta name="twitter:description" content="Name/Value Pair&amp;#xFF1F; Key/Value Pair&amp;#xFF1F;&amp;#x6C92;&amp;#x5DEE;&amp;#x5566;&amp;#xFF01;&amp;#x53CD;&amp;#x6B63;&amp;#x5C31;&amp;#x5F97;&amp;#x6210;&amp;#x96D9;&amp;#x6210;&amp;#x5C0D;&amp;#x3002;">
 <meta name="twitter:image" content="https://feitoengineer19.github.io/2019/08/05/weird-JavaScript-02/nameValuePairs.JPG">
 
@@ -121,7 +121,7 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            weird-JavaScript 02：Name / Value Pair 與物件
+            Weird-JavaScript 02：Name / Value Pair 與物件
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -131,7 +131,7 @@
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/weird-JavaScript/">weird-JavaScript</a>
+            <a class="article-category-link" href="/categories/Weird-JavaScript/">Weird-JavaScript</a>
         </span>
         
         
@@ -145,19 +145,23 @@
 </blockquote>
 
 <p><strong>&#x5728;&#x57F7;&#x884C;&#x74B0;&#x5883;&#x4E2D;&#xFF0C;&#x53EA;&#x80FD;&#x5B58;&#x5728;&#x4E00;&#x500B;&#x540D;&#x7A31;&#xFF08;Name&#xFF09;&#xFF0C;&#x4E14;&#x8A72;&#x540D;&#x7A31;&#x53EA;&#x6703;&#x5C0D;&#x61C9;&#x5230;&#x4E00;&#x500B;&#x5B9A;&#x7FA9;&#x7684;&#x6578;&#x503C;&#xFF08;Value&#xFF09;</strong>&#xFF0C;&#x5373;&#x6240;&#x8B02;&#x7684; Name/Value Pair&#xFF0C;&#x4E5F;&#x6709;&#x4EBA;&#x7A31;&#x70BA;&#x300C;&#x9375;&#x503C;&#x914D;&#x5C0D;&#x300D;Key/Value Pair&#xFF0C;&#x985E;&#x4F3C; <code>Python</code> &#x4E2D;&#x7684;&#x300C;&#x5B57;&#x5178;&#x300D;&#xFF08;Dictionary&#xFF09;&#x7D50;&#x69CB;&#x3002;</p>
-<p>&#x57FA;&#x672C;&#x7684; Name/Value Pair &#x5C31;&#x50CF;&#x9019;&#x6A23;&#xFF1A;<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">personName = <span class="hljs-string">&apos;Marisa&apos;</span> ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x57FA;&#x672C;&#x7684; Name/Value Pair &#x5C31;&#x50CF;&#x9019;&#x6A23;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">personName = <span class="hljs-string">&apos;Marisa&apos;</span> ;</span><br></pre></td></tr></table></figure></p>
 <blockquote class="colorquote info"><p>That value may be more name/value pair.</p>
 </blockquote>
 
-<p>&#x4F46;&#x5BE6;&#x969B;&#x4E0A;&#xFF0C; value &#x53EF;&#x4EE5;&#x662F;&#x66F4;&#x591A; Name/Value Pairs &#x7684;&#x96C6;&#x5408;&#xFF1A;<br> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">peopleName = {</span><br><span class="line">  DavidFamily: <span class="hljs-string">&apos;David&apos;</span>,</span><br><span class="line">  LisaFamily: {</span><br><span class="line">    father: <span class="hljs-string">&apos;Ryan&apos;</span>.</span><br><span class="line">    mother: <span class="hljs-string">&apos;Ann&apos;</span>,</span><br><span class="line">    dog: <span class="hljs-string">&apos;Murffy&apos;</span></span><br><span class="line">    }</span><br><span class="line">  } ;</span><br></pre></td></tr></table></figure></p>
+<p>&#x4F46;&#x5BE6;&#x969B;&#x4E0A;&#xFF0C; value &#x53EF;&#x4EE5;&#x662F;&#x66F4;&#x591A; Name/Value Pairs &#x7684;&#x96C6;&#x5408;&#xFF1A;</p>
+<p> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">peopleName = {</span><br><span class="line">  DavidFamily: <span class="hljs-string">&apos;David&apos;</span>,</span><br><span class="line">  LisaFamily: {</span><br><span class="line">    father: <span class="hljs-string">&apos;Ryan&apos;</span>.</span><br><span class="line">    mother: <span class="hljs-string">&apos;Ann&apos;</span>,</span><br><span class="line">    dog: <span class="hljs-string">&apos;Murffy&apos;</span></span><br><span class="line">    }</span><br><span class="line">  } ;</span><br></pre></td></tr></table></figure></p>
 <hr>
 
 <h3 id="&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;"><a href="#&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;" class="headerlink" title="&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;"></a>&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;</h3><blockquote class="colorquote info"><p>A collection of name/value pairs.</p>
 </blockquote>
 
 <p>&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x7269;&#x4EF6;&#x6700;&#x7C21;&#x55AE;&#x7684;&#x5B9A;&#x7FA9;&#x5C31;&#x662F;&#xFF0C;<strong>&#x7269;&#x4EF6;&#xFF08;Object&#xFF09;&#x662F;&#x4E00;&#x7FA4; ame/value pairs &#x7684;&#x96C6;&#x5408;</strong>&#x3002;</p>
-<p>&#x6211;&#x5011;&#x7528;&#x5DE6;&#x53F3;&#x5927;&#x62EC;&#x865F; <code>{}</code> &#x4F86;&#x8868;&#x793A;&#x7269;&#x4EF6;&#xFF0C;&#x4E00;&#x500B;&#x57FA;&#x672C;&#x7684;&#x7269;&#x4EF6;&#x9577;&#x9019;&#x6A23;&#xFF1A;<br> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Taipei = {</span><br><span class="line">  Districts: <span class="hljs-number">12</span>,</span><br><span class="line">  MetroLines: <span class="hljs-number">5</span>,</span><br><span class="line">  touristSpot: <span class="hljs-string">&apos;Taipei 101&apos;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x56E0;&#x70BA; Name/Value Pair &#x4E2D;&#x7684; Value &#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x53E6;&#x4E00;&#x7D44;  Name/Value Pairs &#xFF0C;&#x6240;&#x4EE5;&#x7269;&#x4EF6;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#xFF1A;<br> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Taipei = {</span><br><span class="line">  Districts: <span class="hljs-number">12</span>,</span><br><span class="line">  MetroLines: <span class="hljs-number">5</span>,</span><br><span class="line">  touristSpot: {</span><br><span class="line">    mustGo : <span class="hljs-string">&apos;Taipei 101&apos;</span>,&#x3000;</span><br><span class="line">    mustEat : [<span class="hljs-string">&apos;Ding-Tai-Fung&apos;</span>, <span class="hljs-string">&apos;bubble tea&apos;</span>] <span class="hljs-comment">// Value &#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x9663;&#x5217;&#xFF08;Array&#xFF09;&#xFF0C;&#x56E0;&#x70BA;&#x9663;&#x5217;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#x3002;</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x6211;&#x5011;&#x7528;&#x5DE6;&#x53F3;&#x5927;&#x62EC;&#x865F; <code>{}</code> &#x4F86;&#x8868;&#x793A;&#x7269;&#x4EF6;&#xFF0C;&#x4E00;&#x500B;&#x57FA;&#x672C;&#x7684;&#x7269;&#x4EF6;&#x9577;&#x9019;&#x6A23;&#xFF1A;</p>
+<p> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Taipei = {</span><br><span class="line">  Districts: <span class="hljs-number">12</span>,</span><br><span class="line">  MetroLines: <span class="hljs-number">5</span>,</span><br><span class="line">  touristSpot: <span class="hljs-string">&apos;Taipei 101&apos;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x56E0;&#x70BA; Name/Value Pair &#x4E2D;&#x7684; Value &#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x53E6;&#x4E00;&#x7D44;  Name/Value Pairs &#xFF0C;&#x6240;&#x4EE5;&#x7269;&#x4EF6;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#xFF1A;</p>
+<p> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Taipei = {</span><br><span class="line">  Districts: <span class="hljs-number">12</span>,</span><br><span class="line">  MetroLines: <span class="hljs-number">5</span>,</span><br><span class="line">  touristSpot: {</span><br><span class="line">    mustGo : <span class="hljs-string">&apos;Taipei 101&apos;</span>,&#x3000;</span><br><span class="line">    mustEat : [<span class="hljs-string">&apos;Ding-Tai-Fung&apos;</span>, <span class="hljs-string">&apos;bubble tea&apos;</span>] <span class="hljs-comment">// Value &#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x9663;&#x5217;&#xFF08;Array&#xFF09;&#xFF0C;&#x56E0;&#x70BA;&#x9663;&#x5217;&#x4E5F;&#x5C6C;&#x65BC;&#x7269;&#x4EF6;&#x7684;&#x4E00;&#x7A2E;&#x3002;</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <p>&#x5728;&#x4E0A;&#x9762;&#x9019;&#x500B;&#x7BC4;&#x4F8B;&#x4E2D;&#xFF0C;&#x6700;&#x5916;&#x5C64;&#x7684; <code>Taipei</code> &#x662F;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#xFF0C;&#x5167;&#x5C64;&#x7684; <code>touristSpot</code> &#x4E5F;&#x662F;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#x3002;&#x56E0;&#x70BA;<strong>&#x7269;&#x4EF6;&#x5C31;&#x662F;&#x9375;&#x503C;&#x914D;&#x5C0D;&#xFF08;Name/Value Pair&#xFF09;&#x7684;&#x96C6;&#x5408;</strong>&#x3002;</p>
 <p><img src="/2019/08/05/weird-JavaScript-02/nameValuePairs.JPG" alt="&#x7269;&#x4EF6;&#x5C31;&#x662F; Name/Value Pairs &#x7684;&#x96C6;&#x5408;&#xFF08;&#x5716;&#x7247;&#x6E90;&#x81EA;&#x53C3;&#x8003;&#x8CC7;&#x6599; 1.&#xFF09;"></p>
 <p>&#x66F4;&#x7CBE;&#x78BA;&#x5730;&#x8AAA;&#xFF0C;&#x5728; JavaScript &#x4E2D;&#xFF0C;&#x8CC7;&#x6599;&#x578B;&#x5225;&#x5206;&#x70BA;&#x5169;&#x985E;&#xFF1A;</p>
@@ -206,12 +210,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/2019/08/05/weird-JavaScript-03/">weird-JavaScript 03：全域環境與全域物件</a>
+            <a href="/2019/08/05/weird-JavaScript-03/">Weird-JavaScript 03：全域環境與全域物件</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/2019/08/04/weird-JavaScript-01/">weird-JavaScript 01：語法解析、詞彙環境、執行脈絡</a>
+            <a href="/2019/08/04/weird-JavaScript-01/">Weird-JavaScript 01：語法解析、詞彙環境、執行脈絡</a>
             
         </span>
     </div>

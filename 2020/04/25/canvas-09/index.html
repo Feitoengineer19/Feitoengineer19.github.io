@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>把網頁當畫布揮灑的 Canvas 09：粒子特效 - Luffy&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="&amp;#x5229;&amp;#x7528;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x88FD;&amp;#x4F5C;&amp;#x7684;&amp;#x6A21;&amp;#x677F;&amp;#x4F86;&amp;#x958B;&amp;#x767C;&amp;#x7C92;&amp;#x5B50;&amp;#x7279;&amp;#x6548;&amp;#x5427;&amp;#xFF01;">
+<meta name="keywords" content="W3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把網頁當畫布揮灑的 Canvas 09：粒子特效">
+<meta property="og:url" content="https://feitoengineer19.github.io/2020/04/25/canvas-09/index.html">
+<meta property="og:site_name" content="Luffy&#39;s Blog">
+<meta property="og:description" content="&amp;#x5229;&amp;#x7528;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x88FD;&amp;#x4F5C;&amp;#x7684;&amp;#x6A21;&amp;#x677F;&amp;#x4F86;&amp;#x958B;&amp;#x767C;&amp;#x7C92;&amp;#x5B50;&amp;#x7279;&amp;#x6548;&amp;#x5427;&amp;#xFF01;">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/04/25/canvas-09/particle.gif">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/04/25/canvas-09/gravityField.png">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/04/25/canvas-09/lifecycle.png">
+<meta property="og:updated_time" content="2020-04-25T14:52:28.495Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把網頁當畫布揮灑的 Canvas 09：粒子特效">
+<meta name="twitter:description" content="&amp;#x5229;&amp;#x7528;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x88FD;&amp;#x4F5C;&amp;#x7684;&amp;#x6A21;&amp;#x677F;&amp;#x4F86;&amp;#x958B;&amp;#x767C;&amp;#x7C92;&amp;#x5B50;&amp;#x7279;&amp;#x6548;&amp;#x5427;&amp;#xFF01;">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2020/04/25/canvas-09/particle.gif">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/hybrid.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Luffy
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            把網頁當畫布揮灑的 Canvas 09：粒子特效
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-04-25T14:45:27.000Z" itemprop="datePublished">2020年4月25日</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><img src="/2020/04/25/canvas-09/particle.gif" alt="&#x706B;&#x7130;&#x7C92;&#x5B50;&#x7279;&#x6548;"></p>
+<p>&#x5229;&#x7528;&#x4E0A;&#x4E00;&#x7BC7;&#x88FD;&#x4F5C;&#x7684;&#x6A21;&#x677F;&#x4F86;&#x958B;&#x767C;&#x7C92;&#x5B50;&#x7279;&#x6548;&#x5427;&#xFF01;</p>
+  <a id="more"></a>
+
+<hr>
+<p>&#x6211;&#x5011;&#x900F;&#x904E;&#x7269;&#x4EF6;&#x5C0E;&#x5411;&#x958B;&#x767C;&#x7684;&#x89C0;&#x5FF5;&#xFF0C;&#x5206;&#x5225;&#x5EFA;&#x7ACB;&#x7C92;&#x5B50;&#x985E;&#x5225;&#x4EE5;&#x53CA;&#x91CD;&#x529B;&#x5834;&#x985E;&#x5225;&#xFF0C;&#x5404;&#x81EA;&#x5305;&#x542B;&#x7C92;&#x5B50;&#x7269;&#x4EF6;&#x4EE5;&#x53CA;&#x91CD;&#x529B;&#x5834;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#x8207;&#x65B9;&#x6CD5;&#xFF0C;&#x63A5;&#x8457;&#x5229;&#x7528; <code>update</code> &#x548C; <code>draw</code> &#x51FD;&#x5F0F;&#x4F86;&#x66F4;&#x65B0;&#x8CC7;&#x6599;&#x8207;&#x756B;&#x9762;&#xFF0C;&#x6574;&#x9AD4;&#x7A0B;&#x5F0F;&#x67B6;&#x69CB;&#x76F8;&#x7576;&#x7B26;&#x5408;&#x6211;&#x5011;&#x4E0A;&#x4E00;&#x7BC7;&#x6240;&#x88FD;&#x4F5C;&#x7684;&#x958B;&#x767C;&#x6A21;&#x677F;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x5206;&#x5225;&#x7D00;&#x9304;&#x7C92;&#x5B50;&#x985E;&#x5225;&#x3001;&#x91CD;&#x529B;&#x5834;&#x985E;&#x5225;&#x4EE5;&#x53CA;&#x51FD;&#x5F0F;&#x6A21;&#x7D44;&#x57F7;&#x884C;&#x7684;&#x5167;&#x5BB9;&#xFF0C;&#x548C;&#x6A21;&#x677F;&#x91CD;&#x8907;&#x7684;&#x90E8;&#x5206;&#x5C31;&#x4E0D;&#x591A;&#x52A0;&#x8D05;&#x8FF0;&#xFF0C;</p>
+<h2 id="&#x7C92;&#x5B50;&#x985E;&#x5225;"><a href="#&#x7C92;&#x5B50;&#x985E;&#x5225;" class="headerlink" title="&#x7C92;&#x5B50;&#x985E;&#x5225;"></a>&#x7C92;&#x5B50;&#x985E;&#x5225;</h2><p>&#x900F;&#x904E; ES6 &#x7684; <code>class</code> &#x5BA3;&#x544A;&#x985E;&#x5225;&#xFF0C; <code>constructor</code> &#x51FD;&#x5F0F;&#x7528;&#x4F86;&#x5EFA;&#x69CB;&#x7269;&#x4EF6;&#x5BE6;&#x9AD4;&#x7684;&#x5C6C;&#x6027;&#xFF0C;&#x9019;&#x88E1;&#x6211;&#x5011;&#x50B3;&#x5165;&#x4E00;&#x500B;&#x53C3;&#x6578; <code>args</code> &#xFF0C;&#x5B83;&#x6703;&#x662F;&#x4E00;&#x500B;&#x7269;&#x4EF6;&#xFF0C;&#x7528;&#x4F86;&#x9810;&#x8A2D;&#x7C92;&#x5B50;&#x7522;&#x751F;&#x6642;&#x5404;&#x5C6C;&#x6027;&#x7684;&#x521D;&#x59CB;&#x503C;&#x3002;</p>
+<p><strong><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener">Object.assign()</a></strong> &#x8A9E;&#x6CD5;&#x53EF;&#x4EE5;<strong>&#x5408;&#x4F75;&#x5169;&#x500B;&#x7269;&#x4EF6;</strong>&#xFF0C;&#x6211;&#x5011;&#x9996;&#x5148;&#x5B9A;&#x7FA9;&#x4E00;&#x500B;&#x9810;&#x8A2D;&#x7684;&#x7C92;&#x5B50;&#x7269;&#x4EF6; <code>def</code> &#xFF0C;&#x4E26;&#x5C07;&#x5B83;&#x548C;&#x50B3;&#x5165;&#x7684;&#x53C3;&#x6578; <code>args</code> &#x7269;&#x4EF6;&#x5408;&#x4F75;&#xFF0C;&#x63A5;&#x8457;&#x518D;&#x5C07;&#x5BE6;&#x9AD4;&#x5316;&#x7684;&#x7269;&#x4EF6; <code>this</code> &#x8207; <code>def</code> &#x5408;&#x4F75;&#xFF0C;&#x9054;&#x5230;&#x5EFA;&#x69CB;&#x7269;&#x4EF6;&#x5BE6;&#x9AD4;&#x5C6C;&#x6027;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x5982;&#x6B64;&#x4E00;&#x4F86;&#xFF0C;&#x6211;&#x5011;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x50CF;&#x4EE5;&#x524D;&#x4E00;&#x6A23;&#x7E41;&#x7463;&#x5730;&#x5C07;&#x4E00;&#x500B;&#x500B;&#x53C3;&#x6578;&#x50B3;&#x5165;&#xFF0C;&#x76F4;&#x63A5;&#x900F;&#x904E;&#x53C3;&#x6578;&#x3000;<code>args</code> &#x5B9A;&#x7FA9;&#x985E;&#x5225;&#x5C6C;&#x6027;&#xFF0C;&#x4E26;&#x50B3;&#x5165; <code>constructor</code> &#x5C31;&#x53EF;&#x4EE5;&#x56C9;&#xFF01;</p>
+<p>&#x7C92;&#x5B50;&#x7684; <code>update</code> &#x65B9;&#x6CD5;&#x6240;&#x8CA0;&#x8CAC;&#x7684;&#x4EFB;&#x52D9;&#xFF0C;&#x5305;&#x62EC;&#x66F4;&#x65B0;&#x7C92;&#x5B50;&#x672C;&#x8EAB;&#x7684;&#x7269;&#x7406;&#x72C0;&#x614B;&#x3001;&#x6539;&#x8B8A;&#x534A;&#x5F91;&#x5927;&#x5C0F;&#x3001;&#x5224;&#x65B7;&#x984F;&#x8272;&#x8B8A;&#x5316;&#x4EE5;&#x53CA;&#x6AA2;&#x67E5;&#x7C92;&#x5B50;&#x662F;&#x5426;&#x8D85;&#x51FA;&#x908A;&#x754C;&#xFF08;&#x82E5;&#x6709;&#xFF0C;&#x5C31;&#x6539;&#x8B8A;&#x7C92;&#x5B50;&#x7684;&#x901F;&#x5EA6;&#x65B9;&#x5411;&#xFF09;&#x3002;</p>
+<p>&#x7C92;&#x5B50;&#x7269;&#x4EF6;&#x7684; <code>update</code> &#x65B9;&#x6CD5;&#x88E1;&#x7684; <code>this.v.move(0, controls.ay)</code>  &#x662F;<strong>&#x8B93;&#x7C92;&#x5B50;&#x7684;&#x901F;&#x5EA6;&#x984D;&#x5916;&#x589E;&#x52A0;&#x4E00;&#x500B; y &#x8EF8;&#x7684;&#x52A0;&#x901F;&#x5EA6;</strong>&#xFF0C;&#x9019;&#x88E1;&#x7D81;&#x5B9A;&#x5230; Dat-gui &#x7684; <code>controls.ay</code> &#x4E0A;&#xFF0C;&#x8A73;&#x7D30;&#x53EF;&#x4EE5;&#x62C9;&#x5230;&#x672C;&#x6587;&#x6700;&#x5E95;&#x7684; Dat-gui &#x90E8;&#x5206;&#x3002;</p>
+<p>&#x56E0;&#x70BA;&#x6211;&#x60F3;&#x8B93;&#x7C92;&#x5B50;&#x5448;&#x50CF;<strong>&#x706B;&#x7130;</strong>&#x7684;&#x6548;&#x679C;&#xFF08;&#x96D6;&#x7136;&#x5BE6;&#x4F5C;&#x51FA;&#x4F86;&#x9084;&#x662F;&#x5F88;&#x4E0D;&#x50CF;xD&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5728;&#x7C92;&#x5B50;&#x8EAB;&#x4E0A;&#x65B0;&#x589E; <code>t</code> &#x5C6C;&#x6027;&#x8868;&#x793A;&#x7C92;&#x5B50;&#x8A95;&#x751F;&#x5F8C;&#x6240;&#x7D93;&#x904E;&#x7684;&#x6642;&#x9593;&#xFF0C;&#x96A8;&#x8457; <code>this.t++</code> &#xFF0C;&#x5224;&#x65B7; <code>t</code> &#x503C;&#x4E26;&#x6539;&#x8B8A;&#x7C92;&#x5B50;&#x984F;&#x8272; <code>color</code> &#xFF0C;&#x8272;&#x7968;&#x53C3;&#x8003;&#x4F86;&#x6E90;&#x70BA; <a href="https://www.color-hex.com/color-palette/18840" target="_blank" rel="noopener">Flame of Fire Color Palette</a> &#x3002;</p>
+<p><figure class="highlight jsx hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Particle</span> </span>{</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(args) {</span><br><span class="line">    <span class="hljs-comment">// def means the default properties of the object</span></span><br><span class="line">    <span class="hljs-keyword">const</span> def = {	</span><br><span class="line">      p: <span class="hljs-keyword">new</span> Vec2(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-comment">// Position</span></span><br><span class="line">      v: <span class="hljs-keyword">new</span> Vec2(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), <span class="hljs-comment">// Velocity</span></span><br><span class="line">      a: <span class="hljs-keyword">new</span> Vec2(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-comment">// Acceleration</span></span><br><span class="line">      r: <span class="hljs-number">10</span>, <span class="hljs-comment">// Radius</span></span><br><span class="line">      t: <span class="hljs-number">0</span>,  <span class="hljs-comment">// Time </span></span><br><span class="line">      color: <span class="hljs-string">&apos;#fff&apos;</span></span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-comment">// Use Object.assign() to merge the args and def </span></span><br><span class="line">    <span class="hljs-built_in">Object</span>.assign(def, args)</span><br><span class="line">    <span class="hljs-comment">// Use Object.assign() to assign combined object (def) to the object instance (this)</span></span><br><span class="line">    <span class="hljs-built_in">Object</span>.assign(<span class="hljs-keyword">this</span>, def)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// Draw the particle</span></span><br><span class="line">  draw() {</span><br><span class="line">    ctx.save()</span><br><span class="line">      ctx.translate(<span class="hljs-keyword">this</span>.p.x, <span class="hljs-keyword">this</span>.p.y)</span><br><span class="line">      ctx.beginPath()</span><br><span class="line">      ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>.r, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">2</span>)</span><br><span class="line">      ctx.fillStyle = <span class="hljs-keyword">this</span>.color</span><br><span class="line">      ctx.fill()</span><br><span class="line">    ctx.restore()</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// Update the particle&apos;s status</span></span><br><span class="line">  update() {</span><br><span class="line">    <span class="hljs-keyword">this</span>.p = <span class="hljs-keyword">this</span>.p.add(<span class="hljs-keyword">this</span>.v)</span><br><span class="line">    <span class="hljs-keyword">this</span>.v = <span class="hljs-keyword">this</span>.v.add(<span class="hljs-keyword">this</span>.a)</span><br><span class="line">    <span class="hljs-keyword">this</span>.v.move(<span class="hljs-number">0</span>, controls.ay) </span><br><span class="line">    <span class="hljs-keyword">this</span>.v = <span class="hljs-keyword">this</span>.v.mul(<span class="hljs-number">0.99</span>) <span class="hljs-comment">// The friction makes the particle slow down </span></span><br><span class="line">    <span class="hljs-keyword">this</span>.r *= controls.fade </span><br><span class="line">    <span class="hljs-keyword">this</span>.t++</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Change the particle&apos;s color as time increases</span></span><br><span class="line">    <span class="hljs-keyword">switch</span>(<span class="hljs-keyword">this</span>.t) {</span><br><span class="line">      <span class="hljs-keyword">case</span>(<span class="hljs-number">5</span>):</span><br><span class="line">        <span class="hljs-keyword">this</span>.color = <span class="hljs-string">`rgba(255, 206, 0, 1)`</span></span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">      <span class="hljs-keyword">case</span>(<span class="hljs-number">10</span>):</span><br><span class="line">        <span class="hljs-keyword">this</span>.color = <span class="hljs-string">`rgba(255, 154, 0, 0.9)`</span></span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">      <span class="hljs-keyword">case</span>(<span class="hljs-number">15</span>):</span><br><span class="line">        <span class="hljs-keyword">this</span>.color = <span class="hljs-string">`rgba(255, 90, 0, 0.5)`</span></span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">      <span class="hljs-keyword">case</span>(<span class="hljs-number">20</span>):</span><br><span class="line">        <span class="hljs-keyword">this</span>.color = <span class="hljs-string">`rgba(255, 0, 0, 0.3)`</span></span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Check whether the particle is beyond the boundary</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.p.x + <span class="hljs-keyword">this</span>.r &gt; ww) {</span><br><span class="line">      <span class="hljs-keyword">this</span>.v.x = -<span class="hljs-built_in">Math</span>.abs(<span class="hljs-keyword">this</span>.v.x)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.p.x - <span class="hljs-keyword">this</span>.r &lt; <span class="hljs-number">0</span>) {</span><br><span class="line">      <span class="hljs-keyword">this</span>.v.x = <span class="hljs-built_in">Math</span>.abs(<span class="hljs-keyword">this</span>.v.x)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.p.y + <span class="hljs-keyword">this</span>.r &gt; wh) {</span><br><span class="line">      <span class="hljs-keyword">this</span>.v.y = -<span class="hljs-built_in">Math</span>.abs(<span class="hljs-keyword">this</span>.v.y)</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.p.y - <span class="hljs-keyword">this</span>.r &lt; <span class="hljs-number">0</span>) {</span><br><span class="line">      <span class="hljs-keyword">this</span>.v.y = <span class="hljs-built_in">Math</span>.abs(<span class="hljs-keyword">this</span>.v.y)</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="&#x91CD;&#x529B;&#x5834;&#x985E;&#x5225;"><a href="#&#x91CD;&#x529B;&#x5834;&#x985E;&#x5225;" class="headerlink" title="&#x91CD;&#x529B;&#x5834;&#x985E;&#x5225;"></a>&#x91CD;&#x529B;&#x5834;&#x985E;&#x5225;</h2><p>&#x540C;&#x6A23;&#x900F;&#x904E; class &#x5BA3;&#x544A;&#x91CD;&#x529B;&#x5834;&#x985E;&#x5225;&#xFF0C;&#x7528; <code>Object.assign()</code> &#x5EFA;&#x7ACB;&#x7269;&#x4EF6;&#x5C6C;&#x6027;&#x7684;&#x65B9;&#x5F0F;&#x8207;&#x7C92;&#x5B50;&#x985E;&#x5225;&#x76F8;&#x540C;&#x3002;</p>
+<p>&#x91CD;&#x529B;&#x5834;&#x7269;&#x4EF6;&#x88E1;&#x7684; <code>value</code> &#x5C6C;&#x6027;&#x8868;&#x793A;<strong>&#x91CD;&#x529B;&#x5834;&#x7684;&#x5F37;&#x5EA6;</strong>&#xFF0C;&#x5B83;&#x662F;&#x5177;&#x6709;&#x65B9;&#x5411;&#x6027;&#x7684;&#x529B;&#x91CF;&#xFF08;<strong>&#x5411;&#x91CF;</strong>&#xFF09;&#xFF0C;&#x6703;&#x6539;&#x8B8A;&#x7C92;&#x5B50;&#x7684;&#x901F;&#x5EA6;&#x8B8A;&#x5316;&#x3002;</p>
+<p><img src="/2020/04/25/canvas-09/gravityField.png" alt="&#x91CD;&#x529B;&#x5834;&#x4F5C;&#x7528;&#x529B;"></p>
+<p>&#x57FA;&#x672C;&#x4E0A;&#xFF0C;<strong>&#x91CD;&#x529B;&#x5834;&#x5C0D;&#x7C92;&#x5B50;&#x7684;&#x4F5C;&#x7528;&#x529B;&#xFF08;F&#xFF09;</strong>&#x8207;<strong>&#x91CD;&#x529B;&#x5834;&#x548C;&#x7C92;&#x5B50;&#x4E4B;&#x9593;&#x7684;&#x8DDD;&#x96E2;&#x6B21;&#x65B9;&#x500D;&#xFF08;d^2&#xFF09;</strong>&#x6210;<strong>&#x53CD;&#x6BD4;</strong>&#xFF0C;&#x63DB;&#x53E5;&#x8A71;&#x8AAA;&#xFF0C;&#x91CD;&#x529B;&#x5834;&#x8207;&#x7C92;&#x5B50;&#x4E4B;&#x9593;&#x7684;&#x8DDD;&#x96E2;&#x6108;&#x77ED;&#xFF0C;&#x529B;&#x5834;&#x7684;&#x4F5C;&#x7528;&#x529B;&#x6108;&#x5927;&#xFF1B;&#x53CD;&#x4E4B;&#xFF0C;&#x7C92;&#x5B50;&#x8DDD;&#x96E2;&#x91CD;&#x529B;&#x5834;&#x6108;&#x9060;&#xFF0C;&#x529B;&#x5834;&#x4F5C;&#x7528;&#x529B;&#x6108;&#x5C0F;&#x3002;</p>
+<p>&#x7C21;&#x800C;&#x8A00;&#x4E4B;&#xFF0C; <code>value</code> &#x53EF;&#x4EE5;&#x662F;&#x6B63;&#x503C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x8CA0;&#x503C;&#x3002;&#x7576; <code>value</code> &#x70BA;<strong>&#x6B63;&#x503C;</strong>&#xFF0C;&#x5B83;&#x6703;&#x5C0D;&#x7C92;&#x5B50;&#x65BD;&#x52A0;<strong>&#x6392;&#x65A5;&#x7684;&#x529B;&#x91CF;</strong>&#xFF1B;&#x7576; <code>value</code> &#x70BA;<strong>&#x8CA0;&#x503C;</strong>&#xFF0C;&#x5B83;&#x6703;&#x5C0D;&#x7C92;&#x5B50;&#x65BD;&#x52A0;<strong>&#x5438;&#x5F15;&#x7684;&#x529B;&#x91CF;</strong>&#xFF0C;&#x5C31;&#x50CF;&#x9ED1;&#x6D1E;&#x4E00;&#x6A23;&#x628A;&#x7C92;&#x5B50;&#x90FD;&#x5438;&#x6536;&#x3002;</p>
+<p>&#x5728;&#x91CD;&#x529B;&#x5834;&#x7269;&#x4EF6;&#x7684; <code>affect</code> &#x65B9;&#x6CD5;&#x4E2D;&#x8A08;&#x7B97;&#x4E86;&#x91CD;&#x529B;&#x5834; <code>value</code> &#x503C;&#x5C0D;&#x7C92;&#x5B50;&#x901F;&#x5EA6;&#x7684;&#x5F71;&#x97FF;&#xFF1A;</p>
+<ol>
+<li><code>const delta = particle.p.sub(this.p)</code> &#xFF1A;&#x8A08;&#x7B97;&#x7C92;&#x5B50;&#x8207;&#x91CD;&#x529B;&#x5834;&#x4E4B;&#x9593;&#x7684;&#x8DDD;&#x96E2;&#xFF08;d&#xFF09;&#x3002;</li>
+<li><code>const len = this.value / (1 + delta.length)</code> &#xFF1A;&#x5C07;&#x529B;&#x5834;&#x5F37;&#x5EA6;&#x8207; d &#x76F8;&#x9664;&#xFF08;d + 1 &#x907F;&#x514D;&#x70BA; 0&#xFF09;&#xFF0C;&#x5F97;&#x5230;&#x529B;&#x5834;&#x4F5C;&#x7528;&#x529B;&#x7684;&#x55AE;&#x4F4D;&#x6BD4;&#x7387;&#xFF08;len&#xFF09;&#x3002;</li>
+<li><code>const force = delta.unit.mul(len)</code> &#xFF1A;&#x7ACB;&#x5834;&#x4F5C;&#x7528;&#x529B;&#xFF08;F&#xFF09;&#x70BA; d &#x7684;&#x55AE;&#x4F4D;&#x5411;&#x91CF;&#x4E58;&#x4E0A; len &#x3002;</li>
+<li><code>particle.v.move(force.x, force.y)</code> &#xFF1A;&#x5C0D;&#x7C92;&#x5B50;&#x901F;&#x5EA6;&#x65BD;&#x52A0;&#x529B;&#x5834;&#x7684;&#x4F5C;&#x7528;&#x529B;&#xFF08;F&#xFF09;&#x3002;</li>
+</ol>
+<p>&#x5728;&#x91CD;&#x529B;&#x5834;&#x7269;&#x4EF6;&#x7684; <code>darw</code> &#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x6211;&#x5011;&#x501F;&#x7528; <code>value</code> &#x503C;&#x4F5C;&#x70BA;&#x91CD;&#x529B;&#x5834;&#x7684;&#x534A;&#x5F91;&#xFF0C;&#x8A18;&#x5F97;&#x900F;&#x904E; <code>Math.abs(this.value)</code> &#x53D6;&#x6B63;&#x503C;&#x3002;</p>
+<p><figure class="highlight jsx hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Force field Class</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Forcefield</span> </span>{</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(args) {</span><br><span class="line">    <span class="hljs-keyword">const</span> def = {</span><br><span class="line">      p: <span class="hljs-keyword">new</span> Vec2(), <span class="hljs-comment">// Position </span></span><br><span class="line">      value: <span class="hljs-number">100</span> <span class="hljs-comment">// The effect and radius of the force field</span></span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-built_in">Object</span>.assign(def, args)</span><br><span class="line">    <span class="hljs-built_in">Object</span>.assign(<span class="hljs-keyword">this</span>, def)</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// Draw the force field</span></span><br><span class="line">  draw() {</span><br><span class="line">    ctx.save()</span><br><span class="line">      ctx.translate(<span class="hljs-keyword">this</span>.p.x, <span class="hljs-keyword">this</span>.p.y)</span><br><span class="line">      ctx.beginPath()</span><br><span class="line">      ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.sqrt(<span class="hljs-built_in">Math</span>.abs(<span class="hljs-keyword">this</span>.value)), <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">2</span>)</span><br><span class="line">      ctx.fillStyle = <span class="hljs-string">&apos;white&apos;</span></span><br><span class="line">      ctx.fill()</span><br><span class="line">    ctx.restore()</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// The effect of force field on each particle</span></span><br><span class="line">  affect(particle) {</span><br><span class="line">    <span class="hljs-keyword">const</span> delta = particle.p.sub(<span class="hljs-keyword">this</span>.p) </span><br><span class="line">    <span class="hljs-keyword">const</span> len = <span class="hljs-keyword">this</span>.value / (<span class="hljs-number">1</span> + delta.length) <span class="hljs-comment">// To avoid that delta.length equals to 0, add 1 to it</span></span><br><span class="line">    <span class="hljs-keyword">const</span> force = delta.unit.mul(len) <span class="hljs-comment">// The force is inversely proportional to the delta </span></span><br><span class="line">    particle.v.move(force.x, force.y) <span class="hljs-comment">// Add the force to each particle</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="update-&#x66F4;&#x65B0;&#x8CC7;&#x6599;"><a href="#update-&#x66F4;&#x65B0;&#x8CC7;&#x6599;" class="headerlink" title="update() &#x66F4;&#x65B0;&#x8CC7;&#x6599;"></a>update() &#x66F4;&#x65B0;&#x8CC7;&#x6599;</h2><p>&#x6BCF;&#x6B21;&#x57F7;&#x884C; <code>update</code> &#x6240;&#x8981;&#x57F7;&#x884C;&#x7684;&#x4EFB;&#x52D9;&#x5305;&#x62EC;&#xFF1A;<strong>&#x88FD;&#x9020;&#x65B0;&#x7684;&#x7C92;&#x5B50;</strong>&#x3001;<strong>&#x66F4;&#x65B0;&#x6BCF;&#x500B;&#x7C92;&#x5B50;&#x7684;&#x72C0;&#x614B;</strong>&#x3001;<strong>&#x6D88;&#x6EC5;&#x5DF2;&#x7D93;&#x770B;&#x4E0D;&#x5230;&#x7684;&#x7C92;&#x5B50;</strong>&#x3002;&#x7C21;&#x55AE;&#x4F86;&#x8AAA;&#xFF0C;&#x5C31;&#x662F;&#x8655;&#x7406;<strong>&#x7C92;&#x5B50;&#x7684;&#x751F;&#x547D;&#x9031;&#x671F;</strong>&#x3002;</p>
+<p><img src="/2020/04/25/canvas-09/lifecycle.png" alt="&#x7C92;&#x5B50;&#x7684;&#x751F;&#x547D;&#x9031;&#x671F;"></p>
+<p>&#x70BA;&#x4EC0;&#x9EBC;&#x8981;&#x6D88;&#x6EC5;&#x5DF2;&#x7D93;&#x770B;&#x4E0D;&#x5230;&#x7684;&#x7C92;&#x5B50;&#x5462;&#xFF1F;&#x8981;&#x77E5;&#x9053;&#xFF0C;&#x6BCF;&#x4E00;&#x500B;&#x7C92;&#x5B50;&#x4EE3;&#x8868;&#x7684;&#x662F;&#x4E00;&#x7B46;&#x8CC7;&#x6599;&#xFF0C;&#x7576;&#x8CC7;&#x6599;&#x91CF;&#x6108;&#x4F86;&#x6108;&#x591A;&#xFF0C;&#x8655;&#x529B;&#x904B;&#x7B97;&#x4E5F;&#x6703;&#x6108;&#x4F86;&#x6108;&#x6162;&#xFF0C;&#x6548;&#x80FD;&#x5C31;&#x6703;&#x8B8A;&#x5DEE;&#xFF0C;&#x756B;&#x9762;&#x6703;&#x958B;&#x59CB;&#x5361;&#x9813;&#x3001;&#x5EF6;&#x9072;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x9069;&#x6642;&#x522A;&#x9664;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8CC7;&#x6599;&#x4F86;<strong>&#x91CB;&#x653E;&#x8A18;&#x61B6;&#x9AD4;</strong>&#x662F;&#x5FC5;&#x8981;&#x7684;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x5011;&#x5728;&#x5168;&#x57DF;&#x5BA3;&#x544A;&#x5169;&#x500B;<strong>&#x9663;&#x5217;</strong>&#x5206;&#x5225;&#x5132;&#x5B58;&#x7C92;&#x5B50;&#x548C;&#x91CD;&#x529B;&#x5834;&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
+<p>&#x5728;&#x88FD;&#x9020;&#x65B0;&#x7C92;&#x5B50;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x4F7F;&#x7528; <strong><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/from" target="_blank" rel="noopener">Array.from()</a></strong> &#x8A9E;&#x6CD5;&#x4E00;&#x6B21;&#x88FD;&#x9020; 5 &#x7B46;&#x7C92;&#x5B50;&#x8CC7;&#x6599;&#xFF0C;&#x900F;&#x904E; <code>new Particle()</code> &#x50B3;&#x5165;<strong>&#x7269;&#x4EF6;</strong>&#x4F5C;&#x70BA;&#x53C3;&#x6578; <code>args</code> &#x4F86;&#x5BE6;&#x9AD4;&#x5316;&#x7C92;&#x5B50;&#x7269;&#x4EF6;&#x7684;&#x5C6C;&#x6027;&#xFF0C;&#x4E26;&#x8A2D;&#x5B9A;&#x6211;&#x5011;&#x8981;&#x7684;&#x521D;&#x59CB;&#x5C6C;&#x6027;&#xFF0C;&#x5305;&#x62EC;&#x4F4D;&#x7F6E;&#x3001;&#x901F;&#x5EA6;&#x3001;&#x534A;&#x5F91;&#x4EE5;&#x53CA;&#x984F;&#x8272;&#xFF0C;&#x642D;&#x914D; <code>Math.random()</code> &#x8B93;&#x7C92;&#x5B50;&#x72C0;&#x614B;&#x66F4;&#x52A0;&#x591A;&#x5143;&#x3002; </p>
+<p>&#x900F;&#x904E; <code>forEach()</code> &#x9663;&#x5217;&#x65B9;&#x6CD5;&#x4F86;&#x66F4;&#x65B0; particles &#x9663;&#x5217;&#x88E1;&#x9762;&#x6BCF;&#x4E00;&#x500B;&#x7C92;&#x5B50;&#x7684;&#x8CC7;&#x6599;&#x3002;</p>
+<p>&#x81F3;&#x65BC;<strong>&#x6D88;&#x6EC5;&#x7C92;&#x5B50;&#x7684;&#x5BE6;&#x4F5C;</strong>&#xFF0C;&#x6211;&#x5011;&#x50BE;&#x5411;&#x4E0D;&#x8981;&#x52D5;&#x5230;&#x539F;&#x672C;&#x7684; particles &#x9663;&#x5217;&#xFF0C;&#x5148;&#x4EE5; ****<code>particles.slice()</code> &#x8907;&#x88FD;&#x4E00;&#x4EFD;&#x5F8C;&#xFF0C;&#x518D;&#x900F;&#x904E; <code>forEach()</code> &#x7BE9;&#x9078;&#xFF0C;&#x90A3;&#x65E2;&#x7136;&#x90FD;&#x628A;&#x7C92;&#x5B50;&#x6293;&#x51FA;&#x4F86;&#x8FED;&#x4EE3;&#x4E86;&#xFF0C;&#x7D22;&#x6027;&#x4E00;&#x4F75;&#x8655;&#x7406;&#x91CD;&#x529B;&#x5834;&#x5C0D;&#x7C92;&#x5B50;&#x7684;&#x5F71;&#x97FF;&#xFF0C;&#x518D;&#x52A0;&#x5165;&#x5224;&#x65B7;&#x5F0F;&#xFF0C;&#x5C07;&#x5C0F;&#x5230;&#x770B;&#x4E0D;&#x898B;&#x7684;&#x7C92;&#x5B50;&#x5F9E;&#x9663;&#x5217;&#x4E2D;&#x79FB;&#x9664;&#x4E26;&#x56DE;&#x50B3; <code>const pp = sp.splice(index, 1)</code> &#xFF0C;&#x9032;&#x800C; <code>delete</code> &#x8A72;&#x7B46;&#x7C92;&#x5B50;&#x8CC7;&#x6599;&#x3002;</p>
+<p>&#x2B50; &#x6700;&#x5F8C;&#x5225;&#x5FD8;&#x4E86;&#x5C07;&#x7BE9;&#x9078;&#x5F8C;&#x7684;&#x9663;&#x5217;&#x91CD;&#x65B0;&#x8CE6;&#x503C;&#x7D66; particles &#xFF01;</p>
+<p><code>Array.form()</code> &#x3001; <code>slice()</code> &#x3001; <code>forEach()</code> &#x3001; <code>splice()</code>&#x3000;&#x90FD;&#x662F;&#x8655;&#x7406;&#x9663;&#x5217;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8A73;&#x7D30;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x53C3;&#x8003;<a href="https://www.oxxostudio.tw/articles/201908/js-array.html#array_from" target="_blank" rel="noopener">&#x3008;JavaScript Array &#x9663;&#x5217;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#x5927;&#x5168; ( &#x542B; ES6 )&#x3009;</a>&#x9019;&#x7BC7;&#x6587;&#x7AE0;&#x3002;</p>
+<p><figure class="highlight jsx hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Declare an array to contain all particles</span></span><br><span class="line"><span class="hljs-keyword">let</span> particles = []</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Declare an array to contain all forcefields</span></span><br><span class="line"><span class="hljs-keyword">let</span> forcefields = []</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Update the status</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-comment">// Create #gcount particles and merge them to the particles[]  </span></span><br><span class="line">  particles = particles.concat(<span class="hljs-built_in">Array</span>.from({<span class="hljs-attr">length</span>: controls.gcount}, (d, i) =&gt; {</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Particle({</span><br><span class="line">      p: mousePos.clone(), </span><br><span class="line">      v: <span class="hljs-keyword">new</span> Vec2(<span class="hljs-built_in">Math</span>.random() * controls.v - controls.v / <span class="hljs-number">2</span>, <span class="hljs-built_in">Math</span>.random() * controls.v - controls.v / <span class="hljs-number">2</span>),</span><br><span class="line">      r: <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">20</span>,</span><br><span class="line">      color: <span class="hljs-string">`rgb(255, 241, 119)`</span></span><br><span class="line">    })</span><br><span class="line">  }))</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// Update each particle&apos;s status</span></span><br><span class="line">  particles.forEach(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.update())</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">const</span> sp = particles.slice() <span class="hljs-comment">// Copy the particles array</span></span><br><span class="line">  sp.forEach(<span class="hljs-function">(<span class="hljs-params">p, index</span>) =&gt;</span> {</span><br><span class="line">    forcefields.forEach(<span class="hljs-function"><span class="hljs-params">ff</span> =&gt;</span> ff.affect(p)) <span class="hljs-comment">// Make each force field affect each particle</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// If the particle that has r smaller than 0.1, delete it to release memory</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(p.r &lt; <span class="hljs-number">0.5</span>) {</span><br><span class="line">      <span class="hljs-keyword">const</span> pp = sp.splice(index, <span class="hljs-number">1</span>) </span><br><span class="line">      <span class="hljs-keyword">delete</span> pp</span><br><span class="line">    }</span><br><span class="line">  })</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// Assign sp to the particles[] for the next update</span></span><br><span class="line">  particles = sp</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="draw-&#x66F4;&#x65B0;&#x756B;&#x9762;"><a href="#draw-&#x66F4;&#x65B0;&#x756B;&#x9762;" class="headerlink" title="draw() &#x66F4;&#x65B0;&#x756B;&#x9762;"></a>draw() &#x66F4;&#x65B0;&#x756B;&#x9762;</h2><p><code>draw</code> &#x7684;&#x4EFB;&#x52D9;&#x76F8;&#x7576;&#x55AE;&#x7D14;&#xFF0C;&#x5C31;&#x662F;&#x5206;&#x5225;&#x628A;&#x7C92;&#x5B50;&#x8CC7;&#x6599;&#x548C;&#x91CD;&#x529B;&#x5834;&#x8CC7;&#x6599;&#x6293;&#x51FA;&#x4F86;&#x81EA;&#x5DF1;&#x7E6A;&#x5716;&#x3002;</p>
+<p><figure class="highlight jsx hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-comment">// Clear the background of canvas</span></span><br><span class="line">  ctx.fillStyle = bgColor;</span><br><span class="line">  ctx.fillRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, ww, wh);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// ------------------------------------------------- //</span></span><br><span class="line">  <span class="hljs-comment">// Draw here ---------------------------------------</span></span><br><span class="line">  ctx.save();</span><br><span class="line">    particles.forEach(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.draw())</span><br><span class="line">    forcefields.forEach(<span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span> f.draw())</span><br><span class="line">  ctx.restore();</span><br><span class="line">  <span class="hljs-comment">// ------------------------------------------------- //</span></span><br><span class="line"></span><br><span class="line">  requestAnimationFrame(draw);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="dblclick-&#x6ED1;&#x9F20;&#x4E8B;&#x4EF6;&#x88FD;&#x9020;&#x91CD;&#x529B;&#x5834;"><a href="#dblclick-&#x6ED1;&#x9F20;&#x4E8B;&#x4EF6;&#x88FD;&#x9020;&#x91CD;&#x529B;&#x5834;" class="headerlink" title="dblclick &#x6ED1;&#x9F20;&#x4E8B;&#x4EF6;&#x88FD;&#x9020;&#x91CD;&#x529B;&#x5834;"></a>dblclick &#x6ED1;&#x9F20;&#x4E8B;&#x4EF6;&#x88FD;&#x9020;&#x91CD;&#x529B;&#x5834;</h2><p>&#x88FD;&#x4F5C;&#x9023;&#x9EDE;&#x6ED1;&#x9F20;&#x5DE6;&#x9375;&#x5169;&#x4E0B;&#x4FBF; <code>new Forcefield()</code> &#x4E00;&#x500B;&#x91CD;&#x529B;&#x5834;&#xFF0C;&#x50B3;&#x5165;&#x8A2D;&#x5B9A;&#x597D;&#x5C6C;&#x6027;&#x7684;&#x7269;&#x4EF6;&#x4F5C;&#x70BA;&#x53C3;&#x6578;&#xFF0C;&#x5148;&#x524D;&#x5728;&#x985E;&#x5225;&#x4E2D;&#x4F7F;&#x7528;&#x7684; <code>Object.assign()</code> &#x6703;&#x5E6B;&#x6211;&#x5011;&#x5408;&#x4F75;&#x5BE6;&#x9AD4;&#x5316;&#x7684;&#x7269;&#x4EF6;&#x5C6C;&#x6027;&#xFF0C;&#x4E0D;&#x518D;&#x91CD;&#x8907;&#x8AAA;&#x660E;&#x3002;</p>
+<p><figure class="highlight jsx hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&apos;dblclick&apos;</span>, dblclick);</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dblclick</span>(<span class="hljs-params">e</span>) </span>{</span><br><span class="line">  mousePos.set(e.x, e.y)</span><br><span class="line">  forcefields.push(<span class="hljs-keyword">new</span> Forcefield({</span><br><span class="line">    p: mousePos.clone(),</span><br><span class="line">    value: controls.value </span><br><span class="line">  }))</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Dat-gui-&#x8A2D;&#x5B9A;&#x53C3;&#x6578;"><a href="#Dat-gui-&#x8A2D;&#x5B9A;&#x53C3;&#x6578;" class="headerlink" title="Dat-gui &#x8A2D;&#x5B9A;&#x53C3;&#x6578;"></a>Dat-gui &#x8A2D;&#x5B9A;&#x53C3;&#x6578;</h2><p>&#x8A2D;&#x5B9A; Dat-gui &#x63A7;&#x5236;&#x9762;&#x677F;&#xFF0C;&#x53C3;&#x6578;&#x7684;&#x503C;&#x8207;&#x7D1A;&#x8DDD;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x8ABF;&#x6574;&#xFF1A;</p>
+<p><figure class="highlight jsx hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Dat-gui Control</span></span><br><span class="line"><span class="hljs-keyword">const</span> controls = {</span><br><span class="line">  value: <span class="hljs-number">100</span>, </span><br><span class="line">  gcount: <span class="hljs-number">3</span>, <span class="hljs-comment">// How many particles are generated each time</span></span><br><span class="line">  ay: <span class="hljs-number">-0.6</span>, <span class="hljs-comment">// The extra increase in y acceleration </span></span><br><span class="line">  fade: <span class="hljs-number">0.96</span>, </span><br><span class="line">  v: <span class="hljs-number">5</span>, </span><br><span class="line">  clearForce: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    forcefields = []</span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"><span class="hljs-keyword">const</span> gui = <span class="hljs-keyword">new</span> dat.GUI();</span><br><span class="line">gui.add(controls, <span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-number">-100</span>, <span class="hljs-number">100</span>).step(<span class="hljs-number">20</span>).onChange(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {});</span><br><span class="line">gui.add(controls, <span class="hljs-string">&quot;gcount&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">30</span>).step(<span class="hljs-number">1</span>).onChange(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {})</span><br><span class="line">gui.add(controls, <span class="hljs-string">&quot;ay&quot;</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">1</span>).step(<span class="hljs-number">0.01</span>).onChange(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {})</span><br><span class="line">gui.add(controls, <span class="hljs-string">&quot;fade&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>).step(<span class="hljs-number">0.01</span>).onChange(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {})</span><br><span class="line">gui.add(controls, <span class="hljs-string">&quot;v&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">30</span>).step(<span class="hljs-number">0.01</span>).onChange(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {})</span><br><span class="line">gui.add(controls, <span class="hljs-string">&quot;clearForce&quot;</span>)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h2><ol>
+<li><a href="https://hahow.in/courses/586fae97a8aae907000ce721/discussions?item=5a1e1755a2c4b000589dda2c" target="_blank" rel="noopener">&#x52D5;&#x756B;&#x4E92;&#x52D5;&#x7DB2;&#x9801;&#x7279;&#x6548;&#x5165;&#x9580;&#xFF08;JS/CANVAS&#xFF09;&#xFF1A;5-7 &#x7C92;&#x5B50;&#x7279;&#x6548;</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/W3HexSchool/">#W3HexSchool</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/04/18/canvas-08/">把網頁當畫布揮灑的 Canvas 08：開發架構與模板</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2020/04/25/canvas-09/';
+        this.page.identifier = '2020/04/25/canvas-09/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiBlog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Luffy&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/Feitoengineer19">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-tw");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
