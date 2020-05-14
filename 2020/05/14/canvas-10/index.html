@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>把網頁當畫布揮灑的 Canvas 10：極座標 - Luffy&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Emotional x Rational">
+
+
+
+
+
+    <meta name="description" content="&amp;#x5C0F;&amp;#x98DB;&amp;#xFF1A;&amp;#x300C;&amp;#x6B38;&amp;#xFF01;&amp;#x4F60;&amp;#x8AAA;&amp;#x7684;&amp;#x90A3;&amp;#x5BB6;&amp;#x62C9;&amp;#x9EB5;&amp;#x5E97;&amp;#x5728;&amp;#x54EA;&amp;#x88E1;&amp;#x554A;&amp;#xFF1F;&amp;#x300D; &amp;#x963F;&amp;#x5B87;&amp;#xFF1A;&amp;#x300C;&amp;#x4EE5">
+<meta name="keywords" content="W3HexSchool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把網頁當畫布揮灑的 Canvas 10：極座標">
+<meta property="og:url" content="https://feitoengineer19.github.io/2020/05/14/canvas-10/index.html">
+<meta property="og:site_name" content="Luffy&#39;s Blog">
+<meta property="og:description" content="&amp;#x5C0F;&amp;#x98DB;&amp;#xFF1A;&amp;#x300C;&amp;#x6B38;&amp;#xFF01;&amp;#x4F60;&amp;#x8AAA;&amp;#x7684;&amp;#x90A3;&amp;#x5BB6;&amp;#x62C9;&amp;#x9EB5;&amp;#x5E97;&amp;#x5728;&amp;#x54EA;&amp;#x88E1;&amp;#x554A;&amp;#xFF1F;&amp;#x300D; &amp;#x963F;&amp;#x5B87;&amp;#xFF1A;&amp;#x300C;&amp;#x4EE5">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/05/14/canvas-10/polar.png">
+<meta property="og:image" content="https://feitoengineer19.github.io/2020/05/14/canvas-10/scan.png">
+<meta property="og:updated_time" content="2020-05-14T07:02:42.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把網頁當畫布揮灑的 Canvas 10：極座標">
+<meta name="twitter:description" content="&amp;#x5C0F;&amp;#x98DB;&amp;#xFF1A;&amp;#x300C;&amp;#x6B38;&amp;#xFF01;&amp;#x4F60;&amp;#x8AAA;&amp;#x7684;&amp;#x90A3;&amp;#x5BB6;&amp;#x62C9;&amp;#x9EB5;&amp;#x5E97;&amp;#x5728;&amp;#x54EA;&amp;#x88E1;&amp;#x554A;&amp;#xFF1F;&amp;#x300D; &amp;#x963F;&amp;#x5B87;&amp;#xFF1A;&amp;#x300C;&amp;#x4EE5">
+<meta name="twitter:image" content="https://feitoengineer19.github.io/2020/05/14/canvas-10/polar.png">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/hybrid.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Luffy
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">文章</a>
+            
+            <a class="navbar-item " href="/categories">分類</a>
+            
+            <a class="navbar-item " href="https://feitoengineer19.github.io/myHome/">關於</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="搜尋" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/Feitoengineer19">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            把網頁當畫布揮灑的 Canvas 10：極座標
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-05-14T06:59:36.000Z" itemprop="datePublished">2020年5月14日</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/HTML/">HTML</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&#x5C0F;&#x98DB;&#xFF1A;&#x300C;&#x6B38;&#xFF01;&#x4F60;&#x8AAA;&#x7684;&#x90A3;&#x5BB6;&#x62C9;&#x9EB5;&#x5E97;&#x5728;&#x54EA;&#x88E1;&#x554A;&#xFF1F;&#x300D;</p>
+<p>&#x963F;&#x5B87;&#xFF1A;&#x300C;&#x4EE5;&#x6211;&#x5011;&#x70BA;&#x539F;&#x9EDE;&#xFF0C;&#x90A3;&#x5BB6;&#x62C9;&#x9EB5;&#x5E97;&#x5728;&#x8DDD;&#x96E2;&#x6211;&#x5011; x &#x8EF8;&#x6B63;&#x5411; 300 &#x516C;&#x5C3A;&#xFF0C; y &#x8EF8;&#x6B63;&#x5411; 400 &#x516C;&#x5C3A;&#x7684;&#x5730;&#x65B9;&#x3002;&#x300D;</p>
+<p>&#x5C0F;&#x98DB;&#xFF1A;&#x300C;&#x8B1B;&#x4EBA;&#x8A71;&#x2026;&#x300D;</p>
+<p>&#x963F;&#x5B87;&#xFF1A;&#x300C;&#x90A3;&#x5BB6;&#x62C9;&#x9EB5;&#x5E97;&#x8DDD;&#x96E2;&#x6211;&#x5011; 500 &#x516C;&#x5C3A;&#xFF0C;&#x89D2;&#x5EA6;&#x6211;&#x7B97;&#x4E00;&#x4E0B;&#x54E6;&#x2026;&#x300D;</p>
+<p>&#x7531;&#x6B64;&#x53EF;&#x898B;&#xFF0C;&#x5C0D;&#x4E00;&#x822C;&#x4EBA;&#x4F86;&#x8AAA;&#xFF0C;&#x7528;&#x76F4;&#x89D2;&#x5EA7;&#x6A19;&#x63CF;&#x8FF0;&#x771F;&#x5BE6;&#x4E16;&#x754C;&#x7684;&#x4F4D;&#x7F6E;&#x4E26;&#x4E0D;&#x76F4;&#x89BA;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x6211;&#x5011;&#x6703;&#x4EE5;&#x300C;&#x8DDD;&#x96E2;&#x300D;&#x548C;&#x300C;&#x65B9;&#x5411;&#xFF08;&#x89D2;&#x5EA6;&#xFF09;&#x300D;&#x4F86;&#x63CF;&#x8FF0;&#x7269;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x9019;&#x5C31;&#x662F;&#x6240;&#x8B02;&#x7684;&#x300C;&#x6975;&#x5EA7;&#x6A19;&#x300D;&#x3002;</p>
+  <a id="more"></a>
+
+<hr>
+<h2 id="&#x76F4;&#x89D2;&#x5750;&#x6A19;-v-s-&#x6975;&#x5EA7;&#x6A19;"><a href="#&#x76F4;&#x89D2;&#x5750;&#x6A19;-v-s-&#x6975;&#x5EA7;&#x6A19;" class="headerlink" title="&#x76F4;&#x89D2;&#x5750;&#x6A19; v.s. &#x6975;&#x5EA7;&#x6A19;"></a>&#x76F4;&#x89D2;&#x5750;&#x6A19; v.s. &#x6975;&#x5EA7;&#x6A19;</h2><p>&#x4F7F;&#x7528;&#x6975;&#x5EA7;&#x6A19;&#xFF08;Polar Coordinate System&#xFF09;&#x8868;&#x793A;&#x7269;&#x4EF6;&#x4F4D;&#x7F6E;&#x6BD4;&#x76F4;&#x89D2;&#x5EA7;&#x6A19;&#x4F86;&#x5F97;&#x66F4;&#x52A0;&#x76F4;&#x89BA;&#xFF0C;&#x4E5F;&#x6BD4;&#x8F03;&#x5BB9;&#x6613;&#x63CF;&#x8FF0;&#x8DDD;&#x96E2;&#x548C;&#x89D2;&#x5EA6;&#x7684;&#x8B8A;&#x5316;&#x3002;&#x5728;&#x6578;&#x5B78;&#x4E0A;&#xFF0C;&#x76F4;&#x89D2;&#x5EA7;&#x6A19;&#x4EE5; <code>( &#x7269;&#x4EF6;&#x8DDD;&#x96E2;&#x539F;&#x9EDE;&#x7684; x &#x8EF8;&#x8DDD;&#x96E2;, &#x7269;&#x4EF6;&#x8DDD;&#x96E2;&#x539F;&#x9EDE;&#x7684; y &#x8EF8;&#x8DDD;&#x96E2;)</code> &#x8868;&#x793A;&#xFF0C;&#x6975;&#x5EA7;&#x6A19;&#x5247;&#x662F;&#x4EE5; <code>(&#x7269;&#x4EF6;&#x8207;&#x539F;&#x9EDE;&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x96E2; r , &#x7269;&#x4EF6;&#x8207; x &#x8EF8;&#x7684;&#x593E;&#x89D2; a )</code> &#x8868;&#x793A;&#xFF0C;&#x5169;&#x8005;&#x4E4B;&#x9593;&#x53EF;&#x4EE5;&#x4E92;&#x76F8;&#x8F49;&#x63DB;&#x3002;</p>
+<p>&#x5C07;&#x76F4;&#x89D2;&#x5EA7;&#x6A19; <code>(x, y)</code> &#x8F49;&#x70BA;&#x6975;&#x5EA7;&#x6A19; <code>(r, a)</code> &#xFF1A;</p>
+<p><code>&#x8DDD;&#x96E2;&#xFF0F;&#x534A;&#x5F91; r = Vector.length = Math.sqrt( x^2 + y^2)</code></p>
+<p><code>&#x89D2;&#x5EA6;&#xFF08;deg&#xFF09; a * degToPi = Vector.angle  = atan2(y, x) &#x5F27;&#x5EA6;&#xFF08;rad&#xFF09;</code></p>
+<p>&#x5148;&#x524D;&#x6211;&#x5011;&#x5728;&#x958B;&#x767C;&#x6A21;&#x677F;&#x4E2D;&#x7684;&#x5411;&#x91CF;&#x985E;&#x5225;&#x88E1;&#x9762;&#xFF0C;&#x5DF2;&#x7D93;&#x5B9A;&#x7FA9;&#x904E; <code>get length()</code> &#x8207; <code>get angle()</code> &#xFF0C;&#x56E0;&#x6B64;&#x76F4;&#x7686;&#x4F7F;&#x7528;&#x5373;&#x53EF;&#x3002;&#x95DC;&#x65BC; <code>atan2</code> &#x7684;&#x6578;&#x5B78;&#x65B9;&#x6CD5;&#xFF0C;&#x7A0D;&#x5F8C;&#x5728;&#x4E09;&#x89D2;&#x51FD;&#x6578;&#x7684;&#x6587;&#x7AE0;&#x4E2D;&#x6703;&#x63D0;&#x5230;&#x3002;</p>
+<p>&#x2B50; &#x5F9E;&#x6975;&#x5EA7;&#x6A19;&#x7684;&#x89D2;&#x5EA6; a &#xFF08;deg&#xFF09;&#x7E6A;&#x88FD;&#x5728; canvas &#x4E0A;&#x5FC5;&#x9808;&#x4E58;&#x4E0A; <code>degToPi = Math.PI / 180</code> &#xFF0C;&#x8F49;&#x6210;&#x5F27;&#x5EA6;&#xFF08;Rad&#xFF09;&#xFF0C;&#x9019;&#x4E00;&#x9EDE;&#x5FC5;&#x9808;&#x7279;&#x5225;&#x6CE8;&#x610F;&#xFF0C;</p>
+<p><img src="/2020/05/14/canvas-10/polar.png" alt="&#x76F4;&#x89D2;&#x5EA7;&#x6A19;&#x8207;&#x6975;&#x5EA7;&#x6A19;&#x7684;&#x5DEE;&#x7570;"></p>
+<hr>
+<h2 id="&#x6975;&#x5EA7;&#x6A19;&#x7684;&#x61C9;&#x7528;"><a href="#&#x6975;&#x5EA7;&#x6A19;&#x7684;&#x61C9;&#x7528;" class="headerlink" title="&#x6975;&#x5EA7;&#x6A19;&#x7684;&#x61C9;&#x7528;"></a>&#x6975;&#x5EA7;&#x6A19;&#x7684;&#x61C9;&#x7528;</h2><p>&#x6975;&#x5EA7;&#x6A19;&#x61C9;&#x7528;&#x76F8;&#x7576;&#x5EE3;&#x6CDB;&#xFF0C;&#x7BC4;&#x570D;&#x6383;&#x63CF;&#x3001;&#x884C;&#x661F;&#x516C;&#x8F49;&#x3001;&#x61A4;&#x6012;&#x9CE5;&#x653B;&#x64CA;&#x3001;&#x4E0D;&#x898F;&#x5247;&#x534A;&#x5F91;&#x87BA;&#x65CB;&#x7B49;&#x7B49;&#x4E92;&#x52D5;&#x6548;&#x679C;&#xFF0C;&#x90FD;&#x80FD;&#x5920;&#x4F7F;&#x7528;&#x6975;&#x5EA7;&#x6A19;&#x4F86;&#x5BE6;&#x73FE;&#xFF0C;&#x9019;&#x88E1;&#x4EE5;&#x300C;&#x6383;&#x7784;&#x7BC4;&#x570D;&#x300D;&#x9032;&#x884C;&#x5BE6;&#x4F5C;&#x7DF4;&#x7FD2;&#x3002;</p>
+<p><img src="/2020/05/14/canvas-10/scan.png" alt="Canvas%2010%203a5a7927342e4d67a428069cfb0cf4f0/Untitled%201.png"></p>
+<p>&#x958B;&#x555F;&#x4E00;&#x500B;&#x65B0;&#x7684; Canvas &#x958B;&#x767C;&#x6A21;&#x677F;&#xFF0C;&#x4E26;&#x5728; <code>draw()</code> &#x51FD;&#x5F0F;&#x88E1;&#x7E6A;&#x5716;&#xFF0C;&#x7A0B;&#x5F0F;&#x78BC;&#x8AAA;&#x660E;&#x8ACB;&#x53C3;&#x8003;&#x8A3B;&#x89E3;&#xFF1A;</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-comment">// Clear the background of canvas</span></span><br><span class="line">  ctx.fillStyle = bgColor;</span><br><span class="line">  ctx.fillRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, ww, wh);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// ------------------------------------------------- //</span></span><br><span class="line">  <span class="hljs-comment">// Draw here ---------------------------------------</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// degToPi is the ratio of pi and deg </span></span><br><span class="line">  <span class="hljs-keyword">const</span> degToPi = <span class="hljs-built_in">Math</span>.PI / <span class="hljs-number">180</span> </span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// Draw the X / Y axis </span></span><br><span class="line">  ctx.beginPath()</span><br><span class="line">  ctx.moveTo(ww / <span class="hljs-number">2</span>, <span class="hljs-number">0</span>)</span><br><span class="line">  ctx.lineTo(ww / <span class="hljs-number">2</span>, wh)</span><br><span class="line">  ctx.moveTo(<span class="hljs-number">0</span>, wh / <span class="hljs-number">2</span>)</span><br><span class="line">  ctx.lineTo(ww, wh / <span class="hljs-number">2</span>)</span><br><span class="line">  ctx.strokeStyle = <span class="hljs-string">&apos;rgba(255, 255, 255, 0.5)&apos;</span></span><br><span class="line">  ctx.stroke()</span><br><span class="line"></span><br><span class="line">  ctx.save()</span><br><span class="line">    <span class="hljs-comment">// Translate the path to the center</span></span><br><span class="line">    ctx.translate(ww / <span class="hljs-number">2</span>, wh / <span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Calcualte the differece between the origin and mouse position</span></span><br><span class="line">    <span class="hljs-keyword">let</span> delta = mousePos.sub(<span class="hljs-keyword">new</span> Vec2(ww / <span class="hljs-number">2</span>, wh / <span class="hljs-number">2</span>)) <span class="hljs-comment">// Vector</span></span><br><span class="line">    <span class="hljs-keyword">let</span> mouseAngle = delta.angle <span class="hljs-comment">// Angle</span></span><br><span class="line">    <span class="hljs-keyword">let</span> mouseDistance = delta.length <span class="hljs-comment">// Distance</span></span><br><span class="line">    <span class="hljs-comment">// The polar coordinate of the mouse position is (mouseDistance, mouseAngle)</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">// Draw a line from the origin to the mouse position</span></span><br><span class="line">    ctx.beginPath()</span><br><span class="line">    ctx.moveTo(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span><br><span class="line">    ctx.lineTo(delta.x , delta.y)</span><br><span class="line">    ctx.stroke()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Draw the circle </span></span><br><span class="line">    ctx.beginPath()</span><br><span class="line">    ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, mouseDistance, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">2</span>)</span><br><span class="line">    ctx.stroke()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Draw the text showing the degree and the distance of the mouse position</span></span><br><span class="line">    ctx.fillStyle = <span class="hljs-string">&apos;white&apos;</span></span><br><span class="line">    ctx.fillText(<span class="hljs-built_in">parseInt</span>(mouseAngle / degToPi) + <span class="hljs-string">&apos; &#x5EA6;&apos;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">-10</span>)</span><br><span class="line">    ctx.fillText(<span class="hljs-string">&apos;r = &apos;</span> + mouseDistance, mouseDistance + <span class="hljs-number">10</span>, <span class="hljs-number">-10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Draw the range of light</span></span><br><span class="line">    ctx.beginPath()</span><br><span class="line">    ctx.moveTo(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">let</span> light_r = mouseDistance</span><br><span class="line">    ctx.save()</span><br><span class="line">      ctx.rotate(mouseAngle - <span class="hljs-number">10</span> * degToPi) <span class="hljs-comment">// Rotate the canvas by -10 deg</span></span><br><span class="line">      ctx.lineTo(light_r, <span class="hljs-number">0</span>) </span><br><span class="line">      ctx.rotate(<span class="hljs-number">20</span> * degToPi) <span class="hljs-comment">// Rotate the canvas by 20 deg</span></span><br><span class="line">      ctx.lineTo(light_r, <span class="hljs-number">0</span>)</span><br><span class="line">      ctx.fillStyle = <span class="hljs-string">&apos;gold&apos;</span></span><br><span class="line">      ctx.fill()</span><br><span class="line">    ctx.restore()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Draw enemies with polar coordinate system</span></span><br><span class="line">    <span class="hljs-keyword">let</span> enemies = [</span><br><span class="line">      {<span class="hljs-attr">r</span>: <span class="hljs-number">100</span>, <span class="hljs-attr">angle</span>: <span class="hljs-number">45</span>},</span><br><span class="line">      {<span class="hljs-attr">r</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">angle</span>: <span class="hljs-number">-113</span>},			</span><br><span class="line">      {<span class="hljs-attr">r</span>: <span class="hljs-number">155</span>, <span class="hljs-attr">angle</span>: <span class="hljs-number">175</span>},</span><br><span class="line">      {<span class="hljs-attr">r</span>: <span class="hljs-number">274</span>, <span class="hljs-attr">angle</span>: <span class="hljs-number">-24</span>},</span><br><span class="line">    ]</span><br><span class="line">    </span><br><span class="line">    enemies.forEach(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> {</span><br><span class="line">      ctx.save()</span><br><span class="line">        ctx.beginPath()</span><br><span class="line">        ctx.rotate(p.angle * degToPi) <span class="hljs-comment">// Rotate the canvas by p.angle degree</span></span><br><span class="line">        ctx.translate(p.r, <span class="hljs-number">0</span>) <span class="hljs-comment">// Translate the canvas to the enemy point</span></span><br><span class="line">        ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">let</span> color = <span class="hljs-string">&apos;white&apos;</span></span><br><span class="line">        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">Math</span>.abs(p.angle * degToPi - mouseAngle) &lt; <span class="hljs-number">10</span> * degToPi &amp;&amp; p.r &lt; mouseDistance) {</span><br><span class="line">          color = <span class="hljs-string">&apos;red&apos;</span></span><br><span class="line">        }</span><br><span class="line">        ctx.fillStyle = color </span><br><span class="line">        ctx.fill() </span><br><span class="line">      ctx.restore()</span><br><span class="line">    })</span><br><span class="line">  ctx.restore()</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// ------------------------------------------------- //</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="&#x53C3;&#x8003;&#x8CC7;&#x6599;"><a href="#&#x53C3;&#x8003;&#x8CC7;&#x6599;" class="headerlink" title="&#x53C3;&#x8003;&#x8CC7;&#x6599;"></a>&#x53C3;&#x8003;&#x8CC7;&#x6599;</h2><ol>
+<li><a href="https://hahow.in/courses/586fae97a8aae907000ce721/discussions?item=5a1e1755a2c4b000589dda2c" target="_blank" rel="noopener">&#x52D5;&#x756B;&#x4E92;&#x52D5;&#x7DB2;&#x9801;&#x7279;&#x6548;&#x5165;&#x9580;&#xFF08;JS/CANVAS&#xFF09;&#xFF1A;5-8 &#x6975;&#x5EA7;&#x6A19;&#x7684;&#x57FA;&#x790E;&#x6982;&#x5FF5;</a></li>
+</ol>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/W3HexSchool/">#W3HexSchool</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/04/25/canvas-09/">把網頁當畫布揮灑的 Canvas 09：粒子特效</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">評論</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://feitoengineer19.github.io/2020/05/14/canvas-10/';
+        this.page.identifier = '2020/05/14/canvas-10/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'feiBlog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 Luffy&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/Feitoengineer19">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-tw");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
